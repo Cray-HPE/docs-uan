@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Templates on User Access Node (UAN)</title>
+    <link>/docs-uan/templates/</link>
+    <description>Recent content in Templates on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 03 Feb 2022 17:48:18 +0000</lastBuildDate><atom:link href="/docs-uan/templates/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concept Title</title>
+      <link>/docs-uan/templates/concept/</link>
+      <pubDate>Thu, 03 Feb 2022 17:48:18 +0000</pubDate>
+      
+      <guid>/docs-uan/templates/concept/</guid>
+      <description>Concept Title Definition of the concept topic. What is/are [title]?
+Brief description.
+Aspect 1 Describe one aspect of the concept topic.
+Can contain images, diagrams, screenshots, code snippets, but should not contain step-by-step descriptions of tasks because those should be separate procedures.
+Level down header Level down header Aspect 2 Level down header Level down header Conclude each .md file with an empty line</description>
+    </item>
+    
+    <item>
+      <title>Procedure Title</title>
+      <link>/docs-uan/templates/procedure/</link>
+      <pubDate>Thu, 03 Feb 2022 17:48:18 +0000</pubDate>
+      
+      <guid>/docs-uan/templates/procedure/</guid>
+      <description>Procedure Title This documents two possible formats for structing a list of steps in a procedure. Try not to mix both in same topic.
+  Steps are an ordered list - Indentation is important. Everything aligns with first character of list. Best used when there are many (&amp;gt;10) short steps, but little text or code blocks associated with each step. See Steps are an ordered list.
+  Steps are headers - Text alignment and code block alignment is left justified.</description>
+    </item>
+    
+    <item>
+      <title>Use Case Title</title>
+      <link>/docs-uan/templates/use-case/</link>
+      <pubDate>Thu, 03 Feb 2022 17:48:18 +0000</pubDate>
+      
+      <guid>/docs-uan/templates/use-case/</guid>
+      <description>Use Case Title Briefly describe context, audience, goal.
+Problem/Situation  Describe the problem you wanted to solve Describe any additional factors related to the problem (e.g. performance considerations)  Challenges  Describe what made the problem challenging Describe any trials and errors  Solution  Describe how you solved the problem Describe why you chose that solution  Results  Add screenshots, images, diagrams where applicable  </description>
+    </item>
+    
+  </channel>
+</rss>
