@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Tags :: User Access Node (UAN)</title>
+    <title>Merge UAN Configuration Data :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1643916898" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/tags/">
+  <body class="" data-url="/docs-uan/upgrade/merge_uan_configuration_data/">
     <nav id="sidebar" class="">
 
 
@@ -667,7 +667,7 @@
   
     
     <li data-nav-id="/docs-uan/upgrade/" title="Upgrade" class="dd-item
-        
+        parent
         
         
         ">
@@ -693,7 +693,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/upgrade/merge_uan_configuration_data/" title="Merge UAN Configuration Data" class="dd-item ">
+      <li data-nav-id="/docs-uan/upgrade/merge_uan_configuration_data/" title="Merge UAN Configuration Data" class="dd-item active">
         <a href="/docs-uan/upgrade/merge_uan_configuration_data/">
         Merge UAN Configuration Data
         
@@ -755,7 +755,13 @@
             
           
           
-            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > Tags
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > <a href='/docs-uan/upgrade/'>Upgrade</a> > Merge UAN Configuration Data
+          
+        
           
         
           
@@ -766,7 +772,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#merge-uan-configuration-data">Merge UAN Configuration Data</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -782,23 +792,136 @@
           
             <h1>
               
-                tag ::
-              
             </h1>
           
 
         
 
 
-
-
-
+<h2 id="merge-uan-configuration-data">Merge UAN Configuration Data</h2>
+<p>Perform this procedure to update the UAN product configuration.</p>
+<p>Before performing this procedure:</p>
 <ul>
-	
+<li>Perform <a href="/docs-uan/install/install_the_uan_product_stream/#install-the-uan-product-stream">Install the UAN Product Stream</a></li>
 </ul>
+<p>Version 2.0.0 or later of the UAN product must be installed before performing this procedure.</p>
+<p>In this procedure:</p>
+<ul>
+<li>PRODUCT_VERSION: refers to the full name of the UAN product version that is currently installed.</li>
+</ul>
+<ol>
+<li>
+<p>Start a typescript to capture the commands and output from the procedure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# script -af product-uan.$<span style="color:#ae81ff">\(</span>date +%Y-%m-%d<span style="color:#ae81ff">\)</span>.txt
+ncn-m001#  export PS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\\u@\\H \\D\{%Y-%m-%d\} \\t \\w \# &#39;</span>
+</code></pre></div></li>
+<li>
+<p>Obtain the URL of UAN configuration management repository in VCS (the Gitea service).</p>
+<p>This URL is reported as the value of the <code>configuration.clone_url</code> key in the <code>cray-product-catalog</code> Kubernetes ConfigMap.</p>
+</li>
+<li>
+<p>Obtain the <code>crayvcs</code> password.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# kubectl get secret -n services vcs-user-credentials <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --template<span style="color:#f92672">={{</span>.data.vcs_password<span style="color:#f92672">}}</span> | base64 --decode
+</code></pre></div></li>
+<li>
+<p>Clone the UAN configuration management repository. Replace the hostname reported in the URL obtained in the previous step with <code>api-gw-service-nmm.local</code> when cloning the repository.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# git clone https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git
+. . .
+ncn-m001# cd uan-config-management <span style="color:#f92672">&amp;&amp;</span> git checkout cray/uan/PRODUCT_VERSION <span style="color:#f92672">&amp;&amp;</span> git pull
+Branch <span style="color:#e6db74">&#39;cray/uan/PRODUCT_VERSION&#39;</span> set up to track remote branch <span style="color:#e6db74">&#39;cray/uan/PRODUCT_VERSION&#39;</span> 
+from <span style="color:#e6db74">&#39;origin&#39;</span>.
+Already up to date.
+</code></pre></div></li>
+<li>
+<p>Checkout the branch currently used to hold UAN configuration.</p>
+<p>The following example assumes that branch is <code>integration</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# git checkout integration
+Switched to branch <span style="color:#e6db74">&#39;integration&#39;</span>
+Your branch is up to date with <span style="color:#e6db74">&#39;origin/integration&#39;</span>.
+</code></pre></div></li>
+<li>
+<p>Merge the new install branch to the current branch. Write a commit message when prompted.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# git merge cray/uan/PRODUCT_VERSION
+</code></pre></div></li>
+<li>
+<p>Push the changes to VCS. Enter the <code>crayvcs</code> password when prompted.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# git push
+</code></pre></div></li>
+<li>
+<p>Retrieve the commit ID from the merge and store it for later use.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# git rev-parse --verify HEAD
+</code></pre></div></li>
+<li>
+<p>Update any CFS configurations used by the UANs with the commit ID from the previous step.</p>
+<p>a. Download the JSON of the current UAN CFS configuration to a file.</p>
+<p>This file will be named uan-config-2.3.0.json since it will be modified and then used for the updated UAN version.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    ncn-m001#  cray cfs configurations describe uan-config-2.0.0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>     --format<span style="color:#f92672">=</span>json &amp;&gt;uan-config-2.3.0.json
+</code></pre></div><p>b. Remove the unneeded lines from the JSON file.</p>
+<pre><code>The lines to remove are:
+
+   - the `lastUpdated` line
+   - the last `name` line 
+
+These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
+
+```bash
+ncn-m001# cat uan-config-2.0.1.json
+{
+  &quot;lastUpdated&quot;: &quot;2021-03-27T02:32:10Z&quot;,      
+  &quot;layers&quot;: [
+    {
+      &quot;cloneUrl&quot;: &quot;https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git&quot;,
+      &quot;commit&quot;: &quot;aa5ce7d5975950ec02493d59efb89f6fc69d67f1&quot;,
+      &quot;name&quot;: &quot;uan-integration-2.0.0&quot;,
+      &quot;playbook&quot;: &quot;site.yml&quot;
+    },
+  &quot;name&quot;: &quot;uan-config-2.0.1-full&quot;            
+} 
+```
+</code></pre>
+<p>c. Replace the <code>commit</code> value in the JSON file with the commit ID obtained in Step 14.</p>
+<pre><code>The name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name.
+
+```bash
+{
+ &quot;layers&quot;: [
+ {
+ &quot;cloneUrl&quot;: &quot;https://api-gw-service-nmn.local/vcs/cray/uan-configmanagement.git&quot;,
+ &quot;commit&quot;: &quot;aa5ce7d5975950ec02493d59efb89f6fc69d67f1&quot;,
+ &quot;name&quot;: &quot;uan-integration-2.0.0&quot;,
+ &quot;playbook&quot;: &quot;site.yml&quot;
+ }
+ ]
+}
+```
+</code></pre>
+<p>d. Create a new UAN CFS configuration with the updated JSON file.</p>
+<p>The following example uses <code>uan-config-2.0.1</code> for the name of the new CFS configuration, to match the JSON file name.</p>
+<pre><code>```bash
+ncn-m001# cray cfs configurations update uan-config-2.0.1 \
+ --file uan-config-2.0.1.json
+```
+</code></pre>
+<p>e. Tell CFS to apply the new configuration to UANs by repeating the following command for each UAN. Replace UAN_XNAME in the command below with the name of a different UAN each time the command is run.</p>
+<pre><code>```bash
+ncn-m001# cray cfs components update --desired-config uan-config-2.0.1 \
+--enabled true --format json UAN_XNAME
+```
+</code></pre>
+</li>
+<li>
+<p>Finish the typescript file started at the beginning of this procedure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# exit
+</code></pre></div></li>
+<li>
+<p>Perform &ldquo;Create UAN Boot Images&rdquo; in the HPE Cray UAN Administration Guide to upgrade the boot images used by the UANs.</p>
+</li>
+</ol>
 
 
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1156,6 +1279,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1168,6 +1292,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1187,6 +1312,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1284,3 +1412,4 @@
 
   </body>
 </html>
+

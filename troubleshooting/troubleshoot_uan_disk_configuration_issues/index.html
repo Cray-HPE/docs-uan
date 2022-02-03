@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Tags :: User Access Node (UAN)</title>
+    <title>Troubleshoot UAN Disk Configuration Issues :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1643916898" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/tags/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
     <nav id="sidebar" class="">
 
 
@@ -570,7 +570,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="Troubleshooting" class="dd-item
-        
+        parent
         
         
         ">
@@ -638,7 +638,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="Troubleshoot UAN Disk Configuration Issues" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="Troubleshoot UAN Disk Configuration Issues" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
         Troubleshoot UAN Disk Configuration Issues
         
@@ -755,7 +755,13 @@
             
           
           
-            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > Tags
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > <a href='/docs-uan/troubleshooting/'>Troubleshooting</a> > Troubleshoot UAN Disk Configuration Issues
+          
+        
           
         
           
@@ -766,7 +772,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#troubleshoot-uan-disk-configuration-issues">Troubleshoot UAN Disk Configuration Issues</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -782,23 +792,62 @@
           
             <h1>
               
-                tag ::
-              
             </h1>
           
 
         
 
 
+<h2 id="troubleshoot-uan-disk-configuration-issues">Troubleshoot UAN Disk Configuration Issues</h2>
+<p>Perform this procedure to enable <code>uan_disk_config</code> to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.</p>
+<p>This procedure currently only addresses <code>uan_disk_config</code> errors due to existing disk partitions.</p>
+<p>Refer to <a href="/docs-uan/operations/about_uan_configuration/#about-uan-configuration">About UAN Configuration</a> for an explanation of UAN disk configuration.</p>
+<p>The most common cause of failure in the <code>uan_disk_config</code> role is the disk having been previously configured without a <code>/scratch</code> and <code>/swap</code> partition. Existing partitions prevent the <code>parted</code> command from dividing the disk into those two equal partitions. The solution is to log into the node and run <code>parted</code> manually to remove the existing partitions on that disk.</p>
+<ol>
+<li>
+<p>Examine the CFS log and identify the failed disk device.</p>
+</li>
+<li>
+<p>Log into the affected UAN as root.</p>
+</li>
+<li>
+<p>Use parted to manually remove any existing partitions.</p>
+<p>The following example uses <code>/dev/sdb</code> as the disk device. Also, as partitions are removed, the remaining partitions are renumbered. Therefore, <code>rm 1</code> is issued twice to remove both partitions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uan# parted
+GNU Parted 3.2
+Using /dev/sda
+Welcome to GNU Parted! Type <span style="color:#e6db74">&#39;help&#39;</span> to view a list of commands.
+<span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> <span style="color:#66d9ef">select</span> /dev/sdb
+Using /dev/sdb
+<span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> print
+Model: ATA VK000480GWSRR <span style="color:#f92672">(</span>scsi<span style="color:#f92672">)</span>
+Disk /dev/sdb: 480GB
+Sector size <span style="color:#f92672">(</span>logical/physical<span style="color:#f92672">)</span>: 512B/4096B
+Partition Table: msdos
+Disk Flags:
+
+Number  Start   End    Size   Type     File system  Flags
+ <span style="color:#ae81ff">1</span>      1049kB  240GB  240GB  primary  ext4         type<span style="color:#f92672">=</span><span style="color:#ae81ff">83</span>
+ <span style="color:#ae81ff">2</span>      240GB   480GB  240GB  primary  ext4         type<span style="color:#f92672">=</span><span style="color:#ae81ff">83</span>
+
+<span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> rm <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> rm <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> print
+Model: ATA VK000480GWSRR <span style="color:#f92672">(</span>scsi<span style="color:#f92672">)</span>
+Disk /dev/sdb: 480GB
+Sector size <span style="color:#f92672">(</span>logical/physical<span style="color:#f92672">)</span>: 512B/4096B
+Partition Table: msdos
+Disk Flags:
+<span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> quit
+uan01:~ <span style="color:#75715e">#</span>
+</code></pre></div></li>
+<li>
+<p>Either reboot the affected UAN or launch a CFS session against it to rerun the <code>uan_disk_config</code> role.</p>
+</li>
+</ol>
 
 
-
-<ul>
-	
-</ul>
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1092,6 +1141,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1104,6 +1154,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1137,6 +1190,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1155,6 +1209,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1284,3 +1341,4 @@
 
   </body>
 </html>
+

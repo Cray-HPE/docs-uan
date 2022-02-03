@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Tags :: User Access Node (UAN)</title>
+    <title>Troubleshoot UAN CFS And Network Configuration Issues :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1643916898" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/tags/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
     <nav id="sidebar" class="">
 
 
@@ -570,7 +570,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="Troubleshooting" class="dd-item
-        
+        parent
         
         
         ">
@@ -617,7 +617,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="Troubleshoot UAN CFS And Network Configuration Issues" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="Troubleshoot UAN CFS And Network Configuration Issues" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
         Troubleshoot UAN CFS And Network Configuration Issues
         
@@ -755,7 +755,13 @@
             
           
           
-            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > Tags
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > <a href='/docs-uan/troubleshooting/'>Troubleshooting</a> > Troubleshoot UAN CFS And Network Configuration Issues
+          
+        
           
         
           
@@ -766,7 +772,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#troubleshoot-uan-cfs-and-network-configuration-issues">Troubleshoot UAN CFS and Network Configuration Issues</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -782,23 +792,33 @@
           
             <h1>
               
-                tag ::
-              
             </h1>
           
 
         
 
 
+<h2 id="troubleshoot-uan-cfs-and-network-configuration-issues">Troubleshoot UAN CFS and Network Configuration Issues</h2>
+<p>Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.</p>
+<p>Read <a href="/docs-uan/operations/about_uan_configuration/#about-uan-configuration">About UAN Configuration</a> before starting this procedure.</p>
+<ol>
+<li>
+<p>Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:</p>
+<p>This example sorts the list of CFS sessions so that the most recent one is at the bottom.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# kubectl -n services get pods --sort-by<span style="color:#f92672">=</span>.metadata.creationTimestamp | grep ^cfs
+</code></pre></div></li>
+<li>
+<p>View the Ansible log of the CFS session found in the previous step (CFS_SESSION in the following example). Use the information in log to guide troubleshooting.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# kubectl -n services logs -f -c ansible-0 CFS_SESSION
+</code></pre></div></li>
+<li>
+<p><strong>Optional:</strong> Troubleshoot <code>uan_interfaces</code> issues by logging into the affected node (usually with the conman console) and using standard network debugging techniques.</p>
+<p>NMN and CAN network setup errors can also result from incorrect switch configuration and network cabling.</p>
+</li>
+</ol>
 
 
-
-<ul>
-	
-</ul>
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1092,6 +1112,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1104,6 +1125,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1121,6 +1145,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1136,6 +1161,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1284,3 +1312,4 @@
 
   </body>
 </html>
+

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Tags :: User Access Node (UAN)</title>
+    <title>Customizing UAN Images Manually :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1643916898" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/tags/">
+  <body class="" data-url="/docs-uan/advanced/customizing_uan_images_manually/">
     <nav id="sidebar" class="">
 
 
@@ -85,7 +85,7 @@
   
     
     <li data-nav-id="/docs-uan/advanced/" title="Advanced" class="dd-item
-        
+        parent
         
         
         ">
@@ -111,7 +111,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="Customizing UAN Images Manually" class="dd-item ">
+      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="Customizing UAN Images Manually" class="dd-item active">
         <a href="/docs-uan/advanced/customizing_uan_images_manually/">
         Customizing UAN Images Manually
         
@@ -755,7 +755,13 @@
             
           
           
-            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > Tags
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > <a href='/docs-uan/advanced/'>Advanced</a> > Customizing UAN Images Manually
+          
+        
           
         
           
@@ -766,7 +772,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#customizing-uan-images-manually">Customizing UAN Images Manually</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -782,23 +792,39 @@
           
             <h1>
               
-                tag ::
-              
             </h1>
           
 
         
 
 
+<h2 id="customizing-uan-images-manually">Customizing UAN Images Manually</h2>
+<ol>
+<li>
+<p>Query IMS for the UAN Image you want to customize.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001:~/ $ cray ims images list --format json | jq <span style="color:#e6db74">&#39;.[] | select(.name | contains(&#34;uan&#34;))&#39;</span>
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;created&#34;</span>: <span style="color:#e6db74">&#34;2021-02-18T17:17:44.168655+00:00&#34;</span>,
+  <span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;6d46d601-c41f-444d-8b49-c9a2a55d3c21&#34;</span>,
+  <span style="color:#e6db74">&#34;link&#34;</span>: <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;etag&#34;</span>: <span style="color:#e6db74">&#34;371b62c9f0263e4c8c70c8602ccd5158&#34;</span>,
+    <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;s3://boot-images/6d46d601-c41f-444d-8b49-c9a2a55d3c21/manifest.json&#34;</span>,
+    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;uan-PRODUCT_VERSION-image&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>Create a variable for the IMS image <code>id</code> in the returned data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001:~/ $ export IMS_IMAGE_ID<span style="color:#f92672">=</span>6d46d601-c41f-444d-8b49-c9a2a55d3c21
+</code></pre></div></li>
+<li>
+<p>Using the IMS_IMAGE_ID, follow the instructions in the <em>Customize an Image Root Using IMS</em> in the CSM documentation to build the UAN Image.</p>
+</li>
+</ol>
 
 
-
-<ul>
-	
-</ul>
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1188,6 +1214,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1200,6 +1227,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1219,6 +1247,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1284,3 +1315,4 @@
 
   </body>
 </html>
+

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Tags :: User Access Node (UAN)</title>
+    <title>Mount A New File System On A UAN :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1643916898" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/tags/">
+  <body class="" data-url="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
     <nav id="sidebar" class="">
 
 
@@ -313,7 +313,7 @@
   
     
     <li data-nav-id="/docs-uan/operations/" title="Operations" class="dd-item
-        
+        parent
         
         
         ">
@@ -444,7 +444,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="Mount A New File System On A UAN" class="dd-item ">
+      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="Mount A New File System On A UAN" class="dd-item active">
         <a href="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
         Mount A New File System On A UAN
         
@@ -755,7 +755,13 @@
             
           
           
-            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > Tags
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray User Access Node Documentation</a> > <a href='/docs-uan/operations/'>Operations</a> > Mount A New File System On A UAN
+          
+        
           
         
           
@@ -766,7 +772,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#mount-a-new-file-system-on-a-uan">Mount a New File System on a UAN</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -782,23 +792,48 @@
           
             <h1>
               
-                tag ::
-              
             </h1>
           
 
         
 
 
+<h2 id="mount-a-new-file-system-on-a-uan">Mount a New File System on a UAN</h2>
+<p>Perform this procedure to create a mount point for a new file system on a UAN.</p>
+<ol>
+<li>
+<p>Perform Steps 1-9 of <a href="/docs-uan/operations/create_uan_boot_images/#create-uan-boot-images">Create UAN Boot Images</a>.</p>
+</li>
+<li>
+<p>Create a directory for <code>Application</code> role nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# mkdir -p group_vars/Application
+</code></pre></div></li>
+<li>
+<p>Define the home directory information for the new file system in the <code>filesystems.yml</code> file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# vi group_vars/Application/filesystems.yml
+---
+filesystems:
+  - src: 10.252.1.1:/home
+    mount_point: /home    
+    fstype: nfs4    
+    opts: rw,noauto
+    state: mounted
+</code></pre></div></li>
+<li>
+<p>Add the change from the working directory to the staging area.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git add -A
+</code></pre></div></li>
+<li>
+<p>Commit the file to the working branch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git commit -am <span style="color:#e6db74">&#39;Added file system info&#39;</span>
+</code></pre></div></li>
+<li>
+<p>Resume <a href="/docs-uan/operations/create_uan_boot_images/#create-uan-boot-images">Create UAN Boot Images</a> at Step 10.</p>
+</li>
+</ol>
 
 
-
-<ul>
-	
-</ul>
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -916,6 +951,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -928,6 +964,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1009,6 +1048,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1024,6 +1064,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1284,3 +1327,4 @@
 
   </body>
 </html>
+
