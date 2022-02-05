@@ -1,10 +1,225 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>User Access Node (UAN)</title>
+    <title>Cray User Access Node Documentation on User Access Node (UAN)</title>
     <link>/docs-uan/en-219/</link>
-    <description>Recent content on User Access Node (UAN)</description>
+    <description>Recent content in Cray User Access Node Documentation on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language><atom:link href="/docs-uan/en-219/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-US</language>
+    <lastBuildDate>Sat, 05 Feb 2022 00:05:24 +0000</lastBuildDate><atom:link href="/docs-uan/en-219/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build A New UAN Image Using The Default Recipe</title>
+      <link>/docs-uan/en-219/operations/build_a_new_uan_image_using_the_default_recipe/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/build_a_new_uan_image_using_the_default_recipe/</guid>
+      <description>Build a New UAN Image Using the Default Recipe Perform this procedure to build or rebuild the UAN image using either the default UAN image or image recipe. Both of these are supplied by the UAN product stream installer.
+Perform the following before starting this procedure:
+ Install both the COS and UAN product streams. Initialize the cray administrative CLI.  The Cray EX User Access Node (UAN) recipe currently requires the Slingshot packages, which are not installed with the UAN product itself.</description>
+    </item>
+    
+    <item>
+      <title>Configure Interfaces On UANs</title>
+      <link>/docs-uan/en-219/operations/configure_interfaces_on_uans/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/configure_interfaces_on_uans/</guid>
+      <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
+The Customer Access Network (CAN) is no longer setup by default as the networking connection to the site user access network. The default is now for sites to directly connect their user network to the User Access Node (UAN) or Application nodes, and to define that network configuration in the Configuration Framework Service (CFS) host_vars/XNAME/customer_net.</description>
+    </item>
+    
+    <item>
+      <title>Configure Pluggable Authentication Modules (pam) On UANs</title>
+      <link>/docs-uan/en-219/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
+      <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
+Intialize and configure the Cray command line interface (CLI) tool on the system. See &amp;ldquo;Configure the Cray Command Line Interface (CLI)&amp;rdquo; in the CSM documentation for more information.
+  Verify that the Gitea Version Control Service (VCS) is running.
+ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54c4f-j8k4t 2/2 Running 1 11d services gitea-vcs-postgres-0 2/2 Running 0 11d   Retrieve the initial Gitea login credentials for the crayvcs username.</description>
+    </item>
+    
+    <item>
+      <title>Create UAN Boot Images</title>
+      <link>/docs-uan/en-219/operations/create_uan_boot_images/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/create_uan_boot_images/</guid>
+      <description>Create UAN Boot Images This procedure updates the configuration management git repository to match the installed version of the UAN product. Then, that updated configuration is used to create UAN boot images and a BOS session template.
+Perform &amp;ldquo;Install the UAN Product Stream&amp;rdquo; from the HPE Cray UAN Installation Guide first before starting this procedure.
+This procedure only details how to apply UAN-specific configuration to the UAN image and nodes. Consult the documentation for the individual HPE products (for example, workload managers and the HPE Cray Programming Environment) that must be configured on the UANs.</description>
+    </item>
+    
+    <item>
+      <title>Merge UAN Configuration Data</title>
+      <link>/docs-uan/en-219/upgrade/merge_uan_configuration_data/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/upgrade/merge_uan_configuration_data/</guid>
+      <description>Merge UAN Configuration Data Perform this procedure to update the UAN product configuration.
+Version 2.0.0 or later of the UAN product must be installed before performing this procedure.
+In this procedure:
+  UAN_RELEASE: refers to the new UAN release version (for example, 2.0.1)
+  UAN_DISTDIR: refers to the directory containing the extracted UAN release distribution for the new UAN release.
+  PRODUCT_VERSION: refers to the full name of the UAN product version that is currently installed.</description>
+    </item>
+    
+    <item>
+      <title>Mount A New File System On A UAN</title>
+      <link>/docs-uan/en-219/operations/mount_a_new_file_system_on_an_uan/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/mount_a_new_file_system_on_an_uan/</guid>
+      <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
+  Perform Steps 1-9 of Create UAN Boot Images.
+  Create a directory for Application role nodes.
+ncn-w001# mkdir -p group_vars/Application   Define the home directory information for the new file system in the filesystems.yml file.
+ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.</description>
+    </item>
+    
+    <item>
+      <title>Troubleshoot UAN Boot Issues</title>
+      <link>/docs-uan/en-219/troubleshooting/troubleshoot_uan_boot_issues/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/troubleshooting/troubleshoot_uan_boot_issues/</guid>
+      <description>Troubleshoot UAN Boot Issues The UAN boot process BOS boots UANs. BOS uses session templates to define various parameters such as:
+ Which nodes to boot Which image to boot Kernel parameters Whether to perform post-boot configuration (Node Personalization) of the nodes by CFS. Which CFS configuration to use if Node Personalization is enabled.  UAN boots are performed in three phases:
+ PXE booting an iPXE binary that will load the initrd of the UAN image that will boot.</description>
+    </item>
+    
+    <item>
+      <title>Troubleshoot UAN CFS And Network Configuration Issues</title>
+      <link>/docs-uan/en-219/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</guid>
+      <description>Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.
+Read About UAN Configuration before starting this procedure.
+  Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:
+This example sorts the list of CFS sessions so that the most recent one is at the bottom.</description>
+    </item>
+    
+    <item>
+      <title>Troubleshoot UAN Disk Configuration Issues</title>
+      <link>/docs-uan/en-219/troubleshooting/troubleshoot_uan_disk_configuration_issues/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/troubleshooting/troubleshoot_uan_disk_configuration_issues/</guid>
+      <description>Troubleshoot UAN Disk Configuration Issues Perform this procedure to enable uan_disk_config to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.
+This procedure currently only addresses uan_disk_config errors due to existing disk partitions.
+Refer to About UAN Configuration for an explanation of UAN disk configuration.
+The most common cause of failure in the uan_disk_config role is the disk having been previously configured without a /scratch and /swap partition.</description>
+    </item>
+    
+    <item>
+      <title>UAN Ansible Roles</title>
+      <link>/docs-uan/en-219/operations/uan_ansible_roles/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:25 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/uan_ansible_roles/</guid>
+      <description>UAN Ansible Roles uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
+Requirements There must be disk devices found on the UAN node by the device_filter module or this role will exit with failure. This condition can be ignored by setting uan_require_disk to false. See variable definitions below.
+See the library/device_filter.py file for more information on this module.
+The device that is found will be unmounted if mounted and a swap partition will be created on the first half of the disk, and a scratch partition on the second half.</description>
+    </item>
+    
+    <item>
+      <title>About UAN Configuration</title>
+      <link>/docs-uan/en-219/operations/about_uan_configuration/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/about_uan_configuration/</guid>
+      <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
+UAN configuration overview Configuration of UAN nodes is performed by the Configuration Framework Service (CFS). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
+The Ansible roles involved in UAN configuration are listed in the site.</description>
+    </item>
+    
+    <item>
+      <title>Boot UANs</title>
+      <link>/docs-uan/en-219/operations/boot_uans/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/boot_uans/</guid>
+      <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
+Perform Create UAN Boot Images before performing this procedure.
+  Create a BOS session to boot the UAN nodes.
+ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VERSION \ --operation reboot --format json | tee session.json { &amp;#34;links&amp;#34;: [ { &amp;#34;href&amp;#34;: &amp;#34;/v1/session/89680d0a-3a6b-4569-a1a1-e275b71fce7d&amp;#34;, &amp;#34;jobId&amp;#34;: &amp;#34;boa-89680d0a-3a6b-4569-a1a1-e275b71fce7d&amp;#34;, &amp;#34;rel&amp;#34;: &amp;#34;session&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;GET&amp;#34; }, { &amp;#34;href&amp;#34;: &amp;#34;/v1/session/89680d0a-3a6b-4569-a1a1-e275b71fce7d/status&amp;#34;, &amp;#34;rel&amp;#34;: &amp;#34;status&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;GET&amp;#34; } ], &amp;#34;operation&amp;#34;: &amp;#34;reboot&amp;#34;, &amp;#34;templateUuid&amp;#34;: &amp;#34;uan-sessiontemplate-PRODUCT_VERSION&amp;#34; }   Retrieve the BOS session ID from the output of the previous command.</description>
+    </item>
+    
+    <item>
+      <title>Configure The Bios Of A Gigabyte UAN</title>
+      <link>/docs-uan/en-219/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</guid>
+      <description>Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.
+Before the UAN product can be installed on Gigabyte UANs, specific network interface and boot settings must be configured in the BIOS.
+  Press the Delete key to enter the setup utility when prompted to do so in the console.
+  Navigate to the boot menu.</description>
+    </item>
+    
+    <item>
+      <title>Configure The Bios Of An HPE UAN</title>
+      <link>/docs-uan/en-219/installation_prereqs/configure_the_bios_of_an_hpe_uan/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
+      <description>Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
+Before the UAN product can be installed on HPE UANs, specific network interface and boot settings must be configured in the BIOS.
+Perform Configure the BMC for UANs with iLO before performing this procedure.
+  Force a UAN to reboot into the BIOS.
+In the following command, UAN_BMC_XNAME is the xname of the BMC of the UAN to configure.</description>
+    </item>
+    
+    <item>
+      <title>Configure The BMC For UANs With Ilo</title>
+      <link>/docs-uan/en-219/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
+      <description>Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
+Perform the first three steps of Prepare for UAN Product Installation before performing this procedure.
+  Create the SSH tunnel necessary to access the BMC web GUI interface.
+a. Find the IP or hostname for a UAN.</description>
+    </item>
+    
+    <item>
+      <title>Install The UAN Product Stream</title>
+      <link>/docs-uan/en-219/install/install_the_uan_product_stream/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/install/install_the_uan_product_stream/</guid>
+      <description>Install the UAN Product Stream This procedure installs the User Access Nodes (UAN) product on a system so that UAN boot images can be created.
+Before performing this procedure:
+ Initialize and configure the Cray command line interface (CLI) tool. See &amp;ldquo;Configure the Cray Command Line Interface (CLI)&amp;rdquo; in the CSM documentation for more information. Perform Prepare for UAN Product Installation  Replace PRODUCT_VERSION in the example commands with the UAN product stream string (2.</description>
+    </item>
+    
+    <item>
+      <title>Prepare For UAN Product Installation</title>
+      <link>/docs-uan/en-219/installation_prereqs/prepare_for_uan_product_installation/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:24 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/installation_prereqs/prepare_for_uan_product_installation/</guid>
+      <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
+Install and configure the COS product before performing this procedure.
+MANAGEMENT NETWORK SWITCH CONFIGURATION
+  Ensure that the management network switches are properly configured.
+  Ensure that the management network switches have the proper firmware.
+Refer to the procedure &amp;ldquo;Update the Management Network Firmware&amp;rdquo; in the HPE Cray EX hardware documentation.</description>
+    </item>
+    
+    <item>
+      <title>Customizing UAN Images Manually</title>
+      <link>/docs-uan/en-219/advanced/customizing_uan_images_manually/</link>
+      <pubDate>Sat, 05 Feb 2022 00:05:23 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/advanced/customizing_uan_images_manually/</guid>
+      <description>Customizing UAN Images Manually   Query IMS for the UAN Image you want to customize.
+ncn-m001:~/ $ cray ims images list --format json | jq &amp;#39;.[] | select(.name | contains(&amp;#34;uan&amp;#34;))&amp;#39; { &amp;#34;created&amp;#34;: &amp;#34;2021-02-18T17:17:44.168655+00:00&amp;#34;, &amp;#34;id&amp;#34;: &amp;#34;6d46d601-c41f-444d-8b49-c9a2a55d3c21&amp;#34;, &amp;#34;link&amp;#34;: { &amp;#34;etag&amp;#34;: &amp;#34;371b62c9f0263e4c8c70c8602ccd5158&amp;#34;, &amp;#34;path&amp;#34;: &amp;#34;s3://boot-images/6d46d601-c41f-444d-8b49-c9a2a55d3c21/manifest.json&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;s3&amp;#34; }, &amp;#34;name&amp;#34;: &amp;#34;uan-PRODUCT_VERSION-image&amp;#34; }   Create a variable for the IMS image id in the returned data.
+ncn-m001:~/ $ export IMS_IMAGE_ID=6d46d601-c41f-444d-8b49-c9a2a55d3c21   Using the IMS_IMAGE_ID, follow the instructions in the Customize an Image Root Using IMS in the CSM documentation to build the UAN Image.</description>
+    </item>
+    
   </channel>
 </rss>
