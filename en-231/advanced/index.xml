@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advanced on User Access Node (UAN)</title>
+    <link>/docs-uan/en-231/advanced/</link>
+    <description>Recent content in Advanced on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 23 Feb 2022 22:56:19 +0000</lastBuildDate><atom:link href="/docs-uan/en-231/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Customizing UAN Images Manually</title>
+      <link>/docs-uan/en-231/advanced/customizing_uan_images_manually/</link>
+      <pubDate>Wed, 23 Feb 2022 22:56:16 +0000</pubDate>
+      
+      <guid>/docs-uan/en-231/advanced/customizing_uan_images_manually/</guid>
+      <description>Customizing UAN Images Manually   Query IMS for the UAN Image you want to customize.
+ncn-m001:~/ $ cray ims images list --format json | jq &amp;#39;.[] | select(.name | contains(&amp;#34;uan&amp;#34;))&amp;#39; { &amp;#34;created&amp;#34;: &amp;#34;2021-02-18T17:17:44.168655+00:00&amp;#34;, &amp;#34;id&amp;#34;: &amp;#34;6d46d601-c41f-444d-8b49-c9a2a55d3c21&amp;#34;, &amp;#34;link&amp;#34;: { &amp;#34;etag&amp;#34;: &amp;#34;371b62c9f0263e4c8c70c8602ccd5158&amp;#34;, &amp;#34;path&amp;#34;: &amp;#34;s3://boot-images/6d46d601-c41f-444d-8b49-c9a2a55d3c21/manifest.json&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;s3&amp;#34; }, &amp;#34;name&amp;#34;: &amp;#34;uan-PRODUCT_VERSION-image&amp;#34; }   Create a variable for the IMS image id in the returned data.
+ncn-m001:~/ $ export IMS_IMAGE_ID=6d46d601-c41f-444d-8b49-c9a2a55d3c21   Using the IMS_IMAGE_ID, follow the instructions in the Customize an Image Root Using IMS in the CSM documentation to build the UAN Image.</description>
+    </item>
+    
+  </channel>
+</rss>
