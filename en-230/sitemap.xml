@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/docs-uan/en-230/test-plan/</loc>
-    <lastmod>2022-03-15T01:12:53+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-231"
-                href="/docs-uan/en-231/test-plan/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-230"
-                href="/docs-uan/en-230/test-plan/"
-                />
-  </url><url>
     <loc>/docs-uan/en-230/troubleshooting/</loc>
-    <lastmod>2022-03-15T01:12:53+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:03+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -34,7 +21,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/upgrade/</loc>
-    <lastmod>2022-03-15T01:12:53+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:03+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -51,26 +38,8 @@
                 href="/docs-uan/en-230/upgrade/"
                 />
   </url><url>
-    <loc>/docs-uan/en-230/installation_prereqs/</loc>
-    <lastmod>2022-03-15T01:12:52+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-231"
-                href="/docs-uan/en-231/installation_prereqs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-219"
-                href="/docs-uan/en-219/installation_prereqs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-230"
-                href="/docs-uan/en-230/installation_prereqs/"
-                />
-  </url><url>
     <loc>/docs-uan/en-230/operations/</loc>
-    <lastmod>2022-03-15T01:12:52+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:02+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -87,8 +56,21 @@
                 href="/docs-uan/en-230/operations/"
                 />
   </url><url>
+    <loc>/docs-uan/en-230/test-plan/</loc>
+    <lastmod>2022-03-15T01:25:02+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-231"
+                href="/docs-uan/en-231/test-plan/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-230"
+                href="/docs-uan/en-230/test-plan/"
+                />
+  </url><url>
     <loc>/docs-uan/en-230/advanced/</loc>
-    <lastmod>2022-03-15T01:12:51+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:01+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -106,7 +88,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/install/</loc>
-    <lastmod>2022-03-15T01:12:51+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:01+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -123,8 +105,26 @@
                 href="/docs-uan/en-230/install/"
                 />
   </url><url>
+    <loc>/docs-uan/en-230/installation_prereqs/</loc>
+    <lastmod>2022-03-15T01:25:01+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-231"
+                href="/docs-uan/en-231/installation_prereqs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-219"
+                href="/docs-uan/en-219/installation_prereqs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-230"
+                href="/docs-uan/en-230/installation_prereqs/"
+                />
+  </url><url>
     <loc>/docs-uan/en-230/upgrade/merge_uan_configuration_data/</loc>
-    <lastmod>2022-03-15T01:12:51+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:01+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -141,26 +141,8 @@
                 href="/docs-uan/en-230/upgrade/merge_uan_configuration_data/"
                 />
   </url><url>
-    <loc>/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</loc>
-    <lastmod>2022-03-15T01:12:51+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-231"
-                href="/docs-uan/en-231/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-219"
-                href="/docs-uan/en-219/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-230"
-                href="/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
-                />
-  </url><url>
     <loc>/docs-uan/en-230/troubleshooting/troubleshoot_uan_disk_configuration_issues/</loc>
-    <lastmod>2022-03-15T01:12:51+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:01+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -178,7 +160,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/configure_interfaces_on_uans/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -196,7 +178,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/configure_pluggable_authentication_modules_pam_on_uans/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -214,7 +196,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/create_uan_boot_images/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -232,7 +214,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/mount_a_new_file_system_on_an_uan/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -250,7 +232,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/test-plan/test-plan/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -263,7 +245,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/troubleshooting/troubleshoot_uan_boot_issues/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -280,8 +262,26 @@
                 href="/docs-uan/en-230/troubleshooting/troubleshoot_uan_boot_issues/"
                 />
   </url><url>
+    <loc>/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</loc>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-231"
+                href="/docs-uan/en-231/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-219"
+                href="/docs-uan/en-219/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-230"
+                href="/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
+                />
+  </url><url>
     <loc>/docs-uan/en-230/operations/uan_ansible_roles/</loc>
-    <lastmod>2022-03-15T01:12:50+00:00</lastmod>
+    <lastmod>2022-03-15T01:25:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -299,7 +299,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/about_uan_configuration/</loc>
-    <lastmod>2022-03-15T01:12:49+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:59+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -317,7 +317,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/boot_uans/</loc>
-    <lastmod>2022-03-15T01:12:49+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:59+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -335,7 +335,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/operations/build_a_new_uan_image_using_the_cos_recipe/</loc>
-    <lastmod>2022-03-15T01:12:49+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:59+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -348,7 +348,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</loc>
-    <lastmod>2022-03-15T01:12:49+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:59+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -366,7 +366,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/installation_prereqs/prepare_for_uan_product_installation/</loc>
-    <lastmod>2022-03-15T01:12:49+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:59+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -384,7 +384,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</loc>
-    <lastmod>2022-03-15T01:12:48+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:58+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -402,7 +402,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/installation_prereqs/configure_the_bios_of_an_hpe_uan/</loc>
-    <lastmod>2022-03-15T01:12:48+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:58+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -420,7 +420,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/</loc>
-    <lastmod>2022-03-15T01:12:48+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:58+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -438,7 +438,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/install/install_the_uan_product_stream/</loc>
-    <lastmod>2022-03-15T01:12:48+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:58+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -456,7 +456,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/changelog/</loc>
-    <lastmod>2022-03-15T01:12:47+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:57+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"
@@ -474,7 +474,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-230/advanced/customizing_uan_images_manually/</loc>
-    <lastmod>2022-03-15T01:12:47+00:00</lastmod>
+    <lastmod>2022-03-15T01:24:57+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-231"

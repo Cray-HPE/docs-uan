@@ -1,12 +1,5 @@
 [
 {
-	"uri": "/docs-uan/en-230/test-plan/",
-	"title": "Test-plan",
-	"tags": [],
-	"description": "",
-	"content": "Test-plan Topics:\n Test-plan  "
-},
-{
 	"uri": "/docs-uan/en-230/troubleshooting/",
 	"title": "Troubleshooting",
 	"tags": [],
@@ -21,18 +14,18 @@
 	"content": "Upgrade Topics:\n Merge UAN Configuration Data  "
 },
 {
-	"uri": "/docs-uan/en-230/installation_prereqs/",
-	"title": "Installation Prereqs",
-	"tags": [],
-	"description": "",
-	"content": "Installation Prereqs Topics:\n Configure The Bios Of A Gigabyte UAN Configure The Bios Of An HPE UAN Configure The BMC For UANs With Ilo Prepare For UAN Product Installation Images  "
-},
-{
 	"uri": "/docs-uan/en-230/operations/",
 	"title": "Operations",
 	"tags": [],
 	"description": "",
 	"content": "Operations Topics:\n About UAN Configuration Boot UANs Build A New UAN Image Using The Cos Recipe Configure Interfaces On UANs Configure Pluggable Authentication Modules (pam) On UANs Create UAN Boot Images Mount A New File System On An UAN UAN Ansible Roles  "
+},
+{
+	"uri": "/docs-uan/en-230/test-plan/",
+	"title": "Test-plan",
+	"tags": [],
+	"description": "",
+	"content": "Test-plan Topics:\n Test-plan  "
 },
 {
 	"uri": "/docs-uan/en-230/advanced/",
@@ -49,18 +42,18 @@
 	"content": "Install Topics:\n Install The UAN Product Stream  "
 },
 {
+	"uri": "/docs-uan/en-230/installation_prereqs/",
+	"title": "Installation Prereqs",
+	"tags": [],
+	"description": "",
+	"content": "Installation Prereqs Topics:\n Configure The Bios Of A Gigabyte UAN Configure The Bios Of An HPE UAN Configure The BMC For UANs With Ilo Prepare For UAN Product Installation Images  "
+},
+{
 	"uri": "/docs-uan/en-230/upgrade/merge_uan_configuration_data/",
 	"title": "Merge UAN Configuration Data",
 	"tags": [],
 	"description": "",
 	"content": "Merge UAN Configuration Data Perform this procedure to update the UAN product configuration.\nBefore performing this procedure:\n Perform Install the UAN Product Stream  Version 2.0.0 or later of the UAN product must be installed before performing this procedure.\nIn this procedure:\n PRODUCT_VERSION: refers to the full name of the UAN product version that is currently installed.    Start a typescript to capture the commands and output from the procedure.\nncn-m001# script -af product-uan.$\\(date +%Y-%m-%d\\).txt ncn-m001# export PS1=\u0026#39;\\\\u@\\\\H \\\\D\\{%Y-%m-%d\\} \\\\t \\\\w \\# \u0026#39;   Obtain the URL of UAN configuration management repository in VCS (the Gitea service).\nThis URL is reported as the value of the configuration.clone_url key in the cray-product-catalog Kubernetes ConfigMap.\n  Obtain the crayvcs password.\nncn-m001# kubectl get secret -n services vcs-user-credentials \\  --template={{.data.vcs_password}} | base64 --decode   Clone the UAN configuration management repository. Replace the hostname reported in the URL obtained in the previous step with api-gw-service-nmm.local when cloning the repository.\nncn-m001# git clone https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git . . . ncn-m001# cd uan-config-management \u0026amp;\u0026amp; git checkout cray/uan/PRODUCT_VERSION \u0026amp;\u0026amp; git pull Branch \u0026#39;cray/uan/PRODUCT_VERSION\u0026#39; set up to track remote branch \u0026#39;cray/uan/PRODUCT_VERSION\u0026#39; from \u0026#39;origin\u0026#39;. Already up to date.   Checkout the branch currently used to hold UAN configuration.\nThe following example assumes that branch is integration.\nncn-m001# git checkout integration Switched to branch \u0026#39;integration\u0026#39; Your branch is up to date with \u0026#39;origin/integration\u0026#39;.   Merge the new install branch to the current branch. Write a commit message when prompted.\nncn-m001# git merge cray/uan/PRODUCT_VERSION   Push the changes to VCS. Enter the crayvcs password when prompted.\nncn-m001# git push   Retrieve the commit ID from the merge and store it for later use.\nncn-m001# git rev-parse --verify HEAD   Update any CFS configurations used by the UANs with the commit ID from the previous step.\na. Download the JSON of the current UAN CFS configuration to a file.\nThis file will be named uan-config-2.3.0.json since it will be modified and then used for the updated UAN version.\nncn-m001# cray cfs configurations describe uan-config-2.0.0 \\  --format=json \u0026amp;\u0026gt;uan-config-2.3.0.json b. Remove the unneeded lines from the JSON file.\nThe lines to remove are: - the `lastUpdated` line - the last `name` line These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration. ```bash ncn-m001# cat uan-config-2.0.1.json { \u0026quot;lastUpdated\u0026quot;: \u0026quot;2021-03-27T02:32:10Z\u0026quot;, \u0026quot;layers\u0026quot;: [ { \u0026quot;cloneUrl\u0026quot;: \u0026quot;https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git\u0026quot;, \u0026quot;commit\u0026quot;: \u0026quot;aa5ce7d5975950ec02493d59efb89f6fc69d67f1\u0026quot;, \u0026quot;name\u0026quot;: \u0026quot;uan-integration-2.0.0\u0026quot;, \u0026quot;playbook\u0026quot;: \u0026quot;site.yml\u0026quot; }, \u0026quot;name\u0026quot;: \u0026quot;uan-config-2.0.1-full\u0026quot; } ```  c. Replace the commit value in the JSON file with the commit ID obtained in Step 14.\nThe name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name. ```bash { \u0026quot;layers\u0026quot;: [ { \u0026quot;cloneUrl\u0026quot;: \u0026quot;https://api-gw-service-nmn.local/vcs/cray/uan-configmanagement.git\u0026quot;, \u0026quot;commit\u0026quot;: \u0026quot;aa5ce7d5975950ec02493d59efb89f6fc69d67f1\u0026quot;, \u0026quot;name\u0026quot;: \u0026quot;uan-integration-2.0.0\u0026quot;, \u0026quot;playbook\u0026quot;: \u0026quot;site.yml\u0026quot; } ] } ```  d. Create a new UAN CFS configuration with the updated JSON file.\nThe following example uses uan-config-2.0.1 for the name of the new CFS configuration, to match the JSON file name.\n```bash ncn-m001# cray cfs configurations update uan-config-2.0.1 \\ --file uan-config-2.0.1.json ```  e. Tell CFS to apply the new configuration to UANs by repeating the following command for each UAN. Replace UAN_XNAME in the command below with the name of a different UAN each time the command is run.\n```bash ncn-m001# cray cfs components update --desired-config uan-config-2.0.1 \\ --enabled true --format json UAN_XNAME ```    Finish the typescript file started at the beginning of this procedure.\nncn-m001# exit   Perform \u0026ldquo;Create UAN Boot Images\u0026rdquo; in the HPE Cray UAN Administration Guide to upgrade the boot images used by the UANs.\n  "
-},
-{
-	"uri": "/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/",
-	"title": "Troubleshoot UAN CFS And Network Configuration Issues",
-	"tags": [],
-	"description": "",
-	"content": "Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.\nRead About UAN Configuration before starting this procedure.\n  Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:\nThis example sorts the list of CFS sessions so that the most recent one is at the bottom.\nncn# kubectl -n services get pods --sort-by=.metadata.creationTimestamp | grep ^cfs   View the Ansible log of the CFS session found in the previous step (CFS_SESSION in the following example). Use the information in log to guide troubleshooting.\nncn# kubectl -n services logs -f -c ansible-0 CFS_SESSION   Optional: Troubleshoot uan_interfaces issues by logging into the affected node (usually with the conman console) and using standard network debugging techniques.\nNMN and CAN network setup errors can also result from incorrect switch configuration and network cabling.\n  "
 },
 {
 	"uri": "/docs-uan/en-230/troubleshooting/troubleshoot_uan_disk_configuration_issues/",
@@ -110,6 +103,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Troubleshoot UAN Boot Issues The UAN boot process BOS boots UANs. BOS uses session templates to define various parameters such as:\n Which nodes to boot Which image to boot Kernel parameters Whether to perform post-boot configuration (Node Personalization) of the nodes by CFS. Which CFS configuration to use if Node Personalization is enabled.  UAN boots are performed in three phases:\n PXE booting an iPXE binary that will load the initrd of the UAN image that will boot. Booting the initrd (dracut) image which configures the UAN for booting the UAN image. This process consists of two phases.  Configuring the UAN node to use the Content Projection Service (CPS) and Data Virtualization Service (DVS). These services manage the UAN image rootfs mounting and make that image available to the UAN nodes. Mounting the rootfs   Booting the UAN image rootfs.  PXE Issues Most PXE boot failures are the result of misconfigured network switches and/or BIOS settings. The UAN must PXE boot over the Node Management Network (NMN) and the switches must be configured to allow connectivity to the NMN. The cable for the NMN must be connected to the first port of the OCP card on HPE DL325 and DL385 servers or to the first port of the built-in LAN-On-Motherboard (LOM) on Gigabyte servers. See \u0026ldquo;Prepare for UAN Product Installation\u0026rdquo; in the UAN Installation Guide for details on the switch and BIOS settings required to configure the UAN for PXE booting.\nUANs may fail to boot when the BIOS EFITIME is too far away from the time on management nodes. If there are x509 certificate problems, check that the BIOS time is correct. See \u0026ldquo;Configure the BIOS of an HPE UAN\u0026rdquo; or \u0026ldquo;Configure the BIOS of a Gigabyte UAN\u0026rdquo; in the UAN Installation Guide for examples of checking settings in the BIOS.\nInitrd (Dracut) Issues Dracut failures are often caused by the wrong interface being named nmn0, or to multiple entries for the UAN xname in DNS. The latter is a result of multiple interfaces making DHCP requests. Either condition can cause IP address mismatches in the dvs_node_map. DNS configures entries based on DHCP leases.\nWhen dracut starts, it renames the network device named by the ifmap=netX:nmn0 kernel parameter to nmn0. This interface is the only one dracut will enable DHCP on. The ip=nmn0:dhcp kernel parameter limits dracut to DHCP only nmn0. The ifmap value must be set correctly in the kernel_parameters field of the BOS session template.\nSee Create UAN Boot Images for details on how to configure the BOS session template. For UAN nodes that have more than one PCI card installed, ifmap=net2:nmn0 is the correct setting. If only one PCI card is installed, ifmap=net0:nmn0 is normally the correct setting.\nUANs require CPS and DVS to boot from images. These services are configured in dracut to retrieve the rootfs and mount it. If the image fails to download, check that DVS and CPS are both healthy, and DVS is running on all worker nodes. Run the following commands to check DVS and CPS:\nncn-m001# kubectl get nodes -l cps-pm-node=True -o custom-columns=\u0026#34;:metadata.name\u0026#34; --no-headers ncn-w001 ncn-w002 ncn-m001# for node in `kubectl get nodes -l cps-pm-node=True -o custom-columns=\u0026#34;:metadata.name\u0026#34; \\ --no-headers`; do ssh $node \u0026#34;lsmod | grep \u0026#39;^dvs \u0026#39;\u0026#34; done ncn-w001 ncn-w002 If DVS and CPS are both healthy, then both of these commands will return all the worker NCNs in the HPE Cray EX system.\nImage Boot Issues Once dracut exits, the UAN will boot the rootfs image. Failures seen in this phase tend to be failures of spire-agent, cfs-state-reporter, or both. The cfs-state-reporter tells BOA that the node is ready and allows BOA to start CFS for Node Personalization. If cfs-state-reporter does not start, check if the spire-agent has started. The cfs-state-reporter depends on the spire-agent. Running systemctl status spire-agent will show that that service is enabled and running if there are no issues with that service. Similarly, running systemctl status cfs-state-reporter will show a status of SUCCESS.\nuan# systemctl status spire-agent ● spire-agent.service - SPIRE Agent Loaded: loaded (/usr/lib/systemd/system/spire-agent.service; enabled; vendor preset: enabled) Active: active (running) since Wed 2021-02-24 14:27:33 CST; 19h ago Main PID: 3581 (spire-agent) Tasks: 57 CGroup: /system.slice/spire-agent.service └─3581 /usr/bin/spire-agent run -expandEnv -config /root/spire/conf/spire-agent.conf uan# systemctl status cfs-state-reporter ● cfs-state-reporter.service - cfs-state-reporter reports configuration level of the system Loaded: loaded (/usr/lib/systemd/system/cfs-state-reporter.service; enabled; vendor preset: enabled) Active: inactive (dead) since Wed 2021-02-24 14:29:51 CST; 19h ago Main PID: 3827 (code=exited, status=0/SUCCESS) There may be errors related to failing to load kernel modules during the boot:\nFAILED Failed to start Load Kernel Modules. See \u0026#39;systemctl status systemd-modules-load.service\u0026#39; for details. Provided the UAN boots and completes post boot customizations, these messages may be ignored.\n"
+},
+{
+	"uri": "/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/",
+	"title": "Troubleshoot UAN CFS And Network Configuration Issues",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.\nRead About UAN Configuration before starting this procedure.\n  Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:\nThis example sorts the list of CFS sessions so that the most recent one is at the bottom.\nncn# kubectl -n services get pods --sort-by=.metadata.creationTimestamp | grep ^cfs   View the Ansible log of the CFS session found in the previous step (CFS_SESSION in the following example). Use the information in log to guide troubleshooting.\nncn# kubectl -n services logs -f -c ansible-0 CFS_SESSION   Optional: Troubleshoot uan_interfaces issues by logging into the affected node (usually with the conman console) and using standard network debugging techniques.\nNMN and CAN network setup errors can also result from incorrect switch configuration and network cabling.\n  "
 },
 {
 	"uri": "/docs-uan/en-230/operations/uan_ansible_roles/",

@@ -6,11 +6,21 @@
     <description>Recent content in Operations on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 15 Mar 2022 01:12:52 +0000</lastBuildDate><atom:link href="/docs-uan/en-219/operations/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 01:25:02 +0000</lastBuildDate><atom:link href="/docs-uan/en-219/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure Interfaces On UANs</title>
+      <link>/docs-uan/en-219/operations/configure_interfaces_on_uans/</link>
+      <pubDate>Tue, 15 Mar 2022 01:25:00 +0000</pubDate>
+      
+      <guid>/docs-uan/en-219/operations/configure_interfaces_on_uans/</guid>
+      <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
+The Customer Access Network (CAN) is no longer setup by default as the networking connection to the site user access network. The default is now for sites to directly connect their user network to the User Access Node (UAN) or Application nodes, and to define that network configuration in the Configuration Framework Service (CFS) host_vars/XNAME/customer_net.</description>
+    </item>
+    
     <item>
       <title>Configure Pluggable Authentication Modules (pam) On UANs</title>
       <link>/docs-uan/en-219/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:50 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:25:00 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
@@ -22,7 +32,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title>Create UAN Boot Images</title>
       <link>/docs-uan/en-219/operations/create_uan_boot_images/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:50 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:25:00 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images This procedure updates the configuration management git repository to match the installed version of the UAN product. Then, that updated configuration is used to create UAN boot images and a BOS session template.
@@ -33,7 +43,7 @@ This procedure only details how to apply UAN-specific configuration to the UAN i
     <item>
       <title>Mount A New File System On A UAN</title>
       <link>/docs-uan/en-219/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:50 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:25:00 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -46,7 +56,7 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.<
     <item>
       <title>UAN Ansible Roles</title>
       <link>/docs-uan/en-219/operations/uan_ansible_roles/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:50 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:25:00 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/uan_ansible_roles/</guid>
       <description>UAN Ansible Roles uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
@@ -58,7 +68,7 @@ The device that is found will be unmounted if mounted and a swap partition will 
     <item>
       <title>About UAN Configuration</title>
       <link>/docs-uan/en-219/operations/about_uan_configuration/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:49 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:24:59 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/about_uan_configuration/</guid>
       <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
@@ -69,7 +79,7 @@ The Ansible roles involved in UAN configuration are listed in the site.</descrip
     <item>
       <title>Boot UANs</title>
       <link>/docs-uan/en-219/operations/boot_uans/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:49 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:24:59 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -81,22 +91,12 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title>Build A New UAN Image Using The Default Recipe</title>
       <link>/docs-uan/en-219/operations/build_a_new_uan_image_using_the_default_recipe/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:49 +0000</pubDate>
+      <pubDate>Tue, 15 Mar 2022 01:24:59 +0000</pubDate>
       
       <guid>/docs-uan/en-219/operations/build_a_new_uan_image_using_the_default_recipe/</guid>
       <description>Build a New UAN Image Using the Default Recipe Perform this procedure to build or rebuild the UAN image using either the default UAN image or image recipe. Both of these are supplied by the UAN product stream installer.
 Perform the following before starting this procedure:
  Install both the COS and UAN product streams. Initialize the cray administrative CLI.  The Cray EX User Access Node (UAN) recipe currently requires the Slingshot packages, which are not installed with the UAN product itself.</description>
-    </item>
-    
-    <item>
-      <title>Configure Interfaces On UANs</title>
-      <link>/docs-uan/en-219/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Tue, 15 Mar 2022 01:12:49 +0000</pubDate>
-      
-      <guid>/docs-uan/en-219/operations/configure_interfaces_on_uans/</guid>
-      <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
-The Customer Access Network (CAN) is no longer setup by default as the networking connection to the site user access network. The default is now for sites to directly connect their user network to the User Access Node (UAN) or Application nodes, and to define that network configuration in the Configuration Framework Service (CFS) host_vars/XNAME/customer_net.</description>
     </item>
     
   </channel>
