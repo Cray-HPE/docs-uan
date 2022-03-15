@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en-230" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.87.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
+
+    <title>UAN Ansible Roles :: User Access Node (UAN)</title>
+
+    
+    <link href="/docs-uan/css/nucleus.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/fontawesome-all.min.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/hybrid.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/featherlight.min.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/perfect-scrollbar.min.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/auto-complete.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/atom-one-dark-reasonable.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/theme.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/tabs.css?1647304518" rel="stylesheet">
+    <link href="/docs-uan/css/hugo-theme.css?1647304518" rel="stylesheet">
+    
+    <link href="/docs-uan/css/theme-blue.css?1647304518" rel="stylesheet">
+    
+    
+
+    <script src="/docs-uan/js/jquery-3.3.1.min.js?1647304518"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/docs-uan/en-230/operations/uan_ansible_roles/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href='/docs-uan/en-230'>
+  User Access Nodes
+</a>
+
+    </div>
+
+    
+    <section>
+      <ul>
+      
+        <li>
+          <div class="select-style padding">
+          v <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en-231" value="/docs-uan/en-231/operations/uan_ansible_roles/">v2.3.1</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="en-230" value="/docs-uan/en-230/operations/uan_ansible_roles/" selected>v2.3.0</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </li>
+      
+
+      
+      </ul>
+    </section>
+  
+
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/docs-uan/js/lunr.min.js?1647304518"></script>
+<script type="text/javascript" src="/docs-uan/js/auto-complete.js?1647304518"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/docs-uan\/\/en-230";
+    
+</script>
+<script type="text/javascript" src="/docs-uan/js/search.js?1647304518"></script>
+
+    
+  </div>
+
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/advanced/" title="Advanced" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/en-230/advanced/">
+          Advanced
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/advanced/customizing_uan_images_manually/" title="Customizing UAN Images Manually" class="dd-item ">
+        <a href="/docs-uan/en-230/advanced/customizing_uan_images_manually/">
+        Customizing UAN Images Manually
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/changelog/" title="Changelog" class="dd-item ">
+        <a href="/docs-uan/en-230/changelog/">
+        Changelog
+        
+        </a>
+    </li>
+     
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/install/" title="Install" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/en-230/install/">
+          Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/install/install_the_uan_product_stream/" title="Install The UAN Product Stream" class="dd-item ">
+        <a href="/docs-uan/en-230/install/install_the_uan_product_stream/">
+        Install The UAN Product Stream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/installation_prereqs/" title="Installation Prereqs" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/en-230/installation_prereqs/">
+          Installation Prereqs
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/installation_prereqs/configure_the_bmc_for_uans_with_ilo/" title="Configure The BMC For UANs With Ilo" class="dd-item ">
+        <a href="/docs-uan/en-230/installation_prereqs/configure_the_bmc_for_uans_with_ilo/">
+        Configure The BMC For UANs With Ilo
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/installation_prereqs/prepare_for_uan_product_installation/" title="Prepare For UAN Product Installation" class="dd-item ">
+        <a href="/docs-uan/en-230/installation_prereqs/prepare_for_uan_product_installation/">
+        Prepare For UAN Product Installation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="Configure The Bios Of A Gigabyte UAN" class="dd-item ">
+        <a href="/docs-uan/en-230/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
+        Configure The Bios Of A Gigabyte UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/installation_prereqs/configure_the_bios_of_an_hpe_uan/" title="Configure The Bios Of An HPE UAN" class="dd-item ">
+        <a href="/docs-uan/en-230/installation_prereqs/configure_the_bios_of_an_hpe_uan/">
+        Configure The Bios Of An HPE UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/operations/" title="Operations" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/docs-uan/en-230/operations/">
+          Operations
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/mount_a_new_file_system_on_an_uan/" title="Mount A New File System On A UAN" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/mount_a_new_file_system_on_an_uan/">
+        Mount A New File System On A UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/uan_ansible_roles/" title="UAN Ansible Roles" class="dd-item active">
+        <a href="/docs-uan/en-230/operations/uan_ansible_roles/">
+        UAN Ansible Roles
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/about_uan_configuration/" title="About UAN Configuration" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/about_uan_configuration/">
+        About UAN Configuration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/boot_uans/" title="Boot UANs" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/boot_uans/">
+        Boot UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/build_a_new_uan_image_using_the_cos_recipe/" title="Build A New UAN Image Using A Cos Recipe" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/build_a_new_uan_image_using_the_cos_recipe/">
+        Build A New UAN Image Using A Cos Recipe
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/configure_interfaces_on_uans/" title="Configure Interfaces On UANs" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/configure_interfaces_on_uans/">
+        Configure Interfaces On UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/configure_pluggable_authentication_modules_pam_on_uans/" title="Configure Pluggable Authentication Modules (pam) On UANs" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/configure_pluggable_authentication_modules_pam_on_uans/">
+        Configure Pluggable Authentication Modules (pam) On UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/operations/create_uan_boot_images/" title="Create UAN Boot Images" class="dd-item ">
+        <a href="/docs-uan/en-230/operations/create_uan_boot_images/">
+        Create UAN Boot Images
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/test-plan/" title="Test-plan" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/en-230/test-plan/">
+          Test-plan
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/test-plan/test-plan/" title="Test Plan For User Access Node (UAN)" class="dd-item ">
+        <a href="/docs-uan/en-230/test-plan/test-plan/">
+        Test Plan For User Access Node (UAN)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/troubleshooting/" title="Troubleshooting" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/en-230/troubleshooting/">
+          Troubleshooting
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/troubleshooting/troubleshoot_uan_boot_issues/" title="Troubleshoot UAN Boot Issues" class="dd-item ">
+        <a href="/docs-uan/en-230/troubleshooting/troubleshoot_uan_boot_issues/">
+        Troubleshoot UAN Boot Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="Troubleshoot UAN CFS And Network Configuration Issues" class="dd-item ">
+        <a href="/docs-uan/en-230/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
+        Troubleshoot UAN CFS And Network Configuration Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="Troubleshoot UAN Disk Configuration Issues" class="dd-item ">
+        <a href="/docs-uan/en-230/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
+        Troubleshoot UAN Disk Configuration Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/en-230/upgrade/" title="Upgrade" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/en-230/upgrade/">
+          Upgrade
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/en-230/upgrade/merge_uan_configuration_data/" title="Merge UAN Configuration Data" class="dd-item ">
+        <a href="/docs-uan/en-230/upgrade/merge_uan_configuration_data/">
+        Merge UAN Configuration Data
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/en-230/'>V2.3.0</a> > <a href='/docs-uan/en-230/operations/'>Operations</a> > UAN Ansible Roles
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#uan-ansible-roles">UAN Ansible Roles</a>
+      <ul>
+        <li><a href="#uan_disk_config">uan_disk_config</a></li>
+        <li><a href="#uan_interfaces">uan_interfaces</a></li>
+        <li><a href="#uan_ldap">uan_ldap</a></li>
+        <li><a href="#uan_motd">uan_motd</a></li>
+        <li><a href="#uan_packages">uan_packages</a></li>
+        <li><a href="#uan_shadow">uan_shadow</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+            </h1>
+          
+
+        
+
+
+<h2 id="uan-ansible-roles">UAN Ansible Roles</h2>
+<h3 id="uan_disk_config">uan_disk_config</h3>
+<p>The <code>uan_disk_config</code> role configures swap and scratch disk partitions on UAN
+nodes.</p>
+<h4 id="requirements">Requirements</h4>
+<p>There must be disk devices found on the UAN node by the <code>device_filter</code> module
+or this role will exit with failure. This condition can be ignored by setting
+<code>uan_require_disk</code> to <code>false</code>. See variable definitions below.</p>
+<p>See the <code>library/device_filter.py</code> file for more information on this module.</p>
+<p>The device that is found will be unmounted if mounted and a swap partition will
+be created on the first half of the disk, and a scratch partition on the second
+half. ext4 filesystems are created on each partition.</p>
+<h4 id="role-variables">Role Variables</h4>
+<p>Available variables are listed below, along with default values (see <code>defaults/main.yml</code>):</p>
+<h5 id="uan_require_disk"><code>uan_require_disk</code></h5>
+<p>Boolean to determine if this role continues to setup disk if no disks were found
+by the device filter. Set to <code>true</code> to exit with error when no disks are found.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_require_disk</span>: <span style="color:#66d9ef">false</span>
+</code></pre></div><h5 id="uan_device_name_filter"><code>uan_device_name_filter</code></h5>
+<p>Regular expression of disk device name for this role to filter.
+Input to the <code>device_filter</code> module.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_device_name_filter</span>: <span style="color:#e6db74">&#34;^sd[a-f]$&#34;</span>
+</code></pre></div><h5 id="uan_device_host_filter"><code>uan_device_host_filter</code></h5>
+<p>Regular expression of host for this role to filter.
+Input to the <code>device_filter</code> module.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_device_host_filter</span>: <span style="color:#ae81ff">&#34;</span>
+</code></pre></div><h5 id="uan_device_model_filter"><code>uan_device_model_filter</code></h5>
+<p>Regular expression of device model for this role to filter.
+Input to the <code>device_filter</code> module.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_device_model_filter</span>: <span style="color:#ae81ff">&#34;</span>
+</code></pre></div><h5 id="uan_device_vendor_filter"><code>uan_device_vendor_filter</code></h5>
+<p>Regular expression of disk vendor for this role to filter.
+Input to the <code>device_filter</code> module.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_device_vendor_filter</span>: <span style="color:#ae81ff">&#34;</span>
+</code></pre></div><h5 id="uan_device_size_filter"><code>uan_device_size_filter</code></h5>
+<p>Regular expression of disk size for this role to filter.
+Input to the <code>device_filter</code> module.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_device_size_filter</span>: <span style="color:#e6db74">&#34;&lt;1TB&#34;</span>
+</code></pre></div><h5 id="uan_swap"><code>uan_swap</code></h5>
+<p>Filesystem location to mount the swap partition.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_swap</span>: <span style="color:#e6db74">&#34;/swap&#34;</span>
+</code></pre></div><h5 id="uan_scratch"><code>uan_scratch</code></h5>
+<p>Filesystem location to mount the scratch partition.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_scratch</span>: <span style="color:#e6db74">&#34;/scratch&#34;</span>
+</code></pre></div><h5 id="swap_file"><code>swap_file</code></h5>
+<p>Name of the swapfile to create. Full path is <code>&lt;uan_swap&gt;/&lt;swapfile&gt;</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">swap_file</span>: <span style="color:#e6db74">&#34;swapfile&#34;</span>
+</code></pre></div><h5 id="swap_dd_command"><code>swap_dd_command</code></h5>
+<p><code>dd</code> command to create the <code>swapfile</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">swap_dd_command</span>: <span style="color:#e6db74">&#34;/usr/bin/dd if=/dev/zero of={{ uan_swap }}/{{ swap_file }} bs=1GB count=10&#34;</span>
+</code></pre></div><h5 id="swap_swappiness">swap_swappiness</h5>
+<p>Value to set the swapiness in sysctl.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">swap_swappiness</span>: <span style="color:#e6db74">&#34;10&#34;</span>
+</code></pre></div><h4 id="dependencies">Dependencies</h4>
+<p><code>library/device_filter.py</code> is required to find eligible disk devices.</p>
+<h4 id="example-playbook">Example Playbook</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">Application_UAN</span>
+  <span style="color:#f92672">roles</span>:
+      - { <span style="color:#f92672">role</span>: <span style="color:#ae81ff">uan_disk_config }</span>
+</code></pre></div><p>This role is included in the UAN <code>site.yml</code> play.</p>
+<h3 id="uan_interfaces">uan_interfaces</h3>
+<p>The <code>uan_interfaces</code> role configures site/customer-defined network interfaces
+and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.</p>
+<h4 id="requirements-1">Requirements</h4>
+<p>None.</p>
+<h4 id="role-variables-1">Role Variables</h4>
+<p>Available variables are listed below, along with default values (see <code>defaults/main.yml</code>):</p>
+<h5 id="uan_can_setup"><code>uan_can_setup</code></h5>
+<p><code>uan_can_setup</code> configures the Customer Access Network (CAN) on UAN nodes. If
+this value is falsey no CAN is configured on the nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_can_setup</span>: <span style="color:#66d9ef">no</span>
+</code></pre></div><h5 id="sls_nmn_name"><code>sls_nmn_name</code></h5>
+<p><code>sls_nmn_name</code> is the Node Management Network name used by SLS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sls_nmn_name</span>: <span style="color:#e6db74">&#34;NMN&#34;</span>
+</code></pre></div><h5 id="sls_nmn_svcs_name"><code>sls_nmn_svcs_name</code></h5>
+<p><code>sls_nmn_svcs_name</code> is the Node Management Services Network name used by SLS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sls_nmn_svcs_name</span>: <span style="color:#e6db74">&#34;NMNLB&#34;</span>
+</code></pre></div><h5 id="sls_mnmn_svcs_name"><code>sls_mnmn_svcs_name</code></h5>
+<p><code>sls_mnmn_svcs_name</code> is the Mountain Node Management Services Network name used by SLS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sls_mnmn_svcs_name</span>: <span style="color:#e6db74">&#34;NMN_MTN&#34;</span>
+</code></pre></div><h5 id="sls_can_name"><code>sls_can_name</code></h5>
+<p><code>sls_can_name</code> is the Customer Access Network name used by SLS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sls_can_name</span>: <span style="color:#e6db74">&#34;CAN&#34;</span>
+</code></pre></div><h5 id="customer_uan_interfaces"><code>customer_uan_interfaces</code></h5>
+<p><code>customer_uan_interfaces</code> is as list of interface names used for constructing
+<code>ifcfg-&lt;customer_uan_interfaces.name&gt;</code> files. Define ifcfg fields for each
+interface here. Field names are converted to uppercase in the generated
+<code>ifcfg-&lt;name&gt;</code> file(s).</p>
+<p>Interfaces should be defined in order of dependency.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">customer_uan_interfaces</span>: []
+
+<span style="color:#75715e"># Example:</span>
+<span style="color:#f92672">customer_uan_interfaces</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;net1&#34;</span>
+    <span style="color:#f92672">settings</span>:
+      <span style="color:#f92672">bootproto</span>: <span style="color:#e6db74">&#34;static&#34;</span>
+      <span style="color:#f92672">device</span>: <span style="color:#e6db74">&#34;net1&#34;</span>
+      <span style="color:#f92672">ipaddr</span>: <span style="color:#e6db74">&#34;1.2.3.4&#34;</span>
+      <span style="color:#f92672">startmode</span>: <span style="color:#e6db74">&#34;auto&#34;</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;net2&#34;</span>
+    <span style="color:#f92672">settings</span>:
+      <span style="color:#f92672">bootproto</span>: <span style="color:#e6db74">&#34;static&#34;</span>
+      <span style="color:#f92672">device</span>: <span style="color:#e6db74">&#34;net2&#34;</span>
+      <span style="color:#f92672">ipaddr</span>: <span style="color:#e6db74">&#34;5.6.7.8&#34;</span>
+      <span style="color:#f92672">startmode</span>: <span style="color:#e6db74">&#34;auto&#34;</span>
+</code></pre></div><h5 id="customer_uan_routes"><code>customer_uan_routes</code></h5>
+<p><code>customer_uan_routes</code> is as list of interface routes used for constructing
+<code>ifroute-&lt;customer_uan_routes.name&gt;</code> files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">customer_uan_routes</span>: []
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">customer_uan_routes</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;net1&#34;</span>
+    <span style="color:#f92672">routes</span>:
+      - <span style="color:#e6db74">&#34;10.92.100.0 10.252.0.1 255.255.255.0 -&#34;</span>
+      - <span style="color:#e6db74">&#34;10.100.0.0 10.252.0.1 255.255.128.0 -&#34;</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;net2&#34;</span>
+    <span style="color:#f92672">routes</span>:
+      - <span style="color:#e6db74">&#34;default 10.103.8.20 255.255.255.255 - table 3&#34;</span>
+      - <span style="color:#e6db74">&#34;10.103.8.128/25 10.103.8.20 255.255.255.255 net2&#34;</span>
+</code></pre></div><h5 id="customer_uan_rules"><code>customer_uan_rules</code></h5>
+<p><code>customer_uan_rules</code> is as list of interface rules used for constructing
+<code>ifrule-&lt;customer_uan_routes.name&gt;</code> files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">customer_uan_rules</span>: []
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">customer_uan_rules</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;net1&#34;</span>
+    <span style="color:#f92672">rules</span>:
+      - <span style="color:#e6db74">&#34;from 10.1.0.0/16 lookup 1&#34;</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;net2&#34;</span>
+    <span style="color:#f92672">rules</span>:
+      - <span style="color:#e6db74">&#34;from 10.103.8.0/24 lookup 3&#34;</span>
+</code></pre></div><h5 id="customer_uan_global_routes"><code>customer_uan_global_routes</code></h5>
+<p><code>customer_uan_global_routes</code> is a list of global routes used for constructing
+the &ldquo;routes&rdquo; file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">customer_uan_global_routes</span>: []
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">customer_uan_global_routes</span>:
+  - <span style="color:#f92672">routes</span>: 
+    - <span style="color:#e6db74">&#34;10.92.100.0 10.252.0.1 255.255.255.0 -&#34;</span>
+    - <span style="color:#e6db74">&#34;10.100.0.0 10.252.0.1 255.255.128.0 -&#34;</span>
+</code></pre></div><h5 id="external_dns_searchlist"><code>external_dns_searchlist</code></h5>
+<p><code>external_dns_searchlist</code> is a list of customer-configurable fields to be added
+to the <code>/etc/resolv.conf</code> DNS search list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">external_dns_searchlist</span>: [ <span style="color:#e6db74">&#39;&#39;</span> ] 
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">external_dns_searchlist</span>:
+  - <span style="color:#e6db74">&#39;my.domain.com&#39;</span>
+  - <span style="color:#e6db74">&#39;my.other.domain.com&#39;</span>
+</code></pre></div><h5 id="external_dns_servers"><code>external_dns_servers</code></h5>
+<p><code>external_dns_servers</code> is a list of customer-configurable fields to be added
+to the <code>/etc/resolv.conf</code> DNS server list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">external_dns_servers</span>: [ <span style="color:#e6db74">&#39;&#39;</span> ] 
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">external_dns_servers</span>:
+  - <span style="color:#e6db74">&#39;1.2.3.4&#39;</span>
+  - <span style="color:#e6db74">&#39;5.6.7.8&#39;</span>
+</code></pre></div><h5 id="external_dns_options"><code>external_dns_options</code></h5>
+<p><code>external_dns_options</code> is a list of customer-configurable fields to be added
+to the <code>/etc/resolv.conf</code> DNS options list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">external_dns_options</span>: [ <span style="color:#e6db74">&#39;&#39;</span> ]
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">external_dns_options</span>:
+  - <span style="color:#e6db74">&#39;single-request&#39;</span>
+</code></pre></div><h5 id="uan_access_control"><code>uan_access_control</code></h5>
+<p><code>uan_access_control</code> is a boolean variable to control whether non-root access control is enabled
+Default is <code>no</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_access_control</span>: <span style="color:#66d9ef">no</span>
+</code></pre></div><h5 id="api_gateways"><code>api_gateways</code></h5>
+<p><code>api_gateways</code> is a list of API gateway DNS names to block non-user access</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">api_gateways</span>:
+  - <span style="color:#e6db74">&#34;api-gw-service&#34;</span>
+  - <span style="color:#e6db74">&#34;api-gw-service.local&#34;</span>
+  - <span style="color:#e6db74">&#34;api-gw-service-nmn.local&#34;</span>
+  - <span style="color:#e6db74">&#34;kubeapi-vip&#34;</span>
+</code></pre></div><h5 id="api_gw_ports"><code>api_gw_ports</code></h5>
+<p><code>api_gw_ports</code> is a list of gateway ports to protect.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">api_gw_ports</span>: <span style="color:#e6db74">&#34;80,443,8081,8888&#34;</span>
+</code></pre></div><h5 id="sls_url"><code>sls_url</code></h5>
+<p><code>sls_url</code> is the SLS URL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">sls_url</span>: <span style="color:#e6db74">&#34;http://cray-sls&#34;</span>
+</code></pre></div><h4 id="dependencies-1">Dependencies</h4>
+<p>None.</p>
+<h4 id="example-playbook-1">Example Playbook</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">Application_UAN</span>
+  <span style="color:#f92672">roles</span>:
+      - { <span style="color:#f92672">role</span>: <span style="color:#ae81ff">uan_interfaces }</span>
+</code></pre></div><p>This role is included in the UAN <code>site.yml</code> play.</p>
+<h3 id="uan_ldap">uan_ldap</h3>
+<p>The <code>uan_ldap</code> role configures LDAP and AD groups on UAN nodes.</p>
+<h4 id="requirements-2">Requirements</h4>
+<p>NSCD, pam-config, sssd.</p>
+<h4 id="role-variables-2">Role Variables</h4>
+<p>Available variables are listed below, along with default values (see <code>defaults/main.yml</code>):</p>
+<p><code>uan_ldap_setup</code> is a boolean variable to selectively skip the setup of LDAP on nodes it
+would otherwise be configured due to <code>uan_ldap_config</code> being defined.  The default setting
+is to setup LDAP when <code>uan_ldap_config</code> is not empty.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_ldap_setup</span>: <span style="color:#66d9ef">yes</span>
+</code></pre></div><p><code>uan_ldap_config</code> configures LDAP domains and servers. If this list is empty,
+no LDAP configuration will be applied to the UAN targets and all role tasks will
+be skipped.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_ldap_config</span>: []
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">uan_ldap_config</span>:
+  - <span style="color:#f92672">domain</span>: <span style="color:#e6db74">&#34;mydomain-ldaps&#34;</span>
+    <span style="color:#f92672">search_base</span>: <span style="color:#e6db74">&#34;dc=...,dc=...&#34;</span>
+    <span style="color:#f92672">servers</span>: [<span style="color:#e6db74">&#34;ldaps://123.123.123.1&#34;</span>, <span style="color:#e6db74">&#34;ldaps://213.312.123.132&#34;</span>]
+    <span style="color:#f92672">chpass_uri</span>: [<span style="color:#e6db74">&#34;ldaps://123.123.123.1&#34;</span>]
+
+  - <span style="color:#f92672">domain</span>: <span style="color:#e6db74">&#34;mydomain-ldap&#34;</span>
+    <span style="color:#f92672">search_base</span>: <span style="color:#e6db74">&#34;dc=...,dc=...&#34;</span>
+    <span style="color:#f92672">servers</span>: [<span style="color:#e6db74">&#34;ldap://123.123.123.1&#34;</span>, <span style="color:#e6db74">&#34;ldap://213.312.123.132&#34;</span>]
+
+</code></pre></div><p><code>uan_ad_groups</code> configures active directory groups on UAN nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_ad_groups</span>: []
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">uan_ad_groups</span>:
+  - { <span style="color:#f92672">name: admin_grp, origin</span>: <span style="color:#ae81ff">ALL }</span>
+  - { <span style="color:#f92672">name: dev_users, origin</span>: <span style="color:#ae81ff">ALL }</span>
+</code></pre></div><p><code>uan_pam_modules</code> configures PAM modules on the UAN nodes in <code>/etc/pam.d</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_pam_modules</span>: []
+
+<span style="color:#75715e"># Example</span>
+<span style="color:#f92672">uan_pam_modules</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;common-account&#34;</span>
+    <span style="color:#f92672">lines</span>:
+      - <span style="color:#e6db74">&#34;account required\tpam_access.so&#34;</span>
+</code></pre></div><h4 id="dependencies-2">Dependencies</h4>
+<p>None.</p>
+<h4 id="example-playbook-2">Example Playbook</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">Application_UAN</span>
+  <span style="color:#f92672">roles</span>:
+      - { <span style="color:#f92672">role</span>: <span style="color:#ae81ff">uan_ldap }</span>
+</code></pre></div><p>This role is included in the UAN <code>site.yml</code> play.</p>
+<h3 id="uan_motd">uan_motd</h3>
+<p>The <code>uan_motd</code> role appends text to the <code>/etc/motd</code> file.</p>
+<h4 id="requirements-3">Requirements</h4>
+<p>None.</p>
+<h4 id="role-variables-3">Role Variables</h4>
+<p>Available variables are listed below, along with default values (see <code>defaults/main.yml</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_motd_content</span>: []
+</code></pre></div><p><code>uan_motd_content</code> contains text to be added to the end of the <code>/etc/motd</code> file.</p>
+<h4 id="dependencies-3">Dependencies</h4>
+<p>None.</p>
+<h4 id="example-playbook-3">Example Playbook</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">Application_UAN</span>
+  <span style="color:#f92672">roles</span>:
+      - { <span style="color:#f92672">role: uan_motd, uan_motd_content</span>: <span style="color:#e6db74">&#34;MOTD CONTENT&#34;</span> }
+</code></pre></div><p>This role is included in the UAN <code>site.yml</code> play.</p>
+<h3 id="uan_packages">uan_packages</h3>
+<p>The <code>uan_packages</code> role installs additional RPMs on UANs using the Ansible
+<code>zypper</code> module.</p>
+<p>Packages that are required for UANs to function should be preferentially
+installed during image customization and/or image creation.</p>
+<p>Installing RPMs during post-boot node configuration can cause high system loads
+on large systems.</p>
+<p>This role will only run on SLES-based nodes.</p>
+<h4 id="requirements-4">Requirements</h4>
+<p>Zypper must be installed.</p>
+<h4 id="role-variables-4">Role Variables</h4>
+<p>Available variables are listed below, along with default values (see <code>defaults/main.yml</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_additional_sles15_packages</span>: []
+</code></pre></div><p><code>uan_additional_sles15_packages</code> contains the list of RPM packages to install.</p>
+<h4 id="dependencies-4">Dependencies</h4>
+<p>None.</p>
+<h4 id="example-playbook-4">Example Playbook</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">Application_UAN</span>
+  <span style="color:#f92672">roles</span>:
+      - { <span style="color:#f92672">role: uan_packages, uan_additional_sles15_packages</span>: [<span style="color:#e6db74">&#39;vim&#39;</span>] }
+</code></pre></div><p>This role is included in the UAN <code>site.yml</code> play.</p>
+<h3 id="uan_shadow">uan_shadow</h3>
+<p>The <code>uan_shadow</code> role configures the root password on UAN nodes.</p>
+<h4 id="requirements-5">Requirements</h4>
+<p>The root password hash has to be installed in HashiCorp Vault at <code>secret/uan root_password</code>.</p>
+<h4 id="role-variables-5">Role Variables</h4>
+<p>Available variables are listed below, along with default values (see <code>defaults/main.yml</code>):</p>
+<h5 id="uan_vault_url"><code>uan_vault_url</code></h5>
+<p><code>uan_vault_url</code> is the URL for the HashiCorp Vault</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_vault_url</span>: <span style="color:#e6db74">&#34;http://cray-vault.vault:8200&#34;</span>
+</code></pre></div><h5 id="uan_vault_role_file"><code>uan_vault_role_file</code></h5>
+<p><code>uan_vault_role_file</code> is the required Kubernetes role file for HashiCorp Vault access.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_vault_role_file</span>: <span style="color:#ae81ff">/var/run/secrets/kubernetes.io/serviceaccount/namespace</span>
+</code></pre></div><h5 id="uan_vault_jwt_file"><code>uan_vault_jwt_file</code></h5>
+<p><code>uan_vault_jwt_file</code> is the path to the required Kubernetes token file for HashiCorp Vault access.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_vault_jwt_file</span>: <span style="color:#ae81ff">/var/run/secrets/kubernetes.io/serviceaccount/token</span>
+</code></pre></div><h5 id="uan_vault_path"><code>uan_vault_path</code></h5>
+<p><code>uan_vault_path</code> is the path to use for storing data for UANs in HashiCorp Vault.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_vault_path</span>: <span style="color:#ae81ff">secret/uan</span>
+</code></pre></div><h5 id="uan_vault_key"><code>uan_vault_key</code></h5>
+<p><code>uan_vault_key</code> is the key used for storing the root password in HashiCorp Vault.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">uan_vault_key</span>: <span style="color:#ae81ff">root_password</span>
+</code></pre></div><h4 id="dependencies-5">Dependencies</h4>
+<p>None.</p>
+<h4 id="example-playbook-5">Example Playbook</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">Application_UAN</span>
+  <span style="color:#f92672">roles</span>:
+      - { <span style="color:#f92672">role</span>: <span style="color:#ae81ff">uan_shadow }</span>
+</code></pre></div><p>This role is included in the UAN <code>site.yml</code> play.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/docs-uan/js/clipboard.min.js?1647304519"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.min.js?1647304519"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.jquery.min.js?1647304519"></script>
+    <script src="/docs-uan/js/jquery.sticky.js?1647304519"></script>
+    <script src="/docs-uan/js/featherlight.min.js?1647304519"></script>
+    <script src="/docs-uan/js/highlight.pack.js?1647304519"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/docs-uan/js/modernizr.custom-3.6.0.js?1647304519"></script>
+    <script src="/docs-uan/js/learn.js?1647304519"></script>
+    <script src="/docs-uan/js/hugo-learn.js?1647304519"></script>
+    
+        
+            <script src="/docs-uan/mermaid/mermaid.js?1647304519"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+
