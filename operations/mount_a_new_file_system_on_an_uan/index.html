@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>V2.1.9 :: User Access Node (UAN)</title>
+    <title>Mount A New File System On A UAN :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1647304240" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
     <nav id="sidebar" class="">
 
 
@@ -332,7 +332,7 @@
   
     
     <li data-nav-id="/docs-uan/operations/" title="Operations" class="dd-item
-        
+        parent
         
         
         ">
@@ -484,7 +484,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="Mount A New File System On A UAN" class="dd-item ">
+      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="Mount A New File System On A UAN" class="dd-item active">
         <a href="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
         Mount A New File System On A UAN
         
@@ -696,36 +696,111 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>V2.1.9</a> > <a href='/docs-uan/operations/'>Operations</a> > Mount A New File System On A UAN
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#mount-a-new-file-system-on-a-uan">Mount a New File System on a UAN</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="v219">V2.1.9</h1>
-<p>Topics:</p>
+<h2 id="mount-a-new-file-system-on-a-uan">Mount a New File System on a UAN</h2>
+<p>Perform this procedure to create a mount point for a new file system on a UAN.</p>
 <ol>
-<li><a href="changelog">Changelog</a></li>
-<li><a href="advanced">Advanced</a></li>
-<li><a href="css">Css</a></li>
-<li><a href="fonts">Fonts</a></li>
-<li><a href="images">Images</a></li>
-<li><a href="install">Install</a></li>
-<li><a href="installation_prereqs">Installation Prereqs</a></li>
-<li><a href="operations">Operations</a></li>
-<li><a href="troubleshooting">Troubleshooting</a></li>
-<li><a href="upgrade">Upgrade</a></li>
+<li>
+<p>Perform Steps 1-9 of <a href="/docs-uan/operations/create_uan_boot_images/#create-uan-boot-images">Create UAN Boot Images</a>.</p>
+</li>
+<li>
+<p>Create a directory for <code>Application</code> role nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# mkdir -p group_vars/Application
+</code></pre></div></li>
+<li>
+<p>Define the home directory information for the new file system in the <code>filesystems.yml</code> file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# vi group_vars/Application/filesystems.yml
+---
+filesystems:
+  - src: 10.252.1.1:/home
+    mount_point: /home    
+    fstype: nfs4    
+    opts: rw,noauto
+    state: mounted
+</code></pre></div></li>
+<li>
+<p>Add the change from the working directory to the staging area.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git add -A
+</code></pre></div></li>
+<li>
+<p>Commit the file to the working branch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git commit -am <span style="color:#e6db74">&#39;Added file system info&#39;</span>
+</code></pre></div></li>
+<li>
+<p>Resume <a href="/docs-uan/operations/create_uan_boot_images/#create-uan-boot-images">Create UAN Boot Images</a> at Step 10.</p>
+</li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -757,8 +832,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -772,6 +845,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -869,6 +945,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -884,6 +961,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 

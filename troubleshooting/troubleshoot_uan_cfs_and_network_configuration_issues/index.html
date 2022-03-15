@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>V2.1.9 :: User Access Node (UAN)</title>
+    <title>Troubleshoot UAN CFS And Network Configuration Issues :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1647304240" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
     <nav id="sidebar" class="">
 
 
@@ -534,7 +534,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="Troubleshooting" class="dd-item
-        
+        parent
         
         
         ">
@@ -581,7 +581,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="Troubleshoot UAN CFS And Network Configuration Issues" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="Troubleshoot UAN CFS And Network Configuration Issues" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
         Troubleshoot UAN CFS And Network Configuration Issues
         
@@ -696,36 +696,117 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>V2.1.9</a> > <a href='/docs-uan/troubleshooting/'>Troubleshooting</a> > Troubleshoot UAN CFS And Network Configuration Issues
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#troubleshoot-uan-cfs-and-network-configuration-issues">Troubleshoot UAN CFS and Network Configuration Issues</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="v219">V2.1.9</h1>
-<p>Topics:</p>
+<h2 id="troubleshoot-uan-cfs-and-network-configuration-issues">Troubleshoot UAN CFS and Network Configuration Issues</h2>
+<p>Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.</p>
+<p>Read <a href="/docs-uan/operations/about_uan_configuration/#about-uan-configuration">About UAN Configuration</a> before starting this procedure.</p>
 <ol>
-<li><a href="changelog">Changelog</a></li>
-<li><a href="advanced">Advanced</a></li>
-<li><a href="css">Css</a></li>
-<li><a href="fonts">Fonts</a></li>
-<li><a href="images">Images</a></li>
-<li><a href="install">Install</a></li>
-<li><a href="installation_prereqs">Installation Prereqs</a></li>
-<li><a href="operations">Operations</a></li>
-<li><a href="troubleshooting">Troubleshooting</a></li>
-<li><a href="upgrade">Upgrade</a></li>
+<li>
+<p>Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:</p>
+<p>This example sorts the list of CFS sessions so that the most recent one is at the bottom.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# kubectl -n services get pods --sort-by<span style="color:#f92672">=</span>.metadata.creationTimestamp | grep ^cfs
+</code></pre></div></li>
+<li>
+<p>View the Ansible log of the CFS session found in the previous step (CFS_SESSION in the following example). Use the information in log to guide troubleshooting.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# kubectl -n services logs -f -c ansible-0 CFS_SESSION
+</code></pre></div></li>
+<li>
+<p><strong>Optional:</strong> Troubleshoot <code>uan_interfaces</code> issues by logging into the affected node (usually with the conman console) and using standard network debugging techniques.</p>
+<p>NMN and CAN network setup errors can also result from incorrect switch configuration and network cabling.</p>
+</li>
+<li>
+<p>For additional debugging of the <code>uan_interfaces</code> role, consider increasing ansible logs by changing the following configmap:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# kubectl -n services edit cm cfs-default-ansible-cfg
+</code></pre></div><p>Set the following options to <code>yes</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">display_ok_hosts      <span style="color:#f92672">=</span> yes
+display_skipped_hosts <span style="color:#f92672">=</span> yes
+</code></pre></div><p><strong>Warning:</strong> It is recommended that these settings be reset when no longer troubleshooting CFS errors.</p>
+</li>
+<li>
+<p>Failure to configure LDAP or other failures due to no default route.</p>
+<p>If the CAN wasn&rsquo;t configured due to an error, or no default route is set on the UAN with <code>uan_interfaces</code>, that could lead to errors later in CFS. For example, the LDAP server may not be accessible or PE and WLM are not able to access artifacts.</p>
+<p>If the CAN isn&rsquo;t configured, even though it was enabled, turn on the extra debugging in the previous step and check for an <code>NXDOMAIN</code> error. If an NXDOMAIN error is found, that would cause the play to skip setting up the CAN because an IP address could not be found for the correct alias.</p>
+<p>Log in to the UAN and run the following to check if an appropriate CAN alias can be found:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uan# nslookup <span style="color:#e6db74">${</span>HOSTNAME/-nmn/-can<span style="color:#e6db74">}</span>.can
+Server:		10.92.100.225
+Address:	10.92.100.225#53
+
+Name:	uan01.can
+Address: 10.102.10.14
+</code></pre></div><p>If the logs or the above command shows an NXDOMAIN error, consult the CSM documentation titled &ldquo;Add UAN CAN IP Addresses to SLS&rdquo; to add an appropriate alias and rerun CFS.</p>
+</li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -904,6 +985,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -916,6 +998,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -933,6 +1018,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -948,6 +1034,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 

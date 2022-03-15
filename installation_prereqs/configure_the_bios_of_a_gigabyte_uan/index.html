@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>V2.1.9 :: User Access Node (UAN)</title>
+    <title>Configure The Bios Of A Gigabyte UAN :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1647304240" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
     <nav id="sidebar" class="">
 
 
@@ -214,7 +214,7 @@
   
     
     <li data-nav-id="/docs-uan/installation_prereqs/" title="Installation Prereqs" class="dd-item
-        
+        parent
         
         
         ">
@@ -240,7 +240,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="Configure The Bios Of A Gigabyte UAN" class="dd-item ">
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="Configure The Bios Of A Gigabyte UAN" class="dd-item active">
         <a href="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
         Configure The Bios Of A Gigabyte UAN
         
@@ -696,36 +696,124 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>V2.1.9</a> > <a href='/docs-uan/installation_prereqs/'>Installation Prereqs</a> > Configure The Bios Of A Gigabyte UAN
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#configure-the-bios-of-a-gigabyte-uan">Configure the BIOS of a Gigabyte UAN</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="v219">V2.1.9</h1>
-<p>Topics:</p>
+<h2 id="configure-the-bios-of-a-gigabyte-uan">Configure the BIOS of a Gigabyte UAN</h2>
+<p>Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.</p>
+<p>Before the UAN product can be installed on Gigabyte UANs, specific network interface and boot settings must be configured in the BIOS.</p>
 <ol>
-<li><a href="changelog">Changelog</a></li>
-<li><a href="advanced">Advanced</a></li>
-<li><a href="css">Css</a></li>
-<li><a href="fonts">Fonts</a></li>
-<li><a href="images">Images</a></li>
-<li><a href="install">Install</a></li>
-<li><a href="installation_prereqs">Installation Prereqs</a></li>
-<li><a href="operations">Operations</a></li>
-<li><a href="troubleshooting">Troubleshooting</a></li>
-<li><a href="upgrade">Upgrade</a></li>
+<li>
+<p>Press the <strong>Delete</strong> key to enter the setup utility when prompted to do so in the console.</p>
+</li>
+<li>
+<p>Navigate to the boot menu.</p>
+</li>
+<li>
+<p>Set the <strong>Boot Option #1</strong> field to <code>Network:UEFI: PXE IP4 Intel(R) I350 Gigabit Network Connection</code>.</p>
+</li>
+<li>
+<p>Set all other <strong>Boot Option</strong> fields to <code>Disabled</code>.</p>
+</li>
+<li>
+<p>Ensure that the boot mode is set to <code>[UEFI]</code>.</p>
+</li>
+<li>
+<p>Confirm that the time is set correctly. If the time is not accurate, correct it now.</p>
+<p>Incorrect time will cause PXE booting issues.</p>
+</li>
+<li>
+<p>Select <strong>Save &amp; Exit</strong> to save the settings.</p>
+</li>
+<li>
+<p>Select <strong>Yes</strong> to confirm and press the <strong>Enter</strong> key.</p>
+<p>The UAN will reboot.</p>
+</li>
+<li>
+<p><strong>Optional:</strong> Run the following IPMI commands if the BIOS settings do not persist.</p>
+<p>In these example commands, the BMC of the UAN is x3000c0s27b0. Replace USERNAME and PASSWORD with username and password of the BMC of the UAN. These commands do the following:</p>
+<ul>
+<li>Power off the node</li>
+<li>Perform a reset.</li>
+<li>Set the PXE boot in the options.</li>
+<li>Power on the node</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 power off
+ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 mc reset cold
+ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 chassis bootdev pxe <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>options<span style="color:#f92672">=</span>efiboot,persistent
+ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 power on
+</code></pre></div></li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1064,6 +1152,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1076,6 +1165,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1092,6 +1182,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
