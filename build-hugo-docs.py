@@ -32,6 +32,7 @@
 # The default releases.yaml file may be overridden by the '--release-file'
 # option.
 
+import sys
 import pathlib
 import subprocess
 import yaml
@@ -116,6 +117,8 @@ chmod_build_docs = subprocess.call(['chmod', '0755', THIS_DIR + "/docs/hugo/docs
 print("Building docs...")
 build_docs = subprocess.run([THIS_DIR + "/docs/hugo/docs-uan/bin/build.sh"])
 print("build.sh exited with code ", build_docs.returncode)
+if build_docs.returncode:
+    sys.exit(build_docs.returncode)
 
 # Run docs/hugo/docs-uan/bin/push.sh
 if options.publish_docs:
@@ -123,3 +126,5 @@ if options.publish_docs:
     print("Publishing docs to github pages...")
     push_docs = subprocess.run([THIS_DIR + "/docs/hugo/docs-uan/bin/push.sh"])
     print("push.sh exited with code ", push_docs.returncode)
+if push_docs.returncode:
+    sys.exit(push_docs.returncode)
