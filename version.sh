@@ -34,7 +34,8 @@
 #   and this is run locally with uncommitted changes, then the version will be appended with '-dirty'
 set -eo pipefail
 
-version=$(git describe --tags --match 'v*' | sed -e 's/^v//')
+#version=$(git describe --tags --match 'v*' | sed -e 's/^v//')
+version=1.0.0
 if [[ ! -z $(git status -s) ]]; then
     if [[ ! -n ${BUILD_NUMBER} ]]; then
         echo ${version}'-dirty'
