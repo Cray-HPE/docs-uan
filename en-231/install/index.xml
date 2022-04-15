@@ -6,11 +6,11 @@
     <description>Recent content in Install on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 15 Apr 2022 22:55:15 +0000</lastBuildDate><atom:link href="/docs-uan/en-231/install/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Apr 2022 22:59:21 +0000</lastBuildDate><atom:link href="/docs-uan/en-231/install/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Install The UAN Product Stream</title>
       <link>/docs-uan/en-231/install/install_the_uan_product_stream/</link>
-      <pubDate>Fri, 15 Apr 2022 22:55:12 +0000</pubDate>
+      <pubDate>Fri, 15 Apr 2022 22:59:19 +0000</pubDate>
       
       <guid>/docs-uan/en-231/install/install_the_uan_product_stream/</guid>
       <description>Install the UAN Product Stream This procedure installs the User Access Nodes (UAN) product on a system so that UAN boot images can be created.
