@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
 "doc_id": "crs8032_2en_us",
+=======
+"doc_id": "crs8032_3en_us",
+>>>>>>> e1e508fe06dc57f525154576b059fa72b01b7d28
 "content_version": "1",
 "document_part_number": "S-8032",
 "content_type": "htmlzip",
@@ -15,8 +19,13 @@
 "creation_date": "2022-03-29T12:00:00",
 "content_update_date": "2022-03-29T13:00:00",
 "language_code": "en_US",
+<<<<<<< HEAD
 "object_name": "crs8032_2en_us",
 "file_name": "crs8032_2en_us.zip",
+=======
+"object_name": "crs8032_3en_us",
+"file_name": "crs8032_3en_us.zip",
+>>>>>>> e1e508fe06dc57f525154576b059fa72b01b7d28
 "submitter": "darrenn.jackson@hpe.com",
 "company_info": "HPE-green",
 "customer_available_date": "",
