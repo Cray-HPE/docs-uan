@@ -48,5 +48,10 @@ jobs:
           path: docs-uan
 
       - name: Run generator
+        env:
+          GIT_AUTHOR_NAME: "Cray-HPE Github Bot"
+          GIT_AUTHOR_EMAIL: noreply@hpe.com
+          GIT_COMMITTER_NAME: "Cray-HPE Github Bot"
+          GIT_COMMITTER_EMAIL: noreply@hpe.com
         run: build-hugo-docs.py
         working-directory: docs-uan

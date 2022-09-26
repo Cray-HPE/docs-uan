@@ -29,8 +29,9 @@ function build () {
   mkdir -p ./docs-uan
   cd ./docs-uan
 {%- if clone %}
+  pwd
   for release in ${RELEASES[@]}; do
-    git clone --depth 1 -b $release git@github.com:Cray-HPE/uan-product-stream.git ./$release
+    git clone --depth 1 -b v$release git@github.com:Cray-HPE/docs-uan.git ./$release
     echo "Copy Changelog.md to $DOCROOT..."
     [[ -f $release/Changelog.md ]] && cp $release/Changelog.md $release/$DOCROOT
     echo "Copy top level index.md to $DOCROOT..."

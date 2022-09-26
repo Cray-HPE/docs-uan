@@ -126,5 +126,5 @@ if options.publish_docs:
     print("Publishing docs to github pages...")
     push_docs = subprocess.run([THIS_DIR + "/docs/hugo/docs-uan/bin/push.sh"])
     print("push.sh exited with code ", push_docs.returncode)
-if push_docs.returncode:
-    sys.exit(push_docs.returncode)
+    if push_docs.returncode:
+        sys.exit(push_docs.returncode)
