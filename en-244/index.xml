@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2.4.4 on User Access Node (UAN)</title>
+    <link>/docs-uan/en-244/</link>
+    <description>Recent content in 2.4.4 on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 27 Sep 2022 14:54:57 +0000</lastBuildDate><atom:link href="/docs-uan/en-244/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
