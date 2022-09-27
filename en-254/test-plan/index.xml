@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test-plan on User Access Node (UAN)</title>
+    <link>/docs-uan/en-254/test-plan/</link>
+    <description>Recent content in Test-plan on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 27 Sep 2022 17:12:13 +0000</lastBuildDate><atom:link href="/docs-uan/en-254/test-plan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan</title>
+      <link>/docs-uan/en-254/test-plan/test-plan/</link>
+      <pubDate>Tue, 27 Sep 2022 17:12:11 +0000</pubDate>
+      
+      <guid>/docs-uan/en-254/test-plan/test-plan/</guid>
+      <description>Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN. The tests are grouped in three categories:
+ Unit tests Integration tests Functional tests  Unit Tests When possible, unit tests are run when the various components of UAN are built (uan-rpms, uan, and uan-product-stream).</description>
+    </item>
+    
+  </channel>
+</rss>
