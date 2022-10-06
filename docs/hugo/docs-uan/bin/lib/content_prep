@@ -57,6 +57,7 @@ function transform_links() {
     # - Skips internal stash links
     # - root links to relative links
     # - add "../" to all non-root links since pubs make all link referenced from the parent directory
+    # sed -r 's|\]\(([A-Za-z0-9_\-]+)\/|\]\(\.\.\/\1\/|g' | \
     # - wraps links in hugo's relref lookup unless it has "http"
     # - fixes image references
     # - replaces <a name="anchor"> format for hugo anchor ref formats
@@ -65,7 +66,6 @@ function transform_links() {
     cat $1 | \
     grep -v "stash.us.cray.com" | \
     sed -r 's|\]\(\/|\]\(\.\/|g' | \
-    sed -r 's|\]\(([A-Za-z0-9_\-]+)\/|\]\(\.\.\/\1\/|g' | \
     sed -r 's|\]\(([^)|:]*).md(#.*)?\)|\]\(\{\{\< relref \"\.\/\1.md\2\" \>\}\}\)|g' | \
     sed -r 's|\]\(([^)|:]*)\.(png\|svg)(#.*)?\)|\]\(\.\./\1\.\2\)|g' | \
     sed -rz 's|<a name="([^"]*)"></a>\s*\n(\s*#+ [^\n]*)|\2 {#\1}|g' | \

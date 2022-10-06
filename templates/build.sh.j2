@@ -6,6 +6,15 @@ cd $THIS_DIR/..
 LAST_DIR=${OLDPWD}
 RELEASES=({{ releases }})
 DOCROOT=docs/portal/developer-portal
+UNWANTED_MD_LIST=(
+    About_UAN_Administration.md
+    Administrative_Tasks.md
+    Advanced_Administrative_Tasks.md
+    Manage_UAN_Boot_Images.md
+    Reference.md
+    Troubleshooting.md
+    installation_prereqs/Hardware_and_Software_Prerequisites.md
+)
 
 function clean() {
   function clean_dir() {
@@ -32,11 +41,17 @@ function build () {
   pwd
   for release in ${RELEASES[@]}; do
     git clone --depth 1 -b v$release git@github.com:Cray-HPE/docs-uan.git ./$release
+    [[ -d $release/portal ]] && DOCROOT=portal/developer-portal
     echo "Copy Changelog.md to $DOCROOT..."
     [[ -f $release/Changelog.md ]] && cp $release/Changelog.md $release/$DOCROOT
     echo "Copy top level index.md to $DOCROOT..."
-    [[ -f $release/docs/index.md  && ! -f $release/$DOCROOT/index.md ]] && cp $release/docs/index.md $release/$DOCROOT
-    [[ -f $release/$DOCROOT/index.md ]] && sed -i .mdbak1 -r 's|\]\((\.\/)*(portal/developer-portal/)*([A-Za-z0-9_\-]+)|\]\(\.\/\3|g' $release/$DOCROOT/index.md
+    [[ -f $release/index.md  && ! -f $release/$DOCROOT/index.md ]] && cp $release/index.md $release/$DOCROOT
+    [[ -f $release/$DOCROOT/index.md ]] && sed -i .mdbak1 -r "s|\]\((\.\/)*($DOCROOT)*([A-Za-z0-9_\-]+)|\]\(\.\/\3|g" $release/$DOCROOT/index.md
+    echo "Cleaning up unwanted md files..."
+    for MD in ${UNWANTED_MD_LIST[@]}; do
+        [[ -f $release/$DOCROOT/$MD ]] && rm $release/$DOCROOT/$MD
+    done
+    echo "Finished cleaning up unwanted md files."
   done
 {%- endif %}
   cd ${OLDPWD}

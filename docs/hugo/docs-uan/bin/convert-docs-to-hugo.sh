@@ -135,7 +135,8 @@ function prune_dir() {
 
 validate_args $1 $2 $3 $4
 SOURCE_DIR=$(cd $2 && pwd)
-SOURCE_DIR=${SOURCE_DIR}/${UAN_RELEASE}/docs/portal/developer-portal
+[[ -d $SOURCE_DIR/$UAN_RELEASE/portal ]] && SOURCE_DIR=${SOURCE_DIR}/${UAN_RELEASE}/portal/developer-portal
+[[ -d $SOURCE_DIR/$UAN_RELEASE/docs/portal ]] && SOURCE_DIR=${SOURCE_DIR}/${UAN_RELEASE}/docs/portal/developer-portal
 
 DESTINATION_DIR=$(cd $4 && pwd)
 DESTINATION_DIR="${DESTINATION_DIR}/${UAN_RELEASE}"
