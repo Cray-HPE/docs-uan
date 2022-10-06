@@ -6,11 +6,11 @@
     <description>Recent content in Advanced on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 27 Sep 2022 20:35:13 +0000</lastBuildDate><atom:link href="/docs-uan/en-254/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Oct 2022 13:59:48 +0000</lastBuildDate><atom:link href="/docs-uan/en-254/advanced/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Booting An Application Node With A Sles Image (techNICal Preview)</title>
       <link>/docs-uan/en-254/advanced/sles_image/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
+      <pubDate>Thu, 06 Oct 2022 13:59:46 +0000</pubDate>
       
       <guid>/docs-uan/en-254/advanced/sles_image/</guid>
       <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
@@ -18,9 +18,20 @@ The image is built with the same packer/qemu pipeline as Non-Compute-Node Images
     </item>
     
     <item>
+      <title>Repurposing A Compute Node As A UAN</title>
+      <link>/docs-uan/en-254/advanced/repurposing_compute_as_uan/</link>
+      <pubDate>Thu, 06 Oct 2022 13:59:46 +0000</pubDate>
+      
+      <guid>/docs-uan/en-254/advanced/repurposing_compute_as_uan/</guid>
+      <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
+Overview The following steps outline the process of repurposing a compute node to be used as a UAN.
+  Verify the System Default Route is set to CHN.</description>
+    </item>
+    
+    <item>
       <title>Customizing UAN Images Manually</title>
       <link>/docs-uan/en-254/advanced/customizing_uan_images_manually/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
+      <pubDate>Thu, 06 Oct 2022 13:59:45 +0000</pubDate>
       
       <guid>/docs-uan/en-254/advanced/customizing_uan_images_manually/</guid>
       <description>Customizing UAN Images Manually   Query IMS for the UAN Image you want to customize.
@@ -31,23 +42,12 @@ ncn-m001:~/ $ export IMS_IMAGE_ID=6d46d601-c41f-444d-8b49-c9a2a55d3c21   Using t
     <item>
       <title>Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)</title>
       <link>/docs-uan/en-254/advanced/enabling_can_chn/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
+      <pubDate>Thu, 06 Oct 2022 13:59:45 +0000</pubDate>
       
       <guid>/docs-uan/en-254/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.
   Enable CAN or CHN by setting the following in the UAN CFS repo (the filename may be modified to whatever is appropriate):
 ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
-    </item>
-    
-    <item>
-      <title>Repurposing A Compute Node As A UAN</title>
-      <link>/docs-uan/en-254/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
-      
-      <guid>/docs-uan/en-254/advanced/repurposing_compute_as_uan/</guid>
-      <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
-Overview The following steps outline the process of repurposing a compute node to be used as a UAN.
-  Verify the System Default Route is set to CHN.</description>
     </item>
     
   </channel>

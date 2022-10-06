@@ -6,11 +6,25 @@
     <description>Recent content in Installation Prereqs on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 27 Sep 2022 20:35:13 +0000</lastBuildDate><atom:link href="/docs-uan/en-244/installation_prereqs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Oct 2022 13:59:49 +0000</lastBuildDate><atom:link href="/docs-uan/en-244/installation_prereqs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prepare For UAN Product Installation</title>
+      <link>/docs-uan/en-244/installation_prereqs/prepare_for_uan_product_installation/</link>
+      <pubDate>Thu, 06 Oct 2022 13:59:47 +0000</pubDate>
+      
+      <guid>/docs-uan/en-244/installation_prereqs/prepare_for_uan_product_installation/</guid>
+      <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
+Install and configure the COS product before performing this procedure.
+  Verify that the management network switches are properly configured.
+Refer to the switch configuration procedures in the HPE Cray System Management Documentation.
+  Ensure that the management network switches have the proper firmware.
+Refer to the procedure &amp;ldquo;Update the Management Network Firmware&amp;rdquo; in the HPE Cray EX hardware documentation.</description>
+    </item>
+    
     <item>
       <title>Configure The Bios Of A Gigabyte UAN</title>
       <link>/docs-uan/en-244/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
+      <pubDate>Thu, 06 Oct 2022 13:59:46 +0000</pubDate>
       
       <guid>/docs-uan/en-244/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</guid>
       <description>Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.
@@ -22,7 +36,7 @@ Before the UAN product can be installed on Gigabyte UANs, specific network inter
     <item>
       <title>Configure The Bios Of An HPE UAN</title>
       <link>/docs-uan/en-244/installation_prereqs/configure_the_bios_of_an_hpe_uan/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
+      <pubDate>Thu, 06 Oct 2022 13:59:46 +0000</pubDate>
       
       <guid>/docs-uan/en-244/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
       <description>Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
@@ -35,27 +49,13 @@ In the following command, UAN_BMC_XNAME is the xname of the BMC of the UAN to co
     <item>
       <title>Configure The BMC For UANs With Ilo</title>
       <link>/docs-uan/en-244/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
+      <pubDate>Thu, 06 Oct 2022 13:59:46 +0000</pubDate>
       
       <guid>/docs-uan/en-244/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
       <description>Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
 Perform the first three steps of Prepare for UAN Product Installation before performing this procedure.
   Create the SSH tunnel necessary to access the BMC web GUI interface.
   Find the IP or hostname for a UAN.</description>
-    </item>
-    
-    <item>
-      <title>Prepare For UAN Product Installation</title>
-      <link>/docs-uan/en-244/installation_prereqs/prepare_for_uan_product_installation/</link>
-      <pubDate>Tue, 27 Sep 2022 20:35:11 +0000</pubDate>
-      
-      <guid>/docs-uan/en-244/installation_prereqs/prepare_for_uan_product_installation/</guid>
-      <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
-Install and configure the COS product before performing this procedure.
-  Verify that the management network switches are properly configured.
-Refer to the switch configuration procedures in the HPE Cray System Management Documentation.
-  Ensure that the management network switches have the proper firmware.
-Refer to the procedure &amp;ldquo;Update the Management Network Firmware&amp;rdquo; in the HPE Cray EX hardware documentation.</description>
     </item>
     
   </channel>
