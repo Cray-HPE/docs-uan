@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Cray Ex User Access Nodes Installation And Administration Guide :: User Access Node (UAN)</title>
+    <title>Troubleshoot UAN Boot Issues :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1665260616" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">
     <nav id="sidebar" class="">
 
 
@@ -633,7 +633,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="Troubleshooting" class="dd-item
-        
+        parent
         
         
         ">
@@ -659,7 +659,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/" title="Troubleshoot UAN Boot Issues" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/" title="Troubleshoot UAN Boot Issues" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">
         Troubleshoot UAN Boot Issues
         
@@ -837,82 +837,140 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray Ex User Access Nodes Installation And Administration Guide</a> > <a href='/docs-uan/troubleshooting/'>Troubleshooting</a> > Troubleshoot UAN Boot Issues
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-uan-boot-process">The UAN boot process</a></li>
+    <li><a href="#pxe-issues">PXE Issues</a></li>
+    <li><a href="#initrd-dracut-issues">Initrd (Dracut) Issues</a></li>
+    <li><a href="#image-boot-issues">Image Boot Issues</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="troubleshoot-uan-boot-issues">Troubleshoot UAN Boot Issues</h1>
+<h2 id="the-uan-boot-process">The UAN boot process</h2>
+<p>BOS boots UANs. BOS uses session templates to define various parameters such as:</p>
+<ul>
+<li>Which nodes to boot</li>
+<li>Which image to boot</li>
+<li>Kernel parameters</li>
+<li>Whether to perform post-boot configuration (Node Personalization) of the nodes by CFS.</li>
+<li>Which CFS configuration to use if Node Personalization is enabled.</li>
+</ul>
+<p>UAN boots are performed in three phases:</p>
 <ol>
-<li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
-</li>
-<li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
-</li>
+<li>PXE booting an iPXE binary that will load the initrd of the UAN image that will boot.</li>
+<li>Booting the initrd (dracut) image which configures the UAN for booting the UAN image. This process consists of two phases.
+<ol>
+<li>Configuring the UAN node to use the Content Projection Service (CPS) and Data Virtualization Service (DVS). These services manage the UAN image rootfs mounting and make that image available to the UAN nodes.</li>
+<li>Mounting the rootfs</li>
 </ol>
+</li>
+<li>Booting the UAN image rootfs.</li>
+</ol>
+<h2 id="pxe-issues">PXE Issues</h2>
+<p>Most PXE boot failures are the result of misconfigured network switches and/or BIOS settings. The UAN must PXE boot over the Node Management Network (NMN) and the switches must be configured to allow connectivity to the NMN. The cable for the NMN must be connected to the first port of the OCP card on HPE DL325 and DL385 servers or to the first port of the built-in LAN-On-Motherboard (LOM) on Gigabyte servers. See &ldquo;Prepare for UAN Product Installation&rdquo; in the UAN Installation Guide for details on the switch and BIOS settings required to configure the UAN for PXE booting.</p>
+<p>UANs may fail to boot when the BIOS EFITIME is too far away from the time on management nodes. If there are x509 certificate problems, check that the BIOS time is correct. See &ldquo;Configure the BIOS of an HPE UAN&rdquo; or &ldquo;Configure the BIOS of a Gigabyte UAN&rdquo; in the UAN Installation Guide for examples of checking settings in the BIOS.</p>
+<h2 id="initrd-dracut-issues">Initrd (Dracut) Issues</h2>
+<p>Dracut failures are often caused by the wrong interface being named <code>nmn0</code>, or to multiple entries for the UAN xname in DNS. The latter is a result of multiple interfaces making DHCP requests. Either condition can cause IP address mismatches in the <code>dvs_node_map</code>. DNS configures entries based on DHCP leases.</p>
+<p>When dracut starts, it renames the network device named by the <code>ifmap=netX:nmn0</code> kernel parameter to <code>nmn0</code>. This interface is the only one dracut will enable DHCP on. The <code>ip=nmn0:dhcp</code> kernel parameter limits dracut to DHCP only <code>nmn0</code>. The ifmap value must be set correctly in the <code>kernel_parameters</code> field of the BOS session template.</p>
+<p>See <a href="/docs-uan/operations/create_uan_boot_images/#create-uan-boot-images">Create UAN Boot Images</a> for details on how to configure the BOS session template. For UAN nodes that have more than one PCI card installed, <code>ifmap=net2:nmn0</code> is the correct setting. If only one PCI card is installed, <code>ifmap=net0:nmn0</code> is normally the correct setting.</p>
+<p>UANs require CPS and DVS to boot from images. These services are configured in dracut to retrieve the rootfs and mount it. If the image fails to download, check that DVS and CPS are both healthy, and DVS is running on all worker nodes. Run the following commands to check DVS and CPS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001#  kubectl get nodes -l cps-pm-node<span style="color:#f92672">=</span>True -o custom-columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:metadata.name&#34;</span> --no-headers
+ncn-w001
+ncn-w002
+ncn-m001#  <span style="color:#66d9ef">for</span> node in <span style="color:#e6db74">`</span>kubectl get nodes -l cps-pm-node<span style="color:#f92672">=</span>True -o custom-columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:metadata.name&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--no-headers<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+ssh $node <span style="color:#e6db74">&#34;lsmod | grep &#39;^dvs &#39;&#34;</span>
+<span style="color:#66d9ef">done</span>
+ncn-w001
+ncn-w002
+</code></pre></div><p>If DVS and CPS are both healthy, then both of these commands will return all the worker NCNs in the HPE Cray EX system.</p>
+<h2 id="image-boot-issues">Image Boot Issues</h2>
+<p>Once dracut exits, the UAN will boot the <code>rootfs</code> image. Failures seen in this phase tend to be failures of <code>spire-agent</code>, <code>cfs-state-reporter</code>, or both. The <code>cfs-state-reporter</code> tells BOA that the node is ready and allows BOA to start CFS for Node Personalization. If <code>cfs-state-reporter</code> does not start, check if the <code>spire-agent</code> has started. The <code>cfs-state-reporter</code> depends on the <code>spire-agent</code>. Running systemctl status spire-agent will show that that service is enabled and running if there are no issues with that service. Similarly, running <code>systemctl status cfs-state-reporter</code> will show a status of SUCCESS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uan# systemctl status spire-agent
+● spire-agent.service - SPIRE Agent
+   Loaded: loaded <span style="color:#f92672">(</span>/usr/lib/systemd/system/spire-agent.service; enabled; vendor preset: enabled<span style="color:#f92672">)</span>
+   Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> since Wed 2021-02-24 14:27:33 CST; 19h ago
+ Main PID: <span style="color:#ae81ff">3581</span> <span style="color:#f92672">(</span>spire-agent<span style="color:#f92672">)</span>
+    Tasks: <span style="color:#ae81ff">57</span>
+   CGroup: /system.slice/spire-agent.service
+           └─3581 /usr/bin/spire-agent run -expandEnv -config /root/spire/conf/spire-agent.conf
+
+uan# systemctl status cfs-state-reporter
+● cfs-state-reporter.service - cfs-state-reporter reports configuration level of the system
+   Loaded: loaded <span style="color:#f92672">(</span>/usr/lib/systemd/system/cfs-state-reporter.service; enabled; vendor preset: enabled<span style="color:#f92672">)</span>
+   Active: inactive <span style="color:#f92672">(</span>dead<span style="color:#f92672">)</span> since Wed 2021-02-24 14:29:51 CST; 19h ago
+ Main PID: <span style="color:#ae81ff">3827</span> <span style="color:#f92672">(</span>code<span style="color:#f92672">=</span>exited, status<span style="color:#f92672">=</span>0/SUCCESS<span style="color:#f92672">)</span>
+</code></pre></div><p>There may be errors related to failing to load kernel modules during the boot:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FAILED Failed to start Load Kernel Modules.
+See <span style="color:#e6db74">&#39;systemctl status systemd-modules-load.service&#39;</span> <span style="color:#66d9ef">for</span> details.
+</code></pre></div><p>Provided the UAN boots and completes post boot customizations, these messages may be ignored.</p>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1235,6 +1293,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1247,6 +1306,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
                     
                 
                 
@@ -1263,6 +1323,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

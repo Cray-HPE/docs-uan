@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Cray Ex User Access Nodes Installation And Administration Guide :: User Access Node (UAN)</title>
+    <title>Prepare For UAN Product Installation :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1665260616" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">
     <nav id="sidebar" class="">
 
 
@@ -258,7 +258,7 @@
   
     
     <li data-nav-id="/docs-uan/installation_prereqs/" title="Installation Prereqs" class="dd-item
-        
+        parent
         
         
         ">
@@ -326,7 +326,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/" title="Prepare For UAN Product Installation" class="dd-item ">
+      <li data-nav-id="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/" title="Prepare For UAN Product Installation" class="dd-item active">
         <a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">
         Prepare For UAN Product Installation
         
@@ -837,82 +837,152 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray Ex User Access Nodes Installation And Administration Guide</a> > <a href='/docs-uan/installation_prereqs/'>Installation Prereqs</a> > Prepare For UAN Product Installation
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="prepare-for-uan-product-installation">Prepare for UAN Product Installation</h1>
+<p>Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.</p>
+<p>Install and configure the COS product before performing this procedure.</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
+<p>Verify that the management network switches are properly configured.</p>
+<p>Refer to the <a href="https://github.com/Cray-HPE/docs-csm/tree/release/1.0/install">switch configuration procedures</a> in the HPE Cray System Management Documentation.</p>
+</li>
+<li>
+<p>Ensure that the management network switches have the proper firmware.</p>
+<p>Refer to the procedure &ldquo;Update the Management Network Firmware&rdquo; in the HPE Cray EX hardware documentation.</p>
+</li>
+<li>
+<p>Ensure that the host reservations for the UAN CAN/CHN network have been properly set.</p>
+<p>Refer to the procedure &ldquo;Add UAN CAN IP Addresses to SLS&rdquo; in the HPE Cray EX hardware documentation.</p>
+</li>
+<li>
+<p>Configure the BMC of the UAN.</p>
+<p>Perform <a href="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/#configure-the-bmc-for-uans-with-ilo">Configure the BMC for UANs with iLO</a> if the UAN is a HPE server with an iLO.</p>
+</li>
+<li>
+<p>Configure the BIOS of the UAN.</p>
 <ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
+<li>Perform <a href="/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/#configure-the-bios-of-an-hpe-uan">Configure the BIOS of an HPE UAN</a> if the UAN is a HPE server with an iLO.</li>
+<li>Perform <a href="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/#configure-the-bios-of-a-gigabyte-uan">Configure the BIOS of a Gigabyte UAN</a> if the UAN is a Gigabyte server.</li>
 </ul>
 </li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
+<p>Verify that the firmware for each UAN BMC meets the specifications.</p>
+<p>Use the System Admin Toolkit firmware command to check the current firmware version on a UAN node.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# sat firmware -x BMC_XNAME
+</code></pre></div></li>
+<li>
+<p>Repeat the previous six Steps for all UANs.</p>
 </li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
+<p>Unpackage the file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# tar zxf uan-PRODUCT_VERSION.tar.gz
+</code></pre></div></li>
 <li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
+<p>Navigate into the uan-PRODUCT_VERSION/ directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# cd uan-PRODUCT_VERSION/
+</code></pre></div></li>
 <li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
+<p>Run the pre-install goss tests to determine if the system is ready for the UAN product installation.</p>
+<p>This requires that goss is installed on the node running the tests.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# ./validate-pre-install.sh
+...............
+
+Total Duration: 1.304s
+Count: 15, Failed: 0, Skipped: <span style="color:#ae81ff">0</span>
+</code></pre></div></li>
 <li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p>Ensure that the <code>cray-console-node</code> pods are connected to UANs so that they are monitored and their consoles are logged.</p>
+<ol>
+<li>
+<p>Obtain a list of the xnames for all UANs (remove the <code>--subrole</code> argument to list all Application nodes).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# cray hsm state components list --role Application --subrole UAN --format json | jq -r .Components<span style="color:#f92672">[]</span>.ID | sort
+x3000c0s19b0n0
+x3000c0s24b0n0
+x3000c0s31b0n0
+</code></pre></div></li>
+<li>
+<p>Obtain a list of the console pods.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn# PODS<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pods -n services -l app.kubernetes.io/name<span style="color:#f92672">=</span>cray-console-node --template <span style="color:#e6db74">&#39;{{range .items}}{{.metadata.name}} {{end}}&#39;</span><span style="color:#66d9ef">)</span>
+</code></pre></div></li>
+<li>
+<p>Use <code>conman -q</code> to scan the list of connections being monitored by conman (only UAN xnames are shown for brevity).</p>
+<pre><code>ncn# for pod in $PODS; do kubectl exec -n services -c cray-console-node $pod -- conman -q; done
+x3000c0s19b0n0
+x3000c0s24b0n0
+x3000c0s31b0n0
+</code></pre><p>If a console connection is not present, the install may continue, but a console connection should be established before attempting to boot the UAN.</p>
 </li>
 </ol>
+</li>
+</ol>
+<p>Next, install the UAN product by performing the procedure <a href="/docs-uan/install/install_the_uan_product_stream/#install-the-uan-product-stream">Install the UAN Product Stream</a>.</p>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -979,6 +1049,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -991,6 +1062,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1024,6 +1098,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1039,6 +1114,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

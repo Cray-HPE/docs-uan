@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Cray Ex User Access Nodes Installation And Administration Guide :: User Access Node (UAN)</title>
+    <title>Customizing UAN Images Manually :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1665260616" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/advanced/customizing_uan_images_manually/">
     <nav id="sidebar" class="">
 
 
@@ -85,7 +85,7 @@
   
     
     <li data-nav-id="/docs-uan/advanced/" title="Advanced" class="dd-item
-        
+        parent
         
         
         ">
@@ -132,7 +132,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="Customizing UAN Images Manually" class="dd-item ">
+      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="Customizing UAN Images Manually" class="dd-item active">
         <a href="/docs-uan/advanced/customizing_uan_images_manually/">
         Customizing UAN Images Manually
         
@@ -837,82 +837,98 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray Ex User Access Nodes Installation And Administration Guide</a> > <a href='/docs-uan/advanced/'>Advanced</a> > Customizing UAN Images Manually
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="customizing-uan-images-manually">Customizing UAN Images Manually</h1>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
-</li>
+<p>Query IMS for the UAN Image you want to customize.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001:~/ $ cray ims images list --format json | jq <span style="color:#e6db74">&#39;.[] | select(.name | contains(&#34;uan&#34;))&#39;</span>
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;created&#34;</span>: <span style="color:#e6db74">&#34;2021-02-18T17:17:44.168655+00:00&#34;</span>,
+  <span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;6d46d601-c41f-444d-8b49-c9a2a55d3c21&#34;</span>,
+  <span style="color:#e6db74">&#34;link&#34;</span>: <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;etag&#34;</span>: <span style="color:#e6db74">&#34;371b62c9f0263e4c8c70c8602ccd5158&#34;</span>,
+    <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;s3://boot-images/6d46d601-c41f-444d-8b49-c9a2a55d3c21/manifest.json&#34;</span>,
+    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;uan-PRODUCT_VERSION-image&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
-</li>
+<p>Create a variable for the IMS image <code>id</code> in the returned data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001:~/ $ export IMS_IMAGE_ID<span style="color:#f92672">=</span>6d46d601-c41f-444d-8b49-c9a2a55d3c21
+</code></pre></div></li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p>Using the IMS_IMAGE_ID, follow the instructions in the <em>Customize an Image Root Using IMS</em> in the CSM documentation to build the UAN Image.</p>
 </li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1363,6 +1379,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1375,6 +1392,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1392,6 +1412,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1407,6 +1428,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

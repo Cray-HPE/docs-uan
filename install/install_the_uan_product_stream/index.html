@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Cray Ex User Access Nodes Installation And Administration Guide :: User Access Node (UAN)</title>
+    <title>Install The UAN Product Stream :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1665260616" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/install/install_the_uan_product_stream/">
     <nav id="sidebar" class="">
 
 
@@ -203,7 +203,7 @@
   
     
     <li data-nav-id="/docs-uan/install/" title="Install" class="dd-item
-        
+        parent
         
         
         ">
@@ -229,7 +229,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/install/install_the_uan_product_stream/" title="Install The UAN Product Stream" class="dd-item ">
+      <li data-nav-id="/docs-uan/install/install_the_uan_product_stream/" title="Install The UAN Product Stream" class="dd-item active">
         <a href="/docs-uan/install/install_the_uan_product_stream/">
         Install The UAN Product Stream
         
@@ -837,82 +837,129 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray Ex User Access Nodes Installation And Administration Guide</a> > <a href='/docs-uan/install/'>Install</a> > Install The UAN Product Stream
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="install-the-uan-product-stream">Install the UAN Product Stream</h1>
+<p>This procedure installs the User Access Nodes (UAN) product on a system so that UAN boot images can be created.</p>
+<p>Before performing this procedure:</p>
+<ul>
+<li>Initialize and configure the Cray command line interface (CLI) tool. See &ldquo;Configure the Cray Command Line Interface (CLI)&rdquo; in the CSM documentation for more information.</li>
+<li>Perform <a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Prepare for UAN Product Installation</a></li>
+</ul>
+<p>Replace <code>PRODUCT_VERSION</code> in the example commands with the UAN product stream string (2.3.0 for example). Replace <code>CRAY_EX_DOMAIN</code> in the example commands with the FQDN of the HPE Cray EX.</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
+<p>Start a typescript to capture the commands and output from this installation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# script -af product-uan.<span style="color:#66d9ef">$(</span>date +%Y-%m-%d<span style="color:#66d9ef">)</span>.txt 
+ncn-m001# export PS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\u@\H \D{%Y-%m-%d} \t \w # &#39;</span>
+</code></pre></div></li>
+<li>
+<p>Run the installation script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# ./install.sh
+</code></pre></div></li>
+<li>
+<p>Verify that the UAN configuration was imported and added to the <code>cray-product-catalog</code> ConfigMap in the Kubernetes <code>services</code> namespace.</p>
+<ol>
+<li>
+<p>Run the following command and verify that the output contains an entry for the <code>PRODUCT_VERSION</code> that was installed in the previous steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# kubectl get cm cray-product-catalog -n services -o json | jq -r .data.uan
+PRODUCT_VERSION:
+     configuration:
+       clone_url: https://vcs.CRAY_EX_DOMAIN/vcs/cray/uan-config-management.git
+       commit: 6658ea9e75f5f0f73f78941202664e9631a63726
+       import_branch: cray/uan/PRODUCT_VERSION
+       import_date: 2021-07-28 03:26:00.399670
+       ssh_url: git@vcs.CRAY_EX_DOMAIN:cray/uan-config-management.git
+</code></pre></div></li>
+<li>
+<p>Verify that the Kubernetes jobs that import the configuration content completed successfully. Skip this step if the previous substep indicates that the new UAN product version content installed successfully.</p>
+<p>A STATUS of <code>Completed</code> indicates that the Kubernetes jobs completed successfully.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# kubectl get pods -n services | grep uan
+uan-config-import-PRODUCT_VERSION-wfh4f                                  0/3     Completed   <span style="color:#ae81ff">0</span>          3m15s
+</code></pre></div></li>
+</ol>
 </li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
-</li>
+<p>Verify that the UAN RPM repositories have been created in Nexus:</p>
+<p><code>PRODUCT_VERSION</code> is the UAN release number and <code>SLE_VERSION</code> is the SLE release version, such as <code>15sp4</code> or <code>15sp3</code>.</p>
+<p>Query Nexus through its REST API to display the repositories prefixed with the name uan:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# curl -s -k https://packages.local/service/rest/v1/repositories | jq -r <span style="color:#e6db74">&#39;.[] | select(.name | startswith(&#34;uan&#34;)) | .name&#39;</span>
+uan-PRODUCT_VERSION-sle-SLE_VERSION
+</code></pre></div></li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
+<p>Finish the typescript file started at the beginning of this procedure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># exit</span>
+</code></pre></div></li>
 <li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p><strong>Optional:</strong> Perform <a href="/docs-uan/upgrade/merge_uan_configuration_data/#merge-uan-configuration-data">Merge UAN Configuration Data</a> if a previous version of the UAN product was already installed.</p>
 </li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -944,8 +991,6 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -959,6 +1004,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
                     
                 
                 
@@ -978,6 +1024,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
