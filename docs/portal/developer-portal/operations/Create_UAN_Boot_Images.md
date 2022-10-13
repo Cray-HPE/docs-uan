@@ -39,7 +39,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 2. **Optional** Generate the password hash for the `root` user. Replace PASSWORD with the `root` password you wish to use.  If an upgrade or image rebuild is being performed, the root password may have already been added to vault.
 
     ```bash
-    ncn-m001# openssl passwd -6 -salt $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c4) PASSWORD
+    ncn-m001# openssl passwd -6 -salt $(< /dev/urandom tr -dc ./A-Za-z0-9 | head -c4) PASSWORD
     ```
 
 3. **Optional** Obtain the HashiCorp Vault `root` token.
@@ -53,11 +53,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
     The vault login command will request a token. That token value is the output of the previous step. The vault `read secret/uan` command verifies that the hash was stored correctly. This password hash will be written to the UAN for the `root` user by CFS.
 
     ```bash
-<<<<<<< HEAD
-    ncn-m001# kubectl exec -it -n vault cray-vault-0 -- sh
-=======
     ncn-m001# kubectl exec -it -n vault cray-vault-0 -c vault -- sh
->>>>>>> e1e508fe06dc57f525154576b059fa72b01b7d28
     export VAULT_ADDR=http://cray-vault:8200
     vault login
     vault write secret/uan root_password='HASH'

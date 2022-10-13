@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-# Test Plan for User Access Node (UAN)
-
-The following is the test plan for the User Access Node (UAN).  The tests are grouped in three categories:
-=======
 # Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN
 
 The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN.  The tests are grouped in three categories:
->>>>>>> e1e508fe06dc57f525154576b059fa72b01b7d28
 - Unit tests
 - Integration tests
 - Functional tests
@@ -35,20 +29,12 @@ The following integration tests verify that the UAN software interacts correctly
 
 ## Functional Tests
 
-<<<<<<< HEAD
-With a fully configured Shasta system, the following functional tests determines that a UAN is able to perform its intended capabilities.
-=======
 With a fully configured Shasta system, the following functional tests determines that a UAN is able to perform its intended capabilities. These tests apply to both native UANs and Compute Nodes which have been repurposed as UANs.
->>>>>>> e1e508fe06dc57f525154576b059fa72b01b7d28
 
 | Summary                      | Description                                                  | Automated | Notes                            |
 | ---------------------------- | ------------------------------------------------------------ | --------- | -------------------------------- |
 | User Authentication          | Verify a user is able to ssh to the UAN using LDAP authentication. | no        | `ssh user@uan`                   |
 | Job launch                   | Verify a user is able to submit a basic job.                 | no        | `srun hostname` |
 | Verify CPE                   | Verify the Cray Programming Environment is available         | no        | `module list`                    |
-<<<<<<< HEAD
-| Verify GPU functionality     | Run the test suite if GPUs are configured                    | yes       | `/opt/cray/uan/tests/validate-gpu.sh <nvidia|amd>` |
-=======
 | Verify GPU functionality     | Run the test suite if GPUs are configured                    | yes       | `/opt/cray/uan/tests/validate-gpu.sh <nvidia\|amd>` |
 | Verify CAN or CHN Configuration | Inspect the network interfaces and default routes used for CAN or CHN | no | <ul><li> For systems running CAN, there must be a `can0` interface present and the default route should be over that device.</li><li>For systems running CHN (including Compute Nodes repurposed as UANs), the `hsn0` interface must have a CHN IP in addition to the HSN IP and the default route should be over the `hsn0` device.</li></ul> |
->>>>>>> e1e508fe06dc57f525154576b059fa72b01b7d28
