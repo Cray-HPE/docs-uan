@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
 
-    <title>Cray Ex User Access Nodes Installation And Administration Guide :: User Access Node (UAN)</title>
+    <title>Upgrade UAN Software Product :: User Access Node (UAN)</title>
 
     
     <link href="/docs-uan/css/nucleus.css?1666295917" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/upgrade/upgrade_uan_software_product/">
     <nav id="sidebar" class="">
 
 
@@ -730,7 +730,7 @@
   
     
     <li data-nav-id="/docs-uan/upgrade/" title="Upgrade" class="dd-item
-        
+        parent
         
         
         ">
@@ -798,7 +798,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/upgrade/upgrade_uan_software_product/" title="Upgrade UAN Software Product" class="dd-item ">
+      <li data-nav-id="/docs-uan/upgrade/upgrade_uan_software_product/" title="Upgrade UAN Software Product" class="dd-item active">
         <a href="/docs-uan/upgrade/upgrade_uan_software_product/">
         Upgrade UAN Software Product
         
@@ -837,82 +837,138 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray Ex User Access Nodes Installation And Administration Guide</a> > <a href='/docs-uan/upgrade/'>Upgrade</a> > Upgrade UAN Software Product
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-cne-install">About <code>cne-install</code></a></li>
+    <li><a href="#upgrade-uan-automatically-with-cne-install">Upgrade UAN automatically with <code>cne-install</code></a></li>
+    <li><a href="#upgrade-uan-manually">Upgrade UAN manually</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="upgrade-uan-software-product">Upgrade UAN software product</h1>
+<p>Follow upgrade instructions in <a href="https://www.hpe.com/support/ex-S-8000"><em>HPE Cray EX System Software Getting Started Guide (S-8000)</em></a> to upgrade the UAN software product. Those instructions provide:</p>
+<ul>
+<li>Complete information about the options and arguments for the <code>cne-install</code> tool</li>
+<li>The correct sequence for upgrading UAN and other HPE Cray EX software products.</li>
+</ul>
+<p>If UAN and COS were upgraded at the same time using <code>cne-install</code>, skip these instructions and <a href="/docs-uan/operations/boot_uans/">Boot UANs</a>.</p>
+<h2 id="about-cne-install">About <code>cne-install</code></h2>
+<p>The Compute Node Environment (CNE) installer (<code>cne-install</code>) simplifies upgrading several products of the HPE Cray EX software like SLE, COS, Slingshot Host Software, UAN, SMA, and SAT by providing the ability to automate many CNE upgrade tasks. <code>cne-install</code> does not support fresh installations of the CNE software.</p>
+<p>The <code>cne-install</code> tool automates the upgrade of several compute node environment software products from tarball to producing a compute node image without interaction. This new tool automates the following:</p>
+<ul>
+<li>processing several product tarballs</li>
+<li>updating the git branches for each product</li>
+<li>updating the CFS configuration</li>
+<li>performing NCN personalization</li>
+<li>using <code>sat bootprep</code> to create and customize the compute and UAN node images</li>
+<li>creating the BOS session template in a single command</li>
+</ul>
+<p>The <code>cne-install</code> tool can also be used to automate only specific stages of this process, allowing administrators to also use manual steps when necessary.</p>
+<p>The UAN and COS installation and upgrade processes based on <code>install.sh</code> do not automatically affect the state of any other existing COS software on the system, for example COS software like the Data Virtualization Service (DVS) running on non-compute node (NCN) worker nodes or any COS software that runs on compute nodes. Administrators must perform additional procedures after the <code>install.sh</code> script has completed to use those upgraded software components. All of those tasks, however are performed automatically when administrators upgrade UAN via the <code>cne-install</code> tool.</p>
+<p>HPE recommends that customers:</p>
+<ul>
+<li><strong>Upgrade all of the CNE products at the same time using the <code>cne-install</code> tool whenever possible.</strong> This method greatly reduces chance of errors and saves customers time.</li>
+<li><strong>Upgrade COS and UAN at the same time using <code>cne-install</code> even if the other CNE products cannot be upgraded as well at the same time.</strong> The UAN software products depends heavily on the COS software product code. Therefore, COS upgrades will almost always require a UAN upgrade.</li>
+</ul>
+<p>Customer sites can use <code>cne-install</code> to upgrade UAN separately from COS, when necessary.</p>
+<h2 id="upgrade-uan-automatically-with-cne-install">Upgrade UAN automatically with <code>cne-install</code></h2>
+<p>Perform this procedure if UAN was not already upgraded according to the workflow in the <a href="https://www.hpe.com/support/ex-S-8000"><em>HPE Cray EX System Software Getting Started Guide (S-8000)</em></a>.</p>
+<ol>
+<li>Copy the release distribution tarball file for UAN and any other products you wish to upgrade to a dedicated directory on ncn-m001.</li>
+</ol>
+<p>If you only want to upgrade UAN, only the UAN tarball should be copied in this directory. The <code>cne-install</code> tool inspects the contents of the media directory and automatically upgrades supported products.</p>
+<ol start="3">
+<li>Run the CNE installer using the instructions in the <a href="https://www.hpe.com/support/ex-S-8000"><em>HPE Cray EX System Software Getting Started Guide (S-8000)</em></a>.</li>
+</ol>
+<p><code>cne-install</code> will create the compute node and UAN images, as well as the BOS session templates required to boot those images. The tool will log progress is logged to <code>LOG_DIR</code> (defaults to <code>$PWD/log</code>) and output goes to stdout. If <code>cne-install</code> fails, the user can perform manual steps to correct the action, then restart <code>cne-install</code> from any stage or just re-run that stage by itself.</p>
+<p>You do not need to perform any additional steps described in this document to configure UAN.</p>
+<ol start="4">
+<li>Perform <a href="/docs-uan/operations/boot_uans/">Boot UANs</a> to reboot the UANs with the new image.</li>
+</ol>
+<p>The <code>cne-install</code> tool does not reboot compute nodes or UANs. The name of the UAN bos-sessiontemplate file is the same one from the <code>sat bootprep</code> input files that were used in the <code>cne-install</code> command.</p>
+<h2 id="upgrade-uan-manually">Upgrade UAN manually</h2>
+<p>Performing a manual upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.</p>
+<p>The overall workflow for completing a UAN upgrade involves:</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
+<p>Perform the <a href="/docs-uan/install/install_the_uan_product_stream/">UAN Installation</a></p>
 </li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
+<p>Review any <a href="/docs-uan/upgrade/notable_changes/">Notable Changes</a></p>
 </li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
+<p><a href="/docs-uan/upgrade/merge_uan_configuration_data/">Merge UAN CFS Configuration Data</a></p>
 </li>
 <li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p><a href="/docs-uan/operations/create_uan_boot_images/">Create UAN images and reboot</a></p>
 </li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -944,8 +1000,6 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -959,6 +1013,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -992,6 +1049,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1010,6 +1068,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
