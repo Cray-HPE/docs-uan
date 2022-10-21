@@ -6,11 +6,11 @@
     <description>Recent content in Installation Prereqs on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 21 Oct 2022 14:16:11 +0000</lastBuildDate><atom:link href="/docs-uan/installation_prereqs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Oct 2022 14:17:27 +0000</lastBuildDate><atom:link href="/docs-uan/installation_prereqs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure The Bios Of A Gigabyte UAN</title>
       <link>/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</link>
-      <pubDate>Fri, 21 Oct 2022 14:16:09 +0000</pubDate>
+      <pubDate>Fri, 21 Oct 2022 14:17:25 +0000</pubDate>
       
       <guid>/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</guid>
       <description>Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.
@@ -22,7 +22,7 @@ Before the UAN product can be installed on Gigabyte UANs, specific network inter
     <item>
       <title>Configure The Bios Of An HPE UAN</title>
       <link>/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/</link>
-      <pubDate>Fri, 21 Oct 2022 14:16:09 +0000</pubDate>
+      <pubDate>Fri, 21 Oct 2022 14:17:25 +0000</pubDate>
       
       <guid>/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
       <description>Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
@@ -35,7 +35,7 @@ In the following command, UAN_BMC_XNAME is the xname of the BMC of the UAN to co
     <item>
       <title>Configure The BMC For UANs With Ilo</title>
       <link>/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</link>
-      <pubDate>Fri, 21 Oct 2022 14:16:09 +0000</pubDate>
+      <pubDate>Fri, 21 Oct 2022 14:17:25 +0000</pubDate>
       
       <guid>/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
       <description>Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
@@ -47,7 +47,7 @@ Perform the first three steps of Prepare for UAN Product Installation before per
     <item>
       <title>Prepare For UAN Product Installation</title>
       <link>/docs-uan/installation_prereqs/prepare_for_uan_product_installation/</link>
-      <pubDate>Fri, 21 Oct 2022 14:16:09 +0000</pubDate>
+      <pubDate>Fri, 21 Oct 2022 14:17:25 +0000</pubDate>
       
       <guid>/docs-uan/installation_prereqs/prepare_for_uan_product_installation/</guid>
       <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
