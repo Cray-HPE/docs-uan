@@ -111,11 +111,6 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 #header a {
     display: inline-block;
 }
-#logo {
-    color: white !important;
-    font-size: 1.1em;
-    float: left;
-}
 #header #logo-svg {
     width: 8rem;
     height: 2rem;
