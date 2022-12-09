@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en-255" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.87.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
+
+    <title>Configure Pluggable Authentication Modules (pam) On UANs :: User Access Node (UAN)</title>
+
+    
+    <link href="/docs-uan/css/nucleus.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/fontawesome-all.min.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/hybrid.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/featherlight.min.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/perfect-scrollbar.min.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/auto-complete.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/atom-one-dark-reasonable.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/theme.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/tabs.css?1670616772" rel="stylesheet">
+    <link href="/docs-uan/css/hugo-theme.css?1670616772" rel="stylesheet">
+    
+    <link href="/docs-uan/css/theme-green.css?1670616772" rel="stylesheet">
+    
+    
+
+    <script src="/docs-uan/js/jquery-3.3.1.min.js?1670616772"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href='/'>
+  User Access Nodes
+</a>
+
+    </div>
+
+    
+
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/docs-uan/js/lunr.min.js?1670616772"></script>
+<script type="text/javascript" src="/docs-uan/js/auto-complete.js?1670616772"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/docs-uan\/";
+    
+</script>
+<script type="text/javascript" src="/docs-uan/js/search.js?1670616772"></script>
+
+    
+  </div>
+
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/advanced/" title="Advanced" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/advanced/">
+          Advanced
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/sles_image/" title="Booting An Application Node With A Sles Image (techNICal Preview)" class="dd-item ">
+        <a href="/docs-uan/advanced/sles_image/">
+        Booting An Application Node With A Sles Image (techNICal Preview)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/repurposing_compute_as_uan/" title="Repurposing A Compute Node As A UAN" class="dd-item ">
+        <a href="/docs-uan/advanced/repurposing_compute_as_uan/">
+        Repurposing A Compute Node As A UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="Customizing UAN Images Manually" class="dd-item ">
+        <a href="/docs-uan/advanced/customizing_uan_images_manually/">
+        Customizing UAN Images Manually
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/enabling_can_chn/" title="Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)" class="dd-item ">
+        <a href="/docs-uan/advanced/enabling_can_chn/">
+        Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/install/" title="Install" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/install/">
+          Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/install/install_the_uan_product_stream/" title="Install The UAN Product Stream" class="dd-item ">
+        <a href="/docs-uan/install/install_the_uan_product_stream/">
+        Install The UAN Product Stream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/installation_prereqs/" title="Installation Prereqs" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/installation_prereqs/">
+          Installation Prereqs
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="Configure The Bios Of A Gigabyte UAN" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
+        Configure The Bios Of A Gigabyte UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/" title="Configure The Bios Of An HPE UAN" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/">
+        Configure The Bios Of An HPE UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/" title="Configure The BMC For UANs With Ilo" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/">
+        Configure The BMC For UANs With Ilo
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/" title="Prepare For UAN Product Installation" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">
+        Prepare For UAN Product Installation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/operations/" title="Operations" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/docs-uan/operations/">
+          Operations
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/boot_uans/" title="Boot UANs" class="dd-item ">
+        <a href="/docs-uan/operations/boot_uans/">
+        Boot UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/" title="Build A New UAN Image Using A Cos Recipe" class="dd-item ">
+        <a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">
+        Build A New UAN Image Using A Cos Recipe
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/configure_interfaces_on_uans/" title="Configure Interfaces On UANs" class="dd-item ">
+        <a href="/docs-uan/operations/configure_interfaces_on_uans/">
+        Configure Interfaces On UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/" title="Configure Pluggable Authentication Modules (pam) On UANs" class="dd-item active">
+        <a href="/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/">
+        Configure Pluggable Authentication Modules (pam) On UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/create_uan_boot_images/" title="Create UAN Boot Images" class="dd-item ">
+        <a href="/docs-uan/operations/create_uan_boot_images/">
+        Create UAN Boot Images
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="Mount A New File System On A UAN" class="dd-item ">
+        <a href="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
+        Mount A New File System On A UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/uan_ansible_roles/" title="UAN Ansible Roles" class="dd-item ">
+        <a href="/docs-uan/operations/uan_ansible_roles/">
+        UAN Ansible Roles
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/about_uan_configuration/" title="About UAN Configuration" class="dd-item ">
+        <a href="/docs-uan/operations/about_uan_configuration/">
+        About UAN Configuration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/test-plan/" title="Test-plan" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/test-plan/">
+          Test-plan
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/test-plan/test-plan/" title="Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan" class="dd-item ">
+        <a href="/docs-uan/test-plan/test-plan/">
+        Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/troubleshooting/" title="Troubleshooting" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/troubleshooting/">
+          Troubleshooting
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/" title="Troubleshoot UAN Boot Issues" class="dd-item ">
+        <a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">
+        Troubleshoot UAN Boot Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="Troubleshoot UAN CFS And Network Configuration Issues" class="dd-item ">
+        <a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
+        Troubleshoot UAN CFS And Network Configuration Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="Troubleshoot UAN Disk Configuration Issues" class="dd-item ">
+        <a href="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
+        Troubleshoot UAN Disk Configuration Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+      
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/upgrade/" title="Upgrade" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/upgrade/">
+          Upgrade
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/upgrade/merge_uan_configuration_data/" title="Merge UAN Configuration Data" class="dd-item ">
+        <a href="/docs-uan/upgrade/merge_uan_configuration_data/">
+        Merge UAN Configuration Data
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/upgrade/notable_changes/" title="Notable Changes" class="dd-item ">
+        <a href="/docs-uan/upgrade/notable_changes/">
+        Notable Changes
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/upgrade/upgrade_uan_software_product/" title="Upgrade UAN Software Product" class="dd-item ">
+        <a href="/docs-uan/upgrade/upgrade_uan_software_product/">
+        Upgrade UAN Software Product
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'>Cray Ex User Access Nodes Installation And Administration Guide</a> > <a href='/docs-uan/operations/'>Operations</a> > Configure Pluggable Authentication Modules (pam) On UANs
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+            </h1>
+          
+
+        
+
+
+<h1 id="configure-pluggable-authentication-modules-pam-on-uans">Configure Pluggable Authentication Modules (PAM) on UANs</h1>
+<p>Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.</p>
+<p>Intialize and configure the Cray command line interface (CLI) tool on the system. See &ldquo;Configure the Cray Command Line Interface (CLI)&rdquo; in the CSM documentation for more information.</p>
+<ol>
+<li>
+<p>Verify that the Gitea Version Control Service (VCS) is running.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# kubectl get pods --all-namespaces | grep vcs
+services          gitea-vcs-f57c54c4f-j8k4t          2/2     Running             <span style="color:#ae81ff">1</span>          11d
+services          gitea-vcs-postgres-0               2/2     Running             <span style="color:#ae81ff">0</span>          11d
+</code></pre></div></li>
+<li>
+<p>Retrieve the initial Gitea login credentials for the <code>crayvcs</code> username.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-m001# kubectl get secret -n services vcs-user-credentials <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --template<span style="color:#f92672">={{</span>.data.vcs_password<span style="color:#f92672">}}</span> | base64 --decode
+</code></pre></div><p>These credentials can be modified in the <code>vcs_user</code> role prior to installation or can be modified after logging in.</p>
+</li>
+<li>
+<p>Use an external web browser to verify the Ansible plays are available on the system.</p>
+<p>The URL will take on the following format:</p>
+<p>https://api.SYSTEM-NAME.DOMAIN-NAME/vcs</p>
+</li>
+<li>
+<p>Clone the system Version Control Service (VCS) repository to a directory on the system.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git clone https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git
+</code></pre></div></li>
+<li>
+<p>Change to the <code>uan-config-management</code> directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# cd uan-config-management
+</code></pre></div></li>
+<li>
+<p>Make a new directory for the PAM configuration.</p>
+<p>a. Create a <code>group_vars/all</code> directory if making changes to all UANs.</p>
+<pre><code> ```bash
+ ncn-w001# mkdir -p group_vars/all
+ ncn-w001# cd group_vars/all
+ ```
+</code></pre>
+<p>b. Create a <code>host_vars/XNAME</code> directory if the change is node specific.</p>
+<pre><code> ```bash
+ ncn-w001# mkdir -p host_vars/XNAME
+ ncn-w001# cd host_vars/XNAME
+ ```
+</code></pre>
+</li>
+<li>
+<p>Configure PAM.</p>
+<p>The default path is <code>/etc/pam.d/</code>, so only the module file name is required.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># vi pam.yml</span>
+---
+uan_pam_modules:
+  - name: pam_module_file_name
+    lines:
+      - <span style="color:#e6db74">&#34;add this line to pam module file_name&#34;</span> 
+      - <span style="color:#e6db74">&#34;add another line to pam module file_name&#34;</span>  
+  - name: another_pam_module_file_name    
+    lines:    
+      - <span style="color:#e6db74">&#34;add this line to another_pam_module_file_name&#34;</span>
+</code></pre></div><p>The following is an example of adding the line <code>&quot;account required pam\_access.so&quot;</code> to the <code>/etc/pam.d/common-account</code> PAM file. The \t is used to place a tab between <code>account required</code> and <code>pam\_access.so</code> to match the formatting of the common-account file contents. The quotes are required in the strings used in the <code>lines</code> filed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---
+uan_pam_modules:
+  - name: common-account
+    lines:
+      - <span style="color:#e6db74">&#34;account required\tpam_access.so&#34;</span> 
+</code></pre></div></li>
+<li>
+<p>Add the change from the working directory to the staging area.</p>
+<ul>
+<li>
+<p>All UANs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git add group_vars/all/pam.yml
+</code></pre></div></li>
+<li>
+<p>Node specific:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git add host_vars/XNAME/pam.yml
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Commit the file to the master branch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git commit -am <span style="color:#e6db74">&#39;Added PAM configuration&#39;</span>
+</code></pre></div></li>
+<li>
+<p>Push the commit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# git push
+</code></pre></div><p>If prompted, use the Gitea login credentials.</p>
+</li>
+<li>
+<p>Reboot the UAN(s) with the Boot Orchestration Service (BOS).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ncn-w001# cray bos session create <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --template-uuid UAN_SESSION_TEMPLATE --operation reboot
+</code></pre></div></li>
+</ol>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/docs-uan/js/clipboard.min.js?1670616772"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.min.js?1670616772"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.jquery.min.js?1670616772"></script>
+    <script src="/docs-uan/js/jquery.sticky.js?1670616772"></script>
+    <script src="/docs-uan/js/featherlight.min.js?1670616772"></script>
+    <script src="/docs-uan/js/highlight.pack.js?1670616772"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/docs-uan/js/modernizr.custom-3.6.0.js?1670616772"></script>
+    <script src="/docs-uan/js/learn.js?1670616772"></script>
+    <script src="/docs-uan/js/hugo-learn.js?1670616772"></script>
+    
+        
+            <script src="/docs-uan/mermaid/mermaid.js?1670616772"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+
