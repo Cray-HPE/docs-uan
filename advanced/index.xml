@@ -6,32 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 10 Dec 2022 00:53:37 +0000</lastBuildDate><atom:link href="/docs-uan/advanced/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>/docs-uan/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Sat, 10 Dec 2022 00:53:35 +0000</pubDate>
-      
-      <guid>/docs-uan/advanced/repurposing_compute_as_uan/</guid>
-      <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
-Overview The following steps outline the process of repurposing a compute node to be used as a UAN.
-  Verify the System Default Route is set to CHN.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/advanced/sles_image/</link>
-      <pubDate>Sat, 10 Dec 2022 00:53:35 +0000</pubDate>
-      
-      <guid>/docs-uan/advanced/sles_image/</guid>
-      <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
-The image is built with the same packer/qemu pipeline as Non-Compute-Node Images.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 10 Dec 2022 00:54:49 +0000</lastBuildDate><atom:link href="/docs-uan/advanced/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/advanced/customizing_uan_images_manually/</link>
-      <pubDate>Sat, 10 Dec 2022 00:53:34 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:54:46 +0000</pubDate>
       
       <guid>/docs-uan/advanced/customizing_uan_images_manually/</guid>
       <description>Customizing UAN Images Manually   Query IMS for the UAN Image you want to customize.
@@ -42,12 +21,33 @@ ncn-m001:~/ $ export IMS_IMAGE_ID=6d46d601-c41f-444d-8b49-c9a2a55d3c21   Using t
     <item>
       <title></title>
       <link>/docs-uan/advanced/enabling_can_chn/</link>
-      <pubDate>Sat, 10 Dec 2022 00:53:34 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:54:46 +0000</pubDate>
       
       <guid>/docs-uan/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.
   Enable CAN or CHN by setting the following in the UAN CFS repo (the filename may be modified to whatever is appropriate):
 ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/advanced/repurposing_compute_as_uan/</link>
+      <pubDate>Sat, 10 Dec 2022 00:54:46 +0000</pubDate>
+      
+      <guid>/docs-uan/advanced/repurposing_compute_as_uan/</guid>
+      <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
+Overview The following steps outline the process of repurposing a compute node to be used as a UAN.
+  Verify the System Default Route is set to CHN.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/advanced/sles_image/</link>
+      <pubDate>Sat, 10 Dec 2022 00:54:46 +0000</pubDate>
+      
+      <guid>/docs-uan/advanced/sles_image/</guid>
+      <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
+The image is built with the same packer/qemu pipeline as Non-Compute-Node Images.</description>
     </item>
     
   </channel>
