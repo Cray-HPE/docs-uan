@@ -6,11 +6,22 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 10 Dec 2022 00:21:26 +0000</lastBuildDate><atom:link href="/docs-uan/operations/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Dec 2022 00:41:42 +0000</lastBuildDate><atom:link href="/docs-uan/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/about_uan_configuration/</link>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/about_uan_configuration/</guid>
+      <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
+UAN configuration overview Configuration of UAN nodes is performed by the Configuration Framework Service (CFS). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
+The Ansible roles involved in UAN configuration are listed in the site.</description>
+    </item>
+    
     <item>
       <title></title>
       <link>/docs-uan/operations/boot_uans/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -22,7 +33,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
       <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the uan_packages role.
@@ -33,7 +44,7 @@ Perform the following before starting this procedure:
     <item>
       <title></title>
       <link>/docs-uan/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/configure_interfaces_on_uans/</guid>
       <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
@@ -44,7 +55,7 @@ In the command examples in this procedure, PRODUCT_VERSION refers to the current
     <item>
       <title></title>
       <link>/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
@@ -56,7 +67,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title></title>
       <link>/docs-uan/operations/create_uan_boot_images/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
@@ -66,7 +77,7 @@ UAN specific configuration, and other required configurations related to UANs ar
     <item>
       <title></title>
       <link>/docs-uan/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -79,24 +90,13 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.<
     <item>
       <title></title>
       <link>/docs-uan/operations/uan_ansible_roles/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:24 +0000</pubDate>
+      <pubDate>Sat, 10 Dec 2022 00:41:40 +0000</pubDate>
       
       <guid>/docs-uan/operations/uan_ansible_roles/</guid>
       <description>UAN Ansible Roles uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
 Requirements There must be disk devices found on the UAN node by the device_filter module or this role will exit with failure. This condition can be ignored by setting uan_require_disk to false. See variable definitions below.
 See the library/device_filter.py file for more information on this module.
 The device that is found will be unmounted if mounted and a swap partition will be created on the first half of the disk, and a scratch partition on the second half.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/operations/about_uan_configuration/</link>
-      <pubDate>Sat, 10 Dec 2022 00:21:23 +0000</pubDate>
-      
-      <guid>/docs-uan/operations/about_uan_configuration/</guid>
-      <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
-UAN configuration overview Configuration of UAN nodes is performed by the Configuration Framework Service (CFS). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
-The Ansible roles involved in UAN configuration are listed in the site.</description>
     </item>
     
   </channel>
