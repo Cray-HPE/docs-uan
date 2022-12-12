@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 12 Dec 2022 22:54:18 +0000</lastBuildDate><atom:link href="/docs-uan/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Dec 2022 23:05:34 +0000</lastBuildDate><atom:link href="/docs-uan/upgrade/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/upgrade/notable_changes/</link>
-      <pubDate>Mon, 12 Dec 2022 22:54:16 +0000</pubDate>
+      <pubDate>Mon, 12 Dec 2022 23:05:32 +0000</pubDate>
       
       <guid>/docs-uan/upgrade/notable_changes/</guid>
       <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
@@ -20,7 +20,7 @@ When an upgrade is being performed, please review the notable changes for all of
     <item>
       <title></title>
       <link>/docs-uan/upgrade/upgrade_uan_software_product/</link>
-      <pubDate>Mon, 12 Dec 2022 22:54:16 +0000</pubDate>
+      <pubDate>Mon, 12 Dec 2022 23:05:32 +0000</pubDate>
       
       <guid>/docs-uan/upgrade/upgrade_uan_software_product/</guid>
       <description>Upgrade UAN software product Follow upgrade instructions in HPE Cray EX System Software Getting Started Guide (S-8000) to upgrade the UAN software product. Those instructions provide:
@@ -30,7 +30,7 @@ When an upgrade is being performed, please review the notable changes for all of
     <item>
       <title></title>
       <link>/docs-uan/upgrade/merge_uan_configuration_data/</link>
-      <pubDate>Mon, 12 Dec 2022 22:54:16 +0000</pubDate>
+      <pubDate>Mon, 12 Dec 2022 23:05:32 +0000</pubDate>
       
       <guid>/docs-uan/upgrade/merge_uan_configuration_data/</guid>
       <description>Merge UAN Configuration Data Perform this procedure to update the UAN product configuration.
