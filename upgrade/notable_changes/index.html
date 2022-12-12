@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/upgrade/notable_changes/">
     <nav id="sidebar" class="">
 
 
@@ -673,7 +673,7 @@
   
     
     <li data-nav-id="/docs-uan/upgrade/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -699,7 +699,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/upgrade/notable_changes/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/upgrade/notable_changes/" title="" class="dd-item active">
         <a href="/docs-uan/upgrade/notable_changes/">
         Notable Changes
         
@@ -837,82 +837,147 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/upgrade/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#uan-22">UAN 2.2</a></li>
+    <li><a href="#uan-231">UAN 2.3.1</a></li>
+    <li><a href="#uan-240">UAN 2.4.0</a></li>
+    <li><a href="#uan-241">UAN 2.4.1</a></li>
+    <li><a href="#uan-242">UAN 2.4.2</a></li>
+    <li><a href="#uan-243">UAN 2.4.3</a></li>
+    <li><a href="#uan-253">UAN 2.5.3</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<ol>
-<li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
+<h1 id="notable-changes">Notable Changes</h1>
+<p>The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.</p>
+<p>When an upgrade is being performed, please review the notable changes for <strong>all</strong> of the UAN versions up to the version being installed. If a particular version does not appear in this guide, it may have only had minor changes. For a full account of the changes involved in a release, consult the ChangeLog.md file at the root of the UAN product repository.</p>
+<h2 id="uan-22">UAN 2.2</h2>
 <ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
+<li>UAN 2.2 was an internal release and was not made generally available.</li>
+</ul>
+<h2 id="uan-231">UAN 2.3.1</h2>
+<ul>
+<li>UAN 2.3 no longer ships a default recipe or image. To build a UAN image, administrators should select a COS recipe to build as the base of their UAN and Application Nodes.</li>
+<li>The role <code>uan_packages</code> will now install the rpms needed by UAN and Application Nodes</li>
+<li>The role <code>uan_packages</code> supports GPG checking when the CSM version is 1.2 or greater.
+<ul>
+<li><code>uan_disable_gpg_check: yes</code> must be set if CSM is earlier than 1.2</li>
+<li><code>uan_disable_gpg_check: no</code> should be set if CSM is 1.2 or greater</li>
 </ul>
 </li>
-<li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
+</ul>
+<h2 id="uan-240">UAN 2.4.0</h2>
 <ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
+<li>UAN 2.4.0 adds support for a Bifurcated Customer Access Network (BiCAN) and the ability to specify a default route other than the CAN or CHN when they are selected.
+<ul>
+<li>Application nodes may now choose to implement user access over either the existing Customer Access Network (CAN), the new Customer High Speed Network (CHN), or a direct connection to the customers user network.  By default, a direct connection is selected as it was in previous releases.
+<ul>
+<li><code>uan_can_setup</code>, when set to <code>yes</code>, selects the customer access network implementation based on the setting of the BICAN System Default Route in SLS.</li>
+<li>Application nodes may now set a default route other than the CAN or CHN default route when <code>uan_can_setup: yes</code>.</li>
+<li><code>uan_customer_default_route: true</code> will allow a customer defined default route to be set using the <code>customer_uan_routes</code> structure when <code>uan_can_setup</code> is set to <code>yes</code>.</li>
 </ul>
 </li>
-<li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
 </ul>
 </li>
-<li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
+<li><code>sat bootprep</code> is now used in the documentation to streamline the IMS, CFS, and BOS commands to create and customize images and creating sessiontemplates.</li>
+</ul>
+<h2 id="uan-241">UAN 2.4.1</h2>
 <ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
+<li>The UAN CFS playbook now supports a section for Compute nodes. The Compute section will run the role <code>uan_interfaces</code> to provide Customer High Speeed Network (CHN) routing.
+<ul>
+<li>CHN on the Compute nodes requires:
+<ul>
+<li>Customer High Speed Network has been enabled in CSM. See &ldquo;Enabling Customer High Speed Network Routing&rdquo; in the CSM Documentation</li>
+<li>UAN CFS configurd with <code>uan_can_setup: yes</code></li>
+<li>Fully configured HSN</li>
+<li>SLS has IP assignments for compute nodes on hsn0</li>
 </ul>
 </li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
 </ul>
 </li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
+<li>Updates to GPU roles to match COS 2.3</li>
 </ul>
-</li>
-</ol>
+<h2 id="uan-242">UAN 2.4.2</h2>
+<ul>
+<li>There is a known issue with the version of GPU support included in the UAN CFS repo. The result is that both AMD and Nvidia SDKs are not able to be projected at the same time. Until this is resolved in a later release, modify the site.yml in the UAN CFS repo to only include either amd or nvidia.</li>
+</ul>
+<h2 id="uan-243">UAN 2.4.3</h2>
+<ul>
+<li>A new CFS role, <code>uan_hardening</code> adds iptables rules that will block SSH traffic to NCNs. See the README.md in the uan_hardening role for more information.</li>
+</ul>
+<h2 id="uan-253">UAN 2.5.3</h2>
+<ul>
+<li>A technical preview of a standard SLES image for UAN/Application nodes is included.</li>
+<li>Support SLES15SP4 COS based images</li>
+</ul>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1347,6 +1412,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1359,6 +1425,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
                     
                 
                 
@@ -1375,6 +1442,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
