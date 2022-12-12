@@ -1,19 +1,5 @@
 [
 {
-	"uri": "/docs-uan/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "Cray EX User Access Nodes Installation and Administration Guide This document describes the installation prequisites, installation procedures, and operational procedures for Cray EX User Access Nodes (UAN).\nTable of Contents   Installation Prerequisites\nTopics:\n Management Network Switch Configuration BMC Configuration BIOS configuration UAN BMC Firmware Software Prerequisites    Upgrades\nTopics:\n Upgrade Workflow Notable Changes From Previous Versions Merging UAN Configuration Data    UAN Software Installation\nTopics:\n Download and Prepare the UAN Software Package Run the Installation Script Installation Verification    Operational Tasks\nTopics:\n Build a New UAN Image Using the COS Recipe UAN Image Pre-boot Configuration Customizing UAN images Preparing UAN Boot Session Templates Booting UAN Nodes    Advanced Topics\nTopics:\n Customizing UANs Manually    Troubleshooting\n Debugging UAN Booting Issues Debugging UAN Configuration Issues    "
-},
-{
-	"uri": "/docs-uan/installation_prereqs/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "Installation Prereqs Topics:  Prepare For UAN Product Installation Configure The BMC For UANs With iLO Configure The BIOS Of An HPE UAN Configure The BIOS Of A Gigabyte UAN  "
-},
-{
 	"uri": "/docs-uan/installation_prereqs/prepare_for_uan_product_installation/",
 	"title": "",
 	"tags": [],
@@ -40,6 +26,20 @@
 	"tags": [],
 	"description": "",
 	"content": "Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.\nBefore the UAN product can be installed on Gigabyte UANs, specific network interface and boot settings must be configured in the BIOS.\n  Press the Delete key to enter the setup utility when prompted to do so in the console.\n  Navigate to the boot menu.\n  Set the Boot Option #1 field to Network:UEFI: PXE IP4 Intel(R) I350 Gigabit Network Connection.\n  Set all other Boot Option fields to Disabled.\n  Ensure that the boot mode is set to [UEFI].\n  Confirm that the time is set correctly. If the time is not accurate, correct it now.\nIncorrect time will cause PXE booting issues.\n  Select Save \u0026amp; Exit to save the settings.\n  Select Yes to confirm and press the Enter key.\nThe UAN will reboot.\n  Optional: Run the following IPMI commands if the BIOS settings do not persist.\nIn these example commands, the BMC of the UAN is x3000c0s27b0. Replace USERNAME and PASSWORD with username and password of the BMC of the UAN. These commands do the following:\n Power off the node Perform a reset. Set the PXE boot in the options. Power on the node  ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 power off ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 mc reset cold ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 chassis bootdev pxe \\ options=efiboot,persistent ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 power on   "
+},
+{
+	"uri": "/docs-uan/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "Cray EX User Access Nodes Installation and Administration Guide This document describes the installation prequisites, installation procedures, and operational procedures for Cray EX User Access Nodes (UAN).\nTable of Contents   Installation Prerequisites\nTopics:\n Management Network Switch Configuration BMC Configuration BIOS configuration UAN BMC Firmware Software Prerequisites    Upgrades\nTopics:\n Upgrade Workflow Notable Changes From Previous Versions Merging UAN Configuration Data    UAN Software Installation\nTopics:\n Download and Prepare the UAN Software Package Run the Installation Script Installation Verification    Operational Tasks\nTopics:\n Build a New UAN Image Using the COS Recipe UAN Image Pre-boot Configuration Customizing UAN images Preparing UAN Boot Session Templates Booting UAN Nodes    Advanced Topics\nTopics:\n Customizing UANs Manually    Troubleshooting\n Debugging UAN Booting Issues Debugging UAN Configuration Issues    "
+},
+{
+	"uri": "/docs-uan/installation_prereqs/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "Installation Prereqs Topics:  Prepare For UAN Product Installation Configure The BMC For UANs With iLO Configure The BIOS Of An HPE UAN Configure The BIOS Of A Gigabyte UAN  "
 },
 {
 	"uri": "/docs-uan/install/",
