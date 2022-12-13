@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on User Access Node (UAN)</title>
-    <link>/docs-uan/categories/index.html</link>
+    <link>/docs-uan/categories/</link>
     <description>Recent content in Categories on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language><atom:link href="/docs-uan/categories/index.xml" rel="self" type="application/rss+xml" />

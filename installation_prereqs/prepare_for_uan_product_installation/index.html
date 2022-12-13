@@ -1,70 +1,904 @@
 <!DOCTYPE html>
-<html lang="en-257" dir="ltr">
+<html lang="en-257" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.101.0">
-    <meta name="generator" content="Relearn 5.8.1+tip">
-    <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.101.0" />
     <meta name="description" content="">
-    <title>User Access Node (UAN)</title>
-    <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="/docs-uan/css/fontawesome-all.min.css?1670968067" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/docs-uan/css/fontawesome-all.min.css?1670968067" rel="stylesheet"></noscript>
-    <link href="/docs-uan/css/featherlight.min.css?1670968067" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/docs-uan/css/featherlight.min.css?1670968067" rel="stylesheet"></noscript>
-    <link href="/docs-uan/css/auto-complete.css?1670968067" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/docs-uan/css/auto-complete.css?1670968067" rel="stylesheet"></noscript>
-    <link href="/docs-uan/css/perfect-scrollbar.min.css?1670968067" rel="stylesheet">
-    <link href="/docs-uan/css/nucleus.css?1670968067" rel="stylesheet">
-    <link href="/docs-uan/css/fonts.css?1670968067" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/docs-uan/css/fonts.css?1670968067" rel="stylesheet"></noscript>
-    <link href="/docs-uan/css/theme.css?1670968067" rel="stylesheet">
-    <link href="/docs-uan/css/theme-green.css?1670968067" rel="stylesheet" id="variant-style">
-    <link href="/docs-uan/css/ie.css?1670968067" rel="stylesheet">
-    <link href="/docs-uan/css/variant.css?1670968067" rel="stylesheet">
-    <link href="/docs-uan/css/print.css?1670968067" rel="stylesheet" media="print">
-    <script src="/docs-uan/js/url.js?1670968067"></script>
-    <script src="/docs-uan/js/variant.js?1670968067"></script>
-    <script>
-      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
-      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
-      window.index_js_url="/docs-uan/index.search.js";
-      var root_url="/";
-      var baseUri=root_url.replace(/\/$/, '');
-      // translations
-      window.T_Copy_to_clipboard = '';
-      window.T_Copied_to_clipboard = '';
-      window.T_Copy_link_to_clipboard = '';
-      window.T_Link_copied_to_clipboard = '';
-      window.T_No_results_found = '';
-      window.T_N_results_found = '';
-      // some further base stuff
-      var baseUriFull='docs-uan/';
-      window.variants && variants.init( [ 'green' ] );
-    </script>
-    <script src="/docs-uan/js/jquery.min.js?1670968067" defer></script>
+
+
+    <link rel="icon" href="/docs-uan/images/favicon.png" type="image/png">
+
+    <title> :: User Access Node (UAN)</title>
+
+    
+    <link href="/docs-uan/css/nucleus.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/fontawesome-all.min.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/hybrid.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/featherlight.min.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/perfect-scrollbar.min.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/auto-complete.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/atom-one-dark-reasonable.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/theme.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/tabs.css?1670968531" rel="stylesheet">
+    <link href="/docs-uan/css/hugo-theme.css?1670968531" rel="stylesheet">
+    
+    <link href="/docs-uan/css/theme-green.css?1670968531" rel="stylesheet">
+    
+    
+
+    <script src="/docs-uan/js/jquery-3.3.1.min.js?1670968531"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
   </head>
-  <body class="mobile-support html" data-url="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/index.html">
-    <div id="body" class="default-animation">
-      <div id="sidebar-overlay"></div>
-      <div id="toc-overlay"></div>
-      <nav id="topbar" class="highlightable" dir="ltr">
-        <div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title=' (CTRL+ALT+n)'><i class="fas fa-bars fa-fw"></i></a>
-            </span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/docs-uan/index.html"><span itemprop="name">User Access Node (UAN)</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/docs-uan/installation_prereqs/index.html"><span itemprop="name">User Access Node (UAN)</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">User Access Node (UAN)</span><meta itemprop="position" content="3"></li>
-            </ol>
-          </div>
+  <body class="" data-url="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href='/docs-uan/'>
+<img src="/docs-uan/images/hpe.png" alt="HPE" />
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/docs-uan/js/lunr.min.js?1670968531"></script>
+<script type="text/javascript" src="/docs-uan/js/auto-complete.js?1670968531"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/docs-uan\/";
+    
+</script>
+<script type="text/javascript" src="/docs-uan/js/search.js?1670968531"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/installation_prereqs/" title="" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/docs-uan/installation_prereqs/">
+          Installation Prereqs
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/" title="" class="dd-item active">
+        <a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">
+        Prepare For UAN Product Installation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/" title="" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/">
+        Configure The BMC For UANs With iLO
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/" title="" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/configure_the_bios_of_an_hpe_uan/">
+        Configure The BIOS Of An HPE UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="" class="dd-item ">
+        <a href="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
+        Configure The BIOS Of A Gigabyte UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/install/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/install/">
+          Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/install/install_the_uan_product_stream/" title="" class="dd-item ">
+        <a href="/docs-uan/install/install_the_uan_product_stream/">
+        Install The UAN Product Stream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/operations/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/operations/">
+          Operations
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/about_uan_configuration/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/about_uan_configuration/">
+        About UAN Configuration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">
+        Build A New UAN Image Using A COS Recipe
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/create_uan_boot_images/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/create_uan_boot_images/">
+        Create UAN Boot Images
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
+        Mount A New File System On A UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/configure_interfaces_on_uans/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/configure_interfaces_on_uans/">
+        Configure Interfaces On UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/">
+        Configure Pluggable Authentication Modules (pam) On UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/boot_uans/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/boot_uans/">
+        Boot UANs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/operations/uan_ansible_roles/" title="" class="dd-item ">
+        <a href="/docs-uan/operations/uan_ansible_roles/">
+        UAN Ansible Roles 
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/advanced/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/advanced/">
+          Advanced
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="" class="dd-item ">
+        <a href="/docs-uan/advanced/customizing_uan_images_manually/">
+        Customizing UAN Images Manually
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/enabling_can_chn/" title="" class="dd-item ">
+        <a href="/docs-uan/advanced/enabling_can_chn/">
+        Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/repurposing_compute_as_uan/" title="" class="dd-item ">
+        <a href="/docs-uan/advanced/repurposing_compute_as_uan/">
+        Repurposing A Compute Node As A UAN
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/advanced/sles_image/" title="" class="dd-item ">
+        <a href="/docs-uan/advanced/sles_image/">
+        Booting An Application Node With A Sles Image (techNICal Preview)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/upgrade/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/upgrade/">
+          Upgrade
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/upgrade/notable_changes/" title="" class="dd-item ">
+        <a href="/docs-uan/upgrade/notable_changes/">
+        Notable Changes
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/upgrade/upgrade_uan_software_product/" title="" class="dd-item ">
+        <a href="/docs-uan/upgrade/upgrade_uan_software_product/">
+        Upgrade UAN Software Product
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/upgrade/merge_uan_configuration_data/" title="" class="dd-item ">
+        <a href="/docs-uan/upgrade/merge_uan_configuration_data/">
+        Merge UAN Configuration Data
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/troubleshooting/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/troubleshooting/">
+          Troubleshooting
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/" title="" class="dd-item ">
+        <a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">
+        Troubleshoot UAN Boot Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="" class="dd-item ">
+        <a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
+        Troubleshoot UAN CFS And Network Configuration Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="" class="dd-item ">
+        <a href="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
+        Troubleshoot UAN Disk Configuration Issues
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs-uan/test-plan/" title="" class="dd-item
+        
+        
+        
+        ">
+      <a href="/docs-uan/test-plan/">
+          Test-plan
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs-uan/test-plan/test-plan/" title="" class="dd-item ">
+        <a href="/docs-uan/test-plan/test-plan/">
+        Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/installation_prereqs/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
         </div>
-      </nav>
-      <main id="body-inner" class="highlightable default" tabindex="-1">
-        <div class="flex-block-wrapper">
-          <div id="head-tags">
-          </div>
-          <article class="default">
-<h1 id=""></h1>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              
+            </h1>
+          
+
+        
+
 
 <h1 id="prepare-for-uan-product-installation">Prepare for UAN Product Installation</h1>
 <p>Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.</p>
@@ -145,81 +979,573 @@ x3000c0s31b0n0
 </ol>
 <p>Next, install the UAN product by performing the procedure <a href="/docs-uan/install/install_the_uan_product_stream/#install-the-uan-product-stream">Install the UAN Product Stream</a>.</p>
 
-            <footer class="footline">
-            </footer>
-          </article>
+
+<footer class="footline">
+	
+</footer>
+
+        
         </div>
-      </main>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
     </div>
-    <aside id="sidebar" class="default-animation" dir="ltr">
-      <div id="header-wrapper" class="default-animation">
-        <div id="header" class="default-animation">
-<a id="logo" href='/docs-uan/'>
-  <img src="/docs-uan/images/hpe.png" alt="HPE" />
-</a>
-        </div>
-        <div class="searchbox default-animation">
-          <i class="fas fa-search" title=" (CTRL+ALT+f)"></i>
-          <label class="a11y-only" for="search-by"></label>
-          <input data-search-input id="search-by" name="search-by" class="search-by" type="search" placeholder="">
-          <span data-search-clear=""><i class="fas fa-times"></i></span>
-        </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/docs-uan/js/clipboard.min.js?1670968531"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.min.js?1670968531"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.jquery.min.js?1670968531"></script>
+    <script src="/docs-uan/js/jquery.sticky.js?1670968531"></script>
+    <script src="/docs-uan/js/featherlight.min.js?1670968531"></script>
+    <script src="/docs-uan/js/highlight.pack.js?1670968531"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/docs-uan/js/modernizr.custom-3.6.0.js?1670968531"></script>
+    <script src="/docs-uan/js/learn.js?1670968531"></script>
+    <script src="/docs-uan/js/hugo-learn.js?1670968531"></script>
+    
+        
+            <script src="/docs-uan/mermaid/mermaid.js?1670968531"></script>
+        
         <script>
-          var contentLangs=['en'];
+            mermaid.initialize({ startOnLoad: true });
         </script>
-        <script src="/docs-uan/js/auto-complete.js?1670968067" defer></script>
-        <script src="/docs-uan/js/lunr.min.js?1670968067" defer></script>
-        <script src="/docs-uan/js/lunr.stemmer.support.min.js?1670968067" defer></script>
-        <script src="/docs-uan/js/lunr.multi.min.js?1670968067" defer></script>
-        <script src="/docs-uan/js/lunr.en.min.js?1670968067" defer></script>
-        <script src="/docs-uan/js/search.js?1670968067" defer></script>
-      </div>
-      <div id="content-wrapper" class="highlightable">
-        <ul class="topics collapsible-menu">
-          <li data-nav-id="/docs-uan/installation_prereqs/index.html" class="dd-item parent"><input type="checkbox" id="section-7d4e62ffa208b2dc6f372f39cfb0a284" aria-controls="subsections-7d4e62ffa208b2dc6f372f39cfb0a284" class="toggle" checked><label class="a11y-only toggle" for="section-7d4e62ffa208b2dc6f372f39cfb0a284" ></label><a href="/docs-uan/installation_prereqs/index.html">Installation Prereqs</a><ul id="subsections-7d4e62ffa208b2dc6f372f39cfb0a284">
-          <li data-nav-id="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/index.html" class="dd-item active"><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/index.html">Prepare For UAN Product Installation</a></li></ul></li>
-        </ul>
-        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-          <ul>
-            <li id="select-language-container" class="footerLangSwitch">
-              <div class="padding select-container">
-                <i class="fas fa-language fa-fw"></i>
-                <span>&nbsp;</span>
-                <div class="select-style">
-                  <label class="a11y-only" for="select-language"></label>
-                  <select id="select-language" onchange="location = baseUri + this.value;">
-                  </select>
-                </div>
-                <div class="select-clear"></div>
-              </div>
-            </li>
-            <li id="select-variant-container" class="footerVariantSwitch">
-              <div class="padding select-container">
-                <i class="fas fa-paint-brush fa-fw"></i>
-                <span>&nbsp;</span>
-                <div class="select-style">
-                  <label class="a11y-only" for="select-variant"></label>
-                  <select id="select-variant" onchange="window.variants && variants.changeVariant( this.value );">
-                    <option id="green" value="green" selected>Green</option>
-                  </select>
-                </div>
-                <div class="select-clear"></div>
-              </div>
-              <script>window.variants && variants.markSelectedVariant();</script>
-            </li>
-            <li class="footerVisitedLinks"><button class="padding" onclick="clearHistory();"><i class="fas fa-history fa-fw"></i> </button></li>
-          </ul>
-        </div>
-        <div id="footer" class="footerFooter showFooter">
-	    <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-        </div>
-      </div>
-    </aside>
-    <script src="/docs-uan/js/clipboard.min.js?1670968067" defer></script>
-    <script src="/docs-uan/js/perfect-scrollbar.min.js?1670968067" defer></script>
-    <script src="/docs-uan/js/featherlight.min.js?1670968067" defer></script>
-    <script src="/docs-uan/js/theme.js?1670968067" defer></script>
+    
+    
+
   </body>
 </html>
+
