@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 13 Dec 2022 23:07:46 +0000</lastBuildDate><atom:link href="/docs-uan/en-256/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Dec 2022 23:12:14 +0000</lastBuildDate><atom:link href="/docs-uan/en-256/upgrade/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-256/upgrade/notable_changes/</link>
-      <pubDate>Tue, 13 Dec 2022 23:07:43 +0000</pubDate>
+      <pubDate>Tue, 13 Dec 2022 23:12:12 +0000</pubDate>
       
       <guid>/docs-uan/en-256/upgrade/notable_changes/</guid>
       <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
@@ -20,7 +20,7 @@ When an upgrade is being performed, please review the notable changes for all of
     <item>
       <title></title>
       <link>/docs-uan/en-256/upgrade/upgrade_uan_software_product/</link>
-      <pubDate>Tue, 13 Dec 2022 23:07:43 +0000</pubDate>
+      <pubDate>Tue, 13 Dec 2022 23:12:12 +0000</pubDate>
       
       <guid>/docs-uan/en-256/upgrade/upgrade_uan_software_product/</guid>
       <description>Upgrade UAN software product Follow upgrade instructions in HPE Cray EX System Software Getting Started Guide (S-8000) to upgrade the UAN software product. Those instructions provide:
@@ -31,7 +31,7 @@ About cne-install The Compute Node Environment (CNE) installer (cne-install) sim
     <item>
       <title></title>
       <link>/docs-uan/en-256/upgrade/merge_uan_configuration_data/</link>
-      <pubDate>Tue, 13 Dec 2022 23:07:43 +0000</pubDate>
+      <pubDate>Tue, 13 Dec 2022 23:12:12 +0000</pubDate>
       
       <guid>/docs-uan/en-256/upgrade/merge_uan_configuration_data/</guid>
       <description>Merge UAN Configuration Data Perform this procedure to update the UAN product configuration.
