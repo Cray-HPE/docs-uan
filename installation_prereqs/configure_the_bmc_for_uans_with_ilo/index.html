@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/">
     <nav id="sidebar" class="">
 
 
@@ -83,7 +83,7 @@
   
     
     <li data-nav-id="/docs-uan/installation_prereqs/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -130,7 +130,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/" title="" class="dd-item active">
         <a href="/docs-uan/installation_prereqs/configure_the_bmc_for_uans_with_ilo/">
         Configure The BMC For UANs With iLO
         
@@ -837,82 +837,118 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/installation_prereqs/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="configure-the-bmc-for-uans-with-ilo">Configure the BMC for UANs with iLO</h1>
+<p>Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.</p>
+<p>Perform the first three steps of <a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/#prepare-for-uan-product-installation">Prepare for UAN Product Installation</a> before performing this procedure.</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
+<p>Create the SSH tunnel necessary to access the BMC web GUI interface.</p>
+<ol>
+<li>
+<p>Find the IP or hostname for a UAN.</p>
 </li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
-</li>
+<p>Create an SSH tunnel to the UAN BMC. Run the following command on an external system.</p>
+<p>In the following example, <code>UAN_MGMT</code> is the UAN iLO interface host name or IP address. <code>NCN</code> is the host name or IP address of a non-compute node on the system. This example assumes that <code>NCN</code> allows port forwarding. <code>USER</code> will usually be <code>root</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh -L 8443:UAN_MGMT:443 USER@NCN
+</span></span></code></pre></div></li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p>Wait for SSH to establish the connection.</p>
 </li>
 </ol>
+</li>
+<li>
+<p>Open https://127.0.0.1:8443 in web browser on the NCN to access the BMC web GUI.</p>
+</li>
+<li>
+<p>Log in to the web GUI using default credentials.</p>
+</li>
+<li>
+<p>Click <strong>Security</strong> in the menu on the left side of the screen.</p>
+</li>
+<li>
+<p>Click <strong>Access Settings</strong> in the menu at the top of the screen.</p>
+</li>
+<li>
+<p>Click the pencil icon next to <strong>Network</strong> in the main window area.</p>
+</li>
+<li>
+<p>Check the box next to <strong>IPMI/DCMI over LAN</strong>.</p>
+</li>
+<li>
+<p>Ensure that the remote management settings match the following screenshot.</p>
+</li>
+</ol>
+<p><img src="../images/HPE_UAN_BMC_IPMI_DCMI_configuration.png" alt="IPMI/DCMI configuration screen"></p>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -944,8 +980,6 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -959,6 +993,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -976,6 +1013,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -991,6 +1029,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

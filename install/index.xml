@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>User Access Node (UAN)</title>
+    <link>/docs-uan/install/</link>
+    <description>Recent content on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 13 Dec 2022 23:16:56 +0000</lastBuildDate><atom:link href="/docs-uan/install/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/install/install_the_uan_product_stream/</link>
+      <pubDate>Tue, 13 Dec 2022 23:16:54 +0000</pubDate>
+      
+      <guid>/docs-uan/install/install_the_uan_product_stream/</guid>
+      <description>Install the UAN Product Stream This procedure installs the User Access Nodes (UAN) product on a system so that UAN boot images can be created.
+Before performing this procedure:
+Initialize and configure the Cray command line interface (CLI) tool. See &amp;ldquo;Configure the Cray Command Line Interface (CLI)&amp;rdquo; in the CSM documentation for more information. Perform Prepare for UAN Product Installation Replace PRODUCT_VERSION in the example commands with the UAN product stream string (2.</description>
+    </item>
+    
+  </channel>
+</rss>

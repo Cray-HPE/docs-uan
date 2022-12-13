@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
     <nav id="sidebar" class="">
 
 
@@ -673,7 +673,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -741,7 +741,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
         Troubleshoot UAN Disk Configuration Issues
         
@@ -837,82 +837,122 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/troubleshooting/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="troubleshoot-uan-disk-configuration-issues">Troubleshoot UAN Disk Configuration Issues</h1>
+<p>Perform this procedure to enable <code>uan_disk_config</code> to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.</p>
+<p>This procedure currently only addresses <code>uan_disk_config</code> errors due to existing disk partitions.</p>
+<p>Refer to <a href="/docs-uan/operations/about_uan_configuration/#about-uan-configuration">About UAN Configuration</a> for an explanation of UAN disk configuration.</p>
+<p>The most common cause of failure in the <code>uan_disk_config</code> role is the disk having been previously configured without a <code>/scratch</code> and <code>/swap</code> partition. Existing partitions prevent the <code>parted</code> command from dividing the disk into those two equal partitions. The solution is to log into the node and run <code>parted</code> manually to remove the existing partitions on that disk.</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
+<p>Examine the CFS log and identify the failed disk device.</p>
 </li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
+<p>Log into the affected UAN as root.</p>
 </li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
+<p>Use parted to manually remove any existing partitions.</p>
+<p>The following example uses <code>/dev/sdb</code> as the disk device. Also, as partitions are removed, the remaining partitions are renumbered. Therefore, <code>rm 1</code> is issued twice to remove both partitions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# parted
+</span></span><span style="display:flex;"><span>GNU Parted 3.2
+</span></span><span style="display:flex;"><span>Using /dev/sda
+</span></span><span style="display:flex;"><span>Welcome to GNU Parted! Type <span style="color:#e6db74">&#39;help&#39;</span> to view a list of commands.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> <span style="color:#66d9ef">select</span> /dev/sdb
+</span></span><span style="display:flex;"><span>Using /dev/sdb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> print
+</span></span><span style="display:flex;"><span>Model: ATA VK000480GWSRR <span style="color:#f92672">(</span>scsi<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 480GB
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#f92672">(</span>logical/physical<span style="color:#f92672">)</span>: 512B/4096B
+</span></span><span style="display:flex;"><span>Partition Table: msdos
+</span></span><span style="display:flex;"><span>Disk Flags:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Number  Start   End    Size   Type     File system  Flags
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>      1049kB  240GB  240GB  primary  ext4         type<span style="color:#f92672">=</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">2</span>      240GB   480GB  240GB  primary  ext4         type<span style="color:#f92672">=</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> rm <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> rm <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> print
+</span></span><span style="display:flex;"><span>Model: ATA VK000480GWSRR <span style="color:#f92672">(</span>scsi<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 480GB
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#f92672">(</span>logical/physical<span style="color:#f92672">)</span>: 512B/4096B
+</span></span><span style="display:flex;"><span>Partition Table: msdos
+</span></span><span style="display:flex;"><span>Disk Flags:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> quit
+</span></span><span style="display:flex;"><span>uan01:~ <span style="color:#75715e">#</span>
+</span></span></code></pre></div></li>
 <li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p>Either reboot the affected UAN or launch a CFS session against it to rerun the <code>uan_disk_config</code> role.</p>
 </li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1347,6 +1387,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1359,6 +1400,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1392,6 +1436,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1410,6 +1455,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

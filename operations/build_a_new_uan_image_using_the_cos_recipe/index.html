@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">
     <nav id="sidebar" class="">
 
 
@@ -256,7 +256,7 @@
   
     
     <li data-nav-id="/docs-uan/operations/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -303,7 +303,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/" title="" class="dd-item active">
         <a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">
         Build A New UAN Image Using A COS Recipe
         
@@ -837,82 +837,116 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/operations/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="build-a-new-uan-image-using-a-cos-recipe">Build a New UAN Image Using a COS Recipe</h1>
+<p>Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the <code>uan_packages</code> role.</p>
+<p>Perform the following before starting this procedure:</p>
+<ul>
+<li>Install the COS, Slingshot, and UAN product streams.</li>
+<li>Initialize the cray administrative CLI.</li>
+</ul>
+<p>In the COS recipe for 2.2, several dependencies have been removed, this includes Slingshot, DVS, and Lustre. Those packages are now installed during CFS Image Customization. More information on this change is covered in the <a href="/docs-uan/operations/create_uan_boot_images/#create-boot-images">Create UAN Boot Images</a> procedure.</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
-</li>
+<p>Identify the COS image recipe to base the UAN image on. Select the recipe that matches the version of COS that the compute nodes will be using.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray ims recipes list --format json | jq <span style="color:#e6db74">&#39;.[] | select(.name | contains(&#34;compute&#34;))&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;created&#34;</span>: <span style="color:#e6db74">&#34;2021-02-17T15:19:48.549383+00:00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;4a5d1178-80ad-4151-af1b-bbe1480958d1&#34;</span>,  &lt;&lt;-- Note this ID
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;link&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;etag&#34;</span>: <span style="color:#e6db74">&#34;3c3b292364f7739da966c9cdae096964&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;s3://ims/recipes/4a5d1178-80ad-4151-af1b-bbe1480958d1/recipe.tar.gz&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;linux_distribution&#34;</span>: <span style="color:#e6db74">&#34;sles15&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;cray-shasta-compute-sles15sp3.x86_64-2.2.27&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;recipe_type&#34;</span>: <span style="color:#e6db74">&#34;kiwi-ng&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
-</li>
+<p>Save the id of the IMS recipe in an environment variable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# IMS_RECIPE_ID<span style="color:#f92672">=</span>4a5d1178-80ad-4151-af1b-bbe1480958d1
+</span></span></code></pre></div></li>
 <li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
+<p>Use the IMS recipe id to build the UAN image:</p>
+<p>More detail on this IMS procedure may be found in the procedure &ldquo;Build an Image Using IMS REST Service&rdquo; in the CSM documentation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# IMS_PUBLIC_KEY<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cray ims public-keys list --format json | jq -r <span style="color:#e6db74">&#34;.[] | .id&#34;</span> | head -1<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>ncn-m001# IMS_ARCHIVE_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cray ims recipes describe $IMS_RECIPE_ID --format json | jq -r .name<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>ncn-m001# IMS_ARCHIVE_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>IMS_ARCHIVE_NAME/compute/uan<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>ncn-m001# cray ims jobs create --job-type create --public-key-id $IMS_PUBLIC_KEY --image-root-archive-name $IMS_ARCHIVE_NAME --artifact-id $IMS_RECIPE_ID
+</span></span></code></pre></div></li>
 <li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p>Perform <a href="/docs-uan/operations/create_uan_boot_images/#create-boot-images">Create UAN Boot Images</a> to run CFS Image Customization on the resulting image.</p>
 </li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1059,6 +1093,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1071,6 +1106,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1088,6 +1126,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1103,6 +1142,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

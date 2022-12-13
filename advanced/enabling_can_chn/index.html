@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/advanced/enabling_can_chn/">
     <nav id="sidebar" class="">
 
 
@@ -458,7 +458,7 @@
   
     
     <li data-nav-id="/docs-uan/advanced/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -505,7 +505,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/advanced/enabling_can_chn/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/advanced/enabling_can_chn/" title="" class="dd-item active">
         <a href="/docs-uan/advanced/enabling_can_chn/">
         Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)
         
@@ -837,82 +837,100 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/advanced/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="enabling-the-customer-access-network-can-or-the-customer-high-speed-network-chn">Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)</h1>
+<p>The UAN product provides a role, <code>uan_interfaces</code> in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.</p>
 <ol>
 <li>
-<p><a href="/docs-uan/installation_prereqs/prepare_for_uan_product_installation/">Installation Prerequisites</a></p>
-<p>Topics:</p>
-<ul>
-<li>Management Network Switch Configuration</li>
-<li>BMC Configuration</li>
-<li>BIOS configuration</li>
-<li>UAN BMC Firmware</li>
-<li>Software Prerequisites</li>
-</ul>
+<p>Enable CAN or CHN by setting the following in the UAN CFS repo (the filename may be modified to whatever is appropriate):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001:~/ $ cat group_vars/Application_UAN/can.yml
+</span></span><span style="display:flex;"><span>uan_can_setup: true
+</span></span></code></pre></div></li>
+<li>
+<p>SLS will be configured with either CAN or CHN, <code>uan_interfaces</code> will use this setting to determine if a default route should be established over the nmn (CAN) or the hsn (CHN). To see how the site is configured, query SLS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001:~/ $ cray sls search networks list --name CHN --format json | jq -r <span style="color:#e6db74">&#39;.[] | .Name&#39;</span>
+</span></span><span style="display:flex;"><span>CHN
+</span></span></code></pre></div></li>
+<li>
+<p>(Optional) If the compute nodes are going to use the UAN CFS role <code>uan_interfaces</code> to set a default route on the CHN, make sure there is an appopriate ansible setting for the compute nodes in addition to the UANs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001:~/ $ cat group_vars/Compute/can.yml
+</span></span><span style="display:flex;"><span>uan_can_setup: true
+</span></span></code></pre></div></li>
+<li>
+<p>Once <code>uan_can_setup</code> has been enabled, update the CFS configuration used for the nodes to initate a reconfiguration (see the Configuration Management section of the CSM documentation for more information)</p>
 </li>
 <li>
-<p><a href="">Upgrades</a></p>
-<p>Topics:</p>
-<ul>
-<li>Upgrade Workflow</li>
-<li>Notable Changes From Previous Versions</li>
-<li>Merging UAN Configuration Data</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/install/install_the_uan_product_stream/">UAN Software Installation</a></p>
-<p>Topics:</p>
-<ul>
-<li>Download and Prepare the UAN Software Package</li>
-<li>Run the Installation Script</li>
-<li>Installation Verification</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/">Operational Tasks</a></p>
-<p>Topics:</p>
-<ul>
-<li>Build a New UAN Image Using the COS Recipe</li>
-<li>UAN Image Pre-boot Configuration</li>
-<li>Customizing UAN images</li>
-<li>Preparing UAN Boot Session Templates</li>
-<li>Booting UAN Nodes</li>
-</ul>
-</li>
-<li>
-<p><a href="/docs-uan/advanced/customizing_uan_images_manually/">Advanced Topics</a></p>
-<p>Topics:</p>
-<ul>
-<li>Customizing UANs Manually</li>
-</ul>
-</li>
-<li>
-<p>Troubleshooting</p>
-<ul>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_boot_issues/">Debugging UAN Booting Issues</a></li>
-<li><a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">Debugging UAN Configuration Issues</a></li>
-</ul>
+<p>The CSM documenation provides additional resources to validate the configuration of CAN and CHN for UANs and Computes. Consult the section titled &ldquo;Enabling Customer High Speed Network Routing&rdquo; in the CSM documentation for more information.</p>
 </li>
 </ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1203,6 +1221,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1215,6 +1234,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1232,6 +1254,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1247,6 +1270,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
