@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 14 Dec 2022 22:57:48 +0000</lastBuildDate><atom:link href="/docs-uan/en-256/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Dec 2022 23:01:08 +0000</lastBuildDate><atom:link href="/docs-uan/en-256/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-256/upgrade/notable_changes/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:51 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:11 +0000</pubDate>
       
       <guid>/docs-uan/en-256/upgrade/notable_changes/</guid>
       <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
@@ -20,7 +20,7 @@ When an upgrade is being performed, please review the notable changes for all of
     <item>
       <title></title>
       <link>/docs-uan/en-256/troubleshooting/troubleshoot_uan_boot_issues/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/troubleshooting/troubleshoot_uan_boot_issues/</guid>
       <description>Troubleshoot UAN Boot Issues The UAN boot process BOS boots UANs. BOS uses session templates to define various parameters such as:
@@ -31,7 +31,7 @@ PXE booting an iPXE binary that will load the initrd of the UAN image that will 
     <item>
       <title></title>
       <link>/docs-uan/en-256/install/install_the_uan_product_stream/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/install/install_the_uan_product_stream/</guid>
       <description>Install the UAN Product Stream This procedure installs the User Access Nodes (UAN) product on a system so that UAN boot images can be created.
@@ -42,7 +42,7 @@ Initialize and configure the Cray command line interface (CLI) tool. See &amp;ld
     <item>
       <title></title>
       <link>/docs-uan/en-256/installation_prereqs/prepare_for_uan_product_installation/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/installation_prereqs/prepare_for_uan_product_installation/</guid>
       <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
@@ -56,7 +56,7 @@ Refer to the procedure &amp;ldquo;Update the Management Network Firmware&amp;rdq
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/about_uan_configuration/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/about_uan_configuration/</guid>
       <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
@@ -67,7 +67,7 @@ The Ansible roles involved in UAN configuration are listed in the site.</descrip
     <item>
       <title></title>
       <link>/docs-uan/en-256/advanced/customizing_uan_images_manually/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:48 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:08 +0000</pubDate>
       
       <guid>/docs-uan/en-256/advanced/customizing_uan_images_manually/</guid>
       <description>Customizing UAN Images Manually Query IMS for the UAN Image you want to customize.
@@ -78,7 +78,7 @@ ncn-m001:~/ $ export IMS_IMAGE_ID=6d46d601-c41f-444d-8b49-c9a2a55d3c21 Using the
     <item>
       <title></title>
       <link>/docs-uan/en-256/upgrade/upgrade_uan_software_product/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:51 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:11 +0000</pubDate>
       
       <guid>/docs-uan/en-256/upgrade/upgrade_uan_software_product/</guid>
       <description>Upgrade UAN software product Follow upgrade instructions in HPE Cray EX System Software Getting Started Guide (S-8000) to upgrade the UAN software product. Those instructions provide:
@@ -88,19 +88,8 @@ About cne-install The Compute Node Environment (CNE) installer (cne-install) sim
     
     <item>
       <title></title>
-      <link>/docs-uan/en-256/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
-      
-      <guid>/docs-uan/en-256/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
-      <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the uan_packages role.
-Perform the following before starting this procedure:
-Install the COS, Slingshot, and UAN product streams.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-256/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</guid>
       <description>Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.
@@ -113,7 +102,7 @@ ncn# kubectl -n services get pods --sort-by=.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-256/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
       <description>Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
@@ -125,8 +114,19 @@ Create an SSH tunnel to the UAN BMC.</description>
     
     <item>
       <title></title>
+      <link>/docs-uan/en-256/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
+      
+      <guid>/docs-uan/en-256/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
+      <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the uan_packages role.
+Perform the following before starting this procedure:
+Install the COS, Slingshot, and UAN product streams.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-256/advanced/enabling_can_chn/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:48 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:08 +0000</pubDate>
       
       <guid>/docs-uan/en-256/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.
@@ -136,20 +136,8 @@ ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
     
     <item>
       <title></title>
-      <link>/docs-uan/en-256/troubleshooting/troubleshoot_uan_disk_configuration_issues/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:51 +0000</pubDate>
-      
-      <guid>/docs-uan/en-256/troubleshooting/troubleshoot_uan_disk_configuration_issues/</guid>
-      <description>Troubleshoot UAN Disk Configuration Issues Perform this procedure to enable uan_disk_config to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.
-This procedure currently only addresses uan_disk_config errors due to existing disk partitions.
-Refer to About UAN Configuration for an explanation of UAN disk configuration.
-The most common cause of failure in the uan_disk_config role is the disk having been previously configured without a /scratch and /swap partition.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-256/upgrade/merge_uan_configuration_data/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:51 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:11 +0000</pubDate>
       
       <guid>/docs-uan/en-256/upgrade/merge_uan_configuration_data/</guid>
       <description>Merge UAN Configuration Data Perform this procedure to update the UAN product configuration.
@@ -160,7 +148,7 @@ In this procedure, an upgrade from UAN 2.0.0 to UAN 2.3.1 is being performed. Ad
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/create_uan_boot_images/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
@@ -169,8 +157,20 @@ UAN specific configuration, and other required configurations related to UANs ar
     
     <item>
       <title></title>
+      <link>/docs-uan/en-256/troubleshooting/troubleshoot_uan_disk_configuration_issues/</link>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
+      
+      <guid>/docs-uan/en-256/troubleshooting/troubleshoot_uan_disk_configuration_issues/</guid>
+      <description>Troubleshoot UAN Disk Configuration Issues Perform this procedure to enable uan_disk_config to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.
+This procedure currently only addresses uan_disk_config errors due to existing disk partitions.
+Refer to About UAN Configuration for an explanation of UAN disk configuration.
+The most common cause of failure in the uan_disk_config role is the disk having been previously configured without a /scratch and /swap partition.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-256/installation_prereqs/configure_the_bios_of_an_hpe_uan/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
       <description>Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
@@ -183,7 +183,7 @@ In the following command, UAN_BMC_XNAME is the xname of the BMC of the UAN to co
     <item>
       <title></title>
       <link>/docs-uan/en-256/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:48 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:08 +0000</pubDate>
       
       <guid>/docs-uan/en-256/advanced/repurposing_compute_as_uan/</guid>
       <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
@@ -194,7 +194,7 @@ Verify the System Default Route is set to CHN.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -207,7 +207,7 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.2
     <item>
       <title></title>
       <link>/docs-uan/en-256/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</guid>
       <description>Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.
@@ -220,7 +220,7 @@ Set the Boot Option #1 field to Network:UEFI: PXE IP4 Intel(R) I350 Gigabit Netw
     <item>
       <title></title>
       <link>/docs-uan/en-256/advanced/sles_image/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:48 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:08 +0000</pubDate>
       
       <guid>/docs-uan/en-256/advanced/sles_image/</guid>
       <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
@@ -230,7 +230,7 @@ The image is built with the same packer/qemu pipeline as Non-Compute-Node Images
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/configure_interfaces_on_uans/</guid>
       <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
@@ -241,7 +241,7 @@ In the command examples in this procedure, PRODUCT_VERSION refers to the current
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
@@ -253,7 +253,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/boot_uans/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:49 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:09 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -265,7 +265,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/en-256/operations/uan_ansible_roles/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/operations/uan_ansible_roles/</guid>
       <description>UAN Ansible Roles uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
@@ -277,7 +277,7 @@ The device that is found will be unmounted if mounted and a swap partition will 
     <item>
       <title></title>
       <link>/docs-uan/en-256/test-plan/test-plan/</link>
-      <pubDate>Wed, 14 Dec 2022 22:57:50 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 23:01:10 +0000</pubDate>
       
       <guid>/docs-uan/en-256/test-plan/test-plan/</guid>
       <description>Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN. The tests are grouped in three categories:
