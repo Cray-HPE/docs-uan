@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 13 Dec 2022 23:16:57 +0000</lastBuildDate><atom:link href="/docs-uan/test-plan/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Dec 2022 16:40:37 +0000</lastBuildDate><atom:link href="/docs-uan/test-plan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/test-plan/test-plan/</link>
-      <pubDate>Tue, 13 Dec 2022 23:16:55 +0000</pubDate>
+      <pubDate>Wed, 14 Dec 2022 16:40:35 +0000</pubDate>
       
       <guid>/docs-uan/test-plan/test-plan/</guid>
       <description>Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN. The tests are grouped in three categories:
