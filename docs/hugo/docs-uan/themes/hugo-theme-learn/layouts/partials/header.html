@@ -97,6 +97,7 @@
               {{ if or (eq .Kind "taxonomy") (eq .Kind "term") }}
                 {{.Data.Singular}} ::
               {{ end }}
+              {{.Title}}
             </h1>
           {{end}}
 

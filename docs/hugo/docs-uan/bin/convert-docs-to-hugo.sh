@@ -133,11 +133,14 @@ function prune_dir() {
     [[ -d $1 ]] && rm -rf $1 || echo "$1 doesn't exist"
 }
 
+echo  "Installing jq..."
+apt-get -y update
+apt-get -y install jq
+echo "Installation of jq completed"
 validate_args $1 $2 $3 $4
 SOURCE_DIR=$(cd $2 && pwd)
-[[ -d $SOURCE_DIR/$UAN_RELEASE/portal ]] && SOURCE_DIR=${SOURCE_DIR}/${UAN_RELEASE}/portal/developer-portal
 [[ -d $SOURCE_DIR/$UAN_RELEASE/docs/portal ]] && SOURCE_DIR=${SOURCE_DIR}/${UAN_RELEASE}/docs/portal/developer-portal
-
+export DOCSOURCE=$SOURCE_DIR
 DESTINATION_DIR=$(cd $4 && pwd)
 DESTINATION_DIR="${DESTINATION_DIR}/${UAN_RELEASE}"
 delete_dir_contents $DESTINATION_DIR
@@ -149,3 +152,4 @@ done
 
 crawl_directory $SOURCE_DIR
 populate_missing_index_files
+gen_toc $DESTINATION_DIR > ${DESTINATION_DIR}/_index.md

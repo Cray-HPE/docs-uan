@@ -4,15 +4,18 @@ baseURL = "/docs-uan/"
 languageCode = "en-US"
 defaultContentLanguage = "en-{{ releases[0].translate(translation) }}"
 defaultContentLanguageInSubdir = true
-showVisitedLinks = true
 
 [outputs]
 home = ["HTML", "RSS", "JSON" ]
 
 [params]
-themeVariant = "blue"
+themeVariant = "green"
+collapsibleMenu = true
 disableNextPrev = true
 disableLandingPageButton = true
+disableBreadcrumb = false
+showVisitedLinks = true
+ordersectionsby = "weight"
 
 [languages]
 {%- for rel in releases %}

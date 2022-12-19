@@ -44,6 +44,9 @@ function make_new_title() {
     sed -r 's`[C,c]rus`CRUS`' | \
     sed -r 's`[C,c]an`CAN`' | \
     sed -r 's`[P,p]xe`PXE`' | \
+    sed -r 's`[I,i]lo`iLO`' | \
+    sed -r 's`[B,b]ios`BIOS`' | \
+    sed -r 's`[C,c]os`COS`' | \
     sed -r 's`[A,a]cl`ACL`'
 }
 
@@ -74,9 +77,39 @@ function transform_links() {
 }
 
 function gen_hugo_yaml() {
+    HUGO_TOC="/src/bin/hugo_toc.json"
+    [[ -f $DOCSOURCE/hugo_toc.json ]] && HUGO_TOC="$DOCSOURCE/hugo_toc.json"
+    rm -f /tmp/have_weight
+    cat ${HUGO_TOC} | jq -r '.[]|[.title, .weight]|@tsv' |
+        while IFS=$'\t' read -r title weight; do
+            if [[ "$title" == "$1" ]]; then
+                myweight="$weight"
+                gen_weighted_header "$1" "$myweight"
+                touch /tmp/have_weight
+                break
+            fi
+        done
+    if [[ ! -f /tmp/have_weight ]]; then
+        gen_unweighted_header "$1"
+    fi
+    rm -f /tmp/have_weight
+}
+
+function gen_weighted_header() {
     cat <<-YAML
 ---
-title: $1
+menuTitle: "$1"
+date: $(date)
+draft: false
+weight: $2
+---
+YAML
+}
+
+function gen_unweighted_header() {
+    cat <<-YAML
+---
+menuTitle: "$1"
 date: $(date)
 draft: false
 ---
@@ -86,18 +119,64 @@ YAML
 function gen_index_header() {
     cat <<-YAML
 # $1
-Topics:
+## Topics:
 YAML
 }
 
+#function gen_index_content() {
+#    # e.g. 1. [Prepare Configuration Payload](prepare_configuration_payload)
+#    for f in $(ls $1/)
+#    do
+#        if [[ $f != "_index.md" ]] && [[ "${f: -3}" == ".md" ]] || \
+#        [[ -d ${1}/$f ]] && [[ ! $(echo $f | grep -E "(^img$|^scripts$)") ]]; then
+#            f=$(echo $f | sed 's`.md``' | awk '{print tolower($0)}')
+#            echo "1. [$(make_new_title ${f})](${f})"
+#        fi
+#    done
+#}
+
 function gen_index_content() {
     # e.g. 1. [Prepare Configuration Payload](prepare_configuration_payload)
-    for f in $(ls $1/)
-    do
-        if [[ $f != "_index.md" ]] && [[ "${f: -3}" == ".md" ]] || \
-        [[ -d ${1}/$f ]] && [[ ! $(echo $f | grep -E "(^img$|^scripts$)") ]]; then
-            f=$(echo $f | sed 's`.md``' | awk '{print tolower($0)}')
-            echo "1. [$(make_new_title ${f})](${f})"
+    HUGO_TOC="/src/bin/hugo_toc.json"
+    [[ -f $DOCSOURCE/hugo_toc.json ]] && HUGO_TOC="$DOCSOURCE/hugo_toc.json"
+    cat $HUGO_TOC | jq -r '.[]|[.dir, .toc]|flatten|@tsv' |
+      while IFS=$'\t' read -r dir toc; do
+        if [[ "$dir" == "$(basename $1)" ]]; then
+            for topic in $toc; do
+                oldtitle=$(get_old_title ${1}/${topic})
+                newtitle=$(make_new_title "${oldtitle}")
+                f=$(echo ${topic} | sed 's`.md``' | awk '{print tolower($0)}')
+                echo "1. [${newtitle}](${f})"
+            done
         fi
-    done
+      done
+}
+
+function gen_toc() {
+    HUGO_TOC="/src/bin/hugo_toc.json"
+    [[ -f $DOCSOURCE/hugo_toc.json ]] && HUGO_TOC="$DOCSOURCE/hugo_toc.json"
+    cat <<-YAML 
+# Cray EX User Access Nodes Installation and Administration Guide
+
+This document describes the installation prequisites, installation procedures,
+and operational procedures for Cray EX User Access Nodes (UAN).
+
+## Table of Contents
+
+### Topics:
+
+YAML
+    cat $HUGO_TOC | jq -r '.[]|[.dir, .title, .toc]|flatten|@tsv' |
+        while IFS=$'\t' read -r dir title toc; do
+            if [[ $toc != "" ]]; then
+                echo "#### [${title}](${dir})"
+                for t in ${toc}; do
+                    oldtitle=$(get_old_title ${1}/${dir}/${t})
+                    newtitle=$(make_new_title "${oldtitle}")
+                    f=$(echo ${t} | sed 's`.md``' | awk '{print tolower($0)}')
+                    echo "1. [${newtitle}](${dir}/${f})"
+                done
+                echo ""
+            fi
+        done
 }
