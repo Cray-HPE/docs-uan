@@ -24,13 +24,16 @@ BUILD_DATE ?= $(shell date +'%Y%m%d%H%M%S')
 RELEASE_VERSION ?= $(shell ./version.sh)-local
 GIT_TAG ?= $(shell git rev-parse --short HEAD)
 
-all : build_and_publish_hugo_docs
+all : build_hugo_docs
 
 build_hugo_docs:
-	./build-hugo-docs.py --no-publish
+	./build-hugo-docs.py
 
 publish_hugo_docs:
-	./build-hugo-docs.py --no-clone
+	./build-hugo-docs.py --no-clone --no-build --publish
 
 build_and_publish_hugo_docs:
-	./build-hugo-docs.py
+	./build-hugo-docs.py --publish
+
+clean:
+	./build-hugo-docs.py --clean

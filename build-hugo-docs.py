@@ -51,13 +51,19 @@ parser.add_option("-f", "--release-file", dest="release_file",
 parser.add_option("--no-clone", dest="clone_docs",
                   action="store_false", default=True,
                   help="flag to not clone the doc source")
-parser.add_option("--no-publish", dest="publish_docs",
+parser.add_option("--no-build", dest="build_docs",
                   action="store_false", default=True,
+                  help="flag to not build the doc source")
+parser.add_option("--publish", dest="publish_docs",
+                  action="store_true", default=False,
                   help="flag to not publish to github pages")
 parser.add_option("-r", "--releases", dest="release_args",
                   action="store", type="string",
                   help="comma-separated list of releases",
                   metavar="RELEASE1,RELEASE2,...")
+parser.add_option("--clean", dest="clean_docs",
+                  action="store_true", default=False,
+                  help="flag to cleanup after doc generation/publication")
 
 (options, args) = parser.parse_args()
 
@@ -90,7 +96,7 @@ env = Environment(loader=file_loader)
 
 # Build docs/hugo/docs-uan/bin/build.sh from template
 build_template = env.get_template('build.sh.j2')
-build_out = build_template.render(releases=release_string, linkchecks=linkcheck_string, clone=options.clone_docs)
+build_out = build_template.render(releases=release_string, linkchecks=linkcheck_string, clone=options.clone_docs, build_docs=options.build_docs, clean_only=options.clean_docs)
 with open(THIS_DIR + "/docs/hugo/docs-uan/bin/build.sh", "w") as fh:
     fh.write(build_out)
 
