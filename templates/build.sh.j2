@@ -41,7 +41,7 @@ function build () {
   echo "Cloning into docs-uan..."
   pwd
   for release in ${RELEASES[@]}; do
-    git clone --depth 1 -b v$release git@github.com:Cray-HPE/docs-uan.git ./$release
+    git clone --depth 1 -b v$release https://github.com/Cray-HPE/docs-uan.git ./$release
     echo "Copy Changelog.md to $DOCROOT..."
     [[ -f $release/Changelog.md ]] && cp $release/Changelog.md $release/$DOCROOT
     echo "Copy top level index.md to $DOCROOT..."
