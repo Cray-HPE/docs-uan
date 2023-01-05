@@ -48,7 +48,6 @@ pipeline {
         stage("Build") {
             steps {
                 sh "make -f ./Makefile.hugo"
-                }
             }
         }
     }
