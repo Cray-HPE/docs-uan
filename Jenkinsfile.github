@@ -51,6 +51,7 @@ pipeline {
                     usernamePassword(credentialsId: 'artifactory-algol60-publish', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_TOKEN')
                 ]) {
                 sh "make -f ./Makefile.hugo"
+                }
             }
         }
     }
