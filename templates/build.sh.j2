@@ -47,7 +47,7 @@ function build () {
     echo "Copy top level index.md to $DOCROOT..."
     [[ -f $release/index.md  && ! -f $release/$DOCROOT/index.md ]] && cp $release/index.md $release/$DOCROOT
     [[ -f $release/$DOCROOT/index.md ]] && \
-    sh """#!/usr/local/bin/bash
+    sh """#!/bin/bash
     sed -i .mdbak1 -r "s|\][(](\.\/)*($DOCROOT\/)*([A-Za-z0-9_\-]+)|\]\(\.\/\3|g" $release/$DOCROOT/index.md
     """
     echo "Cleaning up unwanted md files..."
