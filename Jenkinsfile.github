@@ -2,7 +2,7 @@
 *
 *  MIT License
 *
-*  (C) Copyright 2022 Hewlett Packard Enterprise Development LP
+*  (C) Copyright [2023] Hewlett Packard Enterprise Development LP
 *
 *  Permission is hereby granted, free of charge, to any person obtaining a
 *  copy of this software and associated documentation files (the "Software"),
@@ -23,8 +23,15 @@
 *  OTHER DEALINGS IN THE SOFTWARE.
 *
  */
-// Jenkinsfile to push UAN docs to github pages
+// Jenkinsfile to push docs-uan repo to github
 @Library('csm-shared-library') _
+
+// Disable pr-merge builds
+if ( env.BRANCH_NAME ==~ ~"^PR-\\d+" ) {
+    currentBuild.result = 'SUCCESS'
+    echo "Pull-Requests are not built for docs-uan; this is a no-op build."
+    return
+}
 
 pipeline {
     agent {
@@ -37,8 +44,8 @@ pipeline {
     }
 
     environment {
-        RELEASE_NAME = "docs-uan"
-        PRODUCT = "docs-uan"
+        RELEASE_NAME = "uan-docs"
+        PRODUCT = "uan-docs"
         RELEASE_VERSION = sh(returnStdout: true, script: "./version.sh").trim()
         GIT_TAG = sh(returnStdout: true, script: "git rev-parse --short HEAD").trim()
         IS_STABLE = getBuildIsStable()
@@ -47,7 +54,23 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "make -f ./Makefile.hugo"
+                  withCredentials([
+                            usernamePassword(credentialsId: 'artifactory-algol60-publish', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_TOKEN')
+                    ]) {
+                    sh "make"
+                }
+            }
+        }
+
+        stage("Publish") {
+            steps {
+                  withCredentials([
+                            usernamePassword(credentialsId: 'artifactory-algol60-publish', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_TOKEN')
+                    ]) {
+                    script {
+                        publishUan(isStable: env.IS_STABLE, version: env.RELEASE_VERSION, pattern: "${WORKSPACE}/dist/uan-docs"+env.RELEASE_VERSION+".tar.gz")
+                    }
+                }
             }
         }
     }

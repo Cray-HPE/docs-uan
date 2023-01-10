@@ -1,8 +1,7 @@
-#!/usr/bin/env bash
 #
 # MIT License
 #
-# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020-2022] Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -22,25 +21,15 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Version script required by the build pipeline. This script should output
-# the version of the release distribution as defined by the tag of this commit.
+# Name and Version Information for the User Access Node Documentatio
+NAME=uan-docs
 
-# Tags should be of the format v[semver-compatible version]
+# This should be the overall UAN version and this git commit should be tagged
+# with this version like v{VERSION}.
+VERSION=$(./version.sh)
+MAJOR=`./vendor/semver get major ${VERSION}`
+MINOR=`./vendor/semver get minor ${VERSION}`
+PATCH=`./vendor/semver get patch ${VERSION}`
 
-# If the tag is v1.2.3:
-#   and the pipeline runs this, then the version will be 1.2.3
-#   and this is run locally, then the version will be 1.2.3
-#   and this is run locally with committed changes, then the version will be 1.2.3-{commits}-{git hash}
-#   and this is run locally with uncommitted changes, then the version will be appended with '-dirty'
-set -eo pipefail
-
-version=$(git describe --tags --match 'v*' | sed -e 's/^v//')
-if [[ ! -z $(git status -s) ]]; then
-    if [[ ! -n ${BUILD_NUMBER} ]]; then
-        echo ${version}'-dirty'
-    else  # don't attach -dirty to pipeline builds
-        echo ${version}
-    fi
-else
-    echo ${version}
-fi
+# Versions for doc product manifest
+DOC_PRODUCT_MANIFEST_VERSION="^0.1.0" # Keep this field like this until further notice
