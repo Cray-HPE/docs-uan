@@ -40,7 +40,7 @@ function copy_manifests {
 
 function copy_docs {
     DATE="`date`"
-    rsync -aq "${ROOTDIR}/docs/" "${BUILDDIR}/docs/"
+    rsync -aq --exclude="hugo" "${ROOTDIR}/docs/" "${BUILDDIR}/docs/"
     # Set any dynamic variables in the UAN docs
     for docfile in `find "${BUILDDIR}/docs/" -name "*.md" -o -name "*.ditamap" -type f`;
     do
