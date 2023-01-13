@@ -95,13 +95,13 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 
 8. Create a branch using the imported branch from the installation to customize the UAN image.
 
-    This will be reported in the `cray-product-catalog` Kubernetes ConfigMap in the `configuration.import_branch` key under the UAN section. The format is cray/uan/PRODUCT\_VERSION. In this guide, an `integration` branch is used for examples, but the name can be any valid git branch name.
+    This will be reported in the `cray-product-catalog` Kubernetes ConfigMap in the `configuration.import_branch` key under the UAN section. The format is cray/uan/PRODUCT\_VERSION. In this guide, an `integration-PRODUCT_VERSION` branch is used for examples to comply with IUF defaults, but the name can be any valid git branch name configured to be used by IUF.
 
     Modifying the cray/uan/PRODUCT\_VERSION branch that was created by the UAN product installation is not allowed by default.
 
     ```bash
-    ncn-m001# git checkout -b integration && git merge cray/uan/PRODUCT_VERSION
-    Switched to a new branch 'integration'
+    ncn-m001# git checkout -b integration-PRODUCT_VERSION && git merge cray/uan/PRODUCT_VERSION
+    Switched to a new branch 'integration-PRODUCT_VERSION'
     Already up to date.
     ```
 
@@ -123,7 +123,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
     ncn-m001# vim group_vars/Application_UAN/vars.yml
     ncn-m001# git add group_vars/Application_UAN/vars.yml
     ncn-m001# git commit -m "Add vars.yml customizations"
-    [integration ecece54] Add vars.yml customizations
+    [integration-PRODUCT_VERSION ecece54] Add vars.yml customizations
      1 file changed, 1 insertion(+)
      create mode 100644 group_vars/Application_UAN/vars.yml
     ```
@@ -131,14 +131,14 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 10. Push the changes to the repository using the proper credentials, including the password obtained previously.
 
     ```bash
-    ncn-m001# git push --set-upstream origin integration
+    ncn-m001# git push --set-upstream origin integration-PRODUCT_VERSION
     Username for 'https://api-gw-service-nmn.local': crayvcs
     Password for 'https://crayvcs@api-gw-service-nmn.local':
     . . .
     remote: Processed 1 references in total
     To https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git
-     * [new branch]      integration -> integration
-     Branch 'integration' set up to track remote branch 'integration' from 'origin'.
+     * [new branch]      integration-PRODUCT_VERSION -> integration-PRODUCT_VERSION
+     Branch 'integration-PRODUCT_VERSION' set up to track remote branch 'integration-PRODUCT_VERSION' from 'origin'.
     ```
 
     The configuration parameters have been stored in a branch in the UAN git repository. The next phase of the process uses `sat bootprep` to handle creating the CFS configurations, IMS images, and BOS sessiontemplates for UANs.
@@ -194,7 +194,7 @@ configurations:
     product:
       name: uan
       version: 2.6.0
-      branch: integration
+      branch: integration-PRODUCT_VERSION
   
   ... add configuration layers for other products here, if desired ...
 
@@ -203,7 +203,7 @@ configurations:
     product:
       name: uan
       version: 2.6.0
-      branch: integration
+      branch: integration-PRODUCT_VERSION
 ```
 
 **SAT Bootprep Image**

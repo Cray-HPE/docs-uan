@@ -3,6 +3,8 @@
 This document describes the installation prequisites, installation procedures,
 and operational procedures for Cray EX User Access Nodes (UAN).
 
+The latest version of this documentation is available [here](https://cray-hpe.github.io/docs-uan).
+
 ## Table of Contents
 
 1. Installation Prerequisites

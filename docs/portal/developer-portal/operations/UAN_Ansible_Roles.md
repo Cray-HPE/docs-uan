@@ -1,5 +1,12 @@
 # UAN Ansible Roles
 
+## `csm.gpg_keys`
+
+The `csm.gpg_keys` role fetches the required GPG keys needed for HPE RPM verification.
+
+## `uan_ca_cert`
+
+The `uan_ca_cert` role installs a CA certificate on the system.
 ## `uan_disk_config`
 
 The `uan_disk_config` role configures swap and scratch disk partitions on UAN
@@ -151,6 +158,57 @@ Input to the `device_filter` module.
 
 This role is included in the UAN `site.yml` play.
 
+## `uan_hardening`
+
+The `uan_hardening` role configures site/customer-defined network security
+ of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.
+
+### Requirements
+
+None.
+
+### Role Variables
+
+Available variables are listed below, along with default values (see
+
+`disable_ssh_out_nmn_to_management_ncns`
+
+Boolean variable controlling whether or not firewall rules are applied at the UAN to
+prevent ssh outbound over the NMN to the NCN management nodes.
+
+
+The default value of `disable_ssh_out_nmn_to_management_ncns` is `yes`.
+
+```yaml
+disable_ssh_out_nmn_to_management_ncns: yes
+```
+
+`disable_ssh_out_uan_to_nmn_lb`
+
+Boolean variable controlling whether or not firewall rules are applied at the UAN to
+prevent ssh outbound over the NMN to NMN LB IPs.
+
+
+The default value of `disable_ssh_out_uan_to_nmn_lb` is `yes`.
+
+```yaml
+disable_ssh_out_uan_to_nmn_lb: yes
+```
+
+### Dependencies
+
+None.
+
+### Example Playbook
+
+```yaml
+- hosts: Application_UAN
+  roles:
+      - { role: uan_hardening}
+```
+
+This role is included in the UAN `site.yml` play.
+
 ## `uan_interfaces`
 
 The `uan_interfaces` role configures site/customer-defined network interfaces
@@ -164,9 +222,9 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-### `uan_can_setup`
+`uan_can_setup`
 
-`uan_can_setup` is a boolean variable controlling the configuration of user
+Boolean variable controlling the configuration of user
 access to UAN nodes.  When true, user access is configured over either the
 Customer Access Network (CAN) or Customer High Speed Network (CHN), depending on which is configured on the system.
 
@@ -180,9 +238,9 @@ The default value of `uan_can_setup` is `no`.
 uan_can_setup: no
 ```
 
-### `uan_customer_default_route`
+`uan_customer_default_route`
 
-`uan_customer_default_route` is a boolean variable that allows the default route
+Boolean variable that allows the default route
 to be set by the `customer_uan_routes` data when `uan_can_setup` is true.
 
 By default, no default route is setup unless `uan_can_setup` is true, which sets the default route to the CAN or CHN.
@@ -193,182 +251,198 @@ uan_customer_default_route: no
 
 `sls_nmn_name`
 
-: `sls_nmn_name` is the Node Management Network name used by SLS.
+Node Management Network name used by SLS.
 This value should not be changed.
 
-  Example:
-
-  ```yaml
-  sls_nmn_name: "NMN"
-  ```
+```yaml
+sls_nmn_name: "NMN"
+```
 
 `sls_nmn_svcs_name`
 
-: is the Node Management Services Network name used by SLS.
+Node Management Services Network name used by SLS.
 This value should not be changed.
+
+```yaml
+sls_nmn_svcs_name: "NMNLB"
+```
+
+`sls_mnmn_svcs_name`
+
+Mountain Node Management Services Network name used
+by SLS.  This value should not be changed.
+
+```yaml
+sls_mnmn_svcs_name: "NMN_MTN"
+```
 
 `uan_required_dns_options`
 
-: `uan_required_dns_options` is a list of DNS options.  By default, `single-request` is set and must not be removed.
+List of DNS options.  By default, `single-request` is set and must not be removed.
 
-  Example:
-
-  ```yaml
-  uan_required_dns_options:
-    - 'single-request'
+```yaml
+uan_required_dns_options:
+  - 'single-request'
   ```
 
 `customer_uan_interfaces`
 
-: `customer_uan_interfaces` is as list of interface names used for constructing `ifcfg-<customer_uan_interfaces.name>` files. Define ifcfg fields for each interface here. Field names are converted to uppercase in the generated `ifcfg-<name>` file(s).
+List of interface names used for constructing
+`ifcfg-<customer_uan_interfaces.name>` files. Define ifcfg fields for each
+interface here. Field names are converted to uppercase in the generated
+`ifcfg-<name>` file(s).
 
-  Interfaces should be defined in order of dependency.
-  
-  Example:
+Interfaces should be defined in order of dependency.
 
-  ```yaml
-  customer_uan_interfaces:
-    - name: "net1"
-      settings:
-        bootproto: "static"
-        device: "net1"
-        ipaddr: "1.2.3.4"
-        startmode: "auto"
-    - name: "net2"
-      settings:
-        bootproto: "static"
-        device: "net2"
-        ipaddr: "5.6.7.8"
-        startmode: "auto"
-  ```
+```yaml
+customer_uan_interfaces: []
 
-`customer_uan_routes`
+# Example:
+customer_uan_interfaces:
+  - name: "net1"
+    settings:
+      bootproto: "static"
+      device: "net1"
+      ipaddr: "1.2.3.4"
+      startmode: "auto"
+  - name: "net2"
+    settings:
+      bootproto: "static"
+      device: "net2"
+      ipaddr: "5.6.7.8"
+      startmode: "auto"
+```
 
-: `customer_uan_routes` is as list of interface routes used for constructing `ifroute-<customer_uan_routes.name>` files.
+`customer_uan_routes
 
-  Example:
+List of interface routes used for constructing
+`ifroute-<customer_uan_routes.name>` files.
 
-  ```yaml
-  customer_uan_routes:
-    - name: "net1"
-      routes:
-        - "10.92.100.0 10.252.0.1 255.255.255.0 -"
-        - "10.100.0.0 10.252.0.1 255.255.128.0 -"
-    - name: "net2"
-      routes:
-        - "default 10.103.8.20 255.255.255.255 - table 3"
-        - "10.103.8.128/25 10.103.8.20 255.255.255.255 net2"
-  ```
+```yaml
+customer_uan_routes: []
+
+# Example
+customer_uan_routes:
+  - name: "net1"
+    routes:
+      - "10.92.100.0 10.252.0.1 255.255.255.0 -"
+      - "10.100.0.0 10.252.0.1 255.255.128.0 -"
+  - name: "net2"
+    routes:
+      - "default 10.103.8.20 255.255.255.255 - table 3"
+      - "10.103.8.128/25 10.103.8.20 255.255.255.255 net2"
+```
 
 `customer_uan_rules`
 
-: `customer_uan_rules` is as list of interface rules used for constructing `ifrule-<customer_uan_routes.name>` files.
+List of interface rules used for constructing
+`ifrule-<customer_uan_routes.name>` files.
 
-  Example:
+```yaml
+customer_uan_rules: []
 
-  ```yaml
-    customer_uan_rules:
-      - name: "net1"
-        rules:
-          - "from 10.1.0.0/16 lookup 1"
-      - name: "net2"
-        rules:
-          - "from 10.103.8.0/24 lookup 3"
-    ```
+# Example
+customer_uan_rules:
+  - name: "net1"
+    rules:
+      - "from 10.1.0.0/16 lookup 1"
+  - name: "net2"
+    rules:
+      - "from 10.103.8.0/24 lookup 3"
+```
 
 `customer_uan_global_routes`
 
-: `customer_uan_global_routes` is a list of global routes used for constructing
+List of global routes used for constructing
 the "routes" file.
 
-  Example:
+```yaml
+customer_uan_global_routes: []
 
-  ```yaml
-  customer_uan_global_routes:
-    - routes:
-      - "10.92.100.0 10.252.0.1 255.255.255.0 -"
-      - "10.100.0.0 10.252.0.1 255.255.128.0 -"
-  ```
+# Example
+customer_uan_global_routes:
+  - routes: 
+    - "10.92.100.0 10.252.0.1 255.255.255.0 -"
+    - "10.100.0.0 10.252.0.1 255.255.128.0 -"
+```
 
 `external_dns_searchlist`
 
-: `external_dns_searchlist` is a list of customer-configurable fields to be added to the `/etc/resolv.conf` DNS search list.
+List of customer-configurable fields to be added
+to the `/etc/resolv.conf` DNS search list.
 
-  Example:
+```yaml
+external_dns_searchlist: [ '' ] 
 
-  ```yaml
-  external_dns_searchlist:
-    - 'my.domain.com'
-    - 'my.other.domain.com'
-  ```
+# Example
+external_dns_searchlist:
+  - 'my.domain.com'
+  - 'my.other.domain.com'
+```
 
 `external_dns_servers`
 
-: `external_dns_servers` is a list of customer-configurable fields to be added to the `/etc/resolv.conf` DNS server list.
+List of customer-configurable fields to be added
+to the `/etc/resolv.conf` DNS server list.
 
-  Example:
+```yaml
+external_dns_servers: [ '' ] 
 
-  ```yaml
-  external_dns_servers:
-    - '1.2.3.4'
-    - '5.6.7.8'
-  ```
+# Example
+external_dns_servers:
+  - '1.2.3.4'
+  - '5.6.7.8'
+```
 
 `external_dns_options`
 
-: `external_dns_options` is a list of customer-configurable fields to be added
+List of customer-configurable fields to be added
 to the `/etc/resolv.conf` DNS options list.
 
-  Example:
+```yaml
+external_dns_options: [ '' ]
 
-  ```yaml
-  external_dns_options:
-    - 'single-request'
-  ```
+# Example
+external_dns_options:
+  - 'single-request'
+```
 
 `uan_access_control`
 
-: `uan_access_control` is a boolean variable to control whether non-root access control is enabled.  Default is `no`.
+Boolean variable to control whether non-root access
+control is enabled.  Default is `no`.
 
-  Example:
-
-  ```yaml
-  uan_access_control: no
-  ```
+```yaml
+uan_access_control: no
+```
 
 `api_gateways`
 
-: `api_gateways` is a list of API gateway DNS names to block non-user access
+List of API gateway DNS names to block non-user access
 
-  Example:
-  
-  ```yaml
-  api_gateways:
-    - "api-gw-service"
-    - "api-gw-service.local"
-    - "api-gw-service-nmn.local"
-    - "kubeapi-vip"
-  ```
+```yaml
+api_gateways:
+  - "api-gw-service"
+  - "api-gw-service.local"
+  - "api-gw-service-nmn.local"
+  - "kubeapi-vip"
+```
 
 `api_gw_ports`
 
-: `api_gw_ports` is a list of gateway ports to protect.
+List of gateway ports to protect.
 
-  Example:
-
-  ```yaml
-  api_gw_ports: "80,443,8081,8888"
-  ```
+```yaml
+api_gw_ports: "80,443,8081,8888"
+```
 
 `sls_url`
 
-: `sls_url` is the SLS URL.
+The SLS URL.
 
-  Example:
-
-  ```yaml
-  sls_url: "http://cray-sls"
-  ```
+```yaml
+sls_url: "http://cray-sls"
+```
 
 ### Dependencies
 
@@ -497,16 +571,15 @@ None.
 
 This role is included in the UAN `site.yml` play.
 
-## uan_packages
+## `uan_packages`
 
-The `uan_packages` role installs additional RPMs on UANs using the Ansible
-`zypper` module.
+The `uan_packages` role adds or removes additional repositories and RPMs on UANs
+using the Ansible `zypper_repository` and `zypper` module.
 
-Packages that are required for UANs to function should be preferentially
-installed during image customization and/or image creation.
-
-Installing RPMs during post-boot node configuration can cause high system loads
-on large systems.
+Repositories and packages added to this role will be installed or removed during
+image customization. Installing RPMs during post-boot node configuration can
+cause high system loads on large systems so these tasks runs only during image
+customizations.
 
 This role will only run on SLES-based nodes.
 
@@ -514,17 +587,31 @@ This role will only run on SLES-based nodes.
 
 Zypper must be installed.
 
+The `csm.gpg_keys` Ansible role must be installed if `uan_disable_gpg_check`
+is false.
+
 ### Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are listed below, along with default values (see defaults/main.yml):
 
-```yaml
-uan_additional_sles15_packages: []
-```
+This role uses the `zypper_repository` module. The `name`, `description`, `repo`,
+`disable_gpg_check`, and `priority` fields are supported.
 
-`uan_additional_sles15_packages` 
+This role uses the `zypper` modules.  The `name` and `disable_gpg_check` fields are supported.
 
-: contains the list of RPM packages to install.
+`uan_disable_gpg_check`
+
+Sets the `disable_gpg_check` field on zypper repos and
+packages listed in the `uan_sles15_repositories add` and `uan_sles15_packages_add`
+lists.  The `disable_gpg_check` field can be overridden for each repo or package.
+
+`uan_sles15_repositories_add`
+
+List of repositories to add.
+
+`uan_sles15_packages_add`
+
+List of RPM packages to add.
 
 ### Dependencies
 
@@ -535,7 +622,20 @@ None.
 ```yaml
 - hosts: Application_UAN
   roles:
-      - { role: uan_packages, uan_additional_sles15_packages: ['vim'] }
+     - role: uan_packages
+       vars:
+         uan_sles15_packages_add:
+           - name: "foo"
+             disable_gpg_check: yes
+           - name: "bar"
+         uan_sles15_packages_remove:
+           - baz
+         uan_sles15_repositories_add:
+           - name: "uan-2.5.0-sle-15sp4"
+             description: "UAN SUSE Linux Enterprise 15 SP4 Packages"
+             repo: "https://packages.local/repository/uan-2.5.0-sle-15sp4"
+             disable_gpg_check: no
+             priority: 2
 ```
 
 This role is included in the UAN `site.yml` play.

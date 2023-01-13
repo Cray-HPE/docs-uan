@@ -71,7 +71,7 @@ Perform the following steps to configure and boot a SLES image on an Application
         product:
           name: uan
           version: 2.5.3
-          branch: integration
+          branch: integration-2.5.3
     
     images:
     - name: sles-uan-image

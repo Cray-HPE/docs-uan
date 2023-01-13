@@ -37,12 +37,15 @@ In this procedure, an upgrade from UAN 2.0.0 to UAN 2.3.1 is being performed. Ad
 
 5. Checkout the branch currently used to hold UAN configuration.
 
-    The following example assumes that branch is `integration`.
+    The following example assumes that branch is `integration-CURRENT_PRODUCT_VERSION` and the branch for the updated configuration `integration-PRODUCT_VERSION` .
 
     ```bash
-    ncn-m001# git checkout integration
-    Switched to branch 'integration'
-    Your branch is up to date with 'origin/integration'.
+    ncn-m001# git checkout integration-CURRENT_PRODUCT_VERSION
+    Switched to branch 'integration-CURRENT_PRODUCT_VERSION'
+    Your branch is up to date with 'origin/integration-CURRENT_PRODUCT_VERSION'.
+
+    ncn-m001# git checkout -b integration-PRODUCT_VERSION
+    Switched to branch 'integration-PRODUCT_VERSION'
     ```
 
 6. Merge the new install branch to the current branch. Write a commit message when prompted.
@@ -54,7 +57,7 @@ In this procedure, an upgrade from UAN 2.0.0 to UAN 2.3.1 is being performed. Ad
 7. Push the changes to VCS. Enter the `crayvcs` password when prompted.
 
     ```bash
-    ncn-m001# git push
+    ncn-m001# git push --set-upstream origin integration-PRODUCT_VERSION
     ```
 
 8. Retrieve the commit ID from the merge and store it for later use.
