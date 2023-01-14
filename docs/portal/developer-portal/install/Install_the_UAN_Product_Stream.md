@@ -1,66 +1,65 @@
-# Install the UAN Product Stream
+# Install or Upgrading UAN
 
-This procedure installs the User Access Nodes (UAN) product on a system so that UAN boot images can be created.
+## Install and Upgrade Framework (IUF) Overview
 
-Before performing this procedure:
+The Install and Upgrade Framework (IUF) provides commands which install, upgrade and deploy products on systems managed by CSM. IUF capabilities are described in detail in the [Cray System Management Documentation](https://github.com/Cray-HPE/docs-csm/blob/release/1.3/README.md). The initial install and upgrade workflows described in the [HPE Cray EX System Software Getting Started Guide S-8000](https://www.hpe.com/support/ex-S-8000) detail when and how to use IUF with a new release of UAN or any other HPE Cray EX product.
 
-- Initialize and configure the Cray command line interface (CLI) tool. See "Configure the Cray Command Line Interface (CLI)" in the CSM documentation for more information.
-- Perform [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md)
+This document **does not** replicate install, upgrade or deployment procedures detailed in the [Cray System Management Documentation](https://github.com/Cray-HPE/docs-csm/blob/release/1.3/README.md). This document provides details regarding software and configuration content specific to UAN which may be needed when installing, upgrading or deploying a UAN release. The [Cray System Management Documentation](https://github.com/Cray-HPE/docs-csm/blob/release/1.3/README.md) will indicate when sections of this document should be referred to for detailed information.
 
-Replace `PRODUCT_VERSION` in the example commands with the UAN product stream string (2.3.0 for example). Replace `CRAY_EX_DOMAIN` in the example commands with the FQDN of the HPE Cray EX.
+IUF will perform the following tasks for a release of UAN.
 
-1. Start a typescript to capture the commands and output from this installation.
+- IUF `deliver-product` stage:
+  - Uploads UAN configuration content to VCS
+  - Uploads UAN information to the CSM product catalog
+  - Uploads UAN content to Nexus repositories
+  - Uploads the UAN Stock Kernel image to IMS
+- IUF `update-vcs-config` stage:
+  - Updates the VCS integration branch with new UAN configuration content
+- IUF `update-cfs-config` stage:
+  - Creates new CFS configurations with new UAN configuration content
+- IUF `prepare-images` stage:
+  - Creates updated UAN images based on COS with new UAN content
+- IUF `managed-nodes-rollout` stage:
+  - Boots UAN nodes with an image containing new UAN content
 
-    ```bash
-    ncn-m001# script -af product-uan.$(date +%Y-%m-%d).txt 
-    ncn-m001# export PS1='\u@\H \D{%Y-%m-%d} \t \w # '
-    ```
+IUF uses a variety of CSM and SAT tools when performing these tasks. The IUF section of the [Cray System Management Documentation](https://github.com/Cray-HPE/docs-csm/blob/release/1.3/README.md) describes how to use these tools directly if it is desirable to use them instead of IUF.
 
-2. Run the installation script:
+## IUF Stage Details for UAN
 
-    ```bash
-    ncn-m001# ./install.sh
-    ```
+This section describes any UAN details that an administrator may need to be aware of before executing IUF stages. Entries are prefixed with **Information** if no administrative action is required or **Action** if an administrator may need to perform tasks outside of IUF.
 
-3. Verify that the UAN configuration was imported and added to the `cray-product-catalog` ConfigMap in the Kubernetes `services` namespace.
+### update-vcs-config
 
-    1. Run the following command and verify that the output contains an entry for the `PRODUCT_VERSION` that was installed in the previous steps:
+**Action**: Before executing this stage, the administrator should ensure the IUF site variables file (see `iuf -sv SITE_VARS`) is updated to reflect site preferences, including the desired VCS branching configuration. The branching configuration will be used by the `update-vcs-config` stage when modifying COS branches in VCS.
 
-       ```bash
-       ncn-m001# kubectl get cm cray-product-catalog -n services -o json | jq -r .data.uan
-       PRODUCT_VERSION:
-            configuration:
-              clone_url: https://vcs.CRAY_EX_DOMAIN/vcs/cray/uan-config-management.git
-              commit: 6658ea9e75f5f0f73f78941202664e9631a63726
-              import_branch: cray/uan/PRODUCT_VERSION
-              import_date: 2021-07-28 03:26:00.399670
-              ssh_url: git@vcs.CRAY_EX_DOMAIN:cray/uan-config-management.git
-       ```
-    
-    2. Verify that the Kubernetes jobs that import the configuration content completed successfully. Skip this step if the previous substep indicates that the new UAN product version content installed successfully.
-    
-       A STATUS of `Completed` indicates that the Kubernetes jobs completed successfully.
-    
-       ```bash
-       ncn-m001# kubectl get pods -n services | grep uan
-       uan-config-import-PRODUCT_VERSION-wfh4f                                  0/3     Completed   0          3m15s
-       ```
-    
-4. Verify that the UAN RPM repositories have been created in Nexus:
+### update-cfs-config
 
-   `PRODUCT_VERSION` is the UAN release number and `SLE_VERSION` is the SLE release version, such as `15sp4` or `15sp3`.
+**Action**: Before executing this stage, any site-local UAN configuration changes should be made so the following stages execute using the desired UAN configuration values. See the [About UAN Configuration](../operations/About_UAN_Configuration.md) section of this documentation for UAN configuration content details. Note that the [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh install scenarios.
 
-    Query Nexus through its REST API to display the repositories prefixed with the name uan:
-   
-    ```bash
-    ncn-m001# curl -s -k https://packages.local/service/rest/v1/repositories | jq -r '.[] | select(.name | startswith("uan")) | .name'
-    uan-PRODUCT_VERSION-sle-SLE_VERSION
-    ```
-   
-5. Finish the typescript file started at the beginning of this procedure.
+## UAN Content Installed
 
-    ```bash
-    # exit
-    ```
+The following subsections describe the majority of the UAN content installed and configured on the system by IUF. The new version of UAN \(2.6.XX\) and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
 
-6. **Optional:** Perform [Merge UAN Configuration Data](../upgrade/Merge_UAN_Configuration_Data.md#merge-uan-configuration-data) if a previous version of the UAN product was already installed.
+### Configuration
+
+UAN provides configuration content in the form of Ansible roles and plays. This content is uploaded to a VCS repository in a branch with a specific UAN version number \(2.6.XX\) to distinguish it from any previously released UAN configuration content. This content is described in detail in the [About UAN Configuration](../operations/About_UAN_Configuration.md) section.
+
+### UAN Stock Kernel Image
+
+UAN provides a stock kernel Application Node image which may be used on Application nodes that do not require any COS compatibility as UAN does. This image is not based on the COS image which the default UAN image is and is uploaded to IMS as part of the installation process. The stock kernel Application Node image is based on SLES 15 SP4.
+
+### RPMs
+
+UAN provides RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of the installation process.
+
+The following Nexus raw repositories are created:
+
+- uan-2.6.XX-sle-15sp4
+- uan-2.6.XX-sle-15sp3
+
+The following Nexus group repositories are created and reference the aforementioned COS Nexus raw repos.
+
+- uan-2.6-sle-15sp4
+- uan-2.6-sle-15sp3
+
+The uan-2.6-sle-15sp4 and uan-2.6-sle-15sp3 Nexus group repositories are used when building UAN node images and are accessible on UAN nodes after boot.
