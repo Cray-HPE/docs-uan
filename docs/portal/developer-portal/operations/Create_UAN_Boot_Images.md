@@ -1,9 +1,11 @@
 
 # Create UAN Boot Images
 
+Perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) before performing this procedure. 
+
 This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
 
-UAN specific configuration, and other required configurations related to UANs are covered in this topic. Refer to *HPE Cray EX System Software Getting Started Guide* for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment\) that may be configured on the UANs.
+UAN specific configuration, and other required configurations related to UANs are covered in this topic. Refer to product-specific documentation for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment\) that may be configured on the UANs.
 
 This is the overall workflow for preparing UAN images to boot UANs:
 
