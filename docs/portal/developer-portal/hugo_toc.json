@@ -75,9 +75,7 @@
     "dir": "upgrade",
     "weight": 60,
     "toc": [
-      "Notable_Changes.md",
-      "Upgrade_UAN_Software_Product.md",
-      "Merge_UAN_Configuration_Data.md"
+      "Notable_Changes.md"
     ]
   },
   {
