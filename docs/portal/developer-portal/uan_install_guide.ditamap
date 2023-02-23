@@ -18,9 +18,10 @@
         <topicref href="installation_prereqs/Configure_the_BIOS_of_a_Gigabyte_UAN.md"
             format="markdown"/>
     </topichead>
-    <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
-    <topicref href="operations/About_UAN_Configuration.md" format="markdown"/>
-    <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
-    <topicref href="operations/UAN_Ansible_Roles.md" format="markdown"/>
     <topicref href="install/Install_the_UAN_Product_Stream.md" format="markdown"/>
+    <topicref href="operations/About_UAN_Configuration.md" format="markdown">
+        <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
+        <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
+        <topicref href="operations/UAN_Ansible_Roles.md" format="markdown"/>
+    </topicref>
 </map>
