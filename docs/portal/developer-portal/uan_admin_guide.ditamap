@@ -14,6 +14,7 @@
         <topicref href="operations/Create_UAN_Boot_Images.md" format="markdown"/>
         <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
         <topicref href="advanced/SLES_Image.md" format="markdown"/>
+        <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
 </topichead>
     <topichead navtitle="Configure Network Interfaces">
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
