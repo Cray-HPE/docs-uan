@@ -30,7 +30,7 @@ This section describes any UAN details that an administrator may need to be awar
 
 ### update-vcs-config
 
-**Action**: Before executing this stage, the administrator should ensure the IUF site variables file (see `iuf -sv SITE_VARS`) is updated to reflect site preferences, including the desired VCS branching configuration. The branching configuration will be used by the `update-vcs-config` stage when modifying COS branches in VCS.
+**Action**: Before executing this stage, the administrator should ensure the IUF site variables file (see `iuf -sv SITE_VARS`) is updated to reflect site preferences, including the desired VCS branching configuration. The branching configuration will be used by the `update-vcs-config` stage when modifying UAN branches in VCS.
 
 ### update-cfs-config
 
@@ -45,7 +45,7 @@ The following subsections describe the majority of the UAN content installed and
 
 UAN provides configuration content in the form of Ansible roles and plays. This content is uploaded to a VCS repository in a branch with a specific UAN version number \(2.6.XX\) to distinguish it from any previously released UAN configuration content. This content is described in detail in the [About UAN Configuration](../operations/About_UAN_Configuration.md) section.
 
-For application nodes based on COS, the COS compute image is used as the base application node image and two COS CFS layers are required. The `cos-application.yml` Ansible playbook ensures that the COS content is applied as part of the image customization and node personalization processes. A second Ansible playbook, `cos-application-after.yml`, runs at the end to ensure that the application node initrd is rebuilt.
+For application nodes based on COS, the COS compute image is used as the base application node image and two COS CFS layers are required. The first COS CFS layer runs the `cos-application.yml` Ansible playbook and ensures that the COS content is applied as part of the image customization and node personalization processes. This COS CFS layer must precede the UAN CFS layer in the UAN CFS configuration. A second  COS CFS layer running the Ansible playbook, `cos-application-after.yml`, runs after the UAN CFS layer of the UAN CFS configuration to ensure that the application node initrd is rebuilt and that any customer defined filesystems are configured.
 
 Input files for `sat bootprep` are provided in the `hpc-csm-software-recipe` VCS repository and include COS components in the CFS configuration, node image, and BOS session template definitions. The `compute-and-uan-bootprep.yaml` input file is used for compute and application nodes.
 
@@ -66,7 +66,7 @@ The following instructions describe how to set the root password for UAN/Applica
     ncn-m001# kubectl exec -itn vault cray-vault-0 -c vault -- sh
     ```
 
-1.  Once attached to the pod's shell, log into vault and read the `secret/cos` key by executing the following commands. If the secret is empty, "No value found at secret/cos" will be displayed.
+1.  Once attached to the pod's shell, log into vault and read the `secret/uan` key by executing the following commands. If the secret is empty, "No value found at secret/uan" will be displayed.
 
     ```bash
     pod# export VAULT_ADDR=http://cray-vault:8200
@@ -108,7 +108,7 @@ The following Nexus raw repositories are created:
 - uan-2.6.XX-sle-15sp4
 - uan-2.6.XX-sle-15sp3
 
-The following Nexus group repositories are created and reference the aforementioned COS Nexus raw repos.
+The following Nexus group repositories are created and reference the aforementioned Nexus raw repos.
 
 - uan-2.6-sle-15sp4
 - uan-2.6-sle-15sp3
