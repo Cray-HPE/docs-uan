@@ -3,13 +3,13 @@
 **WARNING**: This feature is currently a Technical Preview, as such it requires completion of the [Prerequisites](#prerequisites) section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
 
 ## UAI Experience on UANs
-In UAN 2.6, a new playbook has been added to create a single node, K3s cluster. The K3s environment will be used to run services necessary to replicate the experience of User Access Instances, UAIs, on one or more UANs.
+In UAN 2.6, a new playbook has been added to create a single node, K3s cluster. This K3s environment can then run the services necessary to replicate the experience of User Access Instances (UAIs) on one or more UANs.
 
 ### Use of K3s
-K3s will serve as the orchestrator of services necessary to replicate the capabilities of UAIs on UAN hardware. This includes HAProxy, MetalLB, and eventually DNS services like ExternalDNS and PowerDNS. Notably, this does **not** orchestrate instances of sshd and podman containers through K3s. As a comparison, K3s and the initial set of services are operating in a similar way to "Broker UAIs" in CSM to handle the SSH ingress and redirection of users into their interactive environment.
+K3s will serve as the orchestrator of services necessary to replicate the capabilities of UAIs on UAN hardware. This includes HAProxy, MetalLB, and eventually DNS services like ExternalDNS and PowerDNS. Notably, this does **not** orchestrate instances of sshd and podman containers through K3s. K3s and the initial set of services mimic how the "Broker UAIs" in CSM to handle the SSH ingress and redirection of users into their interactive environment.
 
 ### Use of Podman
-Traditional UAIs in CSM required some level of privilege in CSM for access to host volume mounts, networking, and startup activities. Podman offers an attractive solution for an interactive environment in which to place users, they can be rootless containers that do not rely on privilege escalation. When running on UANs, podman containers have access to a hosting environment that is already tailored to users.
+Traditional UAIs in CSM required some level of privilege in CSM for access to host volume mounts, networking, and startup activities. Podman containers offer an attractive solution for an interactive environment in which to place users. They can be rootless containers that do not rely on privilege escalation. When running on UANs, podman containers have access to a hosting environment that is already tailored to users.
 
 ### Overview
 The overall component flow for replicating containerized environments for End-Users on UANs is as follows:
@@ -73,7 +73,7 @@ A container image suitable for users should be available in a container image re
 
 ## Configuring with Configuration Framework Service (CFS)
 
-After completing the prerequisites section, the following should be established to proceed with configuring a UAN to run K3s.
+After completing the [Prerequisites](#prerequisites) section, the following are available to proceed with configuring a UAN to run K3s.
 
 - A fully configured UAN
 - An IPAddress start and end range to assign to MetalLB
@@ -123,7 +123,6 @@ To validate the K3s cluster once deployed, see the [Validation Checks](#validati
 
 ## Getting Started
 
-Perform the following tasks to get it going! todo fix this
 
 ### MetalLB 
 
