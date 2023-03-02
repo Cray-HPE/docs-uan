@@ -71,7 +71,6 @@ The following steps should be completed prior to configuring the UAN with K3s.
 ### Podman Image
 A container image suitable for users should be available in a container image registry accessible from the UAN.
 
-
 ## Configuring with Configuration Framework Service (CFS)
 
 After completing the [Prerequisites](#prerequisites) section, the following are available to proceed with configuring a UAN to run K3s.
@@ -122,8 +121,9 @@ This repository will contain the installer for K3s, Helm charts for HAProxy and 
 
 To validate the K3s cluster once deployed, see the [Validation Checks](#validation-checks) section of this document for details.
 
-## Getting Started
+## Configuring K3s, MetalLB, HAProxy, and SSHD for use with Podman
 
+Each of the sections below describe how the various comonents deployed to K3s and the UANs may be configured to enable users to SSH to rootless podman containers. As there is no one configuration to fit any one use case, read and understand each section to modify the configuration as needed. Once each section has been completed, see [Deploy K3s to the UAN](#deploy-k3s-to-the-uan).
 
 ### MetalLB 
 
@@ -204,9 +204,9 @@ uan_haproxy:
         server uan02 uan02.example.domain.com:9000 check inter 10s fall 2 rise 1
         server uan03 uan03.example.domain.com:9000 check inter 10s fall 2 rise 1
 ```
-This is an example that should be tailored to the desired configuration. See (todo link to ssh section) to create new instances of SSHD to respond to HAProxy connections outside of the standard SSHD running on port 22.
+This is an example that should be tailored to the desired configuration. See the [SSHD Configuration](#sshd-configuration) section to create new instances of SSHD to respond to HAProxy connections outside of the standard SSHD running on port 22.
 
-For more information HAProxy configurations, see (todo link to haproxy config).
+For more information HAProxy configurations, see [HAProxy Configuration](#https://docs.haproxy.org/2.7/configuration.html).
 
 To additional instances of HAProxy representing alternate configurations, add a new element to the list `uan_haproxy`.
 ### SSHD Configuration
@@ -232,6 +232,9 @@ This default configuration will simply place users into their standard shell. To
         PermitTTY yes
         ForceCommand podman --root /scratch/containers/$USER run -it -h uai --cgroup-manager=cgroupfs --userns=keep-id --network=host -e DISPLAY=$DISPLAY registry.local/cray/uai:latest
 ```
+
+**Note**: In the example above, the image registry.local/cray/uai:latest was provided as an example, this should be modified to reference an available container image.
+
 ### Deploy K3s to the UAN
 Once the VCS repository has been updated with the appropriate values, generate a new image and reboot the UAN. 
 
@@ -247,6 +250,7 @@ Alternatively, update the active CFS configuration on a single running UAN to in
 ```
 This will download the necessary assets without requiring an image rebuild.
 
+After the node has been booted and configured, proceed with the [Validation Checks](#validation-checks) section to verify the components have been configured correctly.
 
 # Validation Checks
 
@@ -256,7 +260,7 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
 
 1. Verify `kubectl` from the UAN.
 
-      ```bash
+   ```bash
    uan01:~ # export KUBECONFIG=~/.kube/k3s.yml
    uan01:~ # kubectl get nodes
    NAME    STATUS   ROLES                  AGE     VERSION
@@ -294,15 +298,15 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
 
 1. Verify the new instance of SSHD is running:
 
-      ```bash
-      uan01:~ # systemctl status sshd_uai
-      ● sshd_uai.service - OpenSSH Daemon Generated for uai
-        Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
-        Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
+   ```bash
+   uan01:~ # systemctl status sshd_uai
+   ● sshd_uai.service - OpenSSH Daemon Generated for uai
+     Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
+     Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
    ```
 1. Finally, use SSH to log in through the HAProxy load balancer:
-    ```bash
-    $ ssh x.x.x.x
+   ```bash
+   $ ssh x.x.x.x
    Trying to pull registry.local/cray/uai:1.0...
    Getting image source signatures
    Copying blob 07a88a2f44f8 done
