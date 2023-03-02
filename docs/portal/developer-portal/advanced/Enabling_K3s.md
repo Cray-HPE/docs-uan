@@ -1,6 +1,6 @@
 # Configuring a UAN for K3s (Technical Preview)
 
-**WARNING**: This feature is currently a Technical Preview, as such it requires completion of a prerequisites section. More functionality related to streamlining the configuration and enhancing the experience of rootless podman containers will be added in a future release. This means some of the configuration options may be expected to change.
+**WARNING**: This feature is currently a Technical Preview, as such it requires completion of the [Prerequisites](#prerequisites) section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
 
 ## UAI Experience on UANs
 In UAN 2.6, a new playbook has been added to create a single node, K3s cluster. The K3s environment will be used to run services necessary to replicate the experience of User Access Instances, UAIs, on one or more UANs.
