@@ -69,7 +69,7 @@ The following steps should be completed prior to configuring the UAN with K3s.
    }
 
 ### Podman Image
-A container image suitable for users should be available in a container image registry accessible from the UAN.
+1. Place a container image suitable for users within a container image registry accessible from the UAN.
 
 ## Configuring with Configuration Framework Service (CFS)
 
@@ -134,6 +134,8 @@ metallb_ipaddresspool_range_start: "x.x.x.x"
 metallb_ipaddresspool_range_end: "x.x.x.x"
 ```
 
+MetalLB will assign an IP address to each service running in K3s that requires and external IP address. In the case of HAProxy, each instance of HAProxy will require an IP address. Podman containers do *not* require their own IP address.
+
 **Note**: In a future version of CSM, this range may be integrated into the System Layout Service (SLS) so the range will be automatically determined.
 
 **Important**: Before modifying `customer-access`, be sure to verify none of the IP Addresses in the new pool for UANs are being used by IMS or UAIs:
@@ -166,7 +168,7 @@ To complete migrating the IP Address range out of CSM, restart the MetalLB contr
 ```
 
 ### HAProxy Configuration
-Each SSH ingress into is backed by a K3s deployment of HAProxy. By default, a single instance of HAProxy is enabled in `vars/uan_helm.yml`:
+Each SSH ingress is backed by a K3s deployment of HAProxy. By default, a single instance of HAProxy is enabled in `vars/uan_helm.yml`:
 ```yaml
 uan_haproxy:
   - name: "haproxy-uai"
@@ -208,7 +210,7 @@ This is an example that should be tailored to the desired configuration. See the
 
 For more information HAProxy configurations, see [HAProxy Configuration](#https://docs.haproxy.org/2.7/configuration.html).
 
-To additional instances of HAProxy representing alternate configurations, add a new element to the list `uan_haproxy`.
+To enable additional instances of HAProxy representing alternate configurations, add a new element to the list `uan_haproxy`.
 ### SSHD Configuration
 The role `uan_sshd` runs in the playbook `k3s.yml` to start and configure new instances of SSHD to respond to HAProxy forwarded connections. Each new instance of SSHD is defined in `vars/uan_sshd.yml` as an element in the list `uan_sshd_configs`:
 ```yaml
