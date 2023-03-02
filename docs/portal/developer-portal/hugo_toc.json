@@ -67,7 +67,8 @@
         "Customizing_UAN_Images_Manually.md",
         "Enabling_CAN_CHN.md",
         "Repurposing_Compute_as_UAN.md",
-        "SLES_Image.md"
+        "SLES_Image.md",
+        "Enabling_K3s.md"
     ]
   },
   {

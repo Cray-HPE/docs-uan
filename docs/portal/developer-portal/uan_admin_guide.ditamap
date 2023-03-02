@@ -24,6 +24,7 @@
     <topicref href="operations/Mount_a_New_File_System_on_an_UAN.md" format="markdown"/>
     <topicref href="operations/Boot_UANs.md" format="markdown"/>
     <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>
+    <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
     <topichead>
 	<topicmeta><navtitle>Troubleshooting</navtitle></topicmeta>
         <topicref href="troubleshooting/Troubleshoot_UAN_Boot_Issues.md" format="markdown"/>
