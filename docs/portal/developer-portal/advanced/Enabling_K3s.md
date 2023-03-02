@@ -13,11 +13,11 @@ Traditional UAIs in CSM required some level of privilege in CSM for access to ho
 
 ### Overview
 The overall component flow for replicating containerized environments for End-Users on UANs is as follows:
-- A user uses `ssh` to initiate a connection the HAProxy load-balancer running in K3s.
-- HAProxy, using the configured load balancing algorithms, will forward the SSH connection to an instance of `sshd`
-- `sshd`, running on a UAN via systemd, will initiate a rootless podman container as the user using the `ForceCommand` configuration.
-- The user is placed in a podman container for an interactive session, or their `SSH_ORIGINAL_COMMAND` is run in the container.
-- When the user disconnects, the podman process exits, and the container is removed.
+1. A user uses `ssh` to initiate a connection to the HAProxy load-balancer running in K3s.
+1. HAProxy, using the configured load balancing algorithms, will forward the SSH connection to an instance of `sshd` running on a UAN.
+1. `sshd`, running on a UAN via systemd, will initiate a rootless podman container as the user using the `ForceCommand` configuration.
+1. The user is placed in a podman container for an interactive session, or their `SSH_ORIGINAL_COMMAND` is run in the container.
+1. When the user disconnects, the podman process exits, and the container is removed.
 
 There are alternate configurations of podman that would allow for different workflows, for example, the main pid of the container could be long running, to facilitate easier reentry to the container on subsequent logins. 
 
@@ -262,7 +262,7 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
    uan01   Ready    control-plane,master   3h58m   v1.26.0+k3s1
    ```
 
-2. Verify HAProxy and MetalLB are installed with `helm`
+1. Verify HAProxy and MetalLB are installed with `helm`
 
    ```bash
    uan01:~ # export KUBECONFIG=~/.kube/k3s.yml
@@ -272,7 +272,7 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
    metallb    	metallb-system	1       	2023-03-01 10:40:15.548380973 -0600 CST	deployed	metallb-0.13.7	v0.13.7
    ```
 
-3. Check pod status of HAProxy and MetalLB
+1. Check pod status of HAProxy and MetalLB
 
    ```bash
    uan01:~ # kubectl get pods -A | egrep "haproxy|metallb"
@@ -281,7 +281,7 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
    haproxy-uai      haproxy-uai-7kg6p                         1/1     Running   0          3h46m
    ```
 
-4. Verify MetalLB has assigned an external IP address to HAProxy:
+1. Verify MetalLB has assigned an external IP address to HAProxy:
 
    Examine the CPS cm-pm pod logs using the following command:
 
@@ -291,7 +291,7 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
    haproxy-uai   haproxy-uai   LoadBalancer   x.x.x.x        x.x.x.x          22:30886/TCP   3h47m
    ```
 
-5. Verify the new instance of SSHD is running:
+1. Verify the new instance of SSHD is running:
 
       ```bash
       uan01:~ # systemctl status sshd_uai
@@ -299,7 +299,7 @@ To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
         Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
         Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
    ```
-6. Finally, use SSH to log in through the HAProxy load balancer:
+1. Finally, use SSH to log in through the HAProxy load balancer:
     ```bash
     $ ssh x.x.x.x
    Trying to pull registry.local/cray/uai:1.0...
