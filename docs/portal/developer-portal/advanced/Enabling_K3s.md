@@ -23,49 +23,50 @@ There are alternate configurations of podman that would allow for different work
 
 ## Prerequisites 
 
-The following sections should be completed prior to configuring the UAN with K3s.
+The following steps should be completed prior to configuring the UAN with K3s.
 
-### UAN K3s Node
-Designate a UAN to operate as the K3s control-plane node.
+1. Designate a UAN to operate as the K3s control-plane node.
 
-**Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
+   **Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
 
-### MetalLB IP Address Pool
+1. Identify a pool of IP addresses for the services running in K3s.
+   
+   This address pool must be routable from the UAN control-plane, and should be unused for other purposes.
 
-A pool of IP Address should be configured for services running in K3s. This will allow for external `LoadBalancer` IP Address to be assigned to services like `HAProxy`.  This address pool must be routable from the UAN control-plane, and should be unused for other purposes. Initially, these IP address will serve as the SSH ingress for instances of `HAProxy`.
+   This will allow for external `LoadBalancer` IP Address to be assigned to services like `HAProxy`. Initially, these IP addresses will serve as the SSH ingress for instances of `HAProxy`.
 
-### Subuid and Subgid
+1. Configure and create the `/etc/subuid` and `/etc/subgid` files.
 
-To allow for users to run rootless podman containers, the files `/etc/subuid` and `/etc/subgid` must be present and configured with an entry for each user. These files should be uploaded to the `user` S3 bucket:
-```bash
-$ cray artifacts list user --format json
-{
-  "artifacts": [
-    {
-      "Key": "subuid",
-      "LastModified": "2023-02-21T23:41:43.948000+00:00",
-      "ETag": "\"c543aebb9b40bcf48879885734447090\"",
-      "Size": 145686,
-      "StorageClass": "STANDARD",
-      "Owner": {
-        "DisplayName": "User Service User",
-        "ID": "USER"
-      }
-    },
-    {
-      "Key": "subgid",
-      "LastModified": "2023-02-21T23:41:43.948000+00:00",
-      "ETag": "\"73032ede132e44d2c1bc567246901737\"",
-      "Size": 145686,
-      "StorageClass": "STANDARD",
-      "Owner": {
-        "DisplayName": "User Service User",
-        "ID": "USER"
-      }
-    }
-  ]
-}
-```
+   To allow for users to run rootless podman containers, these files must be present and configured with an entry for each user. These files should be uploaded to the `user` S3 bucket:
+
+   ```bash
+   $ cray artifacts list user --format json
+   {
+     "artifacts": [
+       {
+         "Key": "subuid",
+         "LastModified": "2023-02-21T23:41:43.948000+00:00",
+         "ETag": "\"c543aebb9b40bcf48879885734447090\"",
+         "Size": 145686,
+         "StorageClass": "STANDARD",
+         "Owner": {
+           "DisplayName": "User Service User",
+           "ID": "USER"
+        }
+       },
+       {
+         "Key": "subgid",
+         "LastModified": "2023-02-21T23:41:43.948000+00:00",
+         "ETag": "\"73032ede132e44d2c1bc567246901737\"",
+         "Size": 145686,
+         "StorageClass": "STANDARD",
+         "Owner": {
+           "DisplayName": "User Service User",
+           "ID": "USER"
+         }
+       }
+     ]
+   }
 
 ### Podman Image
 A container image suitable for users should be available in a container image registry accessible from the UAN.
