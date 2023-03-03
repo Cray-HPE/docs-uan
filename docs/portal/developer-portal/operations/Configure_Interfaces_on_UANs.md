@@ -11,11 +11,15 @@ In the command examples of this procedure, `PRODUCT_VERSION` refers to the curre
 
 User access may be configured to use either a direct connection to the UANs from the sites user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\).  The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
 
-By default, a direct connection to the sites user network is assumed and the Admin must define the interface(s) and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.  When CAN is selected as the system default route in SLS, the CAN interfaces are defined by `uan_can_bond_slaves` \(see [UAN Ansible Roles](UAN_Ansible_Roles.md)\) and the default route is set to the bonded CAN interface `can0`. When CHN is selected as the system default route in SLS, the CHN IP is added to `hsn0` and the default route is set to the CHN. The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
+By default, a direct connection to the site's user network is assumed and the Admin must define the interface(s) and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
+
+* When CAN is set as the system default route in SLS, the bonded CAN interfaces are defined by `uan_can_bond_slaves` \(see [UAN Ansible Roles](UAN_Ansible_Roles.md)\) and the default route is set to the bonded CAN interface `can0`.
+
+* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` and the default route is set to the CHN. The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
 
 ## Node Management Networking
 
-By default, the Node Management Network \(NMN\) is connected to a single `nmn0` interface.  If desired, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, `nmnb0`. To configure the NMN as a bonded pair, set `uan_nmn_bond` to true and list the pair of NMN interfaces in `uan_nmn_bond_slaves` as described in [UAN Ansible Roles](UAN_Ansible_Roles.md).
+By default, the Node Management Network \(NMN\) is connected to a single `nmn0` interface.  If desired, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, `nmnb0`. To configure the NMN as a bonded pair, set `uan_nmn_bond` to true and set the interfaces to be used in the bond in `uan_nmn_bond_slaves` as described in [UAN Ansible Roles](UAN_Ansible_Roles.md).
 
 ## Procedure
 
