@@ -256,7 +256,7 @@ After the node has been booted and configured, proceed with the [Validation Chec
 
 # Validation Checks
 
-### K3s Validation
+## K3s Validation
 
 To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
 
