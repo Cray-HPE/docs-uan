@@ -56,7 +56,8 @@
         "Configure_Interfaces_on_UANs.md",
         "Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md",
         "UAN_Ansible_Roles.md",
-        "Boot_UANs.md"
+        "Boot_UANs.md",
+        "CVE-2023-0461.md"
     ]
   },
   {
