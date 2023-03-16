@@ -7,19 +7,21 @@ Interface configuration is performed by the `uan_interfaces` Ansible role. For d
 
 In the command examples of this procedure, `PRODUCT_VERSION` refers to the current installed version of the UAN product. Replace `PRODUCT_VERSION` with the UAN version number string when executing the commands.
 
-## User Access Networking
-
-User access may be configured to use either a direct connection to the UANs from the sites user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\).  The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
-
-By default, a direct connection to the site's user network is assumed and the Admin must define the interface(s) and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
-
-* When CAN is set as the system default route in SLS, the bonded CAN interfaces are defined by `uan_can_bond_slaves` \(see [UAN Ansible Roles](UAN_Ansible_Roles.md)\) and the default route is set to the bonded CAN interface `can0`.
-
-* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` and the default route is set to the CHN. The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
-
 ## Node Management Networking
 
 By default, the Node Management Network \(NMN\) is connected to a single `nmn0` interface.  If desired, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, `nmnb0`. To configure the NMN as a bonded pair, set `uan_nmn_bond` to true and set the interfaces to be used in the bond in `uan_nmn_bond_slaves` as described in [UAN Ansible Roles](UAN_Ansible_Roles.md).
+
+## User Access Networking
+
+User access may be configured to use either a direct connection to the UANs from the site's user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\).  The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
+
+By default, a direct connection to the site's user network is assumed and the Admin must define the interface(s) and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
+
+* When CAN is set as the system default route in SLS and `uan_nmn_bond` is false, the bonded CAN interfaces are determined automatically.  If `uan_nmn_bond` is true, the bonded CAN interfaces must be defined by `uan_can_bond_slaves` \(see [UAN Ansible Roles](UAN_Ansible_Roles.md)\). The default route is set to the bonded CAN interface `can0`.
+
+* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` and the default route is set to the CHN.
+
+* The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
 
 ## Procedure
 
@@ -50,32 +52,6 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
 5. Edit the yaml file, \(`customer_net.yml`, for example\), in either the `group_vars/ROLE_SUBROLE/` or `host_vars/XNAME` directory and configure the values as needed.
 
-    To set up CAN or CHN:
-
-    ```bash
-    ## uan_can_setup
-    # Set uan_can_setup to 'yes' if the site will
-    # use the Shasta CAN or CHN network for user access.
-    # By default, uan_can_setup is set to 'no'.
-    uan_can_setup: yes
-
-    ## uan_can_bond_slaves
-    # This variable only applies when the system default route is CAN.
-    # These are the default CAN bond slaves.  They may need to be
-    # changed based on the actual system hardware configuration.
-    uan_can_bond_slaves:
-      - "ens10f1"
-      - "ens1f1"
-    ```
-
-    To allow a custom default route when CAN or CHN is selected:
-
-    ```bash
-    ## uan_customer_default_route
-    # Allow a custom default route when CAN or CHN is selected.
-    uan_customer_default_route: no
-    ```
-
     To enable bonded NMN interfaces:
 
     ```bash
@@ -91,6 +67,33 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
     uan_nmn_bond_slaves:
       - "ens10f0"
       - "ens1f0"
+    ```
+
+    To set up CAN or CHN:
+
+    ```bash
+    ## uan_can_setup
+    # Set uan_can_setup to 'yes' if the site will
+    # use the Shasta CAN or CHN network for user access.
+    # By default, uan_can_setup is set to 'no'.
+    uan_can_setup: yes
+
+    ## uan_can_bond_slaves
+    # This variable only applies when the system default route is CAN
+    # and `uan_nmn_bond` is true.
+    # These are the default CAN bond slaves.  They may need to be
+    # changed based on the actual system hardware configuration.
+    uan_can_bond_slaves:
+      - "ens10f1"
+      - "ens1f1"
+    ```
+
+    To allow a custom default route when CAN or CHN is selected:
+
+    ```bash
+    ## uan_customer_default_route
+    # Allow a custom default route when CAN or CHN is selected.
+    uan_customer_default_route: no
     ```
 
     To define interfaces:
