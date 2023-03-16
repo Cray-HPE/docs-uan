@@ -8,6 +8,7 @@
 		<data name="edition" value="UAN Software Release @product_version@"></data>
     </topicmeta>
     <topicref href="operations/About_UAN_Configuration.md" format="markdown"/>
+    <topicref href="operations/CVE-2023-0461.md" format="markdown"/>
     <topichead>
 	    <topicmeta><navtitle>Manage UAN Boot Images</navtitle></topicmeta>
         <topicref href="operations/Build_a_New_UAN_Image_Using_the_COS_Recipe.md" format="markdown"/>
