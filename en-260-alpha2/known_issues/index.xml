@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>User Access Node (UAN)</title>
+    <link>/docs-uan/en-260-alpha2/known_issues/</link>
+    <description>Recent content on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 20 Mar 2023 23:45:43 +0000</lastBuildDate><atom:link href="/docs-uan/en-260-alpha2/known_issues/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/en-260-alpha2/known_issues/kdump_configuration/</link>
+      <pubDate>Mon, 20 Mar 2023 23:45:39 +0000</pubDate>
+      
+      <guid>/docs-uan/en-260-alpha2/known_issues/kdump_configuration/</guid>
+      <description>KDUMP Configuration Workaround There exists a known bug in the site.yml file of the uan-config-management VCS repository where the kdump Ansible role is being called too early in the configuration process. The kdump role creates the kdump initrd and it is being called prior to all the UAN packages being installed. This creates a kdump initrd which does not include the required network drivers for the UAN hardware and causes kdump to fail on UAN nodes.</description>
+    </item>
+    
+  </channel>
+</rss>
