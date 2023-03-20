@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>User Access Node (UAN)</title>
+    <link>/docs-uan/en-257/troubleshooting/</link>
+    <description>Recent content on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 20 Mar 2023 22:10:35 +0000</lastBuildDate><atom:link href="/docs-uan/en-257/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/en-257/troubleshooting/troubleshoot_uan_boot_issues/</link>
+      <pubDate>Mon, 20 Mar 2023 22:10:33 +0000</pubDate>
+      
+      <guid>/docs-uan/en-257/troubleshooting/troubleshoot_uan_boot_issues/</guid>
+      <description>Troubleshoot UAN Boot Issues The UAN boot process BOS boots UANs. BOS uses session templates to define various parameters such as:
+Which nodes to boot Which image to boot Kernel parameters Whether to perform post-boot configuration (Node Personalization) of the nodes by CFS. Which CFS configuration to use if Node Personalization is enabled. UAN boots are performed in three phases:
+PXE booting an iPXE binary that will load the initrd of the UAN image that will boot.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-257/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</link>
+      <pubDate>Mon, 20 Mar 2023 22:10:33 +0000</pubDate>
+      
+      <guid>/docs-uan/en-257/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</guid>
+      <description>Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.
+Read About UAN Configuration before starting this procedure.
+Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:
+This example sorts the list of CFS sessions so that the most recent one is at the bottom.
+ncn# kubectl -n services get pods --sort-by=.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-257/troubleshooting/troubleshoot_uan_disk_configuration_issues/</link>
+      <pubDate>Mon, 20 Mar 2023 22:10:33 +0000</pubDate>
+      
+      <guid>/docs-uan/en-257/troubleshooting/troubleshoot_uan_disk_configuration_issues/</guid>
+      <description>Troubleshoot UAN Disk Configuration Issues Perform this procedure to enable uan_disk_config to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.
+This procedure currently only addresses uan_disk_config errors due to existing disk partitions.
+Refer to About UAN Configuration for an explanation of UAN disk configuration.
+The most common cause of failure in the uan_disk_config role is the disk having been previously configured without a /scratch and /swap partition.</description>
+    </item>
+    
+  </channel>
+</rss>
