@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/test-plan/test-plan/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -783,7 +783,7 @@
   
     
     <li data-nav-id="/docs-uan/test-plan/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -811,7 +811,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/test-plan/test-plan/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/test-plan/test-plan/" title="" class="dd-item active">
         <a href="/docs-uan/test-plan/test-plan/">
         Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan
         <i class="fas fa-check read-icon"></i>
@@ -863,72 +863,214 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/test-plan/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#unit-tests">Unit Tests</a></li>
+    <li><a href="#integration-tests">Integration Tests</a></li>
+    <li><a href="#functional-tests">Functional Tests</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
-<h4 id="installation-prereqsinstallation_prereqs"><a href="installation_prereqs">Installation Prereqs</a></h4>
-<ol>
-<li><a href="installation_prereqs/prepare_for_uan_product_installation">Prepare For UAN Product Installation</a></li>
-<li><a href="installation_prereqs/configure_the_bmc_for_uans_with_ilo">Configure The BMC For UANs With iLO</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_an_hpe_uan">Configure The BIOS Of An HPE UAN</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_a_gigabyte_uan">Configure The BIOS Of A Gigabyte UAN</a></li>
-</ol>
-<h4 id="installinstall"><a href="install">Install</a></h4>
-<ol>
-<li><a href="install/install_the_uan_product_stream">Install The UAN Product Stream</a></li>
-</ol>
-<h4 id="operationsoperations"><a href="operations">Operations</a></h4>
-<ol>
-<li><a href="operations/about_uan_configuration">About UAN Configuration</a></li>
-<li><a href="operations/build_a_new_uan_image_using_the_cos_recipe">Build A New UAN Image Using A COS Recipe</a></li>
-<li><a href="operations/create_uan_boot_images">Create UAN Boot Images</a></li>
-<li><a href="operations/mount_a_new_file_system_on_an_uan">Mount A New File System On A UAN</a></li>
-<li><a href="operations/configure_interfaces_on_uans">Configure Interfaces On UANs</a></li>
-<li><a href="operations/configure_pluggable_authentication_modules_(pam)_on_uans">Configure Pluggable Authentication Modules (pam) On UANs</a></li>
-<li><a href="operations/uan_ansible_roles">UAN Ansible Roles</a></li>
-<li><a href="operations/boot_uans">Boot UANs</a></li>
-<li><a href="operations/cve-2023-0461"></a></li>
-</ol>
-<h4 id="advancedadvanced"><a href="advanced">Advanced</a></h4>
-<ol>
-<li><a href="advanced/customizing_uan_images_manually">Customizing UAN Images Manually</a></li>
-<li><a href="advanced/enabling_can_chn">Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)</a></li>
-<li><a href="advanced/repurposing_compute_as_uan">Repurposing A Compute Node As A UAN</a></li>
-<li><a href="advanced/sles_image">Booting An Application Node With A Sles Image (techNICal Preview)</a></li>
-</ol>
-<h4 id="upgradeupgrade"><a href="upgrade">Upgrade</a></h4>
-<ol>
-<li><a href="upgrade/notable_changes">Notable Changes</a></li>
-</ol>
-<h4 id="troubleshootingtroubleshooting"><a href="troubleshooting">Troubleshooting</a></h4>
-<ol>
-<li><a href="troubleshooting/troubleshoot_uan_boot_issues">Troubleshoot UAN Boot Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues">Troubleshoot UAN CFS And Network Configuration Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_disk_configuration_issues">Troubleshoot UAN Disk Configuration Issues</a></li>
-</ol>
-<h4 id="test-plantest-plan"><a href="test-plan">Test Plan</a></h4>
-<ol>
-<li><a href="test-plan/test-plan">Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan</a></li>
-</ol>
+<h1 id="test-plan-for-user-access-node-uan-and-repurposed-compute-node-as-uan">Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN</h1>
+<p>The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN.  The tests are grouped in three categories:</p>
+<ul>
+<li>Unit tests</li>
+<li>Integration tests</li>
+<li>Functional tests</li>
+</ul>
+<h2 id="unit-tests">Unit Tests</h2>
+<p>When possible, unit tests are run when the various components of UAN are built (uan-rpms, uan, and uan-product-stream). The <code>uan</code> repository contains the ansible code used when UANs boot and configure and much of the testing for that compoment must occur on a fully configured system. Future enhancements are underway to test the various compoments of UAN on a Virtual Shasta enviroment in GCP.</p>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th>Description</th>
+<th>Automated</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uan</code> builds</td>
+<td>Verify the <code>uan</code> repo is able to generate artifacts</td>
+<td>yes</td>
+<td>Run <code>make</code> in a local checkout</td>
+</tr>
+<tr>
+<td><code>uan-rpms</code> builds</td>
+<td>Verify the <code>uan-rpms</code> repo is able to generate rpms</td>
+<td>yes</td>
+<td>Run <code>make</code> in a local checkout</td>
+</tr>
+<tr>
+<td><code>uan-product-stream</code> builds</td>
+<td>Verify the <code>uan-product-stream</code> repo is able to generate a release</td>
+<td>yes</td>
+<td>Tag a new release in <code>uan-product-stream</code> or run <code>make</code> in a local checkout</td>
+</tr>
+</tbody>
+</table>
+<h2 id="integration-tests">Integration Tests</h2>
+<p>The following integration tests verify that the UAN software interacts correctly with the rest of the products. The result of the integration tests will be a fully built and customized UAN image that boots and configures correctly. Depending on the configuration of the test system, extra integrations tests may be performed (HSN booting, WLM configuration, GPU configuration, etc).</p>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th>Description</th>
+<th>Automated</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Install the UAN product</td>
+<td>Run the install procedure</td>
+<td>Yes</td>
+<td>Run <code>install.sh</code> from Install_the_UAN_Product_Stream.md</td>
+</tr>
+<tr>
+<td>Build a COS recipe for UAN</td>
+<td>Verify the COS recipe can be built as the base for a UAN image</td>
+<td>no</td>
+<td>Build_a_New_UAN_Image_Using_the_COS_Recipe.md</td>
+</tr>
+<tr>
+<td>Run UAN CFS</td>
+<td>Verify the CFS layers run correctly (SHS, UAN, WLM, CPE, etc)</td>
+<td>no</td>
+<td>Create_UAN_Boot_Images.md</td>
+</tr>
+<tr>
+<td>Boot UANs</td>
+<td>Verify the UAN boots successfully</td>
+<td>no</td>
+<td>Boot_UANS.md</td>
+</tr>
+<tr>
+<td>Enable HSN booting</td>
+<td>Verify the UAN is able to HSN boot</td>
+<td>no</td>
+<td>Consult COS documentation</td>
+</tr>
+<tr>
+<td>Enable GPU</td>
+<td>Verify the UAN is able to configure GPUs</td>
+<td>no</td>
+<td>Consult GPU documentation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functional-tests">Functional Tests</h2>
+<p>With a fully configured Shasta system, the following functional tests determines that a UAN is able to perform its intended capabilities. These tests apply to both native UANs and Compute Nodes which have been repurposed as UANs.</p>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th>Description</th>
+<th>Automated</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Authentication</td>
+<td>Verify a user is able to ssh to the UAN using LDAP authentication.</td>
+<td>no</td>
+<td><code>ssh user@uan</code></td>
+</tr>
+<tr>
+<td>Job launch</td>
+<td>Verify a user is able to submit a basic job.</td>
+<td>no</td>
+<td><code>srun hostname</code></td>
+</tr>
+<tr>
+<td>Verify CPE</td>
+<td>Verify the Cray Programming Environment is available</td>
+<td>no</td>
+<td><code>module list</code></td>
+</tr>
+<tr>
+<td>Verify GPU functionality</td>
+<td>Run the test suite if GPUs are configured</td>
+<td>yes</td>
+<td><code>/opt/cray/uan/tests/validate-gpu.sh &lt;nvidia|amd&gt;</code></td>
+</tr>
+<tr>
+<td>Verify CAN or CHN Configuration</td>
+<td>Inspect the network interfaces and default routes used for CAN or CHN</td>
+<td>no</td>
+<td><!-- raw HTML omitted --><!-- raw HTML omitted --> For systems running CAN, there must be a <code>can0</code> interface present and the default route should be over that device.<!-- raw HTML omitted --><!-- raw HTML omitted -->For systems running CHN (including Compute Nodes repurposed as UANs), the <code>hsn0</code> interface must have a CHN IP in addition to the HSN IP and the default route should be over the <code>hsn0</code> device.<!-- raw HTML omitted --><!-- raw HTML omitted --></td>
+</tr>
+</tbody>
+</table>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1427,6 +1569,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1439,6 +1582,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
                     
                 
                 

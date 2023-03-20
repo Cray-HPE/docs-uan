@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/operations/boot_uans/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -261,7 +261,7 @@
   
     
     <li data-nav-id="/docs-uan/operations/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -373,7 +373,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/operations/boot_uans/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/operations/boot_uans/" title="" class="dd-item active">
         <a href="/docs-uan/operations/boot_uans/">
         Boot UANs
         <i class="fas fa-check read-icon"></i>
@@ -863,72 +863,125 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/operations/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
-<h4 id="installation-prereqsinstallation_prereqs"><a href="installation_prereqs">Installation Prereqs</a></h4>
+<h1 id="boot-uans">Boot UANs</h1>
+<p>Perform this procedure to boot UANs using BOS so that they are ready for user logins.</p>
+<p>Perform <a href="/docs-uan/operations/create_uan_boot_images/">Create UAN Boot Images</a> before performing this procedure.</p>
 <ol>
-<li><a href="installation_prereqs/prepare_for_uan_product_installation">Prepare For UAN Product Installation</a></li>
-<li><a href="installation_prereqs/configure_the_bmc_for_uans_with_ilo">Configure The BMC For UANs With iLO</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_an_hpe_uan">Configure The BIOS Of An HPE UAN</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_a_gigabyte_uan">Configure The BIOS Of A Gigabyte UAN</a></li>
+<li>
+<p>Create a BOS session to boot the UAN nodes. Replace <code>uan-sessiontemplate-PRODUCT_VERSION</code> in the following command with the ID of the session template created by the initial UAN product installation or the UAN product upgrade process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VERSION --operation reboot --format json | tee session.json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;links&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;href&#34;</span>: <span style="color:#e6db74">&#34;/v1/session/89680d0a-3a6b-4569-a1a1-e275b71fce7d&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;jobId&#34;</span>: <span style="color:#e6db74">&#34;boa-89680d0a-3a6b-4569-a1a1-e275b71fce7d&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;rel&#34;</span>: <span style="color:#e6db74">&#34;session&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;href&#34;</span>: <span style="color:#e6db74">&#34;/v1/session/89680d0a-3a6b-4569-a1a1-e275b71fce7d/status&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;rel&#34;</span>: <span style="color:#e6db74">&#34;status&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;operation&#34;</span>: <span style="color:#e6db74">&#34;reboot&#34;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;templateUuid&#34;</span>: <span style="color:#e6db74">&#34;uan-sessiontemplate-PRODUCT_VERSION&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Retrieve the BOS session ID from the output of the previous command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# export BOS_SESSION<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>jq -r <span style="color:#e6db74">&#39;.links[] | select(.rel==&#34;session&#34;) | .href&#39;</span> session.json | cut -d <span style="color:#e6db74">&#39;/&#39;</span> -f4<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>ncn-m001# echo $BOS_SESSION
+</span></span><span style="display:flex;"><span>89680d0a-3a6b-4569-a1a1-e275b71fce7d
+</span></span></code></pre></div></li>
+<li>
+<p>Retrieve the Boot Orchestration Agent (BOA) Kubernetes job name for the BOS session.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# BOA_JOB_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cray bos session describe $BOS_SESSION --format json | jq -r .job<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Retrieve the Kuberenetes pod name for the BOA assigned to run this session.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# BOA_POD<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pods -n services -l job-name<span style="color:#f92672">=</span>$BOA_JOB_NAME --no-headers -o custom-columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:metadata.name&#34;</span><span style="color:#66d9ef">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>View the logs for the BOA to track session progress.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# kubectl logs -f -n services $BOA_POD -c boa
+</span></span></code></pre></div></li>
+<li>
+<p>List the CFS sessions started by the BOA. Skip this step if CFS was not enabled in the boot session template used to boot the UANs.</p>
+<p>If CFS was enabled in the boot session template, the BOA will initiate a CFS session.</p>
+<p>In the following command, <code>pending</code> and <code>complete</code> are also valid statuses to filter on.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray cfs sessions list --tags bos_session<span style="color:#f92672">=</span>$BOS_SESSION --status running --format json
+</span></span></code></pre></div></li>
 </ol>
-<h4 id="installinstall"><a href="install">Install</a></h4>
-<ol>
-<li><a href="install/install_the_uan_product_stream">Install The UAN Product Stream</a></li>
-</ol>
-<h4 id="operationsoperations"><a href="operations">Operations</a></h4>
-<ol>
-<li><a href="operations/about_uan_configuration">About UAN Configuration</a></li>
-<li><a href="operations/build_a_new_uan_image_using_the_cos_recipe">Build A New UAN Image Using A COS Recipe</a></li>
-<li><a href="operations/create_uan_boot_images">Create UAN Boot Images</a></li>
-<li><a href="operations/mount_a_new_file_system_on_an_uan">Mount A New File System On A UAN</a></li>
-<li><a href="operations/configure_interfaces_on_uans">Configure Interfaces On UANs</a></li>
-<li><a href="operations/configure_pluggable_authentication_modules_(pam)_on_uans">Configure Pluggable Authentication Modules (pam) On UANs</a></li>
-<li><a href="operations/uan_ansible_roles">UAN Ansible Roles</a></li>
-<li><a href="operations/boot_uans">Boot UANs</a></li>
-<li><a href="operations/cve-2023-0461"></a></li>
-</ol>
-<h4 id="advancedadvanced"><a href="advanced">Advanced</a></h4>
-<ol>
-<li><a href="advanced/customizing_uan_images_manually">Customizing UAN Images Manually</a></li>
-<li><a href="advanced/enabling_can_chn">Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)</a></li>
-<li><a href="advanced/repurposing_compute_as_uan">Repurposing A Compute Node As A UAN</a></li>
-<li><a href="advanced/sles_image">Booting An Application Node With A Sles Image (techNICal Preview)</a></li>
-</ol>
-<h4 id="upgradeupgrade"><a href="upgrade">Upgrade</a></h4>
-<ol>
-<li><a href="upgrade/notable_changes">Notable Changes</a></li>
-</ol>
-<h4 id="troubleshootingtroubleshooting"><a href="troubleshooting">Troubleshooting</a></h4>
-<ol>
-<li><a href="troubleshooting/troubleshoot_uan_boot_issues">Troubleshoot UAN Boot Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues">Troubleshoot UAN CFS And Network Configuration Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_disk_configuration_issues">Troubleshoot UAN Disk Configuration Issues</a></li>
-</ol>
-<h4 id="test-plantest-plan"><a href="test-plan">Test Plan</a></h4>
-<ol>
-<li><a href="test-plan/test-plan">Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan</a></li>
-</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1075,6 +1128,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1087,6 +1141,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1152,6 +1209,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1167,6 +1225,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

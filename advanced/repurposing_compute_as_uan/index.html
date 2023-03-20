@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/advanced/repurposing_compute_as_uan/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -465,7 +465,7 @@
   
     
     <li data-nav-id="/docs-uan/advanced/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -535,7 +535,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/advanced/repurposing_compute_as_uan/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/advanced/repurposing_compute_as_uan/" title="" class="dd-item active">
         <a href="/docs-uan/advanced/repurposing_compute_as_uan/">
         Repurposing A Compute Node As A UAN
         <i class="fas fa-check read-icon"></i>
@@ -863,72 +863,194 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/advanced/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#procedure">Procedure</a></li>
+    <li><a href="#verification-as-a-uan">Verification as a UAN</a>
+      <ul>
+        <li><a href="#basic-uan-configuration-checks">Basic UAN Configuration Checks</a></li>
+        <li><a href="#common-uan-configuration-checks">Common UAN Configuration Checks</a></li>
+        <li><a href="#verify-users-can-login">Verify Users can Login</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
-<h4 id="installation-prereqsinstallation_prereqs"><a href="installation_prereqs">Installation Prereqs</a></h4>
+<h1 id="repurposing-a-compute-node-as-a-uan">Repurposing a Compute Node as a UAN</h1>
+<p>This section describes how to repurpose a compute node to be used as a User Access Node (UAN).  This is typically done when the processor type of the compute node is not yet available in a UAN server.</p>
+<h2 id="overview">Overview</h2>
+<p>The following steps outline the process of repurposing a compute node to be used as a UAN.</p>
 <ol>
-<li><a href="installation_prereqs/prepare_for_uan_product_installation">Prepare For UAN Product Installation</a></li>
-<li><a href="installation_prereqs/configure_the_bmc_for_uans_with_ilo">Configure The BMC For UANs With iLO</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_an_hpe_uan">Configure The BIOS Of An HPE UAN</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_a_gigabyte_uan">Configure The BIOS Of A Gigabyte UAN</a></li>
+<li>
+<p>Verify the System Default Route is set to <code>CHN</code>.</p>
+</li>
+<li>
+<p>Change the role of the compute node in the Hardware State Manager from <code>Compute</code> to <code>Application</code> and set the sub-role to <code>UAN</code>.</p>
+</li>
+<li>
+<p>Ensure that IPs on the CHN exist for the computes nodes in SLS.</p>
+</li>
+<li>
+<p>Boot the repurposed compute node as a UAN.</p>
+</li>
+<li>
+<p>Verify the repurposed compute node functions as a UAN.</p>
+</li>
 </ol>
-<h4 id="installinstall"><a href="install">Install</a></h4>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>There are no changes needed in hardware, network cabling, or UEFI/BIOS/BMC configuration to repurpose a compute node for use as a UAN.  However, compute nodes do not have the necessary network interface cards to support user access over the Customer Access Network (CAN). Additionally, the network configuration of Mountain Cabinets do not support the CAN network. Therefore, repurposing a compute node as a UAN requires the system to be configured to use the Customer High-Speed Network (CHN) and that the compute nodes have a CHN IP address in SLS.</p>
+<ul>
+<li>The SLS Networks setting for the <code>SystemDefaultRoute</code> must be <code>CHN</code></li>
+<li>The repurposed compute nodes must have CHN IP addresses in SLS</li>
+<li><code>uan_can_setup</code> must be set to <code>true</code> in the uan-config-management repo</li>
+</ul>
+<h2 id="procedure">Procedure</h2>
+<p>Perform the following steps to repurpose a compute node for use as a UAN.</p>
 <ol>
-<li><a href="install/install_the_uan_product_stream">Install The UAN Product Stream</a></li>
+<li>
+<p>Log in to the master node <code>ncn-m001</code>. All commands in this procedure are run from the master node.</p>
+</li>
+<li>
+<p>Verify the system is configured to use the <code>CHN</code> as the System Default Route. If the <code>SystemDefaultRoute</code> is not <code>CHN</code>, the compute nodes may not be repurposed as UAN.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray sls networks describe BICAN  --format json | jq -r <span style="color:#e6db74">&#39;.ExtraProperties.SystemDefaultRoute&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Verify a CHN IP address exists in SLS for each repurposed compute node. Repeat the following command and replace <code>&lt;XNAME&gt;</code> with the xname of each repurposed compute node. The compute node must have a CHN IP address in SLS or it cannot be repurposed as a UAN.  See <code>Add Compute IP addresses to CHN SLS data</code> section of the Cray System Management documentation for information on adding compute nodes to the CHN.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray sls networks describe CHN | q -r <span style="color:#e6db74">&#39;.ExtraProperties.Subnets[] | select(.FullName == &#34;CHN Bootstrap DHCP Subnet&#34;) | .IPReservations[] | select(.Comment == &#34;&lt;XNAME&gt;&#34;)&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Verify that <code>uan_can_setup: true</code> is set in the <code>uan-config-management</code> CFS repo.  See <a href="/docs-uan/advanced/enabling_can_chn/">Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)</a> for more information.</p>
+</li>
+<li>
+<p>Change the role and sub-role in HSM of the compute node(s) being repurposed as UANs to <code>Application</code> and <code>UAN</code>, respectively.  Repeat the following command and replace <code>&lt;XNAME&gt;</code> with the xname of each repurposed compute node.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray hsm state components role update --role Application --sub-role UAN &lt;XNAME&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>Verify the role and sub-role in HSM of the repurposed compute node(s) has been changed to &lsquo;Application<code> and 'UAN</code>, respectively.  Repeat the following command and replace <code>&lt;XNAME&gt;</code> with the xname of each repurposed compute node.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray hsm state components describe &lt;XNAME&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>Run the BOS session template used to boot the UAN nodes. See <a href="/docs-uan/operations/boot_uans/">Boot UAN Nodes</a> for more information on booting UAN nodes with BOS.  Replace <code>&lt;UAN_SESSIONTEMPLATE&gt;</code> with the name of the BOS session template used to boot the UAN nodes and <code>&lt;XNAME&gt;</code> with the xname of the repurposed compute node.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray bos session create --template-uuid &lt;UAN_SESSIONTEMPLATE&gt; --operation reboot --limit &lt;XNAME&gt;
+</span></span></code></pre></div></li>
 </ol>
-<h4 id="operationsoperations"><a href="operations">Operations</a></h4>
+<h2 id="verification-as-a-uan">Verification as a UAN</h2>
+<p>Once the repurposed compute node is booted as a UAN, the following steps will verify it is configured as a UAN. These steps may vary dependent upon how the site has configured the UAN nodes.</p>
+<h3 id="basic-uan-configuration-checks">Basic UAN Configuration Checks</h3>
 <ol>
-<li><a href="operations/about_uan_configuration">About UAN Configuration</a></li>
-<li><a href="operations/build_a_new_uan_image_using_the_cos_recipe">Build A New UAN Image Using A COS Recipe</a></li>
-<li><a href="operations/create_uan_boot_images">Create UAN Boot Images</a></li>
-<li><a href="operations/mount_a_new_file_system_on_an_uan">Mount A New File System On A UAN</a></li>
-<li><a href="operations/configure_interfaces_on_uans">Configure Interfaces On UANs</a></li>
-<li><a href="operations/configure_pluggable_authentication_modules_(pam)_on_uans">Configure Pluggable Authentication Modules (pam) On UANs</a></li>
-<li><a href="operations/uan_ansible_roles">UAN Ansible Roles</a></li>
-<li><a href="operations/boot_uans">Boot UANs</a></li>
-<li><a href="operations/cve-2023-0461"></a></li>
+<li>
+<p>Verify the repurposed compute node has finished the configuration phase. The output should &ldquo;configured&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# cray cfs components describe &lt;XNAME&gt; --format json | jq -r .configurationStatus
+</span></span></code></pre></div></li>
+<li>
+<p>Login to the repurposed compute node from the master node <code>ncn-m001</code> as the root user.</p>
+</li>
+<li>
+<p>Verify that the <code>hsn0</code> interface has the CHN IP address assigned to it in SLS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# ip a | grep hsn0
+</span></span></code></pre></div></li>
+<li>
+<p>Verify the default route is via <code>hsn0</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# ip r | grep default
+</span></span></code></pre></div></li>
+<li>
+<p>Verify that all site UAN filesystems are mounted.</p>
+</li>
 </ol>
-<h4 id="advancedadvanced"><a href="advanced">Advanced</a></h4>
+<h3 id="common-uan-configuration-checks">Common UAN Configuration Checks</h3>
 <ol>
-<li><a href="advanced/customizing_uan_images_manually">Customizing UAN Images Manually</a></li>
-<li><a href="advanced/enabling_can_chn">Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)</a></li>
-<li><a href="advanced/repurposing_compute_as_uan">Repurposing A Compute Node As A UAN</a></li>
-<li><a href="advanced/sles_image">Booting An Application Node With A Sles Image (techNICal Preview)</a></li>
+<li>
+<p>If LDAP is used for user authentication, verify the LDAP service is reachable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# ping &lt;ldap_service_ip&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>If SLURM is used, test <code>sinfo</code> and <code>srun</code> commands.  This example <code>srun</code> command should return the hostname of 4 compute nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# sinfo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>uan# srun -N4 hostname
+</span></span></code></pre></div></li>
 </ol>
-<h4 id="upgradeupgrade"><a href="upgrade">Upgrade</a></h4>
+<h3 id="verify-users-can-login">Verify Users can Login</h3>
 <ol>
-<li><a href="upgrade/notable_changes">Notable Changes</a></li>
+<li>
+<p>Login to the repurposed compute node as an authorized non-root user from any host that should have UAN access.</p>
+</li>
+<li>
+<p>If SLURM is used, test <code>sinfo</code> and <code>srun</code> commands.  This example <code>srun</code> command should return the hostname of 4 compute nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# sinfo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>uan# srun -N4 hostname
+</span></span></code></pre></div></li>
 </ol>
-<h4 id="troubleshootingtroubleshooting"><a href="troubleshooting">Troubleshooting</a></h4>
-<ol>
-<li><a href="troubleshooting/troubleshoot_uan_boot_issues">Troubleshoot UAN Boot Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues">Troubleshoot UAN CFS And Network Configuration Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_disk_configuration_issues">Troubleshoot UAN Disk Configuration Issues</a></li>
-</ol>
-<h4 id="test-plantest-plan"><a href="test-plan">Test Plan</a></h4>
-<ol>
-<li><a href="test-plan/test-plan">Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan</a></li>
-</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1219,6 +1341,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1231,6 +1354,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1264,6 +1390,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1279,6 +1406,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
