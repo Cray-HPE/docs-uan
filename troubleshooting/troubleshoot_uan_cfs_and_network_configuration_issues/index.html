@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -84,7 +84,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -133,7 +133,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/" title="" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/">
         Troubleshoot UAN CFS And Network Configuration Issues
         <i class="fas fa-check read-icon"></i>
@@ -863,28 +863,93 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/troubleshooting/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
+<h1 id="troubleshoot-uan-cfs-and-network-configuration-issues">Troubleshoot UAN CFS and Network Configuration Issues</h1>
+<p>Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.</p>
+<p>Read <a href="/docs-uan/operations/about_uan_configuration/#about-uan-configuration">About UAN Configuration</a> before starting this procedure.</p>
+<ol>
+<li>
+<p>Obtain the name of the CFS session that failed by running the following command on a management or worker NCN:</p>
+<p>This example sorts the list of CFS sessions so that the most recent one is at the bottom.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn# kubectl -n services get pods --sort-by<span style="color:#f92672">=</span>.metadata.creationTimestamp | grep ^cfs
+</span></span></code></pre></div></li>
+<li>
+<p>View the Ansible log of the CFS session found in the previous step (CFS_SESSION in the following example). Use the information in log to guide troubleshooting.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn# kubectl -n services logs -f -c ansible-0 CFS_SESSION
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Optional:</strong> Troubleshoot <code>uan_interfaces</code> issues by logging into the affected node (usually with the conman console) and using standard network debugging techniques.</p>
+<p>NMN and CAN/CHN network setup errors can also result from incorrect switch configuration and network cabling.</p>
+</li>
+</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -916,8 +981,6 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -931,6 +994,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -948,6 +1014,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -963,6 +1030,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

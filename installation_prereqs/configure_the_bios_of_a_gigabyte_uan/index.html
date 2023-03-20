@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -459,7 +459,7 @@
   
     
     <li data-nav-id="/docs-uan/installation_prereqs/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -487,7 +487,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/" title="" class="dd-item active">
         <a href="/docs-uan/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/">
         Configure The BIOS Of A Gigabyte UAN
         <i class="fas fa-check read-icon"></i>
@@ -863,28 +863,121 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/installation_prereqs/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
+<h1 id="configure-the-bios-of-a-gigabyte-uan">Configure the BIOS of a Gigabyte UAN</h1>
+<p>Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.</p>
+<p>Before the UAN product can be installed on Gigabyte UANs, specific network interface and boot settings must be configured in the BIOS.</p>
+<ol>
+<li>
+<p>Press the <strong>Delete</strong> key to enter the setup utility when prompted to do so in the console.</p>
+</li>
+<li>
+<p>Navigate to the boot menu.</p>
+</li>
+<li>
+<p>Set the <strong><code>Boot Option #1</code></strong> field to <code>Network:UEFI: PXE IP4 Intel(R) I350 Gigabit Network Connection</code>.</p>
+</li>
+<li>
+<p>Set all other <strong>Boot Option</strong> fields to <code>Disabled</code>.</p>
+</li>
+<li>
+<p>Ensure that the boot mode is set to <code>[UEFI]</code>.</p>
+</li>
+<li>
+<p>Confirm that the time is set correctly. If the time is not accurate, correct it now.</p>
+<p>Incorrect time will cause PXE booting issues.</p>
+</li>
+<li>
+<p>Select <strong>Save &amp; Exit</strong> to save the settings.</p>
+</li>
+<li>
+<p>Select <strong>Yes</strong> to confirm and press the <strong>Enter</strong> key.</p>
+<p>The UAN will reboot.</p>
+</li>
+<li>
+<p><strong>Optional:</strong> Run the following IPMI commands if the BIOS settings do not persist.</p>
+<p>In these example commands, the BMC of the UAN is x3000c0s27b0. Replace <code>USERNAME</code> and <code>PASSWORD</code> with username and password of the BMC of the UAN. These commands do the following:</p>
+<ul>
+<li>Power off the node</li>
+<li>Perform a reset.</li>
+<li>Set the PXE boot in the options.</li>
+<li>Power on the node</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 power off
+</span></span><span style="display:flex;"><span>ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 mc reset cold
+</span></span><span style="display:flex;"><span>ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 chassis bootdev pxe <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>options<span style="color:#f92672">=</span>efiboot,persistent
+</span></span><span style="display:flex;"><span>ncn-m001# ipmitool -I lanplus -U *** -P *** -H x3000c0s27b0 power on
+</span></span></code></pre></div></li>
+</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1159,6 +1252,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1171,6 +1265,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
                     
                 
                 
@@ -1187,6 +1282,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

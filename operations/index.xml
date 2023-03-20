@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>User Access Node (UAN)</title>
+    <link>/docs-uan/operations/</link>
+    <description>Recent content on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 20 Mar 2023 21:40:06 +0000</lastBuildDate><atom:link href="/docs-uan/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:05 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
+      <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the uan_packages role.
+Perform the following before starting this procedure:
+Install the COS, Slingshot, and UAN product streams.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/configure_interfaces_on_uans/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:05 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/configure_interfaces_on_uans/</guid>
+      <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
+Interface configuration is performed by the uan_interfaces Ansible role. For details on the variables referred to in this procedure, see UAN Ansible Roles.
+In the command examples in this procedure, PRODUCT_VERSION refers to the current installed version of the UAN product. Replace PRODUCT_VERSION with the UAN version number string when executing the commands.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:05 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
+      <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
+Intialize and configure the Cray command line interface (CLI) tool on the system. See &amp;ldquo;Configure the Cray Command Line Interface (CLI)&amp;rdquo; in the CSM documentation for more information.
+Verify that the Gitea Version Control Service (VCS) is running.
+ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54c4f-j8k4t 2/2 Running 1 11d services gitea-vcs-postgres-0 2/2 Running 0 11d Retrieve the initial Gitea login credentials for the crayvcs username.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/create_uan_boot_images/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:05 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/create_uan_boot_images/</guid>
+      <description>Create UAN Boot Images This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
+UAN specific configuration, and other required configurations related to UANs are covered in this topic. Refer to HPE Cray EX System Software Getting Started Guide for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment) that may be configured on the UANs.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/mount_a_new_file_system_on_an_uan/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:05 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/mount_a_new_file_system_on_an_uan/</guid>
+      <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
+Perform Steps 1-9 of Create UAN Boot Images.
+Create a directory for Application role nodes.
+ncn-w001# mkdir -p group_vars/Application Define the home directory information for the new file system in the filesystems.yml file.
+ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.252.1.1:/home mount_point: /home fstype: nfs4 opts: rw,noauto state: mounted Add the change from the working directory to the staging area.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/uan_ansible_roles/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:05 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/uan_ansible_roles/</guid>
+      <description>UAN Ansible Roles uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
+Requirements There must be disk devices found on the UAN node by the device_filter module or this role will exit with failure. This condition can be ignored by setting uan_require_disk to false. See variable definitions below.
+See the library/device_filter.py file for more information on this module.
+The device that is found will be unmounted if mounted and a swap partition will be created on the first half of the disk, and a scratch partition on the second half.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/about_uan_configuration/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:04 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/about_uan_configuration/</guid>
+      <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
+UAN configuration overview Configuration of UAN nodes is performed by the Configuration Framework Service (CFS). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
+The Ansible roles involved in UAN configuration are listed in the site.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/operations/boot_uans/</link>
+      <pubDate>Mon, 20 Mar 2023 21:40:04 +0000</pubDate>
+      
+      <guid>/docs-uan/operations/boot_uans/</guid>
+      <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
+Perform Create UAN Boot Images before performing this procedure.
+Create a BOS session to boot the UAN nodes. Replace uan-sessiontemplate-PRODUCT_VERSION in the following command with the ID of the session template created by the initial UAN product installation or the UAN product upgrade process.
+ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VERSION --operation reboot --format json | tee session.</description>
+    </item>
+    
+  </channel>
+</rss>

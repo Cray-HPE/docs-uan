@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/advanced/customizing_uan_images_manually/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -282,7 +282,7 @@
   
     
     <li data-nav-id="/docs-uan/advanced/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -310,7 +310,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/advanced/customizing_uan_images_manually/" title="" class="dd-item active">
         <a href="/docs-uan/advanced/customizing_uan_images_manually/">
         Customizing UAN Images Manually
         <i class="fas fa-check read-icon"></i>
@@ -863,28 +863,99 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/advanced/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
+<h1 id="customizing-uan-images-manually">Customizing UAN Images Manually</h1>
+<ol>
+<li>
+<p>Query IMS for the UAN Image you want to customize.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001:~/ $ cray ims images list --format json | jq <span style="color:#e6db74">&#39;.[] | select(.name | contains(&#34;uan&#34;))&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;created&#34;</span>: <span style="color:#e6db74">&#34;2021-02-18T17:17:44.168655+00:00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;6d46d601-c41f-444d-8b49-c9a2a55d3c21&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;link&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;etag&#34;</span>: <span style="color:#e6db74">&#34;371b62c9f0263e4c8c70c8602ccd5158&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;s3://boot-images/6d46d601-c41f-444d-8b49-c9a2a55d3c21/manifest.json&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;uan-PRODUCT_VERSION-image&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Create a variable for the IMS image <code>id</code> in the returned data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-m001:~/ $ export IMS_IMAGE_ID<span style="color:#f92672">=</span>6d46d601-c41f-444d-8b49-c9a2a55d3c21
+</span></span></code></pre></div></li>
+<li>
+<p>Using the IMS_IMAGE_ID, follow the instructions in the <em>Customize an Image Root Using IMS</em> in the CSM documentation to build the UAN Image.</p>
+</li>
+</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1047,6 +1118,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1059,6 +1131,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
                     
                 
                 
@@ -1075,6 +1148,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
