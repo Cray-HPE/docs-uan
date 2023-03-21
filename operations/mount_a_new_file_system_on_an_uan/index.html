@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -261,7 +261,7 @@
   
     
     <li data-nav-id="/docs-uan/operations/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -310,7 +310,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/operations/mount_a_new_file_system_on_an_uan/" title="" class="dd-item active">
         <a href="/docs-uan/operations/mount_a_new_file_system_on_an_uan/">
         Mount A New File System On A UAN
         <i class="fas fa-check read-icon"></i>
@@ -863,73 +863,108 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/operations/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
-<h4 id="installation-prereqsinstallation_prereqs"><a href="installation_prereqs">Installation Prereqs</a></h4>
+<h1 id="mount-a-new-file-system-on-a-uan">Mount a New File System on a UAN</h1>
+<p>Perform this procedure to create a mount point for a new file system on a UAN.</p>
 <ol>
-<li><a href="installation_prereqs/prepare_for_uan_product_installation">Prepare For UAN Product Installation</a></li>
-<li><a href="installation_prereqs/configure_the_bmc_for_uans_with_ilo">Configure The BMC For UANs With iLO</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_an_hpe_uan">Configure The BIOS Of An HPE UAN</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_a_gigabyte_uan">Configure The BIOS Of A Gigabyte UAN</a></li>
+<li>
+<p>Perform Steps 1-9 of <a href="/docs-uan/operations/create_uan_boot_images/">Create UAN Boot Images</a>.</p>
+</li>
+<li>
+<p>Create a directory for <code>Application</code> role nodes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-w001# mkdir -p group_vars/Application
+</span></span></code></pre></div></li>
+<li>
+<p>Define the home directory information for the new file system in the <code>filesystems.yml</code> file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-w001# vi group_vars/Application/filesystems.yml
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>filesystems:
+</span></span><span style="display:flex;"><span>  - src: 10.252.1.1:/home
+</span></span><span style="display:flex;"><span>    mount_point: /home    
+</span></span><span style="display:flex;"><span>    fstype: nfs4    
+</span></span><span style="display:flex;"><span>    opts: rw,noauto
+</span></span><span style="display:flex;"><span>    state: mounted
+</span></span></code></pre></div></li>
+<li>
+<p>Add the change from the working directory to the staging area.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-w001# git add -A
+</span></span></code></pre></div></li>
+<li>
+<p>Commit the file to the working branch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ncn-w001# git commit -am <span style="color:#e6db74">&#39;Added file system info&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Resume <a href="/docs-uan/operations/create_uan_boot_images/">Create UAN Boot Images</a> at Step 10.</p>
+</li>
 </ol>
-<h4 id="installinstall"><a href="install">Install</a></h4>
-<ol>
-<li><a href="install/install_the_uan_product_stream">Install The UAN Product Stream</a></li>
-</ol>
-<h4 id="operationsoperations"><a href="operations">Operations</a></h4>
-<ol>
-<li><a href="operations/about_uan_configuration">About UAN Configuration</a></li>
-<li><a href="operations/build_a_new_uan_image_using_the_cos_recipe">Build A New UAN Image Using A COS Recipe</a></li>
-<li><a href="operations/create_uan_boot_images">Create UAN Boot Images</a></li>
-<li><a href="operations/mount_a_new_file_system_on_an_uan">Mount A New File System On A UAN</a></li>
-<li><a href="operations/configure_interfaces_on_uans">Configure Interfaces On UANs</a></li>
-<li><a href="operations/configure_pluggable_authentication_modules_(pam)_on_uans">Configure Pluggable Authentication Modules (pam) On UANs</a></li>
-<li><a href="operations/uan_ansible_roles">UAN Ansible Roles</a></li>
-<li><a href="operations/boot_uans">Boot UANs</a></li>
-</ol>
-<h4 id="advancedadvanced"><a href="advanced">Advanced</a></h4>
-<ol>
-<li><a href="advanced/customizing_uan_images_manually">Customizing UAN Images Manually</a></li>
-<li><a href="advanced/enabling_can_chn">Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)</a></li>
-<li><a href="advanced/repurposing_compute_as_uan">Repurposing A Compute Node As A UAN</a></li>
-<li><a href="advanced/sles_image">Booting An Application Node With A Sles Image (techNICal Preview)</a></li>
-</ol>
-<h4 id="upgradeupgrade"><a href="upgrade">Upgrade</a></h4>
-<ol>
-<li><a href="upgrade/notable_changes">Notable Changes</a></li>
-<li><a href="upgrade/upgrade_uan_software_product">Upgrade UAN Software Product</a></li>
-<li><a href="upgrade/merge_uan_configuration_data">Merge UAN Configuration Data</a></li>
-</ol>
-<h4 id="troubleshootingtroubleshooting"><a href="troubleshooting">Troubleshooting</a></h4>
-<ol>
-<li><a href="troubleshooting/troubleshoot_uan_boot_issues">Troubleshoot UAN Boot Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues">Troubleshoot UAN CFS And Network Configuration Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_disk_configuration_issues">Troubleshoot UAN Disk Configuration Issues</a></li>
-</ol>
-<h4 id="test-plantest-plan"><a href="test-plan">Test Plan</a></h4>
-<ol>
-<li><a href="test-plan/test-plan">Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan</a></li>
-</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1076,6 +1111,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1088,6 +1124,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1105,6 +1144,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1120,6 +1160,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 

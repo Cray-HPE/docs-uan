@@ -38,7 +38,7 @@
     
     
   </head>
-  <body class="" data-url="/docs-uan/">
+  <body class="" data-url="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -684,7 +684,7 @@
   
     
     <li data-nav-id="/docs-uan/troubleshooting/" title="" class="dd-item
-        
+        parent
         
         
         ">
@@ -754,7 +754,7 @@
  
   
     
-      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="" class="dd-item ">
+      <li data-nav-id="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/" title="" class="dd-item active">
         <a href="/docs-uan/troubleshooting/troubleshoot_uan_disk_configuration_issues/">
         Troubleshoot UAN Disk Configuration Issues
         <i class="fas fa-check read-icon"></i>
@@ -863,73 +863,122 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs-uan/'></a> > <a href='/docs-uan/troubleshooting/'></a> > 
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              
+            </h1>
+          
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="cray-ex-user-access-nodes-installation-and-administration-guide">Cray EX User Access Nodes Installation and Administration Guide</h1>
-<p>This document describes the installation prequisites, installation procedures,
-and operational procedures for Cray EX User Access Nodes (UAN).</p>
-<p>The latest version of this documentation is available <a href="https://cray-hpe.github.io/docs-uan">here</a>.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="topics">Topics:</h3>
-<h4 id="installation-prereqsinstallation_prereqs"><a href="installation_prereqs">Installation Prereqs</a></h4>
+<h1 id="troubleshoot-uan-disk-configuration-issues">Troubleshoot UAN Disk Configuration Issues</h1>
+<p>Perform this procedure to enable <code>uan_disk_config</code> to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.</p>
+<p>This procedure currently only addresses <code>uan_disk_config</code> errors due to existing disk partitions.</p>
+<p>Refer to <a href="/docs-uan/operations/about_uan_configuration/#about-uan-configuration">About UAN Configuration</a> for an explanation of UAN disk configuration.</p>
+<p>The most common cause of failure in the <code>uan_disk_config</code> role is the disk having been previously configured without a <code>/scratch</code> and <code>/swap</code> partition. Existing partitions prevent the <code>parted</code> command from dividing the disk into those two equal partitions. The solution is to log into the node and run <code>parted</code> manually to remove the existing partitions on that disk.</p>
 <ol>
-<li><a href="installation_prereqs/prepare_for_uan_product_installation">Prepare For UAN Product Installation</a></li>
-<li><a href="installation_prereqs/configure_the_bmc_for_uans_with_ilo">Configure The BMC For UANs With iLO</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_an_hpe_uan">Configure The BIOS Of An HPE UAN</a></li>
-<li><a href="installation_prereqs/configure_the_bios_of_a_gigabyte_uan">Configure The BIOS Of A Gigabyte UAN</a></li>
+<li>
+<p>Examine the CFS log and identify the failed disk device.</p>
+</li>
+<li>
+<p>Log into the affected UAN as root.</p>
+</li>
+<li>
+<p>Use parted to manually remove any existing partitions.</p>
+<p>The following example uses <code>/dev/sdb</code> as the disk device. Also, as partitions are removed, the remaining partitions are renumbered. Therefore, <code>rm 1</code> is issued twice to remove both partitions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uan# parted
+</span></span><span style="display:flex;"><span>GNU Parted 3.2
+</span></span><span style="display:flex;"><span>Using /dev/sda
+</span></span><span style="display:flex;"><span>Welcome to GNU Parted! Type <span style="color:#e6db74">&#39;help&#39;</span> to view a list of commands.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> <span style="color:#66d9ef">select</span> /dev/sdb
+</span></span><span style="display:flex;"><span>Using /dev/sdb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> print
+</span></span><span style="display:flex;"><span>Model: ATA VK000480GWSRR <span style="color:#f92672">(</span>scsi<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 480GB
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#f92672">(</span>logical/physical<span style="color:#f92672">)</span>: 512B/4096B
+</span></span><span style="display:flex;"><span>Partition Table: msdos
+</span></span><span style="display:flex;"><span>Disk Flags:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Number  Start   End    Size   Type     File system  Flags
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>      1049kB  240GB  240GB  primary  ext4         type<span style="color:#f92672">=</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">2</span>      240GB   480GB  240GB  primary  ext4         type<span style="color:#f92672">=</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> rm <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> rm <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> print
+</span></span><span style="display:flex;"><span>Model: ATA VK000480GWSRR <span style="color:#f92672">(</span>scsi<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 480GB
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#f92672">(</span>logical/physical<span style="color:#f92672">)</span>: 512B/4096B
+</span></span><span style="display:flex;"><span>Partition Table: msdos
+</span></span><span style="display:flex;"><span>Disk Flags:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>parted<span style="color:#f92672">)</span> quit
+</span></span><span style="display:flex;"><span>uan01:~ <span style="color:#75715e">#</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Either reboot the affected UAN or launch a CFS session against it to rerun the <code>uan_disk_config</code> role.</p>
+</li>
 </ol>
-<h4 id="installinstall"><a href="install">Install</a></h4>
-<ol>
-<li><a href="install/install_the_uan_product_stream">Install The UAN Product Stream</a></li>
-</ol>
-<h4 id="operationsoperations"><a href="operations">Operations</a></h4>
-<ol>
-<li><a href="operations/about_uan_configuration">About UAN Configuration</a></li>
-<li><a href="operations/build_a_new_uan_image_using_the_cos_recipe">Build A New UAN Image Using A COS Recipe</a></li>
-<li><a href="operations/create_uan_boot_images">Create UAN Boot Images</a></li>
-<li><a href="operations/mount_a_new_file_system_on_an_uan">Mount A New File System On A UAN</a></li>
-<li><a href="operations/configure_interfaces_on_uans">Configure Interfaces On UANs</a></li>
-<li><a href="operations/configure_pluggable_authentication_modules_(pam)_on_uans">Configure Pluggable Authentication Modules (pam) On UANs</a></li>
-<li><a href="operations/uan_ansible_roles">UAN Ansible Roles</a></li>
-<li><a href="operations/boot_uans">Boot UANs</a></li>
-</ol>
-<h4 id="advancedadvanced"><a href="advanced">Advanced</a></h4>
-<ol>
-<li><a href="advanced/customizing_uan_images_manually">Customizing UAN Images Manually</a></li>
-<li><a href="advanced/enabling_can_chn">Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)</a></li>
-<li><a href="advanced/repurposing_compute_as_uan">Repurposing A Compute Node As A UAN</a></li>
-<li><a href="advanced/sles_image">Booting An Application Node With A Sles Image (techNICal Preview)</a></li>
-</ol>
-<h4 id="upgradeupgrade"><a href="upgrade">Upgrade</a></h4>
-<ol>
-<li><a href="upgrade/notable_changes">Notable Changes</a></li>
-<li><a href="upgrade/upgrade_uan_software_product">Upgrade UAN Software Product</a></li>
-<li><a href="upgrade/merge_uan_configuration_data">Merge UAN Configuration Data</a></li>
-</ol>
-<h4 id="troubleshootingtroubleshooting"><a href="troubleshooting">Troubleshooting</a></h4>
-<ol>
-<li><a href="troubleshooting/troubleshoot_uan_boot_issues">Troubleshoot UAN Boot Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues">Troubleshoot UAN CFS And Network Configuration Issues</a></li>
-<li><a href="troubleshooting/troubleshoot_uan_disk_configuration_issues">Troubleshoot UAN Disk Configuration Issues</a></li>
-</ol>
-<h4 id="test-plantest-plan"><a href="test-plan">Test Plan</a></h4>
-<ol>
-<li><a href="test-plan/test-plan">Test Plan For User Access Node (UAN) And Repurposed Compute Node As Uan</a></li>
-</ol>
+
+
+<footer class="footline">
 	
-  
+</footer>
+
         
         </div>
         
@@ -1364,6 +1413,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1376,6 +1426,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1409,6 +1462,7 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
                 
                     
+                    
                 
                 
 
@@ -1427,6 +1481,9 @@ and operational procedures for Cray EX User Access Nodes (UAN).</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
