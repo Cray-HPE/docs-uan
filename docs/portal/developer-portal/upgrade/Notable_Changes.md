@@ -54,3 +54,4 @@ When an upgrade is being performed, please review the notable changes for **all*
   * Values for COS CFS roles that were previously set in the UAN CFS group_vars directory should now be set in COS CFS group_vars
 * UAN CFS has been restructured to work for COS and Standard SLES images
 * uan_packages variables are now vars/uan_packages.yml and vars/uan_repos.yml and have been renamed. Admins will need to migrate to the new settings.
+* The NMN connection now supports bonding (optional).  The default is a non-bonded single interface.
