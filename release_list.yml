@@ -2,5 +2,5 @@
 # List releases in the order they should appear in the documentation
 # version menu.  Default at the top of the list.
 releases:
-  - 2.5.9-alpha.1
-  - 2.6.0-alpha.3
+  - 2.5.9
+  - 2.6.0-alpha.6
