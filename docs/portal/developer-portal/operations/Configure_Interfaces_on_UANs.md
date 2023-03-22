@@ -7,9 +7,19 @@ Interface configuration is performed by the `uan_interfaces` Ansible role. For d
 
 In the command examples in this procedure, `PRODUCT_VERSION` refers to the current installed version of the UAN product. Replace `PRODUCT_VERSION` with the UAN version number string when executing the commands.  
 
-User access may be configured to use either a direct connection to the UANs from the sites user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network \(CAN\) or Customer High Speed Network \(CHN\).  The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
+## User Access Networking
 
-By default, a direct connection to the sites user network is assumed and the Admin must define the interface and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. When CAN or CHN are selected, the interfaces and default route are setup automatically.
+User access may be configured to use either a direct connection to the UANs from the site's user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\).  The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
+
+By default, a direct connection to the site's user network is assumed and the Admin must define the interface(s) and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
+
+* When CAN is set as the system default route in SLS, the bonded CAN interfaces are determined automatically. The default route is set to the bonded CAN interface `can0`.
+
+* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` and the default route is set to the CHN.
+
+* The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
+
+## Procedure
 
 Network configuration settings are defined in the `uan-config-management` VCS repo under the `group_vars/ROLE_SUBROLE/` or `host_vars/XNAME/` directories, where `ROLE_SUBROLE` must be replaced by the role and subrole assigned for the node in HSM, and `XNAME` with the xname of the node. Values under `group_vars/ROLE_SUBROLE/` apply to all nodes with the given role and subrole.  Values under the `host_vars/XNAME/` apply to the specific node with the xname and will override any values set in `group_vars/ROLE_SUBROLE/`.  A yaml file is used by the Configuration Framwork Service \(CFS\).  The examples in this procedure use `customer_net.yml`, but any filename may be used.  Admins must create this yaml file and use the variables described in this procedure.
 
@@ -184,70 +194,70 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
     a. Download the JSON of the current UAN CFS configuration to a file.
 
        This file will be named `uan-config-PRODUCT_VERSION.json`. Replace `PRODUCT_VERSION` with the current installed UAN version.
+
        ```bash
-           ncn-m001#  cray cfs configurations describe uan-config-PRODUCT_VERSION \
-            --format=json >uan-config-PRODUCT_VERSION.json
+       ncn-m001#  cray cfs configurations describe uan-config-PRODUCT_VERSION \
+       --format=json >uan-config-PRODUCT_VERSION.json
        ```
 
     b. Remove the unneeded lines from the JSON file.
 
-        The lines to remove are:
+       The lines to remove are:
 
-           - the `lastUpdated` line
-           - the last `name` line 
-        
-        These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
+       * the `lastUpdated` line
+       * the last `name` line
 
-        ```bash
-        ncn-m001# cat uan-config-PRODUCT_VERSION.json
-        {
-          "lastUpdated": "2021-03-27T02:32:10Z",      
-          "layers": [
-            {
-              "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git",
-              "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
-              "name": "uan-integration-PRODUCT_VERSION",
-              "playbook": "site.yml"
-            },
-          "name": "uan-config-2.0.1-full"            
-        } 
-        ```
+       These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
+
+      ```bash
+      ncn-m001# cat uan-config-PRODUCT_VERSION.json
+      {
+        "lastUpdated": "2021-03-27T02:32:10Z",      
+        "layers": [
+          {
+            "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git",
+            "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
+            "name": "uan-integration-PRODUCT_VERSION",
+            "playbook": "site.yml"
+          },
+        "name": "uan-config-2.0.1-full"            
+      } 
+      ```
 
     c. Replace the `commit` value in the JSON file with the commit ID obtained in the previous Step.
 
-        The name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name.
+       The name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name.
 
-        ```bash
+       ```bash
+       {
+        "layers": [
         {
-         "layers": [
-         {
-         "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-configmanagement.git",
-         "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
-         "name": "uan-integration-PRODUCT_VERSION",
-         "playbook": "site.yml"
-         }
-         ]
+        "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-configmanagement.git",
+        "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
+        "name": "uan-integration-PRODUCT_VERSION",
+        "playbook": "site.yml"
         }
-        ```
+        ]
+       }
+       ```
 
     d. Create a new UAN CFS configuration with the updated JSON file.
 
        The following example uses `uan-config-PRODUCT_VERSION` for the name of the new CFS configuration, to match the JSON file name.
 
-        ```bash
-        ncn-m001# cray cfs configurations update uan-config-PRODUCT_VERSION \
-         --file uan-config-PRODUCT_VERSION.json
-        ```
+       ```bash
+       ncn-m001# cray cfs configurations update uan-config-PRODUCT_VERSION \
+        --file uan-config-PRODUCT_VERSION.json
+       ```
 
     e. Tell CFS to apply the new configuration to UANs by repeating the following command for each UAN. Replace `UAN_XNAME` in the command below with the name of a different UAN each time the command is run.
 
-        ```bash
-        ncn-m001# cray cfs components update --desired-config uan-config-PRODUCT_VERSION \
-        --enabled true --format json UAN_XNAME
-        ```
+       ```bash
+       ncn-m001# cray cfs components update --desired-config uan-config-PRODUCT_VERSION \
+       --enabled true --format json UAN_XNAME
+       ```
 
-
-9. Reboot the UAN with the Boot Orchestration Service \(BOS\).
+11. Reboot the UAN with the Boot Orchestration Service \(BOS\).
 
     The new interfaces will be available when the UAN is rebooted. Replace the `UAN_SESSION_TEMPLATE` value with the BOS session template name for the UANs.
 
@@ -256,5 +266,4 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
      --template-uuid UAN_SESSION_TEMPLATE --operation reboot
     ```
 
-10. Verify that the desired networking configuration is correct on each UAN.
-
+12. Verify that the desired networking configuration is correct on each UAN.
