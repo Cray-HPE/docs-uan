@@ -47,3 +47,8 @@ When an upgrade is being performed, please review the notable changes for **all*
 
 * A technical preview of a standard SLES image for UAN/Application nodes is included.
 * Support SLES15SP4 COS based images
+
+## UAN 2.5.8
+
+* Support for air-gapped installation
+* Mitigation procedure for CVE-2023-0461
