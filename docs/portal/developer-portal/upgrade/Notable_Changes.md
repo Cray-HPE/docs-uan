@@ -51,3 +51,4 @@ When an upgrade is being performed, please review the notable changes for **all*
 ## UAN 2.5.9
 
 * Support for bonding the NMN interfaces on UAN
+* Mitigation for CVE-2023-0461

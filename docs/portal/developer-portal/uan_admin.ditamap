@@ -21,6 +21,7 @@
             format="markdown"/>
         <topicref href="operations/Mount_a_New_File_System_on_an_UAN.md" format="markdown"/>
         <topicref href="operations/Boot_UANs.md" format="markdown"/>
+        <topicref href="operations/CVE_2023_0461.md" format="markdown"/>
     </topicref>
     <topicref href="Advanced_Administrative_Tasks.md" format="markdown">
         <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
