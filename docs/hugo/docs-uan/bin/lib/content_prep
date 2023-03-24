@@ -2,52 +2,56 @@
 
 function make_new_title() {
     # Remove "CSM", extra spaces, number signs, html, and colons.
-    # Change underscores to spaces. Capitalize acronyms and every word.
+    # Change underscores to spaces. Capitalize acronyms.
     echo "${1}" | \
     sed -r 's`^#+ ``' | \
-    sed -r 's`CSM``' | sed 's`csm``g' | sed 's`()``g' | \
+    sed -r 's`CSM\b``' | sed 's`csm\b``g' | sed 's`()``g' | \
     sed -r 's`^ +``' | \
     sed 's`:``g' | \
     sed 's`_` `g' | \
     sed -r 's`<.*>.*<.*>``' | \
     sed 's`\\(`(`g' | sed 's`\\)`)`g' | \
-    awk '{for (i=1; i<=NF; ++i) { $i=toupper(substr($i,1,1)) tolower(substr($i,2)); } print }' | \
-    sed -r 's`[S,s]ls`SLS`' | \
-    sed -r 's`[T,s]ls`TLS`' | \
-    sed -r 's`[P,p]ki`PKI`' | \
-    sed -r 's`[S,s]sh`SSH`' | \
-    sed -r 's`[U,u]an`UAN`' | \
-    sed -r 's`[U,u]ai`UAI`' | \
-    sed -r 's`[U,u]as`UAS`' | \
-    sed -r 's`[B,b]mc`BMC`' | \
+    sed -r 's`[S,s]ls\b`SLS`' | \
+    sed -r 's`[T,s]ls\b`TLS`' | \
+    sed -r 's`[P,p]ki\b`PKI`' | \
+    sed -r 's`[S,s]sh\b`SSH`' | \
+    sed -r 's`[U,u]an\b`UAN`' | \
+    sed -r 's`[U,u]ans\b`UANs`' | \
+    sed -r 's`[U,u]ai\b`UAI`' | \
+    sed -r 's`[U,u]ais\b`UAIs`' | \
+    sed -r 's`[U,u]as\b`UAS`' | \
+    sed -r 's`[B,b]mc\b`BMC`' | \
     sed -r 's`[H,h]ttps`HTTPS`' | \
     sed -r 's`[H,h]ttp`HTTP`' | \
     sed -r 's`[L,l]dap`LDAP`' | \
-    sed -r 's`[R,r]eds`REDS`' | \
-    sed -r 's`[M,m]eds`MEDS`' | \
-    sed -r 's`[N,n]tp`NTP`' | \
-    sed -r 's`[C,c]apmc`CAPMC`' | \
-    sed -r 's`[K,k]vm`KVM`' | \
-    sed -r 's`[G,g]pu`GPU`' | \
-    sed -r 's`[H,h]sn`HSN`' | \
-    sed -r 's`[H,h]sm`HSM`' | \
-    sed -r 's`[N,n]ic`NIC`' | \
-    sed -r 's`[N,n]cn`NCN`' | \
-    sed -r 's`[B,b]gp`BGP`' | \
-    sed -r 's`[D,d]ns`DNS`' | \
-    sed -r 's`[D,d]hcp`DHCP`' | \
-    sed -r 's`[H,h]pe`HPE`' | \
-    sed -r 's`[I,i]ms`IMS`' | \
-    sed -r 's`[F,f]as`FAS`' | \
-    sed -r 's`[C,c]fs`CFS`' | \
-    sed -r 's`[B,b]os`BOS`' | \
-    sed -r 's`[C,c]rus`CRUS`' | \
-    sed -r 's`[C,c]an`CAN`' | \
-    sed -r 's`[P,p]xe`PXE`' | \
-    sed -r 's`[I,i]lo`iLO`' | \
-    sed -r 's`[B,b]ios`BIOS`' | \
-    sed -r 's`[C,c]os`COS`' | \
-    sed -r 's`[A,a]cl`ACL`'
+    sed -r 's`[R,r]eds\b`REDS`' | \
+    sed -r 's`[M,m]eds\b`MEDS`' | \
+    sed -r 's`[N,n]tp\b`NTP`' | \
+    sed -r 's`[C,c]apmc\b`CAPMC`' | \
+    sed -r 's`[K,k]vm\b`KVM`' | \
+    sed -r 's`[G,g]pu\b`GPU`' | \
+    sed -r 's`[H,h]sn\b`HSN`' | \
+    sed -r 's`[H,h]sm\b`HSM`' | \
+    sed -r 's`[N,n]ic\b`NIC`' | \
+    sed -r 's`[N,n]cn\b`NCN`' | \
+    sed -r 's`[B,b]gp\b`BGP`' | \
+    sed -r 's`[D,d]ns\b`DNS`' | \
+    sed -r 's`[D,d]hcp\b`DHCP`' | \
+    sed -r 's`[H,h]pe\b`HPE`' | \
+    sed -r 's`[I,i]ms\b`IMS`' | \
+    sed -r 's`[F,f]as\b`FAS`' | \
+    sed -r 's`[C,c]fs\b`CFS`' | \
+    sed -r 's`[B,b]os\b`BOS`' | \
+    sed -r 's`[C,c]rus\b`CRUS`' | \
+    sed -r 's`[C,c]an\b`CAN`' | \
+    sed -r 's`[P,p]xe\b`PXE`' | \
+    sed -r 's`[I,i]lo\b`iLO`' | \
+    sed -r 's`[B,b]ios\b`BIOS`' | \
+    sed -r 's`[C,c]os\b`COS`' | \
+    sed -r 's`[S,s]les\b`SLES`' | \
+    sed -r 's`[P,p]am\b`PAM`' | \
+    sed -r 's`[A,a]cl\b`ACL`' | \
+    tr -d "\r"
 }
 
 function transform_links() {
@@ -82,7 +86,9 @@ function gen_hugo_yaml() {
     rm -f /tmp/have_weight
     cat ${HUGO_TOC} | jq -r '.[]|[.title, .weight]|@tsv' |
         while IFS=$'\t' read -r title weight; do
-            if [[ "$title" == "$1" ]]; then
+            toc_title=$(echo "$title" | awk '{print tolower($0)}')
+            given_title=$(echo "$1" | awk '{print tolower($0)}')
+            if [[ "${toc_title}" == "${given_title}" ]]; then
                 myweight="$weight"
                 gen_weighted_header "$1" "$myweight"
                 touch /tmp/have_weight
