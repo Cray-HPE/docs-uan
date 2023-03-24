@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 24 Mar 2023 20:10:05 +0000</lastBuildDate><atom:link href="/docs-uan/en-260-alpha6/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Mar 2023 21:10:26 +0000</lastBuildDate><atom:link href="/docs-uan/en-260-alpha6/advanced/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-260-alpha6/advanced/customizing_uan_images_manually/</link>
-      <pubDate>Fri, 24 Mar 2023 20:10:02 +0000</pubDate>
+      <pubDate>Fri, 24 Mar 2023 21:10:22 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/advanced/customizing_uan_images_manually/</guid>
       <description>Customizing UAN Images Manually Query IMS for the UAN Image you want to customize.
@@ -21,7 +21,7 @@ ncn-m001:~/ $ export IMS_IMAGE_ID=6d46d601-c41f-444d-8b49-c9a2a55d3c21 Using the
     <item>
       <title></title>
       <link>/docs-uan/en-260-alpha6/advanced/enabling_can_chn/</link>
-      <pubDate>Fri, 24 Mar 2023 20:10:02 +0000</pubDate>
+      <pubDate>Fri, 24 Mar 2023 21:10:22 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.
@@ -31,18 +31,8 @@ ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
     
     <item>
       <title></title>
-      <link>/docs-uan/en-260-alpha6/advanced/enabling_k3s/</link>
-      <pubDate>Fri, 24 Mar 2023 20:10:02 +0000</pubDate>
-      
-      <guid>/docs-uan/en-260-alpha6/advanced/enabling_k3s/</guid>
-      <description>Configuring a UAN for K3s (Technical Preview) WARNING: This feature is currently a Technical Preview, as such it requires completion of the Prerequisites section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
-UAI Experience on UANs In UAN 2.6, a new playbook has been added to create a single node, K3s cluster.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-260-alpha6/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Fri, 24 Mar 2023 20:10:02 +0000</pubDate>
+      <pubDate>Fri, 24 Mar 2023 21:10:22 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/advanced/repurposing_compute_as_uan/</guid>
       <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
@@ -52,8 +42,18 @@ Verify the System Default Route is set to CHN.</description>
     
     <item>
       <title></title>
+      <link>/docs-uan/en-260-alpha6/advanced/enabling_k3s/</link>
+      <pubDate>Fri, 24 Mar 2023 21:10:22 +0000</pubDate>
+      
+      <guid>/docs-uan/en-260-alpha6/advanced/enabling_k3s/</guid>
+      <description>Configuring a UAN for K3s (Technical Preview) WARNING: This feature is currently a Technical Preview, as such it requires completion of the Prerequisites section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
+UAI Experience on UANs In UAN 2.6, a new playbook has been added to create a single node, K3s cluster.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-260-alpha6/advanced/sles_image/</link>
-      <pubDate>Fri, 24 Mar 2023 20:10:02 +0000</pubDate>
+      <pubDate>Fri, 24 Mar 2023 21:10:23 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/advanced/sles_image/</guid>
       <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
