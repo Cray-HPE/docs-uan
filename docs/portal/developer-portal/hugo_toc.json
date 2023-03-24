@@ -99,7 +99,8 @@
         "Customizing_UAN_Images_Manually.md",
         "Enabling_CAN_CHN.md",
         "Repurposing_Compute_as_UAN.md",
-        "SLES_Image.md"
+        "SLES_Image.md",
+        "Enabling_K3s.md"
     ]
   },
   {
@@ -115,11 +116,11 @@
     "weight": 53
   },
   {
-    "title": "Booting An Application Node With A Sles Image (TechNICal Preview)",
+    "title": "Booting An Application Node With A Sles Image (Technical Preview)",
     "weight": 54
   },
   {
-    "title": "Configuring A UAN For K3s (techNICal Preview)",
+    "title": "Configuring A UAN For K3s (Technical Preview)",
     "weight": 55
   },
   {
@@ -171,7 +172,8 @@
     "dir": "test-plan",
     "weight": 80,
     "toc": [
-        "test-plan.md"
+        "test-plan.md",
+        "K3s_Test_Plan.md"
     ]
   }
 ]
