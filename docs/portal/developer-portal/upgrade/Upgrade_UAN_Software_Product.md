@@ -1,4 +1,4 @@
-# Upgrade UAN software product
+# Upgrade UAN Software Product
 
 Follow upgrade instructions in [*HPE Cray EX System Software Getting Started Guide (S-8000)*](https://www.hpe.com/support/ex-S-8000) to upgrade the UAN software product. Those instructions provide:
 
