@@ -6,11 +6,21 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 22 Mar 2023 20:16:45 +0000</lastBuildDate><atom:link href="/docs-uan/en-260-alpha6/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Mar 2023 19:35:31 +0000</lastBuildDate><atom:link href="/docs-uan/en-260-alpha6/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/en-260-alpha6/upgrade/notable_changes/</link>
+      <pubDate>Fri, 24 Mar 2023 19:35:29 +0000</pubDate>
+      
+      <guid>/docs-uan/en-260-alpha6/upgrade/notable_changes/</guid>
+      <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
+When an upgrade is being performed, please review the notable changes for all of the UAN versions up to the version being installed. If a particular version does not appear in this guide, it may have only had minor changes. For a full account of the changes involved in a release, consult the ChangeLog.</description>
+    </item>
+    
     <item>
       <title></title>
       <link>/docs-uan/en-260-alpha6/upgrade/upgrades/</link>
-      <pubDate>Wed, 22 Mar 2023 20:16:42 +0000</pubDate>
+      <pubDate>Fri, 24 Mar 2023 19:35:29 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/upgrade/upgrades/</guid>
       <description>Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
@@ -19,16 +29,6 @@ Perform the UAN Installation
 Review any Notable Changes
 Merge UAN CFS Configuration Data
 Create UAN images and reboot</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/en-260-alpha6/upgrade/notable_changes/</link>
-      <pubDate>Wed, 22 Mar 2023 20:16:41 +0000</pubDate>
-      
-      <guid>/docs-uan/en-260-alpha6/upgrade/notable_changes/</guid>
-      <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
-When an upgrade is being performed, please review the notable changes for all of the UAN versions up to the version being installed. If a particular version does not appear in this guide, it may have only had minor changes. For a full account of the changes involved in a release, consult the ChangeLog.</description>
     </item>
     
   </channel>
