@@ -1,0 +1,187 @@
+[
+  {
+    "title": "UAN Documentation",
+    "dir": "/",
+    "weight": 10
+  },
+  {
+    "title": "Cray Ex User Access Nodes Installation And Administration Guide",
+    "dir": "/",
+    "weight": 15
+  },
+  {
+    "title": "Installation Prereqs",
+    "dir": "installation_prereqs",
+    "weight": 20,
+    "toc": [
+        "Prepare_for_UAN_Product_Installation.md",
+        "Configure_the_BMC_for_UANs_with_iLO.md",
+        "Configure_the_BIOS_of_an_HPE_UAN.md",
+        "Configure_the_BIOS_of_a_Gigabyte_UAN.md"
+    ]
+  },
+  {
+    "title": "Prepare for UAN Product Installation",
+    "weight": 21
+  },
+  {
+    "title": "Configure the BMC for UANs with iLO",
+    "weight": 22
+  },
+  {
+    "title": "Configure the BIOS of an HPE UAN",
+    "weight": 23
+  },
+  {
+    "title": "Configure the BIOS of a Gigabyte UAN",
+    "weight": 24
+  },
+  { 
+    "title": "Install",
+    "dir": "install",
+    "weight": 30,
+    "toc": [
+        "Install_the_UAN_Product_Stream.md"
+    ]
+  },
+  {
+    "title": "Operations",
+    "dir": "operations",
+    "weight": 40,
+    "toc": [
+        "About_UAN_Configuration.md",
+        "Build_a_New_UAN_Image_Using_the_COS_Recipe.md",
+        "Create_UAN_Boot_Images.md",
+        "Mount_a_New_File_System_on_an_UAN.md",
+        "Configure_Interfaces_on_UANs.md",
+        "Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md",
+        "UAN_Ansible_Roles.md",
+        "Boot_UANs.md"
+    ]
+  },
+  {
+    "title": "About UAN Configuration",
+    "weight": 41
+  },
+  {
+    "title": "Build a New UAN Image Using a COS Recipe",
+    "weight": 42
+  },
+  {
+    "title": "Create UAN Boot Images",
+    "weight": 43
+  },
+  {
+    "title": "Mount a New File System on a UAN",
+    "weight": 44
+  },
+  {
+    "title": "Configure Interfaces on UANs",
+    "weight": 45
+  },
+  {
+    "title": "Configure Pluggable Authentication Modules (PAM) on UANs",
+    "weight": 46
+  },
+  {
+    "title": "UAN Ansible Roles",
+    "weight": 47
+  },
+  {
+    "title": "Boot UANs",
+    "weight": 48
+  },
+  {
+    "title": "Advanced",
+    "dir": "advanced",
+    "weight": 50,
+    "toc": [
+        "Customizing_UAN_Images_Manually.md",
+        "Enabling_CAN_CHN.md",
+        "Repurposing_Compute_as_UAN.md",
+        "SLES_Image.md",
+        "Enabling_K3s.md"
+    ]
+  },
+  {
+    "title": "Customizing UAN Images Manually",
+    "weight": 51
+  },
+  {
+    "title": "Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)",
+    "weight": 52
+  },
+  {
+    "title": "Repurposing a Compute Node as a UAN",
+    "weight": 53
+  },
+  {
+    "title": "Booting an Application Node with a Sles Image (Technical Preview)",
+    "weight": 54
+  },
+  {
+    "title": "Configuring a UAN for K3s (Technical Preview)",
+    "weight": 55
+  },
+  {
+    "title": "Upgrade",
+    "dir": "upgrade",
+    "weight": 60,
+    "toc": [
+      "Notable_Changes.md",
+      "Upgrade_UAN_Software_Product.md",
+      "Merge_UAN_Configuration_Data.md"
+    ]
+  },
+  {
+    "title": "Notable Changes",
+    "weight": 61
+  },
+  {
+    "title": "Upgrade UAN Software Product",
+    "weight": 62
+  },
+  {
+    "title": "Merge UAN Configuration Data",
+    "weight": 63
+  },
+  {
+    "title": "Troubleshooting",
+    "dir": "troubleshooting",
+    "weight": 70,
+    "toc": [
+        "Troubleshoot_UAN_Boot_Issues.md",
+        "Troubleshoot_UAN_CFS_and_Network_Configuration_Issues.md",
+        "Troubleshoot_UAN_Disk_Configuration_Issues.md"
+    ]
+  },
+  {
+    "title": "Troubleshoot UAN Boot Issues",
+    "weight": 71
+  },
+  {
+    "title": "Troubleshoot UAN CFS and Network Configuration Issues",
+    "weight": 72
+  },
+  {
+    "title": "Troubleshoot UAN Disk Configuration Issues",
+    "weight": 73
+  },
+  {
+    "title": "Test plan",
+    "dir": "test-plan",
+    "weight": 80,
+    "toc": [
+        "test-plan.md",
+        "K3s_Test_Plan.md"
+    ]
+  },
+  {
+    "title": "Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN",
+    "weight": 81
+  },
+  {
+    "title": "Test Plan for UAIs on UANs (K3s Verification)",
+    "weight": 82
+  }
+]
