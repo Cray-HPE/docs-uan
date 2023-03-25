@@ -10,7 +10,7 @@
     "weight": 15
   },
   {
-    "title": "installation prereqs",
+    "title": "Installation Prereqs",
     "dir": "installation_prereqs",
     "weight": 20,
     "toc": [
@@ -37,7 +37,7 @@
     "weight": 24
   },
   { 
-    "title": "install",
+    "title": "Install",
     "dir": "install",
     "weight": 30,
     "toc": [
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "title": "operations",
+    "title": "Operations",
     "dir": "operations",
     "weight": 40,
     "toc": [
@@ -92,7 +92,7 @@
     "weight": 48
   },
   {
-    "title": "advanced",
+    "title": "Advanced",
     "dir": "advanced",
     "weight": 50,
     "toc": [
@@ -124,7 +124,7 @@
     "weight": 55
   },
   {
-    "title": "upgrade",
+    "title": "Upgrade",
     "dir": "upgrade",
     "weight": 60,
     "toc": [
@@ -146,7 +146,7 @@
     "weight": 63
   },
   {
-    "title": "troubleshooting",
+    "title": "Troubleshooting",
     "dir": "troubleshooting",
     "weight": 70,
     "toc": [
@@ -168,7 +168,7 @@
     "weight": 73
   },
   {
-    "title": "test plan",
+    "title": "Test plan",
     "dir": "test-plan",
     "weight": 80,
     "toc": [
