@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/docs-uan/en-260-alpha6/installation_prereqs/</loc>
-    <lastmod>2023-03-25T23:23:46+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:56+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/installation_prereqs/prepare_for_uan_product_installation/</loc>
-    <lastmod>2023-03-25T23:23:41+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:51+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -29,7 +29,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</loc>
-    <lastmod>2023-03-25T23:23:41+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:51+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -42,7 +42,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/installation_prereqs/configure_the_bios_of_an_hpe_uan/</loc>
-    <lastmod>2023-03-25T23:23:41+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:51+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -55,7 +55,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</loc>
-    <lastmod>2023-03-25T23:23:41+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:51+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -68,7 +68,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/install/</loc>
-    <lastmod>2023-03-25T23:23:46+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:55+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -81,7 +81,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/</loc>
-    <lastmod>2023-03-25T23:23:47+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:56+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -94,7 +94,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/about_uan_configuration/</loc>
-    <lastmod>2023-03-25T23:23:42+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:52+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -107,7 +107,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/build_a_new_uan_image_using_the_cos_recipe/</loc>
-    <lastmod>2023-03-25T23:23:42+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:52+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -120,7 +120,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/create_uan_boot_images/</loc>
-    <lastmod>2023-03-25T23:23:43+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:53+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -133,7 +133,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/mount_a_new_file_system_on_an_uan/</loc>
-    <lastmod>2023-03-25T23:23:43+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:53+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -146,7 +146,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/configure_interfaces_on_uans/</loc>
-    <lastmod>2023-03-25T23:23:43+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:52+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -159,7 +159,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/configure_pluggable_authentication_modules_pam_on_uans/</loc>
-    <lastmod>2023-03-25T23:23:43+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:52+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -172,7 +172,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/boot_uans/</loc>
-    <lastmod>2023-03-25T23:23:42+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:52+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -185,10 +185,10 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/cve-2023-0461/</loc>
-    <lastmod>2023-03-25T23:23:42+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:52+00:00</lastmod>
   </url><url>
     <loc>/docs-uan/en-260-alpha6/advanced/</loc>
-    <lastmod>2023-03-25T23:23:46+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:55+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -201,7 +201,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/advanced/customizing_uan_images_manually/</loc>
-    <lastmod>2023-03-25T23:23:39+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:49+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -214,7 +214,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/advanced/enabling_can_chn/</loc>
-    <lastmod>2023-03-25T23:23:40+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:50+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -227,7 +227,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/advanced/repurposing_compute_as_uan/</loc>
-    <lastmod>2023-03-25T23:23:40+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:50+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -240,7 +240,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/advanced/sles_image/</loc>
-    <lastmod>2023-03-25T23:23:40+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:50+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -253,7 +253,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/advanced/enabling_k3s/</loc>
-    <lastmod>2023-03-25T23:23:40+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:50+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -266,7 +266,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/upgrade/</loc>
-    <lastmod>2023-03-25T23:23:48+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:58+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -279,7 +279,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/troubleshooting/</loc>
-    <lastmod>2023-03-25T23:23:48+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:57+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -292,7 +292,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/troubleshooting/troubleshoot_uan_boot_issues/</loc>
-    <lastmod>2023-03-25T23:23:44+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:54+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -305,7 +305,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</loc>
-    <lastmod>2023-03-25T23:23:44+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:54+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -318,7 +318,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/troubleshooting/troubleshoot_uan_disk_configuration_issues/</loc>
-    <lastmod>2023-03-25T23:23:45+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:54+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -331,7 +331,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/</loc>
-    <lastmod>2023-03-25T23:23:48+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:58+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -345,7 +345,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-260-alpha6/test-plan/</loc>
-    <lastmod>2023-03-25T23:23:48+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:57+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -357,8 +357,11 @@
                 href="/docs-uan/en-260-alpha6/test-plan/"
                 />
   </url><url>
+    <loc>/docs-uan/en-260-alpha6/upgrade/upgrades/</loc>
+    <lastmod>2023-03-26T01:06:55+00:00</lastmod>
+  </url><url>
     <loc>/docs-uan/en-260-alpha6/upgrade/notable_changes/</loc>
-    <lastmod>2023-03-25T23:23:45+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:54+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -370,24 +373,8 @@
                 href="/docs-uan/en-260-alpha6/upgrade/notable_changes/"
                 />
   </url><url>
-    <loc>/docs-uan/en-260-alpha6/upgrade/upgrades/</loc>
-    <lastmod>2023-03-25T23:23:45+00:00</lastmod>
-  </url><url>
-    <loc>/docs-uan/en-260-alpha6/test-plan/test-plan/</loc>
-    <lastmod>2023-03-25T23:23:44+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-2510-alpha1"
-                href="/docs-uan/en-2510-alpha1/test-plan/test-plan/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-260-alpha6"
-                href="/docs-uan/en-260-alpha6/test-plan/test-plan/"
-                />
-  </url><url>
     <loc>/docs-uan/en-260-alpha6/operations/uan_ansible_roles/</loc>
-    <lastmod>2023-03-25T23:23:43+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:53+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
@@ -399,8 +386,21 @@
                 href="/docs-uan/en-260-alpha6/operations/uan_ansible_roles/"
                 />
   </url><url>
+    <loc>/docs-uan/en-260-alpha6/test-plan/test-plan/</loc>
+    <lastmod>2023-03-26T01:06:53+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-2510-alpha1"
+                href="/docs-uan/en-2510-alpha1/test-plan/test-plan/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-260-alpha6"
+                href="/docs-uan/en-260-alpha6/test-plan/test-plan/"
+                />
+  </url><url>
     <loc>/docs-uan/en-260-alpha6/install/install_the_uan_product_stream/</loc>
-    <lastmod>2023-03-25T23:23:41+00:00</lastmod>
+    <lastmod>2023-03-26T01:06:51+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2510-alpha1"
