@@ -12,7 +12,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</guid>
-      <description>toc_title=uan documentation; given_title=configure the bios of a gigabyte uan toc_title=cray ex user access nodes installation and administration guide; given_title=configure the bios of a gigabyte uan toc_title=installation prereqs; given_title=configure the bios of a gigabyte uan toc_title=prepare for uan product installation; given_title=configure the bios of a gigabyte uan toc_title=configure the bmc for uans with ilo; given_title=configure the bios of a gigabyte uan toc_title=configure the bios of an hpe uan; given_title=configure the bios of a gigabyte uan toc_title=configure the bios of a gigabyte uan; given_title=configure the bios of a gigabyte uan menuTitle: &amp;ldquo;Configure the BIOS of a Gigabyte UAN&amp;rdquo; date: Sun Mar 26 01:57:44 UTC 2023 draft: false weight: 24 Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.</description>
+      <description>toc_title=configure the bios of a gigabyte uan; given_title=configure the bios of a gigabyte uan; menuTitle: &amp;ldquo;Configure the BIOS of a Gigabyte UAN&amp;rdquo; date: Sun Mar 26 02:00:54 UTC 2023 draft: false weight: 24 Configure the BIOS of a Gigabyte UAN Perform this procedure to configure the network interface and boot settings required by Gigabyte UANs.
+Before the UAN product can be installed on Gigabyte UANs, specific network interface and boot settings must be configured in the BIOS.</description>
     </item>
     
     <item>
@@ -21,7 +22,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
-      <description>toc_title=uan documentation; given_title=configure the bios of an hpe uan toc_title=cray ex user access nodes installation and administration guide; given_title=configure the bios of an hpe uan toc_title=installation prereqs; given_title=configure the bios of an hpe uan toc_title=prepare for uan product installation; given_title=configure the bios of an hpe uan toc_title=configure the bmc for uans with ilo; given_title=configure the bios of an hpe uan toc_title=configure the bios of an hpe uan; given_title=configure the bios of an hpe uan menuTitle: &amp;ldquo;Configure the BIOS of an HPE UAN&amp;rdquo; date: Sun Mar 26 01:57:44 UTC 2023 draft: false weight: 23 Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.</description>
+      <description>toc_title=configure the bios of an hpe uan; given_title=configure the bios of an hpe uan; menuTitle: &amp;ldquo;Configure the BIOS of an HPE UAN&amp;rdquo; date: Sun Mar 26 02:00:54 UTC 2023 draft: false weight: 23 Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
+Before the UAN product can be installed on HPE UANs, specific network interface and boot settings must be configured in the BIOS.</description>
     </item>
     
     <item>
@@ -30,7 +32,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
-      <description>toc_title=uan documentation; given_title=configure the bmc for uans with ilo toc_title=cray ex user access nodes installation and administration guide; given_title=configure the bmc for uans with ilo toc_title=installation prereqs; given_title=configure the bmc for uans with ilo toc_title=prepare for uan product installation; given_title=configure the bmc for uans with ilo toc_title=configure the bmc for uans with ilo; given_title=configure the bmc for uans with ilo menuTitle: &amp;ldquo;Configure the BMC for UANs with iLO&amp;rdquo; date: Sun Mar 26 01:57:44 UTC 2023 draft: false weight: 22 Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.</description>
+      <description>toc_title=configure the bmc for uans with ilo; given_title=configure the bmc for uans with ilo; menuTitle: &amp;ldquo;Configure the BMC for UANs with iLO&amp;rdquo; date: Sun Mar 26 02:00:54 UTC 2023 draft: false weight: 22 Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
+Perform the first three steps of Prepare for UAN Product Installation before performing this procedure.</description>
     </item>
     
     <item>
@@ -39,7 +42,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/installation_prereqs/prepare_for_uan_product_installation/</guid>
-      <description>toc_title=uan documentation; given_title=prepare for uan product installation toc_title=cray ex user access nodes installation and administration guide; given_title=prepare for uan product installation toc_title=installation prereqs; given_title=prepare for uan product installation toc_title=prepare for uan product installation; given_title=prepare for uan product installation menuTitle: &amp;ldquo;Prepare for UAN Product Installation&amp;rdquo; date: Sun Mar 26 01:57:45 UTC 2023 draft: false weight: 21 Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.</description>
+      <description>toc_title=prepare for uan product installation; given_title=prepare for uan product installation; menuTitle: &amp;ldquo;Prepare for UAN Product Installation&amp;rdquo; date: Sun Mar 26 02:00:54 UTC 2023 draft: false weight: 21 Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
+Install and configure the COS product before performing this procedure.
+Verify that the management network switches are properly configured.
+Refer to the switch configuration procedures in the HPE Cray System Management Documentation.</description>
     </item>
     
   </channel>

@@ -5,23 +5,30 @@
     <link>/docs-uan/en-260-alpha6/upgrade/</link>
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language><atom:link href="/docs-uan/en-260-alpha6/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-US</language>
+    <lastBuildDate>Sun, 26 Mar 2023 02:00:58 +0000</lastBuildDate><atom:link href="/docs-uan/en-260-alpha6/upgrade/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-260-alpha6/upgrade/notable_changes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 26 Mar 2023 02:00:58 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/upgrade/notable_changes/</guid>
-      <description>toc_title=uan documentation; given_title=notable changes toc_title=cray ex user access nodes installation and administration guide; given_title=notable changes toc_title=installation prereqs; given_title=notable changes toc_title=prepare for uan product installation; given_title=notable changes toc_title=configure the bmc for uans with ilo; given_title=notable changes toc_title=configure the bios of an hpe uan; given_title=notable changes toc_title=configure the bios of a gigabyte uan; given_title=notable changes toc_title=install; given_title=notable changes toc_title=operations; given_title=notable changes toc_title=about uan configuration; given_title=notable changes toc_title=build a new uan image using a cos recipe; given_title=notable changes toc_title=create uan boot images; given_title=notable changes toc_title=mount a new file system on a uan; given_title=notable changes toc_title=configure interfaces on uans; given_title=notable changes toc_title=configure pluggable authentication modules (pam) on uans; given_title=notable changes toc_title=uan ansible roles; given_title=notable changes toc_title=boot uans; given_title=notable changes toc_title=mitigation for cve-2023-0461; given_title=notable changes toc_title=advanced; given_title=notable changes toc_title=customizing uan images manually; given_title=notable changes toc_title=enabling the customer access network (can) or the customer high speed network (chn); given_title=notable changes toc_title=repurposing a compute node as a uan; given_title=notable changes toc_title=booting an application node with a sles image (technical preview); given_title=notable changes toc_title=configuring a uan for k3s (technical preview); given_title=notable changes toc_title=upgrade; given_title=notable changes toc_title=troubleshooting; given_title=notable changes toc_title=troubleshoot uan boot issues; given_title=notable changes toc_title=troubleshoot uan cfs and network configuration issues; given_title=notable changes toc_title=troubleshoot uan disk configuration issues; given_title=notable changes toc_title=test plan; given_title=notable changes menuTitle: &amp;ldquo;Notable Changes&amp;rdquo; date: Sun Mar 26 01:57:48 UTC 2023 draft: false Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.</description>
+      <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
+When an upgrade is being performed, please review the notable changes for all of the UAN versions up to the version being installed. If a particular version does not appear in this guide, it may have only had minor changes. For a full account of the changes involved in a release, consult the ChangeLog.</description>
     </item>
     
     <item>
       <title></title>
       <link>/docs-uan/en-260-alpha6/upgrade/upgrades/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 26 Mar 2023 02:00:58 +0000</pubDate>
       
       <guid>/docs-uan/en-260-alpha6/upgrade/upgrades/</guid>
-      <description>toc_title=uan documentation; given_title=upgrades toc_title=cray ex user access nodes installation and administration guide; given_title=upgrades toc_title=installation prereqs; given_title=upgrades toc_title=prepare for uan product installation; given_title=upgrades toc_title=configure the bmc for uans with ilo; given_title=upgrades toc_title=configure the bios of an hpe uan; given_title=upgrades toc_title=configure the bios of a gigabyte uan; given_title=upgrades toc_title=install; given_title=upgrades toc_title=operations; given_title=upgrades toc_title=about uan configuration; given_title=upgrades toc_title=build a new uan image using a cos recipe; given_title=upgrades toc_title=create uan boot images; given_title=upgrades toc_title=mount a new file system on a uan; given_title=upgrades toc_title=configure interfaces on uans; given_title=upgrades toc_title=configure pluggable authentication modules (pam) on uans; given_title=upgrades toc_title=uan ansible roles; given_title=upgrades toc_title=boot uans; given_title=upgrades toc_title=mitigation for cve-2023-0461; given_title=upgrades toc_title=advanced; given_title=upgrades toc_title=customizing uan images manually; given_title=upgrades toc_title=enabling the customer access network (can) or the customer high speed network (chn); given_title=upgrades toc_title=repurposing a compute node as a uan; given_title=upgrades toc_title=booting an application node with a sles image (technical preview); given_title=upgrades toc_title=configuring a uan for k3s (technical preview); given_title=upgrades toc_title=upgrade; given_title=upgrades toc_title=troubleshooting; given_title=upgrades toc_title=troubleshoot uan boot issues; given_title=upgrades toc_title=troubleshoot uan cfs and network configuration issues; given_title=upgrades toc_title=troubleshoot uan disk configuration issues; given_title=upgrades toc_title=test plan; given_title=upgrades menuTitle: &amp;ldquo;Upgrades&amp;rdquo; date: Sun Mar 26 01:57:49 UTC 2023 draft: false Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install.</description>
+      <description>Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
+The overall workflow for completing a UAN upgrade involves:
+Perform the UAN Installation
+Review any Notable Changes
+Merge UAN CFS Configuration Data
+Create UAN images and reboot</description>
     </item>
     
   </channel>
