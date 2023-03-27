@@ -5,7 +5,7 @@
     "weight": 10
   },
   {
-    "title": "Cray Ex User Access Nodes Installation And Administration Guide",
+    "title": "Cray Ex User Access Nodes Installation and Administration Guide",
     "dir": "/",
     "weight": 15
   },
@@ -21,19 +21,19 @@
     ]
   },
   {
-    "title": "Prepare For UAN Product Installation",
+    "title": "Prepare for UAN Product Installation",
     "weight": 21
   },
   {
-    "title": "Configure The BMC For UANs With iLO",
+    "title": "Configure the BMC for UANs with iLO",
     "weight": 22
   },
   {
-    "title": "Configure The BIOS Of An HPE UAN",
+    "title": "Configure the BIOS of an HPE UAN",
     "weight": 23
   },
   {
-    "title": "Configure The BIOS Of A Gigabyte UAN",
+    "title": "Configure the BIOS of a Gigabyte UAN",
     "weight": 24
   },
   { 
@@ -56,7 +56,8 @@
         "Configure_Interfaces_on_UANs.md",
         "Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md",
         "UAN_Ansible_Roles.md",
-        "Boot_UANs.md"
+        "Boot_UANs.md",
+        "CVE_2023_0461.md"
     ]
   },
   {
@@ -64,7 +65,7 @@
     "weight": 41
   },
   {
-    "title": "Build A New UAN Image Using A COS Recipe",
+    "title": "Build a New UAN Image Using a COS Recipe",
     "weight": 42
   },
   {
@@ -72,15 +73,15 @@
     "weight": 43
   },
   {
-    "title": "Mount A New File System On A UAN",
+    "title": "Mount a New File System on a UAN",
     "weight": 44
   },
   {
-    "title": "Configure Interfaces On UANs",
+    "title": "Configure Interfaces on UANs",
     "weight": 45
   },
   {
-    "title": "Configure Pluggable Authentication Modules (pam) On UANs",
+    "title": "Configure Pluggable Authentication Modules (PAM) on UANs",
     "weight": 46
   },
   {
@@ -90,6 +91,10 @@
   {
     "title": "Boot UANs",
     "weight": 48
+  },
+  {
+    "title": "Mitigation for CVE-2023-0461",
+    "weight": 49
   },
   {
     "title": "Advanced",
@@ -107,19 +112,19 @@
     "weight": 51
   },
   {
-    "title": "Enabling The Customer Access Network (CAN) Or The Customer High Speed Network (chn)",
+    "title": "Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)",
     "weight": 52
   },
   {
-    "title": "Repurposing A Compute Node As A UAN",
+    "title": "Repurposing a Compute Node as a UAN",
     "weight": 53
   },
   {
-    "title": "Booting An Application Node With A Sles Image (TechNICal Preview)",
+    "title": "Booting an Application Node with a SLES Image (Technical Preview)",
     "weight": 54
   },
   {
-    "title": "Configuring A UAN For K3s (techNICal Preview)",
+    "title": "Configuring a UAN for K3s (Technical Preview)",
     "weight": 55
   },
   {
@@ -159,7 +164,7 @@
     "weight": 71
   },
   {
-    "title": "Troubleshoot UAN CFS And Network Configuration Issues",
+    "title": "Troubleshoot UAN CFS and Network Configuration Issues",
     "weight": 72
   },
   {
