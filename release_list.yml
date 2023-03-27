@@ -3,4 +3,5 @@
 # version menu.  Default at the top of the list.
 releases:
   - 2.5.10
+  - 2.5.8
   - 2.6.0-alpha.6
