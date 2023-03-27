@@ -48,6 +48,8 @@ When an upgrade is being performed, please review the notable changes for **all*
 * A technical preview of a standard SLES image for UAN/Application nodes is included.
 * Support SLES15SP4 COS based images
 
-## UAN 2.5.9
+## UAN 2.5.10
 
 * Support for bonding the NMN interfaces on UAN
+* A technical preview of configuring a UAN for K3s (UAIs on UAN)
+* Mitigation procedure for CVE-2023-0461
