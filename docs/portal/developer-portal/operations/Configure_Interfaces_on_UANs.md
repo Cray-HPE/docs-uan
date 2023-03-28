@@ -11,7 +11,7 @@ In the command examples in this procedure, `PRODUCT_VERSION` refers to the curre
 
 By default, the Node Management Network \(NMN\) is connected to a single `nmn0` interface.  If desired, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, `nmnb0`. To configure the NMN as a bonded pair, set `uan_nmn_bond` to true and set the interfaces to be used in the bond in `uan_nmn_bond_slaves` as described in [UAN Ansible Roles](UAN_Ansible_Roles.md).
 
-**Prerequisites for Bonded NMN:**
+### Prerequisites for Bonded NMN
 
 To enable NMN bonding, certain features in iPXE and the management switches connected to the UAN NMN interfaces must be enabled.  These features are enabled in the following CSM and CANU versions:
 
