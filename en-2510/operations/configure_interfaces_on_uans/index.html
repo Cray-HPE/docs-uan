@@ -12,22 +12,22 @@
     <title> :: User Access Node (UAN)</title>
 
     
-    <link href="/docs-uan/css/nucleus.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/fontawesome-all.min.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/hybrid.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/featherlight.min.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/perfect-scrollbar.min.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/auto-complete.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/atom-one-dark-reasonable.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/theme.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/tabs.css?1679953611" rel="stylesheet">
-    <link href="/docs-uan/css/hugo-theme.css?1679953611" rel="stylesheet">
+    <link href="/docs-uan/css/nucleus.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/fontawesome-all.min.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/hybrid.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/featherlight.min.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/perfect-scrollbar.min.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/auto-complete.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/atom-one-dark-reasonable.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/theme.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/tabs.css?1680040172" rel="stylesheet">
+    <link href="/docs-uan/css/hugo-theme.css?1680040172" rel="stylesheet">
     
-    <link href="/docs-uan/css/theme-green.css?1679953611" rel="stylesheet">
+    <link href="/docs-uan/css/theme-green.css?1680040172" rel="stylesheet">
     
     
 
-    <script src="/docs-uan/js/jquery-3.3.1.min.js?1679953611"></script>
+    <script src="/docs-uan/js/jquery-3.3.1.min.js?1680040172"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/docs-uan/js/lunr.min.js?1679953611"></script>
-<script type="text/javascript" src="/docs-uan/js/auto-complete.js?1679953611"></script>
+<script type="text/javascript" src="/docs-uan/js/lunr.min.js?1680040172"></script>
+<script type="text/javascript" src="/docs-uan/js/auto-complete.js?1680040172"></script>
 <script type="text/javascript">
     
         var baseurl = "\/docs-uan\/\/en-2510";
     
 </script>
-<script type="text/javascript" src="/docs-uan/js/search.js?1679953611"></script>
+<script type="text/javascript" src="/docs-uan/js/search.js?1680040172"></script>
 
     
   </div>
@@ -1032,7 +1032,11 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#node-management-networking">Node Management Networking</a></li>
+    <li><a href="#node-management-networking">Node Management Networking</a>
+      <ul>
+        <li><a href="#prerequisites-for-bonded-nmn">Prerequisites for Bonded NMN</a></li>
+      </ul>
+    </li>
     <li><a href="#user-access-networking">User Access Networking</a></li>
     <li><a href="#procedure">Procedure</a></li>
   </ul>
@@ -1065,6 +1069,12 @@
 <p>In the command examples in this procedure, <code>PRODUCT_VERSION</code> refers to the current installed version of the UAN product. Replace <code>PRODUCT_VERSION</code> with the UAN version number string when executing the commands.</p>
 <h2 id="node-management-networking">Node Management Networking</h2>
 <p>By default, the Node Management Network (NMN) is connected to a single <code>nmn0</code> interface.  If desired, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, <code>nmnb0</code>. To configure the NMN as a bonded pair, set <code>uan_nmn_bond</code> to true and set the interfaces to be used in the bond in <code>uan_nmn_bond_slaves</code> as described in <a href="/docs-uan/en-2510/operations/uan_ansible_roles/">UAN Ansible Roles</a>.</p>
+<h3 id="prerequisites-for-bonded-nmn">Prerequisites for Bonded NMN</h3>
+<p>To enable NMN bonding, certain features in iPXE and the management switches connected to the UAN NMN interfaces must be enabled.  These features are enabled in the following CSM and CANU versions:</p>
+<ul>
+<li>CSM-1.3.2 and newer enable the iPXE features</li>
+<li>CANU-1.7.0 and newer enables the management switch features</li>
+</ul>
 <h2 id="user-access-networking">User Access Networking</h2>
 <p>User access may be configured to use either a direct connection to the UANs from the site&rsquo;s user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network (CAN) and Customer High Speed Network (CHN).  The CAN is a VLAN on the Node Management Network (NMN), whereas the CHN is over the High Speed Network (HSN).</p>
 <p>By default, a direct connection to the site&rsquo;s user network is assumed and the Admin must define the interface(s) and default route using the <code>customer_uan_interfaces</code> and <code>customer_uan_routes</code> structures. If <code>uan_can_setup</code> is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.</p>
@@ -1903,19 +1913,19 @@ ncn-m001# cray cfs components update --desired-config uan-config-PRODUCT_VERSION
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/docs-uan/js/clipboard.min.js?1679953611"></script>
-    <script src="/docs-uan/js/perfect-scrollbar.min.js?1679953611"></script>
-    <script src="/docs-uan/js/perfect-scrollbar.jquery.min.js?1679953611"></script>
-    <script src="/docs-uan/js/jquery.sticky.js?1679953611"></script>
-    <script src="/docs-uan/js/featherlight.min.js?1679953611"></script>
-    <script src="/docs-uan/js/highlight.pack.js?1679953611"></script>
+    <script src="/docs-uan/js/clipboard.min.js?1680040172"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.min.js?1680040172"></script>
+    <script src="/docs-uan/js/perfect-scrollbar.jquery.min.js?1680040172"></script>
+    <script src="/docs-uan/js/jquery.sticky.js?1680040172"></script>
+    <script src="/docs-uan/js/featherlight.min.js?1680040172"></script>
+    <script src="/docs-uan/js/highlight.pack.js?1680040172"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/docs-uan/js/modernizr.custom-3.6.0.js?1679953611"></script>
-    <script src="/docs-uan/js/learn.js?1679953611"></script>
-    <script src="/docs-uan/js/hugo-learn.js?1679953611"></script>
+    <script src="/docs-uan/js/modernizr.custom-3.6.0.js?1680040172"></script>
+    <script src="/docs-uan/js/learn.js?1680040172"></script>
+    <script src="/docs-uan/js/hugo-learn.js?1680040172"></script>
     
         
-            <script src="/docs-uan/mermaid/mermaid.js?1679953611"></script>
+            <script src="/docs-uan/mermaid/mermaid.js?1680040172"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
