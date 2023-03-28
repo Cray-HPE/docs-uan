@@ -15,7 +15,7 @@ By default, the Node Management Network \(NMN\) is connected to a single `nmn0` 
 
 To enable NMN bonding, certain features in iPXE and the management switches connected to the UAN NMN interfaces must be enabled.  These features are enabled in the following CSM and CANU versions:
 
-* CSM-1.3.2, CSM-1.4 and newer enable the iPXE features
+* CSM-1.3.2 and newer enable the iPXE features
 * CANU-1.7.0 and newer enables the management switch features
 
 ## User Access Networking
