@@ -65,7 +65,7 @@ mkdir -m777 -p build/Markdown
 echo "Building UAN Install Guide";
 
 # This line builds the HPESC HTML bundle for the install guide
-dita -i tmp/uan_install_guide.ditamap -o build/install -f HPEscHtml5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_3en_us.zip ./
+dita -i tmp/uan_install_guide.ditamap -o build/install -f HPEscHtml5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 dita -i uan_install_guide.ditamap -o build/PDF/install -f pdf
@@ -74,7 +74,7 @@ dita -i uan_install_guide.ditamap --root-chunk-override=to-content -o build/Mark
 
 # Repeat the process for the Admin Guide
 echo "Building UAN Admin Guide"
-dita -i tmp/uan_admin_guide.ditamap -o build/admin -f HPEscHtml5 && cp admin_publication.json build/admin/publication.json && cd build/admin/ && zip -r crs8033_3en_us.zip ./
+dita -i tmp/uan_admin_guide.ditamap -o build/admin -f HPEscHtml5 && cp admin_publication.json build/admin/publication.json && cd build/admin/ && zip -r crs8033_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 dita -i uan_admin_guide.ditamap -o build/PDF/admin -f pdf; 
