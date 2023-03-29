@@ -48,6 +48,10 @@ function copy_docs {
         sed -i.bak -e "s/@name@/${NAME}/g" "$docfile"
         sed -i.bak -e "s/@date@/${DATE}/g" "$docfile"
     done
+    for bundle_file in `find "${BUILDDIR}/docs/" -name "build*sh" -o -name "direct_publish*sh" -o -name "*publication.json" -type f`;
+    do
+	sed -i.bak -e "s/@docid_suffix@/${DOCID_SUFFIX}/g" "$bundle_file"
+    done
     for bakfile in `find "${BUILDDIR}/docs/" -name "*.bak" -type f`;
     do
         rm $bakfile

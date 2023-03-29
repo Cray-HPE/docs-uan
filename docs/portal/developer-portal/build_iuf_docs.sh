@@ -62,7 +62,7 @@ mkdir -m777 -p build/Markdown
 echo "Building UAN Install Guide";
 
 # This line builds the HPESC HTML bundle for the install guide
-docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_install_guide.ditamap -o /src/build/install -f html5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_3en_us.zip ./
+docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_install_guide.ditamap -o /src/build/install -f html5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_install_guide.ditamap -o /src/build/PDF/install -f pdf
@@ -72,7 +72,7 @@ docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_install_guide.di
 # Repeat the process for the Admin Guide
 echo "Building UAN Admin Guide"
 
-docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_admin_guide.ditamap -o /src/build/admin -f html5 && cp admin_publication.json build/admin/publication.json && cd build/admin/ && zip -r crs8033_3en_us.zip ./
+docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_admin_guide.ditamap -o /src/build/admin -f html5 && cp admin_publication.json build/admin/publication.json && cd build/admin/ && zip -r crs8033_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/uan_admin_guide.ditamap -o /src/build/PDF/admin -f pdf
