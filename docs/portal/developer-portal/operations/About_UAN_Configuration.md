@@ -20,7 +20,7 @@ The UAN-specific roles involved in post-boot UAN node configuration are:
 
 The UAN roles in site.yml are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file.
 
-For more information about these roles, see [UAN Ansible Roles](UAN_Ansible_Roles.md#uan-ansible-roles).
+For more information about these roles, see [UAN Ansible Roles](UAN_Ansible_Roles.md).
 
 ## UAN network configuration
 
@@ -40,7 +40,7 @@ The `uan_interfaces` role configures the interfaces on the UAN nodes in three ph
         2. CHN: Implement the CHN interface on the HSN
 3. Setup customer-defined networks
 
-See [Configure Interfaces on UANs](Configure_Interfaces_on_UANs.md#configure-interfaces-on-uans) for detailed instructions.
+See [Configure Interfaces on UANs](Configure_Interfaces_on_UANs.md) for detailed instructions.
 
 ### UAN LDAP network requirements
 
