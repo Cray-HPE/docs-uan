@@ -8,7 +8,7 @@ Perform the following before starting this procedure:
 - Install the COS, Slingshot, and UAN product streams.
 - Initialize the cray administrative CLI.
 
-In the COS recipe for 2.2, several dependencies have been removed, this includes Slingshot, DVS, and Lustre. Those packages are now installed during CFS Image Customization. More information on this change is covered in the [Create UAN Boot Images](Create_UAN_Boot_Images.md#create-boot-images) procedure.
+In the COS recipe for 2.2, several dependencies have been removed, this includes Slingshot, DVS, and Lustre. Those packages are now installed during CFS Image Customization. More information on this change is covered in the [Create UAN Boot Images](Create_UAN_Boot_Images.md) procedure.
 
 1. Identify the COS image recipe to base the UAN image on. Select the recipe that matches the version of COS that the compute nodes will be using.
 
@@ -45,4 +45,4 @@ In the COS recipe for 2.2, several dependencies have been removed, this includes
    ncn-m001# cray ims jobs create --job-type create --public-key-id $IMS_PUBLIC_KEY --image-root-archive-name $IMS_ARCHIVE_NAME --artifact-id $IMS_RECIPE_ID
    ```
 
-4. Perform [Create UAN Boot Images](Create_UAN_Boot_Images.md#create-boot-images) to run CFS Image Customization on the resulting image.
+4. Perform [Create UAN Boot Images](Create_UAN_Boot_Images.md#) to run CFS Image Customization on the resulting image.

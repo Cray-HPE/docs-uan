@@ -68,8 +68,7 @@ The following steps should be completed prior to configuring the UAN with K3s.
      ]
    }
 
-### Podman Image
-1. Place a container image suitable for users within a container image registry accessible from the UAN.
+1. Place a Podman container image suitable for users within a container image registry accessible from the UAN.
 
 ## Configuring with Configuration Framework Service (CFS)
 
@@ -208,7 +207,7 @@ uan_haproxy:
 ```
 This is an example that should be tailored to the desired configuration. See the [SSHD Configuration](#sshd-configuration) section to create new instances of SSHD to respond to HAProxy connections outside of the standard SSHD running on port 22.
 
-For more information HAProxy configurations, see [HAProxy Configuration](#https://docs.haproxy.org/2.7/configuration.html).
+For more information HAProxy configurations, see [HAProxy Configuration](<https://docs.haproxy.org/2.7/configuration.html>)
 
 To enable additional instances of HAProxy representing alternate configurations, add a new element to the list `uan_haproxy`.
 ### SSHD Configuration

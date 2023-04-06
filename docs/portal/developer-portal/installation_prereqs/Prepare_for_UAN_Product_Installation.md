@@ -18,12 +18,12 @@ Install and configure the COS product before performing this procedure.
 
 4. Configure the BMC of the UAN.
 
-   Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md#configure-the-bmc-for-uans-with-ilo) if the UAN is a HPE server with an iLO.
+   Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md) if the UAN is a HPE server with an iLO.
 
 5. Configure the BIOS of the UAN.
 
-    - Perform [Configure the BIOS of an HPE UAN](Configure_the_BIOS_of_an_HPE_UAN.md#configure-the-bios-of-an-hpe-uan) if the UAN is a HPE server with an iLO.
-    - Perform [Configure the BIOS of a Gigabyte UAN](Configure_the_BIOS_of_a_Gigabyte_UAN.md#configure-the-bios-of-a-gigabyte-uan) if the UAN is a Gigabyte server.
+    - Perform [Configure the BIOS of an HPE UAN](Configure_the_BIOS_of_an_HPE_UAN.md) if the UAN is a HPE server with an iLO.
+    - Perform [Configure the BIOS of a Gigabyte UAN](Configure_the_BIOS_of_a_Gigabyte_UAN.md) if the UAN is a Gigabyte server.
 
 6. Verify that the firmware for each UAN BMC meets the specifications.
 
@@ -87,4 +87,4 @@ Install and configure the COS product before performing this procedure.
 
        If a console connection is not present, the install may continue, but a console connection should be established before attempting to boot the UAN.
 
-Next, install the UAN product by performing the procedure [Install the UAN Product Stream](../install/Install_the_UAN_Product_Stream.md#install-the-uan-product-stream).
+Next, install the UAN product by performing the procedure [Install the UAN Product Stream](../install/Install_the_UAN_Product_Stream.md).
