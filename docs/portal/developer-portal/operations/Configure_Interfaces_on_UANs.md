@@ -26,7 +26,7 @@ By default, a direct connection to the site's user network is assumed and the Ad
 
 * When CAN is set as the system default route in SLS and `uan_nmn_bond` is false, the bonded CAN interfaces are determined automatically.  If `uan_nmn_bond` is true, the bonded CAN interfaces must be defined by `uan_can_bond_slaves` \(see [UAN Ansible Roles](UAN_Ansible_Roles.md)\). The default route is set to the bonded CAN interface `can0`.
 
-* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` by default, but can be changed by using setting `uan_chn_device` to the desired interface.  The default route is set to the CHN.
+* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` by default, but can be changed by using setting `uan_chn_device` to the desired interface. The default route is set to the CHN.
 
 * The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
 
