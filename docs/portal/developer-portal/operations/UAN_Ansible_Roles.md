@@ -297,6 +297,16 @@ uan_can_bond_slaves:
   - "ens1f1"
 ```
 
+`uan_chn_device`
+
+:  The default CHN device on the UAN nodes. Overwrite the default value to use a different device for the CHN on UAN nodes.
+
+The default value of `uan_chn_device` is shown here.
+
+```yaml
+uan_chn_device: "hsn0"
+```
+
 `uan_customer_default_route`
 
 Boolean variable that allows the default route
