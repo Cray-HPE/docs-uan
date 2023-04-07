@@ -299,7 +299,7 @@ uan_can_bond_slaves:
 
 `uan_chn_device`
 
-`uan_chn_device` is a variable which can be used to override the default CHN device on the UAN nodes.
+:  The default CHN device on the UAN nodes. Overwrite the default value to use a different device for the CHN on UAN nodes.
 
 The default value of `uan_chn_device` is shown here.
 
