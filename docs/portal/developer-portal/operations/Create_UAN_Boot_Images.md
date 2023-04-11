@@ -1,4 +1,3 @@
-
 # Create UAN Boot Images
 
 Perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) before performing this procedure. 

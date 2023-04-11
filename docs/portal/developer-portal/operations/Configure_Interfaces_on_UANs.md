@@ -1,4 +1,3 @@
-
 # Configure Interfaces on UANs
 
 Perform this procedure to configure network interfaces on UANs by editing a configuration file.

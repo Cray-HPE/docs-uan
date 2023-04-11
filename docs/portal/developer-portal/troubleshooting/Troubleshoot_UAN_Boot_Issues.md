@@ -1,4 +1,3 @@
-
 # Troubleshoot UAN Boot Issues
 
 ## The UAN boot process
@@ -23,7 +22,7 @@ UAN boots are performed in three phases:
 
 Most PXE boot failures are the result of misconfigured network switches and/or BIOS settings. The UAN must PXE boot over the Node Management Network \(NMN\) and the switches must be configured to allow connectivity to the NMN. The cable for the NMN must be connected to the first port of the OCP card on HPE DL325 and DL385 servers or to the first port of the built-in LAN-On-Motherboard \(LOM\) on Gigabyte servers. See "Prepare for UAN Product Installation" in the UAN Installation Guide for details on the switch and BIOS settings required to configure the UAN for PXE booting.
 
-UANs may fail to boot when the BIOS EFITIME is too far away from the time on management nodes. If there are x509 certificate problems, check that the BIOS time is correct. See "Configure the BIOS of an HPE UAN" or "Configure the BIOS of a Gigabyte UAN" in the UAN Installation Guide for examples of checking settings in the BIOS.
+UANs may fail to boot when the BIOS EFITIME is too far away from the time on management nodes. If there are X509 certificate problems, check that the BIOS time is correct. See "Configure the BIOS of an HPE UAN" or "Configure the BIOS of a Gigabyte UAN" in the UAN Installation Guide for examples of checking settings in the BIOS.
 
 ## Initrd \(Dracut\) Issues
 

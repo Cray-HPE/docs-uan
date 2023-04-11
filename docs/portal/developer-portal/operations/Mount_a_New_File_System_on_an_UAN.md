@@ -1,4 +1,3 @@
-
 # Mount a New File System on a UAN
 
 Perform this procedure to create a mount point for a new file system on a UAN.
