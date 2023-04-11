@@ -80,6 +80,10 @@ function transform_links() {
     sed 's|index.md||g'
 }
 
+function gen_dynamic_toc(){
+    python3 $DOCSOURCE/gen-hugo-toc-json.py
+}
+
 function gen_hugo_yaml() {
     HUGO_TOC="/src/bin/hugo_toc.json"
     [[ -f $DOCSOURCE/hugo_toc.json ]] && HUGO_TOC="$DOCSOURCE/hugo_toc.json"

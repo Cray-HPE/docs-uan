@@ -119,7 +119,6 @@ with open(THIS_DIR + "/docs/hugo/docs-uan/bin/compose/test.yml", "w") as fh:
     fh.write(test_out)
 
 # Run docs/hugo/docs-uan/bin/build.sh
-subprocess.call(["python", THIS_DIR + "/gen-hugo-toc-json.py"])
 chmod_build_docs = subprocess.call(['chmod', '0755', THIS_DIR + "/docs/hugo/docs-uan/bin/build.sh"])
 print("Building docs...")
 build_docs = subprocess.run([THIS_DIR + "/docs/hugo/docs-uan/bin/build.sh"])
