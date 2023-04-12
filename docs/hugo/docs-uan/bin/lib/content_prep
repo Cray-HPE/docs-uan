@@ -81,7 +81,7 @@ function transform_links() {
 }
 
 function gen_dynamic_toc(){
-    python3 /src/bin/gen-hugo-toc-json.py
+    python3 /src/bin/gen-hugo-toc-json.py ${1}
 }
 
 function gen_hugo_yaml() {
