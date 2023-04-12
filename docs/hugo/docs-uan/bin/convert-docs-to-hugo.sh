@@ -137,6 +137,9 @@ echo  "Installing jq..."
 apt-get -y update
 apt-get -y install jq
 echo "Installation of jq completed"
+echo "Installing python3..."
+apt-get -y install python3
+echo "Installation of python3 completed"
 validate_args $1 $2 $3 $4
 SOURCE_DIR=$(cd $2 && pwd)
 [[ -d $SOURCE_DIR/$UAN_RELEASE/docs/portal ]] && SOURCE_DIR=${SOURCE_DIR}/${UAN_RELEASE}/docs/portal/developer-portal
