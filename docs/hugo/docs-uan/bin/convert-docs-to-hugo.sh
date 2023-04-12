@@ -150,6 +150,7 @@ for DIR in ${PRUNE_LIST[@]}; do
     prune_dir $SOURCE_DIR/$DIR
 done
 
+gen_dynamic_toc $SOURCE_DIR
 crawl_directory $SOURCE_DIR
 populate_missing_index_files
 gen_toc $DESTINATION_DIR > ${DESTINATION_DIR}/_index.md
