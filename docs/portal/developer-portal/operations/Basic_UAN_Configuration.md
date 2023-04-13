@@ -1,6 +1,4 @@
-# About UAN Configuration
-
-This section describes the Ansible playbooks and roles that configure UANs.
+#  Basic UAN Configuration
 
 ## UAN configuration overview
 
