@@ -34,7 +34,7 @@ This section describes any UAN details that an administrator may need to be awar
 
 ### update-cfs-config
 
-**Action**: Before executing this stage, any site-local UAN configuration changes should be made so the following stages execute using the desired UAN configuration values. See the [About UAN Configuration](../operations/About_UAN_Configuration.md) section of this documentation for UAN configuration content details. Note that the [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh install scenarios.
+**Action**: Before executing this stage, any site-local UAN configuration changes should be made so the following stages execute using the desired UAN configuration values. See the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section of this documentation for UAN configuration content details. Note that the [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh install scenarios.
 
 ## UAN Content Installed
 
@@ -43,7 +43,7 @@ The following subsections describe the majority of the UAN content installed and
 
 ### Configuration
 
-UAN provides configuration content in the form of Ansible roles and plays. This content is uploaded to a VCS repository in a branch with a specific UAN version number \(2.6.XX\) to distinguish it from any previously released UAN configuration content. This content is described in detail in the [About UAN Configuration](../operations/About_UAN_Configuration.md) section.
+UAN provides configuration content in the form of Ansible roles and plays. This content is uploaded to a VCS repository in a branch with a specific UAN version number \(2.6.XX\) to distinguish it from any previously released UAN configuration content. This content is described in detail in the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section.
 
 For application nodes based on COS, the COS compute image is used as the base application node image and two COS CFS layers are required. The first COS CFS layer runs the `cos-application.yml` Ansible playbook and ensures that the COS content is applied as part of the image customization and node personalization processes. This COS CFS layer must precede the UAN CFS layer in the UAN CFS configuration. A second  COS CFS layer running the Ansible playbook, `cos-application-after.yml`, runs after the UAN CFS layer of the UAN CFS configuration to ensure that the application node initrd is rebuilt and that any customer defined filesystems are configured.
 
