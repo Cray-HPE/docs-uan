@@ -7,4 +7,10 @@
     "title": "Cray Ex User Access Nodes Installation And Administration Guide",
     "dir": "/",
     "weight": 15
+},
+{
+    "ig_include": "Prepare for UAN Product Installation"
+},
+{
+    "ig_include": "Install or Upgrade UAN"
 }]
