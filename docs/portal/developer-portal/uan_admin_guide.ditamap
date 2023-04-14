@@ -16,7 +16,7 @@
         <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
         <topicref href="advanced/SLES_Image.md" format="markdown"/>
 </topichead>
-    <topichead navtitle="Configure Network Interfaces">
+    <topichead><topicmeta><navtitle>Configure Network Interfaces</navtitle></topicmeta>
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
     </topichead>
