@@ -20,6 +20,7 @@ def gen_dir_toc(doc_dir):
 def extract_title(md_file):
     md_fo = open(md_file, "r", encoding="utf-8")
     hdr_string = md_fo.readline()
+    #print(md_file)
     md_first_line = hdr_string.split("# ")[1]
     md_title = md_first_line.split("\n")[0]
     md_fo.close()
@@ -58,15 +59,41 @@ with open(source_dir + "uan_install_guide.ditamap", 'r+', encoding="utf-8") as i
             group_title = group_navtitle.text
             if ig_include.count(topic_title) == 1:
                 weight = weight + 10
-                output_json.append({"title": group_title, "weight": weight + topic_weight})
+                output_json.append({"title": group_title, "weight": weight})
                 topic_weight = 0
                 for grandchild in child.findall("./topicref"):
                     topic_weight = topic_weight + 1
                     topic_ref_path = grandchild.get("href")
                     topic_title = extract_title(source_dir + topic_ref_path)
                     output_json.append({"title": topic_title, "weight": weight + topic_weight})
-    output_json_string = json.dumps(output_json, indent=2, separators=(',', ':'))
-    print(output_json_string)
+with open(source_dir + "uan_admin_guide.ditamap", 'r+', encoding="utf-8") as admin_map:
+    tree = ET.parse(admin_map)
+    admin_map_root = tree.getroot()
+    for child in admin_map_root:
+        if child.tag == "topicref":
+            topic_ref_path = child.get("href")
+            topic_title = extract_title(source_dir + topic_ref_path)
+            weight = weight + 10
+            output_json.append({"title": topic_title, "weight": weight})
+            topic_weight = 0
+            for grandchild in child.findall("./topicref"):
+                topic_weight = topic_weight + 1
+                topic_ref_path = grandchild.get("href")
+                topic_title = extract_title(source_dir + topic_ref_path)
+                output_json.append({"title": topic_title, "weight": weight + topic_weight})
+        if child.tag == "topichead" or child.tag == "topicset":
+            group_navtitle = child.find("./topicmeta/navtitle")
+            group_title = group_navtitle.text
+            weight = weight + 10
+            output_json.append({"title": group_title, "weight": weight})
+            topic_weight = 0
+            for grandchild in child.findall("./topicref"):
+                topic_weight = topic_weight + 1
+                topic_ref_path = grandchild.get("href")
+                topic_title = extract_title(source_dir + topic_ref_path)
+                output_json.append({"title": topic_title, "weight": weight + topic_weight})
+output_json_string = json.dumps(output_json, indent=2, separators=(',', ':'))
+print(output_json_string)
 ##    output_json_file = open(source_dir + "/hugo_toc.json", "w")
 ##    output_json_file.write(output_json_string)
 ##    output_json_file.close()
