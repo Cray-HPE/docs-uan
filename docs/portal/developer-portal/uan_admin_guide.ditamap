@@ -15,9 +15,23 @@
         <topicref href="operations/CVE-2023-0461.md" format="markdown"/>
         <topicref href="operations/Build_a_New_UAN_Image_Using_the_COS_Recipe.md" format="markdown"/>
         <topicref href="operations/Create_UAN_Boot_Images.md" format="markdown"/>
-        <topicref href="operations/UAN_Ansible_Roles.md" format="markdown"/>
     </topicref>
-    <topichead navtitle="Advanced UAN Configuration">
+    <topichead>
+        <topicmeta>
+            <navtitle>UAN Ansible Roles</navtitle>
+        </topicmeta>
+        <topicref href="operations/csm_gpg_keys.md">
+        <topicref href="operations/uan_ca_cert.md">
+        <topicref href="operations/uan_disk_config.md">
+        <topicref href="operations/uan_hardening.md">
+        <topicref href="operations/uan_interfaces.md">
+        <topicref href="operations/uan_ldap.md">
+        <topicref href="operations/uan_motd.md">
+        <topicref href="operations/uan_packages.md">
+        <topicref href="operations/uan_shadow.md">
+    </topichead>
+    <topichead>
+        <topicmeta><navtitle>Advanced UAN Configuration</navtitle></topicmeta>
         <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
         <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>

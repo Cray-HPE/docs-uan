@@ -21,5 +21,18 @@
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
     </topicref>
-    <topicref href="operations/UAN_Ansible_Roles.md" format="markdown"/>
+    <topichead>
+        <topicmeta>
+            <navtitle>UAN Ansible Roles</navtitle>
+        </topicmeta>
+        <topicref href="operations/csm_gpg_keys.md">
+        <topicref href="operations/uan_ca_cert.md">
+        <topicref href="operations/uan_disk_config.md">
+        <topicref href="operations/uan_hardening.md">
+        <topicref href="operations/uan_interfaces.md">
+        <topicref href="operations/uan_ldap.md">
+        <topicref href="operations/uan_motd.md">
+        <topicref href="operations/uan_packages.md">
+        <topicref href="operations/uan_shadow.md">
+    </topichead>
 </map>

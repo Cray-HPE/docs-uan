@@ -55,7 +55,6 @@
         "Mount_a_New_File_System_on_an_UAN.md",
         "Configure_Interfaces_on_UANs.md",
         "Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md",
-        "UAN_Ansible_Roles.md",
         "Boot_UANs.md",
         "CVE-2023-0461.md"
     ]
@@ -97,9 +96,61 @@
     "weight": 49
   },
   {
+    "title": "UAN Ansible Roles",
+    "dir": "operations",
+    "weight": 50,
+    "toc": [
+      "csm_gpg_keys.md",
+      "uan_ca_cert.md",
+      "uan_disk_config.md",
+      "uan_hardening.md",
+      "uan_interfaces.md",
+      "uan_ldap.md",
+      "uan_motd.md",
+      "uan_packages.md",
+      "uan_shadow.md"
+    ]
+  },
+  {
+    "title": "csm_gpg_keys",
+    "weight": 51
+  },
+  {
+    "title": "uan_ca_cert",
+    "weight": 52
+  },
+  {
+    "title": "uan_disk_config",
+    "weight": 53
+  },
+  {
+    "title": "uan_hardening",
+    "weight": 54
+  },
+  {
+    "title": "uan_interfaces",
+    "weight": 55
+  },
+  {
+    "title": "uan_ldap",
+    "weight": 56
+  },
+  {
+    "title": "uan_motd",
+    "weight": 57
+  },
+  {
+    "title": "uan_packages",
+    "weight": 58
+  },
+  {
+    "title": "uan_shadow",
+    "weight": 59
+  },
+  {
     "title": "Advanced",
     "dir": "advanced",
-    "weight": 50,
+    "weight": 60,
     "toc": [
         "Customizing_UAN_Images_Manually.md",
         "Enabling_CAN_CHN.md",
@@ -110,40 +161,40 @@
   },
   {
     "title": "Customizing UAN Images Manually",
-    "weight": 51
+    "weight": 61
   },
   {
     "title": "Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)",
-    "weight": 52
+    "weight": 62
   },
   {
     "title": "Repurposing a Compute Node as a UAN",
-    "weight": 53
+    "weight": 63
   },
   {
     "title": "Booting an Application Node with a SLES Image (Technical Preview)",
-    "weight": 54
+    "weight": 64
   },
   {
     "title": "Configuring a UAN for K3s (Technical Preview)",
-    "weight": 55
+    "weight": 65
   },
   {
     "title": "Upgrade",
     "dir": "upgrade",
-    "weight": 60,
+    "weight": 70,
     "toc": [
       "Notable_Changes.md"
     ]
   },
   {
     "title": "Notable Changes",
-    "weight": 61 
+    "weight": 71 
   },
   {
     "title": "Troubleshooting",
     "dir": "troubleshooting",
-    "weight": 70,
+    "weight": 80,
     "toc": [
         "Troubleshoot_UAN_Boot_Issues.md",
         "Troubleshoot_UAN_CFS_and_Network_Configuration_Issues.md",
@@ -152,26 +203,26 @@
   },
   {
     "title": "Troubleshoot UAN Boot Issues",
-    "weight": 71
+    "weight": 81
   },
   {
     "title": "Troubleshoot UAN CFS and Network Configuration Issues",
-    "weight": 72
+    "weight": 82
   },
   {
     "title": "Troubleshoot UAN Disk Configuration Issues",
-    "weight": 73
+    "weight": 83
   },
   {
     "title": "Test Plan",
     "dir": "test-plan",
-    "weight": 80,
+    "weight": 90,
     "toc": [
         "test-plan.md"
     ]
   },
   {
     "title": "Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN",
-    "weight": 81
+    "weight": 91
   }
 ]
