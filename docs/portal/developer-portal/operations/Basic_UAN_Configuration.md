@@ -13,8 +13,8 @@ The UAN-specific roles involved in post-boot UAN node configuration are:
 - [`uan_interfaces`](uan_interfaces.md): this role configures the UAN node networking. By default, this role does not configure a default route or the Customer Access Network \(CAN or CHN\) connection for the HPE Cray EX supercomputer. If CAN or CHN is enabled, the default route will be on the CAN or CHN. Otherwise, a default route must be set up in the customer interfaces definitions. Without the CAN or CHN, there will not be an external connection to the customer site network unless one is defined in the customer interfaces. See [Configure Interfaces on UANs](Configure_Interfaces_on_UANs.md).
 
   ***NOTE:*** If a UAN layer is used in the Compute node CFS configuration, the `uan_interfaces` role will configure the default route on Compute nodes to be on the HSN, if the BICAN System Default Route is set to `CHN`.
-- `uan_motd`: this role Provides a default message of the day that can be customized by the administrator.
-- `uan_ldap`: this optional role configures the connection to LDAP servers. To disable this role, the administrator must set 'uan_ldap_setup:no' in the 'uan-config-management' VCS repository.
+- [`uan_motd`](uan_motd.md): this role Provides a default message of the day that can be customized by the administrator.
+- [`uan_ldap`](uan_ldap.md): this optional role configures the connection to LDAP servers. To disable this role, the administrator must set 'uan_ldap_setup:no' in the 'uan-config-management' VCS repository.
 
 The UAN roles in site.yml are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file.
 
