@@ -60,7 +60,7 @@
     ]
   },
   {
-    "title": "Basic_UAN_Configuration",
+    "title": "Basic UAN Configuration",
     "weight": 41
   },
   {
@@ -94,58 +94,6 @@
   {
     "title": "Mitigation for CVE-2023-0461",
     "weight": 49
-  },
-  {
-    "title": "UAN Ansible Roles",
-    "dir": "operations",
-    "weight": 50,
-    "toc": [
-      "csm_gpg_keys.md",
-      "uan_ca_cert.md",
-      "uan_disk_config.md",
-      "uan_hardening.md",
-      "uan_interfaces.md",
-      "uan_ldap.md",
-      "uan_motd.md",
-      "uan_packages.md",
-      "uan_shadow.md"
-    ]
-  },
-  {
-    "title": "csm_gpg_keys",
-    "weight": 51
-  },
-  {
-    "title": "uan_ca_cert",
-    "weight": 52
-  },
-  {
-    "title": "uan_disk_config",
-    "weight": 53
-  },
-  {
-    "title": "uan_hardening",
-    "weight": 54
-  },
-  {
-    "title": "uan_interfaces",
-    "weight": 55
-  },
-  {
-    "title": "uan_ldap",
-    "weight": 56
-  },
-  {
-    "title": "uan_motd",
-    "weight": 57
-  },
-  {
-    "title": "uan_packages",
-    "weight": 58
-  },
-  {
-    "title": "uan_shadow",
-    "weight": 59
   },
   {
     "title": "Advanced",
@@ -224,5 +172,57 @@
   {
     "title": "Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN",
     "weight": 91
+  },
+  {
+    "title": "UAN Ansible Roles",
+    "dir": "operations",
+    "weight": 50,
+    "toc": [
+      "csm_gpg_keys.md",
+      "uan_ca_cert.md",
+      "uan_disk_config.md",
+      "uan_hardening.md",
+      "uan_interfaces.md",
+      "uan_ldap.md",
+      "uan_motd.md",
+      "uan_packages.md",
+      "uan_shadow.md"
+    ]
+  },
+  {
+    "title": "csm_gpg_keys",
+    "weight": 51
+  },
+  {
+    "title": "uan_ca_cert",
+    "weight": 52
+  },
+  {
+    "title": "uan_disk_config",
+    "weight": 53
+  },
+  {
+    "title": "uan_hardening",
+    "weight": 54
+  },
+  {
+    "title": "uan_interfaces",
+    "weight": 55
+  },
+  {
+    "title": "uan_ldap",
+    "weight": 56
+  },
+  {
+    "title": "uan_motd",
+    "weight": 57
+  },
+  {
+    "title": "uan_packages",
+    "weight": 58
+  },
+  {
+    "title": "uan_shadow",
+    "weight": 59
   }
 ]
