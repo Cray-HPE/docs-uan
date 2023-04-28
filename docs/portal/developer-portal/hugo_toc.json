@@ -98,7 +98,7 @@
   {
     "title": "Advanced",
     "dir": "advanced",
-    "weight": 60,
+    "weight": 50,
     "toc": [
         "Customizing_UAN_Images_Manually.md",
         "Enabling_CAN_CHN.md",
@@ -109,40 +109,40 @@
   },
   {
     "title": "Customizing UAN Images Manually",
-    "weight": 61
+    "weight": 51
   },
   {
     "title": "Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)",
-    "weight": 62
+    "weight": 52
   },
   {
     "title": "Repurposing a Compute Node as a UAN",
-    "weight": 63
+    "weight": 53
   },
   {
     "title": "Booting an Application Node with a SLES Image (Technical Preview)",
-    "weight": 64
+    "weight": 54
   },
   {
     "title": "Configuring a UAN for K3s (Technical Preview)",
-    "weight": 65
+    "weight": 55
   },
   {
     "title": "Upgrade",
     "dir": "upgrade",
-    "weight": 70,
+    "weight": 60,
     "toc": [
       "Notable_Changes.md"
     ]
   },
   {
     "title": "Notable Changes",
-    "weight": 71 
+    "weight": 61 
   },
   {
     "title": "Troubleshooting",
     "dir": "troubleshooting",
-    "weight": 80,
+    "weight": 70,
     "toc": [
         "Troubleshoot_UAN_Boot_Issues.md",
         "Troubleshoot_UAN_CFS_and_Network_Configuration_Issues.md",
@@ -151,32 +151,32 @@
   },
   {
     "title": "Troubleshoot UAN Boot Issues",
-    "weight": 81
+    "weight": 71
   },
   {
     "title": "Troubleshoot UAN CFS and Network Configuration Issues",
-    "weight": 82
+    "weight": 72
   },
   {
     "title": "Troubleshoot UAN Disk Configuration Issues",
-    "weight": 83
+    "weight": 73
   },
   {
     "title": "Test Plan",
     "dir": "test-plan",
-    "weight": 90,
+    "weight": 80,
     "toc": [
         "test-plan.md"
     ]
   },
   {
     "title": "Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN",
-    "weight": 91
+    "weight": 81
   },
   {
     "title": "UAN Ansible Roles",
     "dir": "operations",
-    "weight": 50,
+    "weight": 90,
     "toc": [
       "csm_gpg_keys.md",
       "uan_ca_cert.md",
@@ -191,38 +191,38 @@
   },
   {
     "title": "csm_gpg_keys",
-    "weight": 51
+    "weight": 91
   },
   {
     "title": "uan_ca_cert",
-    "weight": 52
+    "weight": 92
   },
   {
     "title": "uan_disk_config",
-    "weight": 53
+    "weight": 93
   },
   {
     "title": "uan_hardening",
-    "weight": 54
+    "weight": 94
   },
   {
     "title": "uan_interfaces",
-    "weight": 55
+    "weight": 95
   },
   {
     "title": "uan_ldap",
-    "weight": 56
+    "weight": 96
   },
   {
     "title": "uan_motd",
-    "weight": 57
+    "weight": 97
   },
   {
     "title": "uan_packages",
-    "weight": 58
+    "weight": 98
   },
   {
     "title": "uan_shadow",
-    "weight": 59
+    "weight": 99
   }
 ]
