@@ -7,25 +7,38 @@
         <data name="pubsnumber" value="S-8033"></data>
 		<data name="edition" value="UAN Software Release @product_version@"></data>
     </topicmeta>
-    <topicref href="operations/About_UAN_Configuration.md" format="markdown"/>
-    <topicref href="operations/CVE-2023-0461.md" format="markdown"/>
-    <topichead>
-	    <topicmeta><navtitle>Manage UAN Boot Images</navtitle></topicmeta>
+    <topicref href="operations/Basic_UAN_Configuration.md" format="markdown">
+        <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
+        <topicref href="operations/Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md"
+            format="markdown"/>
+        <topicref href="operations/Mount_a_New_File_System_on_an_UAN.md" format="markdown"/>
+        <topicref href="operations/CVE-2023-0461.md" format="markdown"/>
         <topicref href="operations/Build_a_New_UAN_Image_Using_the_COS_Recipe.md" format="markdown"/>
         <topicref href="operations/Create_UAN_Boot_Images.md" format="markdown"/>
-        <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
-        <topicref href="advanced/SLES_Image.md" format="markdown"/>
-</topichead>
-    <topichead navtitle="Configure Network Interfaces">
-        <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
-        <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
+    </topicref>
+    <topichead>
+        <topicmeta>
+            <navtitle>UAN Ansible Roles</navtitle>
+        </topicmeta>
+        <topicref href="operations/csm_gpg_keys.md" format="markdown"/>
+        <topicref href="operations/uan_ca_cert.md" format="markdown"/>
+        <topicref href="operations/uan_disk_config.md" format="markdown"/>
+        <topicref href="operations/uan_hardening.md" format="markdown"/>
+        <topicref href="operations/uan_interfaces.md" format="markdown"/>
+        <topicref href="operations/uan_ldap.md" format="markdown"/>
+        <topicref href="operations/uan_motd.md" format="markdown"/>
+        <topicref href="operations/uan_packages.md" format="markdown"/>
+        <topicref href="operations/uan_shadow.md" format="markdown"/>
     </topichead>
-    <topicref href="operations/Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md"
-        format="markdown"/>
-    <topicref href="operations/Mount_a_New_File_System_on_an_UAN.md" format="markdown"/>
+    <topichead>
+        <topicmeta><navtitle>Advanced UAN Configuration</navtitle></topicmeta>
+        <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
+        <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
+        <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>
+        <topicref href="advanced/SLES_Image.md" format="markdown"/>
+        <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
+    </topichead>
     <topicref href="operations/Boot_UANs.md" format="markdown"/>
-    <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>
-    <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
     <topichead>
 	<topicmeta><navtitle>Troubleshooting</navtitle></topicmeta>
         <topicref href="troubleshooting/Troubleshoot_UAN_Boot_Issues.md" format="markdown"/>
@@ -33,9 +46,5 @@
             format="markdown"/>
         <topicref href="troubleshooting/Troubleshoot_UAN_Disk_Configuration_Issues.md"
             format="markdown"/>
-    </topichead>
-    <topichead>
-	<topicmeta><navtitle>Reference</navtitle></topicmeta>
-        <topicref href="operations/UAN_Ansible_Roles.md" format="markdown"/>
     </topichead>
 </map>
