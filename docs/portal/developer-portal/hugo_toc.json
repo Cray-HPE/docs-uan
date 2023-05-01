@@ -55,13 +55,12 @@
         "Mount_a_New_File_System_on_an_UAN.md",
         "Configure_Interfaces_on_UANs.md",
         "Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md",
-        "UAN_Ansible_Roles.md",
         "Boot_UANs.md",
         "CVE-2023-0461.md"
     ]
   },
   {
-    "title": "Basic_UAN_Configuration",
+    "title": "Basic UAN Configuration",
     "weight": 41
   },
   {
@@ -173,5 +172,57 @@
   {
     "title": "Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN",
     "weight": 81
+  },
+  {
+    "title": "UAN Ansible Roles",
+    "dir": "operations",
+    "weight": 90,
+    "toc": [
+      "csm_gpg_keys.md",
+      "uan_ca_cert.md",
+      "uan_disk_config.md",
+      "uan_hardening.md",
+      "uan_interfaces.md",
+      "uan_ldap.md",
+      "uan_motd.md",
+      "uan_packages.md",
+      "uan_shadow.md"
+    ]
+  },
+  {
+    "title": "csm_gpg_keys",
+    "weight": 91
+  },
+  {
+    "title": "uan_ca_cert",
+    "weight": 92
+  },
+  {
+    "title": "uan_disk_config",
+    "weight": 93
+  },
+  {
+    "title": "uan_hardening",
+    "weight": 94
+  },
+  {
+    "title": "uan_interfaces",
+    "weight": 95
+  },
+  {
+    "title": "uan_ldap",
+    "weight": 96
+  },
+  {
+    "title": "uan_motd",
+    "weight": 97
+  },
+  {
+    "title": "uan_packages",
+    "weight": 98
+  },
+  {
+    "title": "uan_shadow",
+    "weight": 99
   }
 ]

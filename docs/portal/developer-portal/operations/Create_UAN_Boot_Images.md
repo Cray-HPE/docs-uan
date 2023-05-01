@@ -17,7 +17,7 @@ Once the UAN BOS session template is created, the UANs will be ready to be boote
 
 Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this procedure with the current UAN product version installed \(See Step 1\) and the hostname of the HPE Cray EX system, respectively.
 
-**PREPARE CFS CONFIGURATION**
+## PREPARE CFS CONFIGURATION
 
 1. Obtain the artifact IDs and other information from the `cray-product-catalog` Kubernetes ConfigMap. Record the following information:
    - the `clone_url`
@@ -145,7 +145,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 
     The configuration parameters have been stored in a branch in the UAN git repository. The next phase of the process uses `sat bootprep` to handle creating the CFS configurations, IMS images, and BOS sessiontemplates for UANs.
 
-**CREATE UAN IMAGES**
+## CREATE UAN IMAGES
 
 With Shasta Admin Toolkit (SAT) version `2.2.16` and later, it is recommended that administrators create an input file for use with `sat bootprep`. Use the following command to determine which version of SAT is installed:
 
@@ -155,9 +155,9 @@ ncn-m001# sat showrev --products --filter 'product_name="sat"'
 
 A `sat bootprep` input file will have three sections: `configurations`, `images`, and `session_templates`. These sections create CFS configurations, IMS images, and BOS session templates respectively. Each section may have multiple elements to create more than one CFS, IMS, or BOS artifact. The format is similar to the input files for CFS, IMS, and BOS, but SAT will automate the process with fewer steps. Follow the subsections below to create a UAN bootprep input file.
 
-Refer to *HPE Cray EX System Software Getting Started Guide* for further information on configuring other HPE products, as this procedure documents only the required configuration of the UAN.
+Refer to [*HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)*](https://www.hpe.com/support/ex-S-8052) for further information on configuring other HPE products, as this procedure documents only the required configuration of the UAN.
 
-**SAT Bootprep Configuration**
+## SAT Bootprep Configuration
 
 The SAT bootprep input file should have a configuration section that specifies each layer to be included in the CFS configuration for the UAN images for image customization and node personalization. This section will result in a CFS configuration named `uan-config`. The versions of each layer may be gathered using `sat showrev`. 
 
@@ -208,7 +208,7 @@ configurations:
       branch: integration-PRODUCT_VERSION
 ```
 
-**SAT Bootprep Image**
+## SAT Bootprep Image
 
 The SAT bootprep input file should have a section that specifies which IMS images to create for UAN nodes. UANs are built using the COS recipe, so the section below specifies which image recipe to use based on what is provided by COS. To determine which COS recipes are available run the following command:
 
@@ -230,7 +230,7 @@ images:
   - Application_UAN
 ```
 
-**SAT Bootprep Session Template**
+## SAT Bootprep Session Template
 
 The final section of the SAT bootprep input file creates BOS session templates. This section references the named IMS image that `sat bootprep` generates, as well as a CFS configuration. The boot_sets key "uan" may be changed as needed. If there are more than one boot_sets in the session template, each key will need to be unique.
 
@@ -247,7 +247,7 @@ session_templates:
         - Application_UAN
 ```
 
-**Run SAT Bootprep**
+## Run SAT Bootprep
 
 Initiate the `sat bootprep` command to generate the configurations and artifacts needed to boot UANs. This command may take some time as it will initiate IMS image creation and CFS image customization.
 
