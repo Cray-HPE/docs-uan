@@ -191,6 +191,12 @@ configurations:
     product:
       name: csm
       version: 1.4
+  - name: uan-set-nologin
+    playbook: set_nologin.yml
+    product:
+      name: uan
+      version: 2.6.0
+      branch: integration-PRODUCT_VERSION
   - name: uan
     playbook: site.yml
     product:
@@ -202,6 +208,12 @@ configurations:
 
   - name: uan-rebuild-initrd
     playbook: rebuild-initrd.yml
+    product:
+      name: uan
+      version: 2.6.0
+      branch: integration-PRODUCT_VERSION
+  - name: uan-unset-nologin
+    playbook: unset_nologin.yml
     product:
       name: uan
       version: 2.6.0
