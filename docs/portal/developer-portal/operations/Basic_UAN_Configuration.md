@@ -12,8 +12,7 @@ CFS uses configuration layers. Configuration layers allow the sharing of Ansible
 layers shown in the example bootprep file below. The parameterized fields are defined in
 a `products_vars.yml` file.
 
-**NOTE** The first three layers are required and must not be removed or reordered.
-The `cos-application-last` layer, is required and must be the last or second to last
+**IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer, is as the last or second to last
 layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
 
 ```bash
