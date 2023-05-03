@@ -4,9 +4,7 @@
 
 Configuration of UAN nodes is performed by the Configuration Framework Service \(CFS\). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network \(NMN\).
 
-The preferred method of creating CFS configurations is to use the Shasta Admin Toolkit
-(SAT) `sat bootprep` command.  This command automates the creation of IMS images, CFS
-configurations, and BOS session templates. See [Create UAN Boot Images](Create_UAN_Boot_Images.md) for more details.
+The preferred method of creating CFS configurations is to use the Shasta Admin Toolkit (SAT) `sat bootprep` command.  This command automates the creation of IMS images, CFS configurations, and BOS session templates. See [Create UAN Boot Images](Create_UAN_Boot_Images.md) for more details.
 
 CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site.  Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration
 layers shown in the example bootprep file below. The parameterized fields are defined in
