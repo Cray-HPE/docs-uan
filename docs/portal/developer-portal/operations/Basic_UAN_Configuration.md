@@ -75,7 +75,6 @@ The UAN-specific roles involved in post-boot UAN node configuration are:
   ***NOTE:*** If a UAN layer is used in the Compute node CFS configuration, the `uan_interfaces` role will configure the default route on Compute nodes to be on the HSN, if the BICAN System Default Route is set to `CHN`.
 - [`uan_motd`](uan_motd.md): this role Provides a default message of the day that can be customized by the administrator.
 - [`uan_ldap`](uan_ldap.md): this optional role configures the connection to LDAP servers. To disable this role, the administrator must set 'uan_ldap_setup:no' in the 'uan-config-management' VCS repository.
-- [`uan_hardening`](uan_hardening.md): This role configures site/customer-defined network
-security of UANs, for example, preventing ssh out of the UAN over the NMN to NCN nodes.
+- [`uan_hardening`](uan_hardening.md): This role configures site/customer-defined network security of UANs, for example, preventing ssh out of the UAN over the NMN to NCN nodes.
 
 The UAN roles in site.yml are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file.
