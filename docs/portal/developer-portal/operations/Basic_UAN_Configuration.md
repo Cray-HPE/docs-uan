@@ -6,12 +6,9 @@ Configuration of UAN nodes is performed by the Configuration Framework Service \
 
 The preferred method of creating CFS configurations is to use the Shasta Admin Toolkit (SAT) `sat bootprep` command.  This command automates the creation of IMS images, CFS configurations, and BOS session templates. See [Create UAN Boot Images](Create_UAN_Boot_Images.md) for more details.
 
-CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site.  Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration
-layers shown in the example bootprep file below. The parameterized fields are defined in
-a `products_vars.yml` file.
+CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site.  Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the example bootprep file below. The parameterized fields are defined in a `products_vars.yml` file.
 
-**IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer, is as the last or second to last
-layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
+**IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer, is as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
 
 ```bash
 - name: "{{default.note}}uan-{{recipe.version}}{{default.suffix}}"
