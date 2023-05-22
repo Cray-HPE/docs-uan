@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map id="uan_combined">
+    <title>HPE Cray User Access Node (UAN) Software Installation and Administration Documentation</title>
+    <topicref href="index.md" format="markdown"/>
+    <topichead>
+       <topicmeta>
+          <navtitle>Install the UAN Software</navtitle>
+       </topicmeta>
+       <topicref href="uan_install_guide.ditamap" format="ditamap">
+          <ditavalref href="combo.ditaval"/>
+       </topicref>
+    </topichead>   
+    <mapref href="uan_admin_guide.ditamap"/>
+</map>

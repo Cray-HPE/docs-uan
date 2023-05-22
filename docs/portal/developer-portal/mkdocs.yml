@@ -1,0 +1,28 @@
+site_name: User Access Nodes (UAN) Installation and Administration Documentation
+
+#copyright: '&copy; 2023 HPE'
+
+theme:
+  name: material
+  features:
+    - navigation.footer
+  font: false
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - search
+  - section-index

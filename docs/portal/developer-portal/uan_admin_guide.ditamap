@@ -7,7 +7,11 @@
         <data name="pubsnumber" value="S-8033"></data>
 		<data name="edition" value="UAN Software Release @product_version@"></data>
     </topicmeta>
-    <topicref href="operations/Basic_UAN_Configuration.md" format="markdown">
+    <topichead>
+        <topicmeta>
+            <navtitle>Basic UAN Configuration</navtitle>
+        </topicmeta>
+        <topicref href="operations/UAN_Configuration_Overview.md" format="markdown"/>
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
         <topicref href="operations/Configure_Pluggable_Authentication_Modules_(PAM)_on_UANs.md"
             format="markdown"/>
@@ -15,7 +19,7 @@
         <topicref href="operations/CVE-2023-0461.md" format="markdown"/>
         <topicref href="operations/Build_a_New_UAN_Image_Using_the_COS_Recipe.md" format="markdown"/>
         <topicref href="operations/Create_UAN_Boot_Images.md" format="markdown"/>
-    </topicref>
+    </topichead>
     <topichead>
         <topicmeta>
             <navtitle>UAN Ansible Roles</navtitle>

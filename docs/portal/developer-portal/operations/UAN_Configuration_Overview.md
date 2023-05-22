@@ -1,6 +1,4 @@
-# Basic UAN Configuration
-
-## UAN configuration overview
+# UAN configuration overview
 
 Configuration of UAN nodes is performed by the Configuration Framework Service \(CFS\). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network \(NMN\).
 

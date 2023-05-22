@@ -17,11 +17,11 @@
     <topicref href="install/Install_the_UAN_Product_Stream.md" format="markdown">
         <topicref href="upgrade/Notable_Changes.md" format="markdown"/>
     </topicref>
-    <topicref href="operations/Basic_UAN_Configuration.md" format="markdown">
+    <topicref href="operations/UAN_Configuration_Overview.md" format="markdown" deliveryTarget="hpesc">
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
     </topicref>
-    <topichead>
+    <topichead deliveryTarget="hpesc">
         <topicmeta>
             <navtitle>UAN Ansible Roles</navtitle>
         </topicmeta>

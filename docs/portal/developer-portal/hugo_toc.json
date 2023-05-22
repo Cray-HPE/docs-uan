@@ -49,7 +49,7 @@
     "dir": "operations",
     "weight": 40,
     "toc": [
-        "Basic_UAN_Configuration.md",
+        "UAN_Configuration_Overview.md",
         "Build_a_New_UAN_Image_Using_the_COS_Recipe.md",
         "Create_UAN_Boot_Images.md",
         "Mount_a_New_File_System_on_an_UAN.md",
