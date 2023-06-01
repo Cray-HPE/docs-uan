@@ -246,60 +246,61 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
     b. Remove the unneeded lines from the JSON file.
 
-        The lines to remove are:
+    The unneeded lines are:
 
-           - the `lastUpdated` line
-           - the last `name` line 
+    - the `lastUpdated` line
+    - the last `name` line
         
-        These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
+    These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
 
-        ```bash
-        ncn-m001# cat uan-config-PRODUCT_VERSION.json
-        {
-          "lastUpdated": "2021-03-27T02:32:10Z",      
-          "layers": [
-            {
-              "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git",
-              "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
-              "name": "uan-integration-PRODUCT_VERSION",
-              "playbook": "site.yml"
-            },
-          "name": "uan-config-2.0.1-full"            
-        } 
-        ```
+    ```bash
+    ncn-m001# cat uan-config-PRODUCT_VERSION.json
+    {
+        "lastUpdated": "2021-03-27T02:32:10Z",      
+        "layers": [
+          {
+            "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-config-management.git",
+            "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
+            "name": "uan-integration-PRODUCT_VERSION",
+            "playbook": "site.yml"
+          },
+        "name": "uan-config-2.0.1-full"  
+        ]          
+    } 
+    ```
 
     c. Replace the `commit` value in the JSON file with the commit ID obtained in the previous Step.
 
-        The name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name.
+    The name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name.
 
-        ```bash
-        {
-         "layers": [
-         {
-         "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-configmanagement.git",
-         "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
-         "name": "uan-integration-PRODUCT_VERSION",
-         "playbook": "site.yml"
-         }
-         ]
-        }
-        ```
+    ```bash
+    {
+      "layers": [
+          {
+        "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/uan-configmanagement.git",
+        "commit": "aa5ce7d5975950ec02493d59efb89f6fc69d67f1",
+        "name": "uan-integration-PRODUCT_VERSION",
+        "playbook": "site.yml"
+          }
+        ]
+    }
+    ```
 
     d. Create a new UAN CFS configuration with the updated JSON file.
 
        The following example uses `uan-config-PRODUCT_VERSION` for the name of the new CFS configuration, to match the JSON file name.
 
-        ```bash
-        ncn-m001# cray cfs configurations update uan-config-PRODUCT_VERSION \
-         --file uan-config-PRODUCT_VERSION.json
-        ```
+    ```
+    ncn-m001# cray cfs configurations update uan-config-PRODUCT_VERSION \
+    --file uan-config-PRODUCT_VERSION.json
+    ```
 
     e. Tell CFS to apply the new configuration to UANs by repeating the following command for each UAN. Replace `UAN_XNAME` in the command below with the name of a different UAN each time the command is run.
 
-        ```bash
-        ncn-m001# cray cfs components update --desired-config uan-config-PRODUCT_VERSION \
-        --enabled true --format json UAN_XNAME
-        ```
+    ```
+    ncn-m001# cray cfs components update --desired-config uan-config-PRODUCT_VERSION \
+    --enabled true --format json UAN_XNAME
+    ```
 
 
 9. Reboot the UAN with the Boot Orchestration Service \(BOS\).
