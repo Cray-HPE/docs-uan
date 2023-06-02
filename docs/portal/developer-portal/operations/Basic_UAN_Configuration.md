@@ -64,53 +64,65 @@ CFS uses configuration layers. Configuration layers allow the sharing of Ansible
 #      branch: "{{uan.working_branch}}"
 ```
 
-### Required CFS Layers for UAN Configuration
+## Required CFS Layers for UAN Configuration
 
 ### Slingshot Host Software (playbook: shs_{{default.network_type}}_install.yml)
 
-The first CFS Layer installs the Slingshot Host Software for the Slingshot network type of the system.  The `default.network_type` is is either `mellanox` or `cassini`.
+The first CFS Layer installs the Slingshot Host Software for the Slingshot network type of the system.  The `default.network_type` is:
+
+- `mellanox` for ConnectX-5 NICs used in Slingshot 10
+- `cassini` for Slingshot NICs in Slingshot 11
+
+The name of the playbook must match the name of the HSN NICs (mellanox or cassini) in the UAN nodes.  Additionally, the HSN NICs must be of the same type as the NCN and Compute nodes.
 
 ### COS (playbook: cos-application.yml)
 
-The second CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `cos-config-management` `group_vars` or `host_vars` directories.
+The second CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `cos-config-management` `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
-- #### Standard UNIX configuration
-  - cos-config-map
-  - rsyslog
-  - localtime
-  - ntp
-  - limits
-  - kdump
-- #### Allow trust of CSM generated keys for elective passwordless SSH during image customization
+- **Standard UNIX configuration**
 
-  - trust-csm-ssh-keys
-- #### HPE Cray EX system configurations
+  - `cos-config-map`
+  - `rsyslog`
+  - `localtime`
+  - `ntp`
+  - `limits`
+  - `kdump`
 
-  - overlay-preload
-- #### Install COS rpms
+- **Allow trust of CSM generated keys for elective passwordless SSH during image customization**
 
-  - cos-services-install
-- #### DVS/LNET/FS
+  - `trust-csm-ssh-keys`
 
-  - cray_lnet_install
-  - cray_dvs_install
-  - cray_lnet_load
-  - cray_dvs_load
+- **HPE Cray EX system configurations**
+
+  - `overlay-preload`
+
+- **Install COS rpms**
+
+  - `cos-services-install`
+
+- **DVS/LNET/FS
+
+  - `cray_lnet_install`
+  - `cray_dvs_install`
+  - `cray_lnet_load`
+  - `cray_dvs_load`
 
 The following Ansible roles are run during UAN post-boot configuration:
 
-- #### Standard UNIX configuration
+- **Standard UNIX configuration**
 
-  - rsyslog
-- #### HPE Cray EX system configurations
+  - `rsyslog`
 
-  - ca-cert
-  - overlay-preload
-- #### GPU deploy support
+- **HPE Cray EX system configurations**
 
-  - cray_gpu_deploy
+  - `ca-cert`
+  - `overlay-preload`
+
+- **GPU deploy support**
+
+  - `cray_gpu_deploy`
 
 ### CMS Layer (playbook: csm_packages.yml)
 
@@ -118,7 +130,7 @@ The third CFS Layer installs the the Cray Management System packages. These are 
 
 ### Optional UAN Layer (playbook: set_nologin.yml)
 
-The Ansible roles involved in the UAN layer which runs the `set_nologin.yml` playbook touches the `/etc/nologin` file preventing non-root users from logging into the UAN while it is being configured.
+This optional layer is recommended when the nodes will host non-root users. The layer touches the `/etc/nologin` file preventing non-root users from logging into the node while it is being configured. Be sure to include the optional UAN layer which calls the `unset_nologin.yml` playbook as indicated in this document if non-root users are to be allowed to login after the node is configured.
 
 ### UAN Layer (playbook: site.yml)
 
@@ -135,20 +147,20 @@ The UAN-specific roles involved in post-boot UAN node configuration are:
 - [`uan_ldap`](uan_ldap.md): this optional role configures the connection to LDAP servers. To disable this role, the administrator must set 'uan_ldap_setup:no' in the 'uan-config-management' VCS repository.
 - [`uan_hardening`](uan_hardening.md): This role configures site/customer-defined network security of UANs, for example, preventing ssh out of the UAN over the NMN to NCN nodes.
 
-The UAN roles in site.yml are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file.  Configuration of this layer are made in the `uan-config-management` VCS repository.
+The UAN roles in `site.yml` are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file.  Configuration of this layer is made in the `uan-config-management` VCS repository.
 
 ### COS (playbook: cos-application-after.yml)
 
-This CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `cos-config-management` `group_vars` or `host_vars` directories.
+This CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
-- rebuilt-initrd
+- `rebuilt-initrd`
 
 The following Ansible roles are run during UAN post-boot configuration:
 
-- configure_fs
+- `configure_fs`
 
 ### Optional UAN Layer (playbook: unset_nologin.yml)
 
-The Ansible roles involved in the UAN layer which runs the `unset_nologin.yml` playbook deletes the `/etc/nologin` file allowing non-root users to log into the UAN.  If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have acces to the node.
+This UAN layer deletes the `/etc/nologin` file allowing non-root users to log into the UAN.  If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have acces to the node.
