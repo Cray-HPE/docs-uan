@@ -45,17 +45,17 @@ Intialize and configure the Cray command line interface \(CLI\) tool on the syst
 
     a. Create a `group_vars/all` directory if making changes to all UANs.
 
-        ```bash
-        ncn-w001# mkdir -p group_vars/all
-        ncn-w001# cd group_vars/all
-        ```
+    ```bash
+    ncn-w001# mkdir -p group_vars/all
+    ncn-w001# cd group_vars/all
+    ```
 
     b. Create a `host_vars/XNAME` directory if the change is node specific.
 
-        ```bash
-        ncn-w001# mkdir -p host_vars/XNAME
-        ncn-w001# cd host_vars/XNAME
-        ```
+    ```bash
+    ncn-w001# mkdir -p host_vars/XNAME
+    ncn-w001# cd host_vars/XNAME
+    ```
 
 7. Configure PAM.
 

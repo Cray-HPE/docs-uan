@@ -122,7 +122,6 @@ Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iL
     ------------------------- 
     ```
 
-8. Refer to this [Setting the Date and Time](https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=a00112581en_us&page=s_date_time.html) in the HPE UEFI documentation to set the correct date and time.
+8. Refer to this [Setting the Date and Time](https://support.hpe.com/hpesc/public/docDisplay?docId=sd00001068en_us&page=GUID-D7147C7F-2016-0901-0A72-000000000F34.html) in the HPE UEFI documentation to set the correct date and time.
 
    If the time is not set correctly, then PXE network booting issues may occur.
-
