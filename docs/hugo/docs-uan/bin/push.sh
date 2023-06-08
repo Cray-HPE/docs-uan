@@ -11,5 +11,5 @@ rm -rf docs-uan/docs-uan/* docs-uan/docs-uan/.gitignore
 cp -r $THIS_DIR/../public/* docs-uan/docs-uan/
 cd docs-uan/docs-uan
 git add .
-git commit -m "Generated HTML from docs-uan"
-git push origin release/docs-html
+git commit --amend --no-edit
+git push --force origin release/docs-html
