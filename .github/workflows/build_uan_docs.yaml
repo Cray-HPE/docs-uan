@@ -41,14 +41,11 @@ jobs:
         run: |
           # Containers may have written files owned by root onto mounted volumes
           rm -rf docs-uan
-          
-      - name: Setup SSH keys
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_WRITE_DOCS_UAN }}
 
       - name: Check out docs-uan repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate HTML docs
         env:
@@ -65,4 +62,5 @@ jobs:
           GIT_AUTHOR_EMAIL: noreply@hpe.com
           GIT_COMMITTER_NAME: "Cray-HPE Github Bot"
           GIT_COMMITTER_EMAIL: noreply@hpe.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./build-hugo-docs.py --no-clone --no-build --publish
