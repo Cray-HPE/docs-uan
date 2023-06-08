@@ -41,6 +41,11 @@ jobs:
         run: |
           # Containers may have written files owned by root onto mounted volumes
           rm -rf docs-uan
+          
+      - name: Setup SSH keys
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_WRITE_DOCS_UAN }}
 
       - name: Check out docs-uan repository
         uses: actions/checkout@v3
