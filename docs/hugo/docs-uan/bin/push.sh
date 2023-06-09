@@ -2,6 +2,7 @@
 
 set -ex
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$THIS_DIR/.."
 [[ -d docs-uan ]] && rm -rf docs-uan || echo "docs-uan doesn't exist"
 pwd
 mkdir -p docs-uan
