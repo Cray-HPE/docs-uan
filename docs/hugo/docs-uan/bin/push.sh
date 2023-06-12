@@ -5,6 +5,7 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd "$THIS_DIR/.."
 [[ -d docs-uan ]] && rm -rf docs-uan || echo "docs-uan doesn't exist"
 pwd
+ls -l
 git clone --no-checkout --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
 ls -l 
 rm -rf docs-uan/docs-uan/* docs-uan/docs-uan/.gitignore
