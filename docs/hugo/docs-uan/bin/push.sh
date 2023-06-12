@@ -6,7 +6,7 @@ cd "$THIS_DIR/.."
 [[ -d docs-uan ]] && rm -rf docs-uan || echo "docs-uan doesn't exist"
 pwd
 ls -l
-git clone --no-checkout --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
+git clone --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
 ls -lR docs-uan
 rm -rf docs-uan/docs-uan/* docs-uan/docs-uan/.gitignore
 cp -r $THIS_DIR/../public/* docs-uan/docs-uan/
