@@ -8,9 +8,9 @@ pwd
 ls -l
 git clone --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
 ls -lR docs-uan
-rm -rf docs-uan/docs-uan/* docs-uan/docs-uan/.gitignore
-cp -r $THIS_DIR/../public/* docs-uan/docs-uan/
-cd docs-uan/docs-uan
+rm -rf docs-uan/* docs-uan/.gitignore
+cp -r $THIS_DIR/../public/* docs-uan/
+cd docs-uan
 git add .
 git commit --amend --no-edit
 git push --force origin release/docs-html
