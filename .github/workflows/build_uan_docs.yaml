@@ -53,4 +53,10 @@ jobs:
           GIT_AUTHOR_EMAIL: noreply@hpe.com
           GIT_COMMITTER_NAME: "Cray-HPE Github Bot"
           GIT_COMMITTER_EMAIL: noreply@hpe.com
-        run: ./build-hugo-docs.py --publish
+        run: |
+          /usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+          /usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+          /usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+          /usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+          /usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+          ./build-hugo-docs.py --publish
