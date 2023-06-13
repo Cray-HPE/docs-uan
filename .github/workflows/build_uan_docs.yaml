@@ -54,5 +54,4 @@ jobs:
           GIT_COMMITTER_NAME: "Cray-HPE Github Bot"
           GIT_COMMITTER_EMAIL: noreply@hpe.com
         run: |
-          git config --global user.name 'git@github.com'
           ./build-hugo-docs.py --publish
