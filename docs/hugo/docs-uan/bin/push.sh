@@ -9,6 +9,7 @@ mkdir -p docs-uan
 cd docs-uan
 pwd
 git config --global user.name github-actions
+git config --global user.email $GITHUB_COMITTER_EMAIL
 git clone --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
 rm -rf docs-uan/* docs-uan/.gitignore
 cp -r $THIS_DIR/../public/* docs-uan
