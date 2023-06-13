@@ -9,6 +9,7 @@ mkdir -p docs-uan
 cd docs-uan
 pwd
 git clone --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
+ls -lR
 rm -rf docs-uan/docs-uan/* docs-uan/docs-uan/.gitignore
 cp -r $THIS_DIR/../public/* docs-uan/docs-uan
 cd docs-uan/docs-uan
