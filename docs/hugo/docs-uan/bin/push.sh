@@ -3,13 +3,17 @@
 set -ex
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd "$THIS_DIR/.."
-[[ -d docs-uan ]] && rm -rf docs-uan || echo "docs-uan doesn't exist"
 pwd
-git config --global user.name 'git@github.com'
-git clone --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git docs-uan
-rm -rf docs-uan/* docs-uan/.gitignore
-cp -r $THIS_DIR/../public/* docs-uan/
+[[ -d docs-uan ]] && rm -rf docs-uan || echo "docs-uan doesn't exist"
+mkdir -p docs-uan
 cd docs-uan
+pwd
+git clone --depth=1 -b release/docs-html https://github.com/Cray-HPE/docs-uan.git
+rm -rf docs-uan/docs-uan/* docs-uan/docs-uan/.gitignore
+cp -r $THIS_DIR/../public/* docs-uan/docs-uan
+cd docs-uan/docs-uan
+ls -la
+git config --global user.name 'git@github.com'
 git add .
 git commit --amend --no-edit
 git push --force origin release/docs-html
