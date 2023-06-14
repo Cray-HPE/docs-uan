@@ -73,7 +73,7 @@ jobs:
           if [[ `git status --porcelain` ]]; then
             git config --global user.name 'github-actions'
             git config --global user.email 'noreply@hpe.com'
-            git add -A
+            git add .
             git status --porcelain
           fi
           cd ..
