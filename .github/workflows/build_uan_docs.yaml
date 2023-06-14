@@ -70,10 +70,11 @@ jobs:
           rm -rf docs-html/*
           cp -r docs/hugo/docs-uan/public/* docs-html/
           cd docs-html
+          ls -la
           if [[ `git status --porcelain` ]]; then
             git config --global user.name 'github-actions'
             git config --global user.email 'noreply@hpe.com'
             git add .
-            git status --porcelain
+            git status
           fi
           cd ..
