@@ -48,8 +48,8 @@ jobs:
       - name: Checkout the release/docs-html branch
         uses: actions/checkout@v3
         with:
-          ref: docs-html
-          path: release/docs-html
+          ref: release/docs-html
+          path: docs-html
 
       - name: Generate HTML docs
         env:
