@@ -68,3 +68,5 @@ jobs:
           GIT_COMMITTER_EMAIL: noreply@hpe.com
         run: |
           ls -la
+          ls -la docs
+          ls -la docs-html
