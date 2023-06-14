@@ -67,6 +67,13 @@ jobs:
           GIT_COMMITTER_NAME: "Cray-HPE Github Bot"
           GIT_COMMITTER_EMAIL: noreply@hpe.com
         run: |
-          ls -la
-          ls -la docs
-          ls -la docs-html
+          rm -rf docs-html/*
+          cp -r docs/hugo/docs-uan/public/* docs-html/
+          cd docs-html
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name 'github-actions'
+            git config --global user.email 'noreply@hpe.com'
+            git add -A
+            git status --porcelain
+          fi
+          cd ..
