@@ -103,23 +103,23 @@ The following instructions describe how to set the root password for UAN/Applica
 
     a.  Generate the password HASH for the root user. Replace 'PASSWORD' with a chosen root password.
 
-    ```bash
-    ncn-m001# openssl passwd -6 -salt $(< /dev/urandom tr -dc A-Z-a-z-0-9 | head -c4) PASSWORD
-    ```
+      ```bash
+      ncn-m001# openssl passwd -6 -salt $(< /dev/urandom tr -dc A-Z-a-z-0-9 | head -c4) PASSWORD
+      ```
 
     b.  Take the HASH value returned from the previous command and enter the following in the vault pod's shell. Instead of HASH, use the value returned from the previous step.  You must escape the HASH value with the single quote to preserve any special characters that are part of the HASH value. If you previously have exited the pod, repeat steps 1-3 above; there is no need to perform the vault read since the content is empty.
 
-    ```bash
-    pod# vault write secret/uan root_password='HASH'
-    ```
+      ```bash
+      pod# vault write secret/uan root_password='HASH'
+      ```
 
     c.  Verify the new hash value is stored.
 
-    ```bash
-    pod# vault read secret/uan
-    ...
-    pod# exit
-    ```
+      ```bash
+      pod# vault read secret/uan
+      ...
+      pod# exit
+      ```
 
 ### UAN Stock Kernel Image
 
