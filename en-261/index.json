@@ -217,13 +217,6 @@
 	"content": "Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.\nThe overall workflow for completing a UAN upgrade involves:\nPerform the UAN Installation\nReview any Notable Changes\nMerge UAN CFS Configuration Data\nCreate UAN images and reboot\n"
 },
 {
-	"uri": "/docs-uan/en-261/operations/uan_packages/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.\nRepositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks runs only during image customizations.\nThis role will only run on SLES-based nodes.\nRequirements Zypper must be installed.\nThe csm.gpg_keys Ansible role must be installed if uan_disable_gpg_check is false.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nThis role uses the zypper_repository module. The name, description, repo, disable_gpg_check, and priority fields are supported.\nThis role uses the zypper modules. The name and disable_gpg_check fields are supported.\nuan_disable_gpg_check Sets the disable_gpg_check field on zypper repos and packages listed in the uan_sles15_repositories add and uan_sles15_packages_add lists. The disable_gpg_check field can be overridden for each repo or package.\nuan_sles15_repositories_add List of repositories to add.\nuan_sles15_packages_add List of RPM packages to add.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - role: uan_packages vars: uan_sles15_packages_add: - name: \u0026#34;foo\u0026#34; disable_gpg_check: yes - name: \u0026#34;bar\u0026#34; uan_sles15_packages_remove: - baz uan_sles15_repositories_add: - name: \u0026#34;uan-2.5.0-sle-15sp4\u0026#34; description: \u0026#34;UAN SUSE Linux Enterprise 15 SP4 Packages\u0026#34; repo: \u0026#34;https://packages.local/repository/uan-2.5.0-sle-15sp4\u0026#34; disable_gpg_check: no priority: 2 This role is included in the UAN site.yml play.\n"
-},
-{
 	"uri": "/docs-uan/en-261/operations/uan_shadow/",
 	"title": "",
 	"tags": [],
@@ -243,6 +236,20 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_motd The uan_motd role appends text to the /etc/motd file.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: \u0026#34;MOTD CONTENT\u0026#34; } This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-261/operations/uan_packages/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.\nRepositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks runs only during image customizations.\nThis role will only run on SLES-based nodes.\nRequirements Zypper must be installed.\nThe csm.gpg_keys Ansible role must be installed if uan_disable_gpg_check is false.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nThis role uses the zypper_repository module. The name, description, repo, disable_gpg_check, and priority fields are supported.\nThis role uses the zypper modules. The name and disable_gpg_check fields are supported.\nuan_disable_gpg_check Sets the disable_gpg_check field on zypper repos and packages listed in the uan_sles15_repositories add and uan_sles15_packages_add lists. The disable_gpg_check field can be overridden for each repo or package.\nuan_sles15_repositories_add List of repositories to add.\nuan_sles15_packages_add List of RPM packages to add.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - role: uan_packages vars: uan_sles15_packages_add: - name: \u0026#34;foo\u0026#34; disable_gpg_check: yes - name: \u0026#34;bar\u0026#34; uan_sles15_packages_remove: - baz uan_sles15_repositories_add: - name: \u0026#34;uan-2.5.0-sle-15sp4\u0026#34; description: \u0026#34;UAN SUSE Linux Enterprise 15 SP4 Packages\u0026#34; repo: \u0026#34;https://packages.local/repository/uan-2.5.0-sle-15sp4\u0026#34; disable_gpg_check: no priority: 2 This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-261/operations/uan_ca_cert/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_ca_cert The uan_ca_cert role installs a CA certificate on the system.\n"
 },
 {
 	"uri": "/docs-uan/en-261/operations/uan_disk_config/",
@@ -271,13 +278,6 @@
 	"tags": [],
 	"description": "",
 	"content": "csm.gpg_keys The csm.gpg_keys role fetches the required GPG keys needed for HPE RPM verification.\n"
-},
-{
-	"uri": "/docs-uan/en-261/operations/uan_ca_cert/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_ca_cert The uan_ca_cert role installs a CA certificate on the system.\n"
 },
 {
 	"uri": "/docs-uan/en-261/install/install_the_uan_product_stream/",
