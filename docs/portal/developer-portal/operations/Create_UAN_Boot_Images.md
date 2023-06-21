@@ -1,7 +1,9 @@
 
 # Create UAN Boot Images
 
-Perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) before performing this procedure. 
+Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the UAN product.  See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the UAN release is prior to UAN 2.6. For UAN 2.6 and newer, perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) for these cases.
+
+## Overview
 
 This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
 
@@ -22,11 +24,11 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 1. Obtain the artifact IDs and other information from the `cray-product-catalog` Kubernetes ConfigMap. Record the following information:
    - the `clone_url`
    - the `import_branch` value
-   
+
    Upon successful installation of the UAN product, the UAN configuration is cataloged in this ConfigMap. This information is required for this procedure.
-   
+
     `PRODUCT_VERSION` will be replaced by a numbered version string, such as `2.1.7` or `2.3.0`.
-   
+
     ```bash
     ncn-m001# kubectl get cm -n services cray-product-catalog -o json | jq -r .data.uan
     PRODUCT_VERSION:
@@ -37,7 +39,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
         import_date: 2021-02-02 19:14:18.399670
         ssh_url: git@vcs.CRAY_EX_HOSTNAME:cray/uan-config-management.git                      
     ```
-   
+
 2. **Optional** Generate the password hash for the `root` user. Replace PASSWORD with the `root` password you wish to use.  If an upgrade or image rebuild is being performed, the root password may have already been added to vault.
 
     ```bash
@@ -49,7 +51,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
     ```bash
     ncn-m001# kubectl get secrets -n vault cray-vault-unseal-keys -o jsonpath='{.data.vault-root}' | base64 -d; echo
     ```
-    
+
 4. **Optional** Write the password hash obtained in Step 2 to the HashiCorp Vault.
 
     The vault login command will request a token. That token value is the output of the previous step. The vault `read secret/uan` command verifies that the hash was stored correctly. This password hash will be written to the UAN for the `root` user by CFS.
@@ -65,7 +67,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 5. **Optional** Write any uan_ldap sensitive data, such as the `ldap_default_authtok` value, to the HashiCorp Vault.
 
     The vault login command will request a token. That token value is the output of the Step 3. The vault `read secret/uan_ldap` command verifies that the `uan_ldap` data was stored correctly. Any values stored here will be written to the UAN `/etc/sssd/sssd.conf` file in the `[domain]` section by CFS.
-    
+
     This example shows storing a value for `ldap_default_authtok`.  If more than one variable needs to be stored, they must be written in space separated `key=value` pairs on the same `vault write secret/uan_ldap` command line.
 
     ```bash
@@ -82,7 +84,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
     ncn-m001# VCS_USER=$(kubectl get secret -n services vcs-user-credentials --template={{.data.vcs_username}} | base64 --decode)
               VCS_PASS=$(kubectl get secret -n services vcs-user-credentials --template={{.data.vcs_password}} | base64 --decode)
     ```
-    
+
 7. Clone the UAN configuration management repository. Replace CRAY\_EX\_HOSTNAME in the clone url with **api-gw-service-nmn.local** when cloning the repository.
 
     The repository is in the VCS/Gitea service and the location is reported in the cray-product-catalog Kubernetes ConfigMap in the `configuration.clone_url` key. The CRAY\_EX\_HOSTNAME from the `clone_url` is replaced with `api-gw-service-nmn.local` in the command that clones the repository.
