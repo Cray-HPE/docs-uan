@@ -32,7 +32,6 @@
     </topichead>
     <topichead>
         <topicmeta><navtitle>Advanced UAN Configuration</navtitle></topicmeta>
-        <topicref href="advanced/Customizing_UAN_Images_Manually.md" format="markdown"/>
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
         <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>
         <topicref href="advanced/SLES_Image.md" format="markdown"/>

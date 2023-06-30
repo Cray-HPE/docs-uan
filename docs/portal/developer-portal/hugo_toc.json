@@ -95,7 +95,6 @@
     "dir": "advanced",
     "weight": 50,
     "toc": [
-        "Customizing_UAN_Images_Manually.md",
         "Enabling_CAN_CHN.md",
         "Repurposing_Compute_as_UAN.md",
         "SLES_Image.md",
