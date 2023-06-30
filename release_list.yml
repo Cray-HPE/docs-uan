@@ -2,5 +2,6 @@
 # List releases in the order they should appear in the documentation
 # version menu.  Default at the top of the list.
 releases:
+  - 2.6.2
   - 2.6.1
   - 2.5.11

@@ -8,6 +8,10 @@ This document **does not** replicate install, upgrade or deployment procedures d
 
 IUF will perform the following tasks for a release of UAN.
 
+- IUF `process-media` stage:
+  - Inventory and extract the UAN products in the media directory for use in subsequent stages
+- IUF `pre-install-check` stage:
+  - Perform pre-install readiness checks
 - IUF `deliver-product` stage:
   - Uploads UAN configuration content to VCS
   - Uploads UAN information to the CSM product catalog
@@ -24,9 +28,30 @@ IUF will perform the following tasks for a release of UAN.
 
 IUF uses a variety of CSM and SAT tools when performing these tasks. The [IUF section](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) of the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/en-14/) describes how to use these tools directly if it is desirable to use them instead of IUF.
 
+### IUF Resource Files
+
+IUF uses the following files to drive the install/upgrade of UAN.  These are provided by the `hpc-csm-software-recipe` VCS repository.
+
+- `product_vars.yaml` (**Required**)
+  - Contains the list of products and versions to be installed together. It also contains the `working_branch` variables for the products.  This file is located in a directory under `/etc/cray/upgrade/csm/`. For example, `/etc/cray/upgrade/csm/admin`.
+  - The path to this file is defined on the `iuf` command line using the IUF recipe vars (`-rv`) option.  For example, `-rv /etc/cray/upgrade/csm/admin`.
+- `site_vars.yaml` (**Required**)
+  - This file allows the administrator to override values in `product_vars.yaml` and defines the site VCS branching strategy. It may be placed in any directory under `/etc/cray/upgrade/csm`.
+  - The path to this file is defined on the `iuf` command line using the IUF site vars (`-sv`) option.  For example, `-sv /etc/cray/upgrade/csm/admin/site_vars.yaml`.
+- `compute-and-uan-bootprep.yaml` (**Required**)
+  - This file is typically installed in the `/etc/cray/upgrade/csm/bootprep` directory and defines variables for the following tasks:
+    - Create a compute node image which will be configured for use on UAN
+    - Create the UAN CFS Configuration
+    - Create the UAN BOS session template
+  - This path to this file is defined on the `iuf` command line using the IUF bootprep-config-managed (`-bc`) options.  For example, `-bc /etc/cray/upgrade/csm/bootprep/compute-and-uan-bootprep.yaml`.
+
 ## IUF Stage Details for UAN
 
 This section describes any UAN details that an administrator may need to be aware of before executing IUF stages. Entries are prefixed with **Information** if no administrative action is required or **Action** if an administrator may need to perform tasks outside of IUF.
+
+### process-media
+
+**Action**: Before executing this stage, the administrator should ensure the UAN product tarball is in a media directory under `/etc/cray/upgrade/csm/`.  When more than one product is being installed, place all the product tarballs in the same directory.
 
 ### update-vcs-config
 
@@ -53,20 +78,20 @@ Input files for `sat bootprep` are provided in the `hpc-csm-software-recipe` VCS
 
 The following instructions describe how to set the root password for UAN/Application nodes.
 
-1.  Obtain the HashiCorp Vault root token.
+1. Obtain the HashiCorp Vault root token.
 
     ```bash
     ncn-m001# kubectl get secrets -n vault cray-vault-unseal-keys \
     -o jsonpath='{.data.vault-root}' | base64 -d; echo
     ```
 
-1.  Log into the HashiCorp Vault pod.
+1. Log into the HashiCorp Vault pod.
 
     ```bash
     ncn-m001# kubectl exec -itn vault cray-vault-0 -c vault -- sh
     ```
 
-1.  Once attached to the pod's shell, log into vault and read the `secret/uan` key by executing the following commands. If the secret is empty, "No value found at secret/uan" will be displayed.
+1. Once attached to the pod's shell, log into vault and read the `secret/uan` key by executing the following commands. If the secret is empty, "No value found at secret/uan" will be displayed.
 
     ```bash
     pod# export VAULT_ADDR=http://cray-vault:8200
@@ -74,7 +99,7 @@ The following instructions describe how to set the root password for UAN/Applica
     pod# vault read secret/uan
     ```
 
-1.  If no value is found for this key, complete the following steps in another shell on the NCN management node.
+1. If no value is found for this key, complete the following steps in another shell on the NCN management node.
 
     a.  Generate the password HASH for the root user. Replace 'PASSWORD' with a chosen root password.
 
