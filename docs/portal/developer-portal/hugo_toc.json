@@ -172,7 +172,7 @@
     "dir": "operations",
     "weight": 90,
     "toc": [
-      "csm_gpg_keys.md",
+      "uan_gpg_keys.md",
       "uan_ca_cert.md",
       "uan_disk_config.md",
       "uan_hardening.md",
@@ -184,7 +184,7 @@
     ]
   },
   {
-    "title": "csm_gpg_keys",
+    "title": "uan_gpg_keys",
     "weight": 91
   },
   {
