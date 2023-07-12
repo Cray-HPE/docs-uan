@@ -23,7 +23,7 @@
         <topicmeta>
             <navtitle>UAN Ansible Roles</navtitle>
         </topicmeta>
-        <topicref href="operations/csm_gpg_keys.md" format="markdown"/>
+        <topicref href="operations/uan_gpg_keys.md" format="markdown"/>
         <topicref href="operations/uan_ca_cert.md" format="markdown"/>
         <topicref href="operations/uan_disk_config.md" format="markdown"/>
         <topicref href="operations/uan_hardening.md" format="markdown"/>
