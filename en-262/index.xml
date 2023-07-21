@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 20 Jul 2023 03:04:22 +0000</lastBuildDate><atom:link href="/docs-uan/en-262/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jul 2023 03:04:14 +0000</lastBuildDate><atom:link href="/docs-uan/en-262/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-262/installation_prereqs/prepare_for_uan_product_installation/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:08 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:57 +0000</pubDate>
       
       <guid>/docs-uan/en-262/installation_prereqs/prepare_for_uan_product_installation/</guid>
       <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
@@ -24,7 +24,7 @@ Refer to the procedure &amp;ldquo;Update the Management Network Firmware&amp;rdq
     <item>
       <title></title>
       <link>/docs-uan/en-262/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:08 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:57 +0000</pubDate>
       
       <guid>/docs-uan/en-262/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
       <description>Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
@@ -37,7 +37,7 @@ Create an SSH tunnel to the UAN BMC.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-262/installation_prereqs/configure_the_bios_of_an_hpe_uan/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:07 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:57 +0000</pubDate>
       
       <guid>/docs-uan/en-262/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
       <description>Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
@@ -50,7 +50,7 @@ In the following command, UAN_BMC_XNAME is the xname of the BMC of the UAN to co
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/basic_uan_configuration/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:08 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:58 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/basic_uan_configuration/</guid>
       <description>Basic UAN Configuration UAN configuration overview Configuration of UAN nodes is performed by the Configuration Framework Service (CFS). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
@@ -60,7 +60,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:09 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:58 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
       <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the UAN 2.3 release, UAN does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed via CFS and the uan_packages role. In UAN 2.6, this procedure is automated as part of the IUF process of installing and upgrading UAN.</description>
@@ -69,7 +69,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/create_uan_boot_images/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:10 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:59 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the UAN product. See Install or Upgrade UAN for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the UAN release is prior to UAN 2.6. For UAN 2.6 and newer, perform Build a New UAN Image Using a COS Recipe for these cases.</description>
@@ -78,7 +78,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:10 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:00 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -91,7 +91,7 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.2
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:09 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:59 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/configure_interfaces_on_uans/</guid>
       <description>Configure Interfaces on UANs Perform this procedure to configure network interfaces on UANs by editing a configuration file.
@@ -103,7 +103,7 @@ Node Management Networking By default, the Node Management Network (NMN) is conn
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:09 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:59 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
@@ -115,7 +115,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/boot_uans/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:08 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:58 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -127,7 +127,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/cve-2023-0461/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:09 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:59 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/cve-2023-0461/</guid>
       <description>Mitigation for CVE-2023-0461 Description There is a use-after-free vulnerability in the Linux Kernel which can be exploited to achieve local privilege escalation. To reach the vulnerability kernel configuration flag CONFIG_TLS or CONFIG_XFRM_ESPINTCP has to be configured, but the operation does not require any privilege. There is a use-after-free bug of icsk_ulp_data of a struct inet_connection_sock. When CONFIG_TLS is enabled, user can install a tls context (struct tls_context) on a connected tcp socket.</description>
@@ -136,7 +136,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/en-262/advanced/enabling_can_chn/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:06 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:55 +0000</pubDate>
       
       <guid>/docs-uan/en-262/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.
@@ -147,7 +147,7 @@ ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-262/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:07 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:56 +0000</pubDate>
       
       <guid>/docs-uan/en-262/advanced/repurposing_compute_as_uan/</guid>
       <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
@@ -158,7 +158,7 @@ Verify the System Default Route is set to CHN.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-262/advanced/sles_image/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:07 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:56 +0000</pubDate>
       
       <guid>/docs-uan/en-262/advanced/sles_image/</guid>
       <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
@@ -168,7 +168,7 @@ The image is built with the same packer/qemu pipeline as Non-Compute-Node Images
     <item>
       <title></title>
       <link>/docs-uan/en-262/advanced/enabling_k3s/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:06 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:55 +0000</pubDate>
       
       <guid>/docs-uan/en-262/advanced/enabling_k3s/</guid>
       <description>Configuring a UAN for K3s (Technical Preview) WARNING: This feature is currently a Technical Preview, as such it requires completion of the Prerequisites section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
@@ -178,7 +178,7 @@ UAI Experience on UANs In UAN 2.6, a new playbook has been added to create a sin
     <item>
       <title></title>
       <link>/docs-uan/en-262/upgrade/notable_changes/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:15 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:06 +0000</pubDate>
       
       <guid>/docs-uan/en-262/upgrade/notable_changes/</guid>
       <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
@@ -188,7 +188,7 @@ When an upgrade is being performed, please review the notable changes for all of
     <item>
       <title></title>
       <link>/docs-uan/en-262/troubleshooting/troubleshoot_uan_boot_issues/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:14 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:05 +0000</pubDate>
       
       <guid>/docs-uan/en-262/troubleshooting/troubleshoot_uan_boot_issues/</guid>
       <description>Troubleshoot UAN Boot Issues The UAN boot process BOS boots UANs. BOS uses session templates to define various parameters such as:
@@ -199,7 +199,7 @@ PXE booting an iPXE binary that will load the initrd of the UAN image that will 
     <item>
       <title></title>
       <link>/docs-uan/en-262/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:15 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:05 +0000</pubDate>
       
       <guid>/docs-uan/en-262/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</guid>
       <description>Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.
@@ -212,7 +212,7 @@ ncn# kubectl -n services get pods --sort-by=.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-262/troubleshooting/troubleshoot_uan_disk_configuration_issues/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:15 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:06 +0000</pubDate>
       
       <guid>/docs-uan/en-262/troubleshooting/troubleshoot_uan_disk_configuration_issues/</guid>
       <description>Troubleshoot UAN Disk Configuration Issues Perform this procedure to enable uan_disk_config to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.
@@ -224,7 +224,7 @@ The most common cause of failure in the uan_disk_config role is the disk having 
     <item>
       <title></title>
       <link>/docs-uan/en-262/test-plan/test-plan/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:14 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:04 +0000</pubDate>
       
       <guid>/docs-uan/en-262/test-plan/test-plan/</guid>
       <description>Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN. The tests are grouped in three categories:
@@ -234,7 +234,7 @@ Unit tests Integration tests Functional tests Unit Tests When possible, unit tes
     <item>
       <title></title>
       <link>/docs-uan/en-262/upgrade/upgrades/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:07 +0000</pubDate>
       
       <guid>/docs-uan/en-262/upgrade/upgrades/</guid>
       <description>Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
@@ -248,7 +248,7 @@ Create UAN images and reboot</description>
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/uan_shadow/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:14 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:04 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_shadow/</guid>
       <description>uan_shadow The uan_shadow role configures the root password on UAN nodes.
@@ -264,7 +264,7 @@ uan_vault_role_file: /var/run/secrets/kubernetes.io/serviceaccount/namespace uan
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/uan_motd/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:13 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:03 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_motd/</guid>
       <description>uan_motd The uan_motd role appends text to the /etc/motd file.
@@ -278,7 +278,7 @@ Example Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_co
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/uan_packages/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:13 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:03 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_packages/</guid>
       <description>uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.
@@ -289,8 +289,21 @@ Requirements Zypper must be installed.</description>
     
     <item>
       <title></title>
+      <link>/docs-uan/en-262/operations/uan_hardening/</link>
+      <pubDate>Fri, 21 Jul 2023 03:04:02 +0000</pubDate>
+      
+      <guid>/docs-uan/en-262/operations/uan_hardening/</guid>
+      <description>uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.
+Requirements None.
+Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
+disable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.
+The default value of disable_ssh_out_nmn_to_management_ncns is yes.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-262/operations/uan_interfaces/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:12 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:02 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_interfaces/</guid>
       <description>uan_interfaces The uan_interfaces role configures site/customer-defined network interfaces and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
@@ -302,7 +315,7 @@ uan_nmn_bond A boolean variable controlling the configuration of the Node Manage
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/uan_ldap/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:12 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:02 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_ldap/</guid>
       <description>uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.
@@ -316,7 +329,7 @@ uan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers.</descri
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/uan_disk_config/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:11 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:01 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_disk_config/</guid>
       <description>uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
@@ -328,7 +341,7 @@ The device that is found will be unmounted if mounted and a swap partition will 
     <item>
       <title></title>
       <link>/docs-uan/en-262/operations/uan_gpg_keys/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:11 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:01 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_gpg_keys/</guid>
       <description>uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.
@@ -339,21 +352,8 @@ uan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.<
     
     <item>
       <title></title>
-      <link>/docs-uan/en-262/operations/uan_hardening/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:11 +0000</pubDate>
-      
-      <guid>/docs-uan/en-262/operations/uan_hardening/</guid>
-      <description>uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.
-Requirements None.
-Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
-disable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.
-The default value of disable_ssh_out_nmn_to_management_ncns is yes.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-262/operations/uan_ca_cert/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:10 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:04:00 +0000</pubDate>
       
       <guid>/docs-uan/en-262/operations/uan_ca_cert/</guid>
       <description>uan_ca_cert The uan_ca_cert role installs a CA certificate onto the system.
@@ -366,7 +366,7 @@ Example Playbook - hosts: Application roles: - role: uan_ca_cert This role is in
     <item>
       <title></title>
       <link>/docs-uan/en-262/install/install_the_uan_product_stream/</link>
-      <pubDate>Thu, 20 Jul 2023 03:04:07 +0000</pubDate>
+      <pubDate>Fri, 21 Jul 2023 03:03:57 +0000</pubDate>
       
       <guid>/docs-uan/en-262/install/install_the_uan_product_stream/</guid>
       <description>Install or Upgrade UAN Install and Upgrade Framework The Install and Upgrade Framework (IUF) provides commands which install, upgrade and deploy products on systems managed by CSM. IUF capabilities are described in detail in the IUF section of the Cray System Management Documentation. The initial install and upgrade workflows described in the HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052) detail when and how to use IUF with a new release of UAN or any other HPE Cray EX product.</description>
