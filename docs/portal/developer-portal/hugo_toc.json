@@ -98,6 +98,7 @@
         "Enabling_CAN_CHN.md",
         "Repurposing_Compute_as_UAN.md",
         "SLES_Image.md",
+        "Designating_Application_Nodes_for_K3s.md",
         "Enabling_K3s.md"
     ]
   },
@@ -118,8 +119,12 @@
     "weight": 54
   },
   {
-    "title": "Configuring a UAN for K3s (Technical Preview)",
+    "title": "Designating Application Nodes for K3s (Technical Preview)",
     "weight": 55
+  },
+  {
+    "title": "Configuring a UAN for K3s (Technical Preview)",
+    "weight": 56
   },
   {
     "title": "Upgrade",
