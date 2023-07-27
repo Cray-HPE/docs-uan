@@ -25,7 +25,7 @@ There are alternate configurations of podman that would allow for different work
 
 The following steps should be completed prior to configuring the UAN with K3s.
 
-1. Designate a UAN to operate as the K3s control-plane node.
+1. Designate a UAN to operate as the K3s control-plane node. See [Designating Application Nodes for K3s](Designating_Application_Nodes_for_K3s.md).
 
    **Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
 

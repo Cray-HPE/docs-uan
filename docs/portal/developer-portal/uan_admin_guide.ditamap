@@ -35,6 +35,7 @@
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
         <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>
         <topicref href="advanced/SLES_Image.md" format="markdown"/>
+        <topicref href="advanced/Designating_Application_Nodes_for_K3s.md" format="markdown"/>
         <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
     </topichead>
     <topicref href="operations/Boot_UANs.md" format="markdown"/>
