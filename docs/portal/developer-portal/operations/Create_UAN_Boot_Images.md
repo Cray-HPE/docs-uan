@@ -145,7 +145,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
      Branch 'integration-PRODUCT_VERSION' set up to track remote branch 'integration-PRODUCT_VERSION' from 'origin'.
     ```
 
-    The configuration parameters have been stored in a branch in the UAN git repository. The next phase of the process uses `sat bootprep` to handle creating the CFS configurations, IMS images, and BOS sessiontemplates for UANs.
+    The configuration parameters have been stored in a branch in the UAN git repository. The next phase of the process uses `sat bootprep` to handle creating the CFS configurations, IMS images, and BOS session templates for UANs.
 
 ## CREATE UAN IMAGES
 
@@ -269,7 +269,7 @@ Initiate the `sat bootprep` command to generate the configurations and artifacts
 ncn-m001# sat bootprep run uan-bootprep.yaml
 ```
 
-If changes are necessary to complete `sat bootprep` with the provided input file, make adjustments to the CFS layers or input file as needed and rerun the `sat bootprep` command. If any artifacts are going to be overwritten, SAT will prompt for confirmation before taking action. This is useful when making CFS changes as SAT will automatically configure the layers to use the latest git commits if the branches are specified correctly.
+If changes are necessary to complete `sat bootprep` with the provided input file, adjust the CFS layers or input file as needed and rerun the `sat bootprep` command. If any artifacts are going to be overwritten, SAT will prompt for confirmation before taking action. This is useful when making CFS changes as SAT will automatically configure the layers to use the latest git commits if the branches are specified correctly.
 
 Once `sat bootprep` completes successfully, save the input file to a known location. This input file will be useful to regenerate artifacts as changes are made or different product layers are added.
 

@@ -6,9 +6,9 @@ Configuration of UAN nodes is performed by the Configuration Framework Service \
 
 The preferred method of creating CFS configurations is to use the Shasta Admin Toolkit (SAT) `sat bootprep` command.  This command automates the creation of IMS images, CFS configurations, and BOS session templates. See [Create UAN Boot Images](Create_UAN_Boot_Images.md) for more details.
 
-CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site.  Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the example bootprep file below. The parameterized fields are defined in a `products_vars.yml` file.
+CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site.  Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the example bootprep file below. The parameterized fields are defined in a `product_vars.yml` file.
 
-**IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer, is as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
+**IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
 
 ```bash
 - name: "{{default.note}}uan-{{recipe.version}}{{default.suffix}}"
@@ -73,7 +73,7 @@ The first CFS Layer installs the Slingshot Host Software for the Slingshot netwo
 - `mellanox` for ConnectX-5 NICs used in Slingshot 10
 - `cassini` for Slingshot NICs in Slingshot 11
 
-The name of the playbook must match the name of the HSN NICs (mellanox or cassini) in the UAN nodes.  Additionally, the HSN NICs must be of the same type as the NCN and Compute nodes.
+The name of the playbook must match the name of the HSN NICs (Mellanox or Cassini) in the UAN nodes.  Additionally, the HSN NICs must be of the same type as the NCN and Compute nodes.
 
 ### COS (playbook: cos-application.yml)
 
@@ -126,7 +126,7 @@ The following Ansible roles are run during UAN post-boot configuration:
 
 ### CMS Layer (playbook: csm_packages.yml)
 
-The third CFS Layer installs the the Cray Management System packages. These are normally not modified.
+The third CFS Layer installs the Cray Management System packages. These are normally not modified.
 
 ### Optional UAN Layer (playbook: set_nologin.yml)
 
@@ -163,4 +163,4 @@ The following Ansible roles are run during UAN post-boot configuration:
 
 ### Optional UAN Layer (playbook: unset_nologin.yml)
 
-This UAN layer deletes the `/etc/nologin` file allowing non-root users to log into the UAN.  If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have acces to the node.
+This UAN layer deletes the `/etc/nologin` file allowing non-root users to log into the UAN.  If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have access to the node.

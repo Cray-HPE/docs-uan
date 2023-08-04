@@ -26,13 +26,13 @@ By default, a direct connection to the site's user network is assumed and the Ad
 
 * When CAN is set as the system default route in SLS and `uan_nmn_bond` is false, the bonded CAN interfaces are determined automatically.  If `uan_nmn_bond` is true, the bonded CAN interfaces must be defined by `uan_can_bond_slaves` \(see [`uan_interfaces`](uan_interfaces.md)\). The default route is set to the bonded CAN interface `can0`.
 
-* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` by default, but can be changed by using setting `uan_chn_device` to the desired interface. The default route is set to the CHN.
+* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` by default, but can be changed by setting `uan_chn_device` to the desired interface. The default route is set to the CHN.
 
 * The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
 
 ## Procedure
 
-Network configuration settings are defined in the `uan-config-management` VCS repo under the `group_vars/ROLE_SUBROLE/` or `host_vars/XNAME/` directories, where `ROLE_SUBROLE` must be replaced by the role and subrole assigned for the node in HSM, and `XNAME` with the xname of the node. Values under `group_vars/ROLE_SUBROLE/` apply to all nodes with the given role and subrole.  Values under the `host_vars/XNAME/` apply to the specific node with the xname and will override any values set in `group_vars/ROLE_SUBROLE/`.  A yaml file is used by the Configuration Framwork Service \(CFS\).  The examples in this procedure use `customer_net.yml`, but any filename may be used.  Admins must create this yaml file and use the variables described in this procedure.
+Network configuration settings are defined in the `uan-config-management` VCS repo under the `group_vars/ROLE_SUBROLE/` or `host_vars/XNAME/` directories, where `ROLE_SUBROLE` must be replaced by the role and subrole assigned for the node in HSM, and `XNAME` with the xname of the node. Values under `group_vars/ROLE_SUBROLE/` apply to all nodes with the given role and subrole.  Values under the `host_vars/XNAME/` apply to the specific node with the xname and will override any values set in `group_vars/ROLE_SUBROLE/`.  A yaml file is used by the Configuration Framework Service \(CFS\).  The examples in this procedure use `customer_net.yml`, but any filename may be used.  Admins must create this yaml file and use the variables described in this procedure.
 
 If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `yes` in the yaml file.  The UAN will be configured to use the CAN or CHN based on what the BICAN System Default Route is set to in SLS.
 
@@ -115,7 +115,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
     ```bash
     ## Customer defined networks ifcfg-X
-    # customer_uan_interfaces is as list of interface names used for constructing
+    # customer_uan_interfaces is a list of interface names used for constructing
     # ifcfg-<customer_uan_interfaces.name> files.  The setting dictionary is where
     # any desired ifcfg fields are defined.  The field name will be converted to 
     # uppercase in the generated ifcfg-<name> file.
@@ -164,7 +164,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
     ```bash
     ## Customer defined networks ifroute-X
-    # customer_uan_routes is as list of interface routes used for constructing
+    # customer_uan_routes is a list of interface routes used for constructing
     # ifroute-<customer_uan_routes.name> files.  
     # 
     # customer_uan_routes:
@@ -183,7 +183,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
     ```bash
     ## Customer defined networks ifrule-X
-    # customer_uan_rules is as list of interface rules used for constructing
+    # customer_uan_rules is a list of interface rules used for constructing
     # ifrule-<customer_uan_routes.name> files.  
     # 
     # customer_uan_rules:
@@ -200,7 +200,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
     ```bash
     ## Customer defined networks global routes
-    # customer_uan_global_routes is as list of global routes used for constructing
+    # customer_uan_global_routes is a list of global routes used for constructing
     # the "routes" file.  
     # 
     # customer_uan_global_routes:
