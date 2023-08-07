@@ -2,7 +2,7 @@
 
 A SLES image is available for use with Application type nodes. This image is currently considered a "Technical Preview" as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
 
-The image is built with the same packer/qemu pipeline as Non-Compute-Node Images. Similarties may be noticed including the kernel and package versions.
+The image is built with the same packer/qemu pipeline as Non-Compute-Node Images. Similarities may be noticed including the kernel and package versions.
 
 ## Limitations
 
@@ -159,11 +159,11 @@ Perform the following steps to configure and boot a SLES image on an Application
 
 ## Troubleshooting
 
-Some general troublshooting tips may help in getting started using the SLES image.
+Some general troubleshooting tips may help in getting started using the SLES image.
 
 ### Dracut failures during booting
 
-1. Could not find the kernel or the initrd. Verify the BSS bootparameters for the node. Specifically, check that the IMS Image ID is correct.
+1. Could not find the kernel or the initrd. Verify the BSS boot parameters for the node. Specifically, check that the IMS Image ID is correct.
 
     ```bash
     http://rgw-vip.nmn/boot-images/13964414-bbad-40e9-9e31-a3683010febbasdf/kernel...HTTP 0x7f0fa808 status 404 Not Found

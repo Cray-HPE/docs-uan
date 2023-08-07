@@ -107,7 +107,7 @@ Input to the `device_filter` module.
 
 `swap_file`
 
-: Name of the swapfile to create. Full path is `<uan_swap>/<swapfile>`.
+: Name of the swap file to create. Full path is `<uan_swap>/<swapfile>`.
 
   Example:
 
