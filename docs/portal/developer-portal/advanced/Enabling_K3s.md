@@ -25,7 +25,7 @@ There are alternate configurations of podman that would allow for different work
 
 The following steps should be completed prior to configuring the UAN with K3s.
 
-1. Designate a UAN to operate as the K3s control-plane node.
+1. Designate a UAN to operate as the K3s control-plane node. See [Designating Application Nodes for K3s](Designating_Application_Nodes_for_K3s.md).
 
    **Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
 
@@ -122,7 +122,7 @@ To validate the K3s cluster once deployed, see the [Validation Checks](#validati
 
 ## Configuring K3s, MetalLB, HAProxy, and SSHD for use with Podman
 
-Each of the sections below describe how the various comonents deployed to K3s and the UANs may be configured to enable users to SSH to rootless podman containers. As there is no one configuration to fit any one use case, read and understand each section to modify the configuration as needed. Once each section has been completed, see [Deploy K3s to the UAN](#deploy-k3s-to-the-uan).
+Each of the sections below describe how the various components deployed to K3s and the UANs may be configured to enable users to SSH to rootless podman containers. As there is no one configuration to fit any one use case, read and understand each section to modify the configuration as needed. Once each section has been completed, see [Deploy K3s to the UAN](#deploy-k3s-to-the-uan).
 
 ### MetalLB 
 
@@ -144,7 +144,7 @@ MetalLB will assign an IP address to each service running in K3s that requires a
 # kubectl get services -n uai | grep 
 ```
 
-It may be possible to reallocate the CSM MetalLB pool `customer-access` from CSM to make room for a subset of IPs to use with MetalLB on UANs. To shrink the `customer-access` pool in CSM, edit the configmap and pick a new CIDR block for for `customer-access`. In this example the CIDR block was `x.x.x.x/26`:
+It may be possible to reallocate the CSM MetalLB pool `customer-access` from CSM to make room for a subset of IPs to use with MetalLB on UANs. To shrink the `customer-access` pool in CSM, edit the configmap and pick a new CIDR block for `customer-access`. In this example the CIDR block was `x.x.x.x/26`:
 ```bash
 # kubectl edit -n metallb-system cm/metallb
 ...
@@ -257,7 +257,7 @@ After the node has been booted and configured, proceed with the [Validation Chec
 
 ## K3s Validation
 
-To verify the `k3s.yml` playbook suceeded, peform the following sanity checks.
+To verify the `k3s.yml` playbook succeeded, perform the following sanity checks.
 
 1. Verify `kubectl` from the UAN.
 

@@ -42,7 +42,7 @@ Perform [Create UAN Boot Images](../operations/Create_UAN_Boot_Images.md) before
     ncn-m001# BOA_JOB_NAME=$(cray bos session describe $BOS_SESSION --format json | jq -r .job)
     ```
 
-5. Retrieve the Kuberenetes pod name for the BOA assigned to run this session.
+5. Retrieve the Kubernetes pod name for the BOA assigned to run this session.
 
     ```bash
     ncn-m001# BOA_POD=$(kubectl get pods -n services -l job-name=$BOA_JOB_NAME --no-headers -o custom-columns=":metadata.name")

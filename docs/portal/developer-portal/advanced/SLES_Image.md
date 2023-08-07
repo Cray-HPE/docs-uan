@@ -165,7 +165,7 @@ Some general troublshooting tips may help in getting started using the SLE HPC i
 
 ### Dracut failures during booting
 
-1. Could not find the kernel or the initrd. Verify the BSS bootparameters for the node. Specifically, check that the IMS Image ID is correct.
+1. Could not find the kernel or the initrd. Verify the BSS boot parameters for the node. Specifically, check that the IMS Image ID is correct.
 
     ```bash
     http://rgw-vip.nmn/boot-images/13964414-bbad-40e9-9e31-a3683010febbasdf/kernel...HTTP 0x7f0fa808 status 404 Not Found

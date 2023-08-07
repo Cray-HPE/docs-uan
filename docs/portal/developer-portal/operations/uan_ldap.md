@@ -12,7 +12,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 `uan_ldap_setup`
 
-: A boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to `uan_ldap_config` being defined.  The default setting is to setup LDAP when `uan_ldap_config` is not empty.
+: A Boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to `uan_ldap_config` being defined.  The default setting is to setup LDAP when `uan_ldap_config` is not empty.
 
   Example:
 
