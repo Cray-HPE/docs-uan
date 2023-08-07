@@ -1,12 +1,14 @@
-# Booting an Application Node with a SLES Image (Technical Preview)
+# Booting an Application Node with a SLE HPC Image (Technical Preview)
 
-A SLES image is available for use with Application type nodes. This image is currently considered a "Technical Preview" as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
+A SLE HPC image is available for use with Application Node types such as gateways and LNet routers. This image is currently considered a "Technical Preview" as the initial support for booting with SLE HPC Images without COS. This Application Node image differs from the standard COS-based image because this image does not include the COS kernel and libraries that Compute Nodes (CNs) have.
 
-The image is built with the same packer/qemu pipeline as Non-Compute-Node Images. Similarties may be noticed including the kernel and package versions.
+The image is built from the same pipeline as Non-Compute Node (NCN) Images. Similarties may be noticed including the kernel and package versions.
+
+This procedure documents how to boot and configure this image.
 
 ## Limitations
 
-As this is currently a "Technical Preview" of supporting SLES Images on Application Nodes, there are several limitations:
+As this is currently a "Technical Preview" of supporting SLE HPC Images on Application Nodes, there are several limitations:
 
 * S3 presigned URLs with an expiration limit for the rootfs must be created.
 * BSS parameters must be set with `cray bss bootparameters replace ...`
@@ -14,9 +16,9 @@ As this is currently a "Technical Preview" of supporting SLES Images on Applicat
 * CFS Configurations that operate on COS and NCN images are not yet supported.
 * CFS Node Personalization must be started manually.
 
-## Overview
+## Procedure Overview
 
-The following steps outline the process of configuring and booting an Application Node with the SLES Image.
+The following steps outline the process of configuring and booting an Application Node with the SLE HPC Image.
 
   1. Determine the image to use.
     
@@ -30,7 +32,7 @@ The following steps outline the process of configuring and booting an Applicatio
 
 ## Procedure
 
-Perform the following steps to configure and boot a SLES image on an Application type node.
+Perform the following steps to configure and boot a SLE HPC image on an Application type node.
 
 1. Log in to the master node `ncn-m001`. All commands in this procedure are run from the master node.
 
@@ -159,7 +161,7 @@ Perform the following steps to configure and boot a SLES image on an Application
 
 ## Troubleshooting
 
-Some general troublshooting tips may help in getting started using the SLES image.
+Some general troublshooting tips may help in getting started using the SLE HPC image.
 
 ### Dracut failures during booting
 
