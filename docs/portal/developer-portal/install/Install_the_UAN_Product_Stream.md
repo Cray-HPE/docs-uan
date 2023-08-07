@@ -121,9 +121,11 @@ The following instructions describe how to set the root password for UAN/Applica
       pod# exit
       ```
 
-### UAN Stock Kernel Image
+### SLE HPC Image for Application Nodes
 
-UAN provides a stock kernel Application Node image which may be used on Application nodes that do not require any COS compatibility as UAN does. This image is not based on the COS image which the default UAN image is and is uploaded to IMS as part of the installation process. The stock kernel Application Node image is based on SLES 15 SP4.
+The UAN product provides an Application Node image which is based on SUSE Linux Enterprise High Performance Computing 15 (SLE HPC 15) and uses a "stock" (that is, not customized for HPE Cray systems) kernel. Customers can use this image on Application nodes that do not require any COS compatibility as UAN does. Unlike the default UAN image, this Application Node image is not based on the COS image. However, like the UAN default image, it is uploaded to IMS as part of the installation process.
+
+Customers must finish the installation or upgrade of the UAN product before booting an Application Node with SLE HPC 15 provided by that UAN product release. See [Booting an Application Node with a SLES Image (Technical Preview)](../advanced/SLES_Image.md) for more information about this image and instructions on deploying it to Application Nodes.
 
 ### RPMs
 
