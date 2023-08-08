@@ -27,13 +27,88 @@ The following steps should be completed prior to configuring the UAN with K3s.
 
 1. Designate a UAN to operate as the K3s control-plane node. See [Designating Application Nodes for K3s](Designating_Application_Nodes_for_K3s.md).
 
-   **Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
+  **Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
 
 1. Identify a pool of IP addresses for the services running in K3s.
-   
-   This address pool must be routable from the UAN control-plane, and should be unused for other purposes.
 
-   This will allow for external `LoadBalancer` IP Address to be assigned to services like `HAProxy`. Initially, these IP addresses will serve as the SSH ingress for instances of `HAProxy`.
+  **Note**: The identification of a pool of IP addresses for the services running in K3s is best made at system installation time in order to avoid the possibility of IP collisions. If this is not possible, steps must be taken to ensure IP collisions are avoided.
+   
+  This address pool must be routable from the UAN control-plane. It is suggested to split the `[CAN|CHN] Dynamic MetalLB` subnet into two subnets, `[CAN|CHN] Dynamic MetalLB` and `[CAN|CHN] Dynamic MetalLB K3s`, the latter being used for K3s services. Subnet definitions are initially uploaded to SLS at installation time by CSI. If the `[CAN|CHN] Dynamic MetalLB` subnet is split after initial installation, steps must be taken to ensure that IPs in the newly created `[CAN|CHN] Dynamic MetalLB K3s` subnet are not in use and the `MetalLB Controller` pod in CSM must be restarted. Alternatively, the starting and ending IPs for K3s may be defined directly in `vars/uan_helm.yml`.  These steps are described below.
+
+  Here is an example of splitting the existing `[CAN|CHN] Dynamic MetalLB` subnet. By default, the subnet with the `FullName` attribute of `[CAN|CHN] Dynamic MetalLB K3s` will be used for K3s, depending on whether `CAN` or `CHN` is being used for the customer access network.  This default `FullName` may be overridden by setting the `sls_can_metallb_fullname` variable in CFS to the expected name.
+    
+  **Important**: Before splitting `[CAN|CHN] Dynamic MetalLB`, be sure to verify none of the IP Addresses in the new `[CAN|CHN] Dynamic MetalLB K3s` subnet are being used. The `ims` and `user` namespaces are the most likely to contain these IPs. 
+
+  ```bash
+  kubectl get services -n ims
+  kubectl get services -n user
+  kubectl get services -A
+  ```
+
+  Edit SLS to make the following changes in the CAN or CHN network allocations:
+
+  ```bash
+  ### Existing [CAN|CHN] Dynamic MetalLB Subnet in SLS
+  ### Split this as shown below into two subnets
+          "CIDR": "x.x.x.192/26",
+          "FullName": "CAN Dynamic MetalLB",
+          "Gateway": "x.x.x.193",
+          "MetalLBPoolName": "customer-access",
+          "Name": "can_metallb_address_pool",
+          "VlanID": 6,
+
+  ### New [CAN|CHN] Dynamic MetalLB Subnet
+          "CIDR": "x.x.x.192/27",
+          "FullName": "CAN Dynamic MetalLB",
+          "Gateway": "x.x.x.193",
+          "MetalLBPoolName": "customer-access",
+          "Name": "can_metallb_address_pool",
+          "VlanID": 6,
+
+  ### New [CAN|CHN] Dynamic MetalLB K3s
+          "CIDR": "x.x.x.224/27",
+          "FullName": "CAN Dynamic MetalLB K3s",
+          "Gateway": "x.x.x.225",
+          "MetalLBPoolName": "customer-access-k3s",
+          "Name": "can_metallb_k3s_address_pool",
+          "VlanID": 6,
+  ```
+
+  Reallocate the CSM MetalLB pool `customer-access` from CSM to reflect the SLS changes above. To shrink the `customer-access` pool in CSM, edit the configmap and pick the new CIDR block for the `[CAN|CHN] Dynamic MetalLB` subnet in SLS. In this example the CIDR block was `x.x.x.193/26` and is now `x.x.x.193/27`:
+
+  ```bash
+  # kubectl edit -n metallb-system cm/metallb
+  ...
+  data:
+    config: |
+      address-pools:
+      - addresses:
+        - x.x.x.193/27
+        name: customer-access
+        protocol: bgp
+  ...
+  ```
+
+  To complete migrating the IP Address range out of CSM, restart the `MetalLB Controller` pod in CSM.
+
+  ```bash
+  kubectl delete pod -n metallb-system -l app.kubernetes.io/component=controller
+  ```
+
+  Here's an example of defining the MetalLB IP pool range directly in `vars/uan_helm.yml`.
+
+  ```yaml
+  metallb_ipaddresspool_range_start: "<start-of-range>"
+  metallb_ipaddresspool_range_end: "<end-of-range>"
+  ```
+
+  By default, these arguments are commented out or omitted. MetalLB will be
+  able to start, but the Custom Resource Definition for IPAddressPool and
+  L2AdvertisementAddress will not be created and no Load Balancer IP address
+  will be allocated.
+
+  This will allow for external `LoadBalancer` IP Address to be assigned to services like `HAProxy`. Initially, these IP addresses will serve as the SSH ingress for instances of `HAProxy`.
+
 
 1. Configure and create the `/etc/subuid` and `/etc/subgid` files.
 
@@ -126,7 +201,7 @@ Each of the sections below describe how the various components deployed to K3s a
 
 ### MetalLB 
 
-Configure the start and end range for MetalLB `IPAddressPool` in `vars/uan_helm.yml`:
+By default, `metallb_ipaddresspool_range_start` and `metallb_ipaddresspool_end` will be defined from the `[CAN|CHN] Dynamic MetalLB K3s` subnet in SLS, if it exists. Alternatively, they may be configured directly in `vars/uan_helm.yml`:
 ```bash
 $ grep "^metallb_ipaddresspool" vars/uan_helm.yml
 metallb_ipaddresspool_range_start: "x.x.x.x"
@@ -135,36 +210,6 @@ metallb_ipaddresspool_range_end: "x.x.x.x"
 
 MetalLB will assign an IP address to each service running in K3s that requires and external IP address. In the case of HAProxy, each instance of HAProxy will require an IP address. Podman containers do *not* require their own IP address.
 
-**Note**: In a future version of CSM, this range may be integrated into the System Layout Service (SLS) so the range will be automatically determined.
-
-**Important**: Before modifying `customer-access`, be sure to verify none of the IP Addresses in the new pool for UANs are being used by IMS or UAIs:
-```bash
-# kubectl get services -n ims | grep ims
-# kubectl get services -n user | grep uai
-# kubectl get services -n uai | grep 
-```
-
-It may be possible to reallocate the CSM MetalLB pool `customer-access` from CSM to make room for a subset of IPs to use with MetalLB on UANs. To shrink the `customer-access` pool in CSM, edit the configmap and pick a new CIDR block for `customer-access`. In this example the CIDR block was `x.x.x.x/26`:
-```bash
-# kubectl edit -n metallb-system cm/metallb
-...
-data:
-  config: |
-    address-pools:
-    - addresses:
-      - x.x.x.x/27
-      name: customer-access
-      protocol: bgp
-...
-```
-This leaves a portion of IP Address unallocated that may then be used to set `metallb_ipaddresspool_range_start` and `metallb_ipaddresspool_end`. 
-
-**Important**: When calculating the range of IP Address now available from `customer-access`. Be sure to account for the Broadcast IP of the remaining `customer-access` pool.
-
-To complete migrating the IP Address range out of CSM, restart the MetalLB controller pod in CSM.
-```bash
-# kubectl delete pod -n metallb-system -l app.kubernetes.io/component=controller
-```
 
 ### HAProxy Configuration
 Each SSH ingress is backed by a K3s deployment of HAProxy. By default, a single instance of HAProxy is enabled in `vars/uan_helm.yml`:

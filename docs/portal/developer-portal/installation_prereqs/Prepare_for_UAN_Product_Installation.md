@@ -8,19 +8,23 @@ Install and configure the COS product before performing this procedure.
 
    Refer to the [switch configuration procedures](https://cray-hpe.github.io/docs-csm/en-14/install/csm-install/readme/#5-configure-management-network-switches) in the HPE Cray System Management Documentation.
 
-2. Ensure that the management network switches have the proper firmware.
+1. Ensure that the management network switches have the proper firmware.
 
     Refer to the procedure "Update the Management Network Firmware" in the HPE Cray EX hardware documentation.
 
-3. Ensure that the host reservations for the UAN CAN/CHN network have been properly set.
+1. Ensure that the host reservations for the UAN CAN/CHN network have been properly set.
 
     Refer to the procedure "Add UAN CAN IP Addresses to SLS" in the HPE Cray EX hardware documentation.
 
-4. [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md)
+    1. For systems where UANs are going to host UAIs, identify a block of IP addresses for the services running in K3s. Please see [Configuring a UAN for K3s (Technical Preview)](../advanced/Enabling_K3s.md) for information on reserving a block of IPs on CAN/CHN for K3s MetalLB use.
 
-5. [Configure the BIOS of an HPE UAN](Configure_the_BIOS_of_an_HPE_UAN.md)
+       **Note**: The identification of IP addresses for the services running in K3s should be made at system installation time in order to avoid the possibility of IP collisions with CSM services.
+   
+1. [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md)
 
-6. Verify that the firmware for each UAN BMC meets the specifications.
+1. [Configure the BIOS of an HPE UAN](Configure_the_BIOS_of_an_HPE_UAN.md)
+
+1. Verify that the firmware for each UAN BMC meets the specifications.
 
    Use the System Admin Toolkit firmware command to check the current firmware version on a UAN node.
 
@@ -28,21 +32,21 @@ Install and configure the COS product before performing this procedure.
    ncn-m001# sat firmware -x BMC_XNAME
    ```
 
-7. Repeat the previous six Steps for all UANs.
+1. Repeat the previous six Steps for all UANs.
 
-8. Unpackage the file.
+1. Unpackage the file.
 
     ```bash
     ncn-m001# tar zxf uan-PRODUCT_VERSION.tar.gz
     ```
 
-9. Navigate into the uan-PRODUCT_VERSION/ directory.
+1. Navigate into the uan-PRODUCT_VERSION/ directory.
 
     ```bash
     ncn-m001# cd uan-PRODUCT_VERSION/
     ```
 
-10. Run the pre-install goss tests to determine if the system is ready for the UAN product installation.
+1. Run the pre-install goss tests to determine if the system is ready for the UAN product installation.
 
     This requires that goss is installed on the node running the tests.
 
@@ -54,7 +58,7 @@ Install and configure the COS product before performing this procedure.
     Count: 15, Failed: 0, Skipped: 0
     ```
 
-11. Ensure that the `cray-console-node` pods are connected to UANs so that they are monitored and their consoles are logged.
+1. Ensure that the `cray-console-node` pods are connected to UANs so that they are monitored and their consoles are logged.
 
     1. Obtain a list of the xnames for all UANs (remove the `--subrole` argument to list all Application nodes).
 
@@ -65,13 +69,13 @@ Install and configure the COS product before performing this procedure.
        x3000c0s31b0n0
        ```
 
-    2. Obtain a list of the console pods.
+    1. Obtain a list of the console pods.
 
        ```bash
        ncn# PODS=$(kubectl get pods -n services -l app.kubernetes.io/name=cray-console-node --template '{{range .items}}{{.metadata.name}} {{end}}')
        ```
 
-    3. Use `conman -q` to scan the list of connections being monitored by conman (only UAN xnames are shown for brevity).
+    1. Use `conman -q` to scan the list of connections being monitored by conman (only UAN xnames are shown for brevity).
 
        ```bash
        ncn# for pod in $PODS; do kubectl exec -n services -c cray-console-node $pod -- conman -q; done
