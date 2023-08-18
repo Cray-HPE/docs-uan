@@ -3,7 +3,7 @@
 
 Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
 
-Intialize and configure the Cray command line interface \(CLI\) tool on the system. See "Configure the Cray Command Line Interface \(CLI\)" in the CSM documentation for more information.
+Initialize and configure the Cray command line interface \(CLI\) tool on the system. See "Configure the Cray Command Line Interface \(CLI\)" in the CSM documentation for more information.
 
 1. Verify that the Gitea Version Control Service \(VCS\) is running.
 

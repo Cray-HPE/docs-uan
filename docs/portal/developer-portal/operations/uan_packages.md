@@ -28,7 +28,7 @@ This role uses the `zypper` modules.  The `name` and `disable_gpg_check` fields 
 
 `uan_disable_gpg_check`
 
-: Sets the `disable_gpg_check` field on zypper repos and
+: Sets the `disable_gpg_check` field on Zypper repos and
 packages listed in the `uan_sles15_repositories add` and `uan_sles15_packages_add`
 lists.  The `disable_gpg_check` field can be overridden for each repo or package.
 

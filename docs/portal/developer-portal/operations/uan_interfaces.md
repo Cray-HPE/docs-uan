@@ -13,7 +13,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 `uan_nmn_bond`
 
-: A boolean variable controlling the configuration of the Node Management Network (NMN).
+: A Boolean variable controlling the configuration of the Node Management Network (NMN).
 When true, the NMN network connection will be configured as a bonded pair of interfaces defined by the members of the
 `uan_nmn_bond_slaves` variable. The bonded NMN interface is named `nmnb0`. When false, the NMN network connection
 will be configured as a single interface named `nmn0`.

@@ -68,7 +68,7 @@ Once the repurposed compute node is booted as a UAN, the following steps will ve
 
 ### Basic UAN Configuration Checks
 
-1. Verify the repurposed compute node has finished the configuration phase. The output should "configured".
+1. Verify the repurposed compute node has finished the configuration phase. The output should display "configured".
 
     ```bash
     ncn-m001# cray cfs components describe <XNAME> --format json | jq -r .configurationStatus

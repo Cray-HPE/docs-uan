@@ -27,17 +27,17 @@ When an upgrade is being performed, please review the notable changes for **all*
 
 ## UAN 2.4.1
 
-* The UAN CFS playbook now supports a section for Compute nodes. The Compute section will run the role `uan_interfaces` to provide Customer High Speeed Network \(CHN\) routing.
+* The UAN CFS playbook now supports a section for Compute nodes. The Compute section will run the role `uan_interfaces` to provide Customer High-Speed Network \(CHN\) routing.
   * CHN on the Compute nodes requires:
     * Customer High Speed Network has been enabled in CSM. See "Enabling Customer High Speed Network Routing" in the CSM Documentation
-    * UAN CFS configurd with `uan_can_setup: yes`
+    * UAN CFS configured with `uan_can_setup: yes`
     * Fully configured HSN
     * SLS has IP assignments for compute nodes on hsn0
 * Updates to GPU roles to match COS 2.3
 
 ## UAN 2.4.2
 
-* There is a known issue with the version of GPU support included in the UAN CFS repo. The result is that both AMD and Nvidia SDKs are not able to be projected at the same time. Until this is resolved in a later release, modify the site.yml in the UAN CFS repo to only include either amd or nvidia.
+* There is a known issue with the version of GPU support included in the UAN CFS repo. The result is that both AMD and Nvidia SDKs are not able to be projected at the same time. Until this is resolved in a later release, modify the site.yml in the UAN CFS repo to only include either AMD or Nvidia.
 
 ## UAN 2.4.3
 
