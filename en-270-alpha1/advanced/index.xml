@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 27 Aug 2023 03:04:26 +0000</lastBuildDate><atom:link href="/docs-uan/en-270-alpha1/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Aug 2023 03:04:28 +0000</lastBuildDate><atom:link href="/docs-uan/en-270-alpha1/advanced/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-270-alpha1/advanced/enabling_can_chn/</link>
-      <pubDate>Sun, 27 Aug 2023 03:04:00 +0000</pubDate>
+      <pubDate>Mon, 28 Aug 2023 03:04:06 +0000</pubDate>
       
       <guid>/docs-uan/en-270-alpha1/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstancs, configuring the CHN, on Compute type nodes.
@@ -21,7 +21,7 @@ ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-270-alpha1/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Sun, 27 Aug 2023 03:04:01 +0000</pubDate>
+      <pubDate>Mon, 28 Aug 2023 03:04:07 +0000</pubDate>
       
       <guid>/docs-uan/en-270-alpha1/advanced/repurposing_compute_as_uan/</guid>
       <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This is typically done when the processor type of the compute node is not yet available in a UAN server.
@@ -32,7 +32,7 @@ Verify the System Default Route is set to CHN.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-270-alpha1/advanced/sles_image/</link>
-      <pubDate>Sun, 27 Aug 2023 03:04:02 +0000</pubDate>
+      <pubDate>Mon, 28 Aug 2023 03:04:07 +0000</pubDate>
       
       <guid>/docs-uan/en-270-alpha1/advanced/sles_image/</guid>
       <description>Booting an Application Node with a SLES Image (Technical Preview) A SLES image is available for use with Application type nodes. This image is currently considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLES Images without COS. This guide documents the procedure to boot and configure the new image as it currently differs from the standard COS-based image process in some ways.
@@ -42,7 +42,7 @@ The image is built with the same packer/qemu pipeline as Non-Compute-Node Images
     <item>
       <title></title>
       <link>/docs-uan/en-270-alpha1/advanced/enabling_k3s/</link>
-      <pubDate>Sun, 27 Aug 2023 03:04:01 +0000</pubDate>
+      <pubDate>Mon, 28 Aug 2023 03:04:06 +0000</pubDate>
       
       <guid>/docs-uan/en-270-alpha1/advanced/enabling_k3s/</guid>
       <description>Configuring a UAN for K3s (Technical Preview) WARNING: This feature is currently a Technical Preview, as such it requires completion of the Prerequisites section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
