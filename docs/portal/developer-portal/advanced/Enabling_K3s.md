@@ -114,7 +114,7 @@ The following Nexus group repository is created and references the previous UAN 
 
 - uan-2.6-third-party
 
-This repository will contain the installer for K3s, Helm charts for HAProxy and MetalLB, and so on
+This repository will contain the installer for K3s, Helm charts for HAProxy and MetalLB, and so on.
 
 ### Validation Tests 
 
