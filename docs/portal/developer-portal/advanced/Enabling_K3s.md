@@ -1,29 +1,29 @@
 # Configuring a UAN for K3s (Technical Preview)
 
-**WARNING**: This feature is currently a Technical Preview, as such it requires completion of the [Prerequisites](#prerequisites) section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless podman containers. Therefore, some of these configuration options may change in future releases.
+**WARNING**: This feature is a Technical Preview, as such it requires completion of the [Prerequisites](#prerequisites) section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless Podman containers. Therefore, some of these configuration options may change in future releases.
 
 ## UAI Experience on UANs
 In UAN 2.6, a new playbook has been added to create a single node, K3s cluster. This K3s environment can then run the services necessary to replicate the experience of User Access Instances (UAIs) on one or more UANs.
 
 ### Use of K3s
-K3s will serve as the orchestrator of services necessary to replicate the capabilities of UAIs on UAN hardware. This includes HAProxy, MetalLB, and eventually DNS services like ExternalDNS and PowerDNS. Notably, this does **not** orchestrate instances of sshd and podman containers through K3s. K3s and the initial set of services mimic how the "Broker UAIs" in CSM to handle the SSH ingress and redirection of users into their interactive environment.
+K3s will serve as the orchestrator of services necessary to replicate the capabilities of UAIs on UAN hardware. These services include HAProxy, MetalLB, and eventually DNS services like ExternalDNS and PowerDNS. Notably, this does **not** orchestrate instances of `sshd` and `podman` containers through K3s. K3s and the initial set of services mimic how the "Broker UAIs" in CSM to handle the SSH ingress and redirection of users into their interactive environment.
 
 ### Use of Podman
-Traditional UAIs in CSM required some level of privilege in CSM for access to host volume mounts, networking, and startup activities. Podman containers offer an attractive solution for an interactive environment in which to place users. They can be rootless containers that do not rely on privilege escalation. When running on UANs, podman containers have access to a hosting environment that is already tailored to users.
+Traditional UAIs in CSM required some level of privilege in CSM for access to host volume mounts, networking, and startup activities. Podman containers offer an attractive solution for an interactive environment in which to place users. They can be rootless containers that do not rely on privilege escalation. When running on UANs, Podman containers have access to a hosting environment that is already tailored to users.
 
 ### Overview
 The overall component flow for replicating containerized environments for End-Users on UANs is as follows:
 1. A user uses `ssh` to initiate a connection to the HAProxy load-balancer running in K3s.
 1. HAProxy, using the configured load balancing algorithms, will forward the SSH connection to an instance of `sshd` running on a UAN.
-1. `sshd`, running on a UAN via systemd, will initiate a rootless podman container as the user using the `ForceCommand` configuration.
-1. The user is placed in a podman container for an interactive session, or their `SSH_ORIGINAL_COMMAND` is run in the container.
-1. When the user disconnects, the podman process exits, and the container is removed.
+1. `sshd`, running on a UAN through systemd, will initiate a rootless Podman container as the user using the `ForceCommand` configuration.
+1. The user is placed in a Podman container for an interactive session, or their `SSH_ORIGINAL_COMMAND` is run in the container.
+1. When the user disconnects, the Podman process exits, and the container is removed.
 
-There are alternate configurations of podman that would allow for different workflows, for example, the main pid of the container could be long running, to facilitate easier reentry to the container on subsequent logins. 
+There are alternate configurations of Podman that would allow for different workflows. For example, the main pid of the container could be long running, to facilitate easier re-entry to the container on subsequent logins. 
 
 ## Prerequisites 
 
-The following steps should be completed prior to configuring the UAN with K3s.
+The following steps must be completed prior to configuring the UAN with K3s.
 
 1. Designate a UAN to operate as the K3s control-plane node. See [Designating Application Nodes for K3s](Designating_Application_Nodes_for_K3s.md).
 
@@ -33,11 +33,11 @@ The following steps should be completed prior to configuring the UAN with K3s.
    
    This address pool must be routable from the UAN control-plane, and should be unused for other purposes.
 
-   This will allow for external `LoadBalancer` IP Address to be assigned to services like `HAProxy`. Initially, these IP addresses will serve as the SSH ingress for instances of `HAProxy`.
+   This pool will allow for external `LoadBalancer` IP address to be assigned to services like `HAProxy`. Initially, these IP addresses will serve as the SSH ingress for instances of `HAProxy`.
 
 1. Configure and create the `/etc/subuid` and `/etc/subgid` files.
 
-   To allow for users to run rootless podman containers, these files must be present and configured with an entry for each user. These files should be uploaded to the `user` S3 bucket:
+   To allow for users to run rootless Podman containers, these files must be present and configured with an entry for each user. These files must be uploaded to the `user` S3 bucket:
 
    ```bash
    $ cray artifacts list user --format json
@@ -110,19 +110,19 @@ UAN uploads artifacts to deploy to the UAN control-plane node in a new nexus rep
 
 - uan-2.6.XX-third-party
 
-The following Nexus group repository is created and reference the aforementioned UAN Nexus raw repos.
+The following Nexus group repository is created and references the previous UAN Nexus raw repos.
 
 - uan-2.6-third-party
 
-This repository will contain the installer for K3s, Helm charts for HAProxy and MetalLB, etc.
+This repository will contain the installer for K3s, Helm charts for HAProxy and MetalLB, and so on
 
 ### Validation Tests 
 
-To validate the K3s cluster once deployed, see the [Validation Checks](#validation-checks) section of this document for details.
+To validate the K3s cluster after it is deployed, see the [Validation Checks](#validation-checks) section of this document for details.
 
 ## Configuring K3s, MetalLB, HAProxy, and SSHD for use with Podman
 
-Each of the sections below describe how the various components deployed to K3s and the UANs may be configured to enable users to SSH to rootless podman containers. As there is no one configuration to fit any one use case, read and understand each section to modify the configuration as needed. Once each section has been completed, see [Deploy K3s to the UAN](#deploy-k3s-to-the-uan).
+Each of the following sections describes how the various components deployed to K3s and the UANs may be configured to enable users to SSH to rootless Podman containers. As there is no one configuration to fit any one use case, read and understand each section to modify the configuration as needed. After each section has been completed, see [Deploy K3s to the UAN](#deploy-k3s-to-the-uan).
 
 ### MetalLB 
 
@@ -133,7 +133,7 @@ metallb_ipaddresspool_range_start: "x.x.x.x"
 metallb_ipaddresspool_range_end: "x.x.x.x"
 ```
 
-MetalLB will assign an IP address to each service running in K3s that requires and external IP address. In the case of HAProxy, each instance of HAProxy will require an IP address. Podman containers do *not* require their own IP address.
+MetalLB will assign an IP address to each service running in K3s that requires and external IP address. For HAProxy, each instance of HAProxy will require an IP address. Podman containers do *not* require their own IP address.
 
 **Note**: In a future version of CSM, this range may be integrated into the System Layout Service (SLS) so the range will be automatically determined.
 
@@ -144,7 +144,7 @@ MetalLB will assign an IP address to each service running in K3s that requires a
 # kubectl get services -n uai | grep 
 ```
 
-It may be possible to reallocate the CSM MetalLB pool `customer-access` from CSM to make room for a subset of IPs to use with MetalLB on UANs. To shrink the `customer-access` pool in CSM, edit the configmap and pick a new CIDR block for `customer-access`. In this example the CIDR block was `x.x.x.x/26`:
+It may be possible to reallocate the CSM MetalLB pool `customer-access` from CSM to make room for a subset of IP addresses to use with MetalLB on UANs. To shrink the `customer-access` pool in CSM, edit the configmap and pick a new CIDR block for `customer-access`. In this example, the CIDR block was `x.x.x.x/26`:
 ```bash
 # kubectl edit -n metallb-system cm/metallb
 ...
@@ -157,7 +157,7 @@ data:
       protocol: bgp
 ...
 ```
-This leaves a portion of IP Address unallocated that may then be used to set `metallb_ipaddresspool_range_start` and `metallb_ipaddresspool_end`. 
+This example configmap leaves a portion of IP Address unallocated that may then be used to set `metallb_ipaddresspool_range_start` and `metallb_ipaddresspool_end`. 
 
 **Important**: When calculating the range of IP Address now available from `customer-access`. Be sure to account for the Broadcast IP of the remaining `customer-access` pool.
 
@@ -176,7 +176,7 @@ uan_haproxy:
     chart_path: "{{ helm_install_path }}/charts/{{ haproxy_chart }}.tgz"
     args: "--set service.type=LoadBalancer"
 ```
-This must be further configured with additional values to populate the HAProxy configuration. For example, to load-balance SSH to three UANs, the following configuration changes should be made:
+This file must be further configured with additional values to populate the HAProxy configuration. For example, to load-balance SSH to three UANs, the following configuration changes must be made:
 ```yaml
 uan_haproxy:
   - name: "haproxy-uai"
@@ -205,11 +205,11 @@ uan_haproxy:
         server uan02 uan02.example.domain.com:9000 check inter 10s fall 2 rise 1
         server uan03 uan03.example.domain.com:9000 check inter 10s fall 2 rise 1
 ```
-This is an example that should be tailored to the desired configuration. See the [SSHD Configuration](#sshd-configuration) section to create new instances of SSHD to respond to HAProxy connections outside of the standard SSHD running on port 22.
+This example that must be tailored to the wanted configuration. See the [SSHD Configuration](#sshd-configuration) section to create new instances of SSHD to respond to HAProxy connections outside of the standard SSHD running on port 22.
 
-For more information HAProxy configurations, see [HAProxy Configuration](<https://docs.haproxy.org/2.7/configuration.html>)
+For more information on HAProxy configurations, see [HAProxy Configuration](<https://docs.haproxy.org/2.7/configuration.html>)
 
-To enable additional instances of HAProxy representing alternate configurations, add a new element to the list `uan_haproxy`.
+To enable additional instances of HAProxy representing alternate configurations, add an element to the list `uan_haproxy`.
 ### SSHD Configuration
 The role `uan_sshd` runs in the playbook `k3s.yml` to start and configure new instances of SSHD to respond to HAProxy forwarded connections. Each new instance of SSHD is defined in `vars/uan_sshd.yml` as an element in the list `uan_sshd_configs`:
 ```yaml
@@ -218,9 +218,9 @@ uan_sshd_configs:
     config_path: "/etc/ssh/uan"
     port: "9000"
 ```
-This will create a systemd unit file `/usr/lib/systemd/system/sshd_uai.service` and will mark the service as enabled. A SSH config file will also be created at `/etc/ssh/uan/sshd_uai_config` to start `sshd` listening on port 9000.
+This configuration will create a systemd unit file `/usr/lib/systemd/system/sshd_uai.service` and will mark the service as enabled. An SSH configuration file will also be created at `/etc/ssh/uan/sshd_uai_config` to start `sshd` listening on port 9000.
 
-This default configuration will simply place users into their standard shell. To create a rootless podman container upon logging in, specify alternate configuration:
+This default configuration will simply place users into their standard shell. To create a rootless Podman container upon logging in, specify an alternate configuration:
 ```yaml
   - name: "uai"
     config_path: "/etc/ssh/uan"
@@ -234,10 +234,10 @@ This default configuration will simply place users into their standard shell. To
         ForceCommand podman --root /scratch/containers/$USER run -it -h uai --cgroup-manager=cgroupfs --userns=keep-id --network=host -e DISPLAY=$DISPLAY registry.local/cray/uai:latest
 ```
 
-**Note**: In the example above, the image registry.local/cray/uai:latest was provided as an example, this should be modified to reference an available container image.
+**Note**: In the example above, the image `registry.local/cray/uai:latest` was provided as an example, but this example must be modified to reference an available container image.
 
 ### Deploy K3s to the UAN
-Once the VCS repository has been updated with the appropriate values, generate a new image and reboot the UAN. 
+After the VCS repository has been updated with the appropriate values, generate a new image and reboot the UAN. 
 
 Alternatively, update the active CFS configuration on a single running UAN to include the `k3s.yml` playbook and uncomment out the following line from k3s.yml:
 ```yaml
@@ -249,7 +249,7 @@ Alternatively, update the active CFS configuration on a single running UAN to in
         #- uan_k3s_stage # Uncomment to stage K3s assets without Image Customization
         - uan_k3s_install
 ```
-This will download the necessary assets without requiring an image rebuild.
+This configuration will download the necessary assets without requiring an image rebuild.
 
 After the node has been booted and configured, proceed with the [Validation Checks](#validation-checks) section to verify the components have been configured correctly.
 
@@ -257,7 +257,7 @@ After the node has been booted and configured, proceed with the [Validation Chec
 
 ## K3s Validation
 
-To verify the `k3s.yml` playbook succeeded, perform the following sanity checks.
+To verify the `k3s.yml` playbook succeeded, perform the following verification checks.
 
 1. Verify `kubectl` from the UAN.
 
@@ -297,7 +297,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following sanity checks.
    haproxy-uai   haproxy-uai   LoadBalancer   x.x.x.x        x.x.x.x          22:30886/TCP   3h47m
    ```
 
-1. Verify the new instance of SSHD is running:
+1. Verify that the new instance of SSHD is running:
 
    ```bash
    uan01:~ # systemctl status sshd_uai

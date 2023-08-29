@@ -13,7 +13,7 @@ Read [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) before 
     ncn# kubectl -n services get pods --sort-by=.metadata.creationTimestamp | grep ^cfs
     ```
 
-2. View the Ansible log of the CFS session found in the previous step \(CFS\_SESSION in the following example\). Use the information in log to guide troubleshooting.
+2. View the Ansible log of the CFS session found in the previous step \(CFS\_SESSION in the following example\). Use the information in the log to guide troubleshooting.
 
     ```bash
     ncn# kubectl -n services logs -f -c ansible-0 CFS_SESSION

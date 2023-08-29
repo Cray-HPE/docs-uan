@@ -1,16 +1,16 @@
 # Booting an Application Node with a SLE HPC Image (Technical Preview)
 
-A SLE HPC image is available for use with Application Node types such as gateways and LNet routers. This image is currently considered a "Technical Preview" as the initial support for booting with SLE HPC Images without COS. This Application Node image differs from the standard COS-based image because this image does not include the COS kernel and libraries that Compute Nodes (CNs) have.
+A SLE HPC image is available for use with Application Node types such as gateways and LNet routers. This image is considered a "Technical Preview" as the initial support for booting with SLE HPC Images without COS. This Application Node image differs from the standard COS-based image because this image does not include the COS kernel and libraries that Compute Nodes (CNs) have.
 
-The image is built from the same pipeline as Non-Compute Node (NCN) Images. Similarties may be noticed including the kernel and package versions.
+The image is built from the same pipeline as Non-Compute Node (NCN) Images. Similarities may be noticed including the kernel and package versions.
 
 This procedure documents how to boot and configure this image.
 
 ## Limitations
 
-As this is currently a "Technical Preview" of supporting SLE HPC Images on Application Nodes, there are several limitations:
+As this feature is a "Technical Preview" of supporting SLE HPC Images on Application Nodes, there are several limitations:
 
-* S3 presigned URLs with an expiration limit for the rootfs must be created.
+* S3 presigned URLs with an expiration limit for the `rootfs` must be created.
 * BSS parameters must be set with `cray bss bootparameters replace ...`
 * BOS Sessions and Templates are not supported.
 * CFS Configurations that operate on COS and NCN images are not yet supported.
@@ -36,7 +36,7 @@ Perform the following steps to configure and boot a SLE HPC image on an Applicat
 
 1. Log in to the master node `ncn-m001`. All commands in this procedure are run from the master node.
 
-1. Verify the UAN release contains a SLES image.
+1. Verify that the UAN release contains a SLES image.
 
     ```bash
     ncn-m001# UAN_RELEASE=2.5
@@ -61,7 +61,7 @@ Perform the following steps to configure and boot a SLE HPC image on an Applicat
     }
     ```
 
-1. Customize the image using SAT Bootprep. This will add a root password to the image as one is not included. If CFS is not going to be used on this node, this step is optional. Support for additional product layers will be added in subsequent releases.
+1. Customize the image using SAT Bootprep. These commands will add a root password to the image as one is not included. If CFS is not going to be used on this node, this step is optional. Support for additional product layers will be added in subsequent releases.
 
     ```bash
     ncn-m001# cat bootprep-sles-uan.yml
@@ -101,7 +101,7 @@ Perform the following steps to configure and boot a SLE HPC image on an Applicat
     }
     ```
 
-1. Create a presigned URL for the rootfs. This is needed for the node to boot in this release, in the future, this will be integrated into BSS and will not need to be performed. This URL will be valid for 1 hour and will need to be recreated if the node reboots after the URL expires. To set a longer expiration, adjust the "aws s3 presign" command accordingly.
+1. Create a presigned URL for the `rootfs`. This step is needed for the node to boot in this release, in the future, this step will be integrated into BSS and will not need to be performed. This URL will be valid for 1 hour and must be recreated if the node reboots after the URL expires. To set a longer expiration, adjust the `aws s3 presign` command accordingly.
 
     ```base
     ncn-m001# export AWS_ACCESS_KEY_ID=`kubectl get secrets -o yaml ims-s3-credentials -ojsonpath='{.data.access_key}' | base64 -d`
@@ -128,7 +128,7 @@ Perform the following steps to configure and boot a SLE HPC image on an Applicat
     ncn-m001:~ # MAC=b4:2e:99:fd:45:c8
     ```
 
-1. Update BSS with the kernel, initrd, and desired parameters. 
+1. Update BSS with the kernel, initrd, and wanted parameters. 
 
     ```bash
     ncn-m001:~ # PARAMS="ifname=nmn0:$MAC ip=nmn0:dhcp spire_join_token=\${SPIRE_JOIN_TOKEN} biosdevname=1 pcie_ports=native transparent_hugepage=never console=tty0 console=ttyS0,115200 iommu=pt metal.no-wipe=1 initrd=initrd root=live:$ROOTFS_URL rd.live.ram=0 rd.writable.fsimg=0 rd.skipfsck rd.live.squashimg=filesystem.squashfs rd.live.overlay.thin=1 rd.live.overlay.overlayfs=1 rd.luks=0 rd.luks.crypttab=0 rd.lvm.conf=0 rd.lvm=1 rd.auto=1 rd.md=1 rd.dm=0 rd.neednet=0 rd.peerdns=1 rd.md.waitclean=1 rd.multipath=0 rd.md.conf=1 rd.bootif=0 hostname=$NODE rd.net.dhcp.retry=3 append nosplash quiet log_buf_len=1 rd.retry=10 rd.shell"
@@ -161,7 +161,7 @@ Perform the following steps to configure and boot a SLE HPC image on an Applicat
 
 ## Troubleshooting
 
-Some general troublshooting tips may help in getting started using the SLE HPC image.
+Some general troubleshooting tips may help in getting started using the SLE HPC image.
 
 ### Dracut failures during booting
 
@@ -198,7 +198,7 @@ Some general troublshooting tips may help in getting started using the SLE HPC i
     [   28.400096] dracut-initqueue[945]: Warning: Could not boot.
     ```
 
-1. The root filesystem doesn't won't download because the URL is too long. Regenerate the URL using the aws command.
+1. The root filesystem does not download because the URL is too long. Regenerate the URL using the `aws` command.
 
     ```bash
     2022-08-03 19:41:52   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0Warning: Failed to create the file
@@ -221,7 +221,7 @@ Some general troublshooting tips may help in getting started using the SLE HPC i
     [    9.807724] dracut-initqueue[1429]: Warning: Downloading 'http://rgw-vip/boot-images/13964414-bbad-40e9-9e31-a3683010febb/rootfs?AWSAccessKeyId=I43RBLH07R65TRO3AL02&Signature=7%2FgOCotleoyLPGmeyG%2FFX8tpkWg%3D&Expires=1661523713' failed!
     ```
 
-1. The dracut module livenet is missing from the initrd. Make sure the initrd was regenerated with `/srv/cray/scripts/common/create-ims-initrd.sh` if CFS was used.
+1. The dracut module `livenet` is missing from the initrd. Make sure that the initrd was regenerated with `/srv/cray/scripts/common/create-ims-initrd.sh` if CFS was used.
 
     ```bash
     2022-08-24 14:48:53 [    5.784023] dracut: FATAL: Don't know how to handle 'root=live:http://rgw-vip/boot-images/e88ed416-5d58-4421-9013-fa2171ac11b8/rootfs?AWSAccessKeyId=I43RBLH07R65TRO3AL02&Signature=bL661kZHPyEgBsLLEuJHFz3zKVs%3D&Expires=1661438587'
@@ -237,7 +237,7 @@ Some general troublshooting tips may help in getting started using the SLE HPC i
     ssh: connect to host uan01 port 22: No route to host
     ```
 
-1. Unable to log in to the node with a password. No root password is defined in the image by default, one must be added via CFS or by modifying the squashfs filesystem.
+1. Unable to log in to the node with a password. No root password is defined in the image by default, one must be added by CFS or by modifying the squashfs filesystem.
 
     ```bash
     ncn-m001:# ssh app01

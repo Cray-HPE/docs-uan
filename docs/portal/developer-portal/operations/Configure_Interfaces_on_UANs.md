@@ -3,38 +3,38 @@
 
 Perform this procedure to configure network interfaces on UANs by editing a configuration file.
 
-Interface configuration is performed by the `uan_interfaces` Ansible role. For details on the variables referred to in this procedure, see [`uan_interfaces`](uan_interfaces.md).
+The `uan_interfaces` Ansible role performs interface configuration. For details on the variables used in this procedure, see [`uan_interfaces`](uan_interfaces.md).
 
 In the command examples of this procedure, `PRODUCT_VERSION` refers to the current installed version of the UAN product. Replace `PRODUCT_VERSION` with the UAN version number string when executing the commands.
 
 ## Node Management Networking
 
-By default, the Node Management Network \(NMN\) is connected to a single `nmn0` interface.  If desired, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, `nmnb0`. To configure the NMN as a bonded pair, set `uan_nmn_bond` to true and set the interfaces to be used in the bond in `uan_nmn_bond_slaves` as described in [`uan_interfaces`](uan_interfaces.md).
+By default, the Node Management Network \(NMN\) is connected to a single `nmn0` interface. If wanted, and the system networking is configured to support it, the Node Management Network may be configured as a bonded interface, `nmnb0`. To configure the NMN as a bonded pair, set `uan_nmn_bond` to true and set the interfaces to be used in the bond in `uan_nmn_bond_slaves` as described in [`uan_interfaces`](uan_interfaces.md).
 
 ### Prerequisites for Bonded NMN
 
-To enable NMN bonding, certain features in iPXE and the management switches connected to the UAN NMN interfaces must be enabled.  These features are enabled in the following CSM and CANU versions:
+To enable NMN bonding, certain features in iPXE and the management switches connected to the UAN NMN interfaces must be enabled. These features are enabled in the following CSM and CANU versions:
 
 * CSM-1.3.2 and newer enable the iPXE features
 * CANU-1.7.0 and newer enables the management switch features
 
 ## User Access Networking
 
-User access may be configured to use either a direct connection to the UANs from the site's user network, or one of two optional user access networks implemented within the HPE Cray EX system.  The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\).  The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
+User access may be configured to use either a direct connection to the UANs from the site's user network, or one of two optional user access networks implemented within the HPE Cray EX system. The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\). The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
 
-By default, a direct connection to the site's user network is assumed and the Admin must define the interface(s) and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
+By default, a direct connection to the site's user network is assumed and the Admin must define one or more interfaces and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
 
-* When CAN is set as the system default route in SLS and `uan_nmn_bond` is false, the bonded CAN interfaces are determined automatically.  If `uan_nmn_bond` is true, the bonded CAN interfaces must be defined by `uan_can_bond_slaves` \(see [`uan_interfaces`](uan_interfaces.md)\). The default route is set to the bonded CAN interface `can0`.
+* When CAN is set as the system default route in SLS and `uan_nmn_bond` is false, the bonded CAN interfaces are determined automatically. If `uan_nmn_bond` is true, the bonded CAN interfaces must be defined by `uan_can_bond_slaves` \(see [`uan_interfaces`](uan_interfaces.md)\). The default route is set to the bonded CAN interface `can0`.
 
-* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` by default, but can be changed by setting `uan_chn_device` to the desired interface. The default route is set to the CHN.
+* When CHN is set as the system default route in SLS, the CHN IP is added to `hsn0` by default, but can be changed by setting `uan_chn_device` to the wanted interface. The default route is set to the CHN.
 
 * The Admin may override the CAN/CHN default route by setting `uan_customer_default_route` to true and defining the default route in `customer_uan_routes`.
 
 ## Procedure
 
-Network configuration settings are defined in the `uan-config-management` VCS repo under the `group_vars/ROLE_SUBROLE/` or `host_vars/XNAME/` directories, where `ROLE_SUBROLE` must be replaced by the role and subrole assigned for the node in HSM, and `XNAME` with the xname of the node. Values under `group_vars/ROLE_SUBROLE/` apply to all nodes with the given role and subrole.  Values under the `host_vars/XNAME/` apply to the specific node with the xname and will override any values set in `group_vars/ROLE_SUBROLE/`.  A yaml file is used by the Configuration Framework Service \(CFS\).  The examples in this procedure use `customer_net.yml`, but any filename may be used.  Admins must create this yaml file and use the variables described in this procedure.
+Network configuration settings are defined in the `uan-config-management` VCS repo under the `group_vars/ROLE_SUBROLE/` or `host_vars/XNAME/` directories, where `ROLE_SUBROLE` must be replaced by the role and subrole assigned for the node in HSM, and `XNAME` with the xname of the node. Values under `group_vars/ROLE_SUBROLE/` apply to all nodes with the given role and subrole. Values under the `host_vars/XNAME/` apply to the specific node with the xname and will override any values set in `group_vars/ROLE_SUBROLE/`. A yaml file is used by the Configuration Framework Service \(CFS\). The examples in this procedure use `customer_net.yml`, but any filename may be used. Admins must create this yaml file and use the variables described in this procedure.
 
-If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `yes` in the yaml file.  The UAN will be configured to use the CAN or CHN based on what the BICAN System Default Route is set to in SLS.
+If the HPE Cray EX CAN or CHN is wanted, set the `uan_can_setup` variable to `yes` in the yaml file. The UAN will be configured to use the CAN or CHN based on what the BICAN System Default Route is set to in SLS.
 
 1. Obtain the password for the `crayvcs` user.
 
@@ -251,7 +251,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
     - the `lastUpdated` line
     - the last `name` line
         
-    These must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
+    These lines must be removed before uploading the modified JSON file back into CFS to update the UAN configuration.
 
     ```bash
     ncn-m001# cat uan-config-PRODUCT_VERSION.json
@@ -271,7 +271,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
 
     c. Replace the `commit` value in the JSON file with the commit ID obtained in the previous Step.
 
-    The name value after the commit line may also be updated to match the new UAN product version, if desired. This is not necessary as CFS does not use this value for the configuration name.
+    The name value after the commit line may also be updated to match the new UAN product version, if wanted. This update is not necessary as CFS does not use this value for the configuration name.
 
     ```bash
     {
@@ -286,7 +286,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
     }
     ```
 
-    d. Create a new UAN CFS configuration with the updated JSON file.
+    d. Create a UAN CFS configuration with the updated JSON file.
 
        The following example uses `uan-config-PRODUCT_VERSION` for the name of the new CFS configuration, to match the JSON file name.
 
@@ -295,7 +295,7 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
     --file uan-config-PRODUCT_VERSION.json
     ```
 
-    e. Tell CFS to apply the new configuration to UANs by repeating the following command for each UAN. Replace `UAN_XNAME` in the command below with the name of a different UAN each time the command is run.
+    e. Tell CFS to apply the new configuration to UANs by repeating the following command for each UAN. Replace `UAN_XNAME` in the following command with the name of a different UAN each time the command is run.
 
     ```
     ncn-m001# cray cfs components update --desired-config uan-config-PRODUCT_VERSION \
@@ -312,5 +312,5 @@ If the HPE Cray EX CAN or CHN is desired, set the `uan_can_setup` variable to `y
      --template-uuid UAN_SESSION_TEMPLATE --operation reboot
     ```
 
-10. Verify that the desired networking configuration is correct on each UAN.
+10. Verify that the wanted network configuration is correct on each UAN.
 

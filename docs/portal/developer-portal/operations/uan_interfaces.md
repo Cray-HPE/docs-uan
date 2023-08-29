@@ -1,6 +1,6 @@
 # `uan_interfaces`
 
-The `uan_interfaces` role configures site/customer-defined network interfaces
+The `uan_interfaces` role configures site or customer-defined network interfaces
 and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
 
 ## Requirements
@@ -9,7 +9,7 @@ None.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are in the following list, including default values (see `defaults/main.yml`):
 
 `uan_nmn_bond`
 
@@ -28,20 +28,20 @@ uan_nmn_bond: no
 
 : A list of the interfaces to use as the bond slave pair when `uan_nmn_bond` is true.
 
-The interface names must be in a format which doesn't change between reboots of the node, such as `ens10f0`
+The interface names must be in a format which does not change between reboots of the node, such as `ens10f0`
 which is the first port of the NIC in slot 10.  
 
 **NOTE:** `ens10f0` is typically the first port of the OCP 25Gb card that
 the node PXE boots.
 
 **IMPORTANT:** The first interface in the list must be the `nmn0` interface which is configured during the
-initial image boot, typically `ens10f0`.  This is required because the MAC address of the `nmn0` interface
-is the MAC associated with the IP address of the UAN.  The bonded `nmnb0` interface and the bond slaves
+initial image boot, typically `ens10f0`. This interface order is required because the MAC address of the `nmn0` interface
+is the MAC associated with the IP address of the UAN. The bonded `nmnb0` interface and the bond slaves
 will assume this MAC and the IP address of `nmn0` to preserve connectivity.
 
 The second interface is typically the first port of a different 25Gb NIC for resiliency.
 
-The default values of `uan_nmn_bond_slaves` are shown here.  They may need to be changed to match the actual
+The default values of `uan_nmn_bond_slaves` are shown here. Change them as needed to match the actual
 node cabling and NIC configuration.
 
 ```yaml
@@ -53,11 +53,11 @@ uan_nmn_bond_slaves:
 `uan_can_setup`
 
 : Boolean variable controlling the configuration of user
-access to UAN nodes.  When true, user access is configured over either the
+access to UAN nodes. When true, user access is configured over either the
 Customer Access Network (CAN) or Customer High Speed Network (CHN), depending on which is configured on the system.
 
 When `uan_can_setup` is false, user access over the CAN or CHN is not configured
-on the UAN nodes and no default route is configured.  The Admin must then specify
+on the UAN nodes, and no default route is configured. The Admin must then specify
 the default route in `customer_uan_routes`.
 
 The default value of `uan_can_setup` is `no`.
@@ -68,9 +68,9 @@ uan_can_setup: no
 
 `uan_can_bond_slaves`
 
-: A list of the interfaces to use as the bond slave pair when `uan_can_setup` is true, `uan_nmn_bond` is true, and the Customer Access Network (CAN) is configured on the system.  This variable is ignored if `uan_nmn_bond` is false.
+: A list of the interfaces to use as the bond slave pair when `uan_can_setup` is true, `uan_nmn_bond` is true, and the Customer Access Network (CAN) is configured on the system. This variable is ignored if `uan_nmn_bond` is false.
 
-The interface names must be in a format which doesn't change between reboots of the node, such as `ens10f1`
+The interface names must be in a format which does not change between reboots of the node, such as `ens10f1`
 which is the second port of the NIC in slot 10.  
 
 **NOTE:** `ens10f1` is typically the second port of the OCP 25Gb card and is used as one of the bond
@@ -78,7 +78,7 @@ slaves in the CAN `bond0` interface.
 
 The second interface is typically the second port of a different 25Gb NIC for resiliency.
 
-The default values of `uan_can_bond_slaves` are shown here.  They may need to be changed to match the actual
+The default values of `uan_can_bond_slaves` are shown here. They may need to be changed to match the actual
 node cabling and NIC configuration.
 
 ```yaml
@@ -111,7 +111,7 @@ uan_customer_default_route: no
 `sls_nmn_name`
 
 : Node Management Network name used by SLS.
-This value should not be changed.
+This value must not be changed.
 
 ```yaml
 sls_nmn_name: "NMN"
@@ -120,7 +120,7 @@ sls_nmn_name: "NMN"
 `sls_nmn_svcs_name`
 
 : Node Management Services Network name used by SLS.
-This value should not be changed.
+This value must not be changed.
 
 ```yaml
 sls_nmn_svcs_name: "NMNLB"
@@ -129,7 +129,7 @@ sls_nmn_svcs_name: "NMNLB"
 `sls_mnmn_svcs_name`
 
 : Mountain Node Management Services Network name used
-by SLS.  This value should not be changed.
+by SLS. This value must not be changed.
 
 ```yaml
 sls_mnmn_svcs_name: "NMN_MTN"
@@ -137,7 +137,7 @@ sls_mnmn_svcs_name: "NMN_MTN"
 
 `uan_required_dns_options`
 
-: List of DNS options.  By default, `single-request` is set and must not be removed.
+: List of DNS options. By default, `single-request` is set and must not be removed.
 
 ```yaml
 uan_required_dns_options:
@@ -147,11 +147,11 @@ uan_required_dns_options:
 `customer_uan_interfaces`
 
 : List of interface names used for constructing
-`ifcfg-<customer_uan_interfaces.name>` files. Define ifcfg fields for each
+`ifcfg-<customer_uan_interfaces.name>` files. Define the ifcfg fields for each
 interface here. Field names are converted to uppercase in the generated
-`ifcfg-<name>` file(s).
+`ifcfg-<name>` file or files.
 
-Interfaces should be defined in order of dependency.
+Interfaces must be defined in order of dependency.
 
 ```yaml
 customer_uan_interfaces: []
@@ -269,7 +269,7 @@ external_dns_options:
 `uan_access_control`
 
 : Boolean variable to control whether non-root access
-control is enabled.  Default is `no`.
+control is enabled. Default is `no`.
 
 ```yaml
 uan_access_control: no

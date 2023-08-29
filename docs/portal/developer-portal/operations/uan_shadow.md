@@ -8,7 +8,7 @@ The root password hash has to be installed in HashiCorp Vault at `secret/uan roo
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are in the following list, including default values (see `defaults/main.yml`):
 
 `uan_vault_url`
 

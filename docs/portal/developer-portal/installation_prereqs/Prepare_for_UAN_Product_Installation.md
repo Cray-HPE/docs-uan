@@ -6,15 +6,15 @@ Install and configure the COS product before performing this procedure.
 
 1. Verify that the management network switches are properly configured.
 
-   Refer to the [switch configuration procedures](https://cray-hpe.github.io/docs-csm/en-14/install/csm-install/readme/#5-configure-management-network-switches) in the HPE Cray System Management Documentation.
+   See the [switch configuration procedures](https://cray-hpe.github.io/docs-csm/en-14/install/csm-install/readme/#5-configure-management-network-switches) in the HPE Cray System Management Documentation.
 
 2. Ensure that the management network switches have the proper firmware.
 
-    Refer to the procedure "Update the Management Network Firmware" in the HPE Cray EX hardware documentation.
+    See the procedure "Update the Management Network Firmware" in the HPE Cray EX hardware documentation.
 
 3. Ensure that the host reservations for the UAN CAN/CHN network have been properly set.
 
-    Refer to the procedure "Add UAN CAN IP Addresses to SLS" in the HPE Cray EX hardware documentation.
+    See the procedure "Add UAN CAN IP Addresses to SLS" in the HPE Cray EX hardware documentation.
 
 4. [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md)
 
@@ -36,7 +36,7 @@ Install and configure the COS product before performing this procedure.
     ncn-m001# tar zxf uan-PRODUCT_VERSION.tar.gz
     ```
 
-9. Navigate into the uan-PRODUCT_VERSION/ directory.
+9. Navigate into the `uan-PRODUCT_VERSION/` directory.
 
     ```bash
     ncn-m001# cd uan-PRODUCT_VERSION/
@@ -44,7 +44,7 @@ Install and configure the COS product before performing this procedure.
 
 10. Run the pre-install goss tests to determine if the system is ready for the UAN product installation.
 
-    This requires that goss is installed on the node running the tests.
+    This step requires that goss is installed on the node running the tests.
 
     ```bash
     ncn# ./validate-pre-install.sh
@@ -71,7 +71,7 @@ Install and configure the COS product before performing this procedure.
        ncn# PODS=$(kubectl get pods -n services -l app.kubernetes.io/name=cray-console-node --template '{{range .items}}{{.metadata.name}} {{end}}')
        ```
 
-    3. Use `conman -q` to scan the list of connections being monitored by conman (only UAN xnames are shown for brevity).
+    3. Use `conman -q` to scan the list of connections is monitoring (only UAN xnames are shown for brevity).
 
        ```bash
        ncn# for pod in $PODS; do kubectl exec -n services -c cray-console-node $pod -- conman -q; done

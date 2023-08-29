@@ -1,12 +1,12 @@
 
 # Build a New UAN Image Using a COS Recipe
 
-Prior to UAN 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the UAN 2.3 release, UAN does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed via CFS and the `uan_packages` role.  In UAN 2.6, this procedure is automated as part of the IUF process of installing and upgrading UAN.  See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details. 
+Prior to UAN 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the UAN 2.3 release, UAN does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed by CFS and the `uan_packages` role. In UAN 2.6, this procedure is automated as part of the IUF process of installing and upgrading UAN. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details.
 
 The following procedures are provided for cases where a new UAN image must be built after initial installation. This document describes two methods of building UAN images:
 
-- [Using IUF to Build a New UAN Image (UAN 2.6+)](#using-iuf-to-build-a-new-uan-image-uan-26)
-- [Manually Build a New UAN Image from a COS Recipe (UAN 2.3+)](#manually-build-a-new-uan-image-from-a-cos-recipe-uan-23)
+- [Using IUF to Build a New UAN Image (UAN 2.6+)](#using-iuf-to-build-a-new-uan-image-uan-26): use this procedure if you are using the IUF automation and the UAN software release version is 2.6 or later.
+- [Manually Build a New UAN Image from a COS Recipe (UAN 2.3+)](#manually-build-a-new-uan-image-from-a-cos-recipe-uan-23): use this procedure if you are not using the IUF automation or the UAN software release is earlier than 2.6 and later than 2.3.
 
 ## Using IUF to Build a New UAN Image (UAN 2.6+)
 
@@ -21,7 +21,7 @@ Two IUF stages are run to create a new UAN image:
 
 After IUF runs these two stages, the UAN CFS configuration will be created, the UAN image will be configured using that configuration, and a UAN BOS session template will be created using the new configuration and image.
 
-Before using IUF to build a new UAN image from a COS recipe, be sure that the information in the IUF Recipe Variables file (`product_vars.yaml`) and bootprep file (`compute-and-uan-bootprep.yaml`) are correct for the desired UAN CFS configuration and the COS image recipe.
+Before using IUF to build a new UAN image from a COS recipe, be sure that the information in the IUF Recipe Variables file (`product_vars.yaml`) and bootprep file (`compute-and-uan-bootprep.yaml`) are correct for the wanted UAN CFS configuration and the COS image recipe.
 
 - Example `product_vars.yaml` showing COS and UAN versions and working VCS branches:
 
@@ -127,7 +127,7 @@ Before using IUF to build a new UAN image from a COS recipe, be sure that the in
     - Application_UAN
   ```
 
-After the `product_vars.yaml` and `compute-and-uan-bootprep.yaml` files are updated to reflect the desired COS and UAN versions and VCS branches to use, IUF may be executed.
+After the `product_vars.yaml` and `compute-and-uan-bootprep.yaml` files are updated to reflect the wanted COS and UAN versions and VCS branches to use, IUF may be executed.
 
 ## Manually Build a New UAN Image from a COS Recipe (UAN 2.3+)
 
@@ -136,7 +136,7 @@ Perform the following before starting this procedure:
 - Install the COS, Slingshot, and UAN product streams.
 - Initialize the cray administrative CLI.
 
-In the COS recipe for 2.2, several dependencies have been removed, this includes Slingshot, DVS, and Lustre. Those packages are now installed during CFS Image Customization. More information on this change is covered in the [Create UAN Boot Images](Create_UAN_Boot_Images.md) procedure.
+In the COS recipe for 2.2, several dependencies have been removed, including Slingshot, DVS, and Lustre. Those packages are now installed during CFS Image Customization. More information on this change is covered in the [Create UAN Boot Images](Create_UAN_Boot_Images.md) procedure.
 
 1. Identify the COS image recipe to base the UAN image on. Select the recipe that matches the version of COS that the compute nodes will be using.
 

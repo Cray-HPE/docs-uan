@@ -7,17 +7,17 @@ nodes.
 
 There must be disk devices found on the UAN node by the `device_filter` module
 or this role will exit with failure. This condition can be ignored by setting
-`uan_require_disk` to `false`. See variable definitions below.
+`uan_require_disk` to `false`. See the following list for variable definitions.
 
 See the `library/device_filter.py` file for more information on this module.
 
 The device that is found will be unmounted if mounted and a swap partition will
-be created on the first half of the disk, and a scratch partition on the second
+be created on the first half of the disk. A scratch partition will be created on the second
 half. ext4 filesystems are created on each partition.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are in the following list, including default values (see `defaults/main.yml`):
 
 `uan_require_disk`
 
@@ -54,7 +54,7 @@ Input to the `device_filter` module.
 
 `uan_device_model_filter`
 
-: Regular expression of device model for this role to filter.
+: Regular expression of the device model for this role to filter.
 Input to the `device_filter` module.
 
   Example:
@@ -65,7 +65,7 @@ Input to the `device_filter` module.
 
 `uan_device_vendor_filter`
 
-: Regular expression of disk vendor for this role to filter.
+: Regular expression of the disk vendor for this role to filter.
 Input to the `device_filter` module.
 
   Example:
@@ -127,7 +127,7 @@ Input to the `device_filter` module.
 
 `swap_swappiness`
 
-: Value to set the swapiness in sysctl.
+: Value to set the `swapiness` in `sysctl`.
 
   Example:
 
