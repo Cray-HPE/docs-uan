@@ -8,7 +8,7 @@ None.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are in the following list, including default values (see `defaults/main.yml`):
 
 ```yaml
 uan_motd_content: []

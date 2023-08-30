@@ -1,9 +1,9 @@
 
 # Configure Pluggable Authentication Modules \(PAM\) on UANs
 
-Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
+Perform this procedure to configure PAM on UANs. PAM enables dynamic authentication support for system services.
 
-Initialize and configure the Cray command line interface \(CLI\) tool on the system. See "Configure the Cray Command Line Interface \(CLI\)" in the CSM documentation for more information.
+Initialize and configure the Cray CLI tool on the system. See "Configure the Cray Command Line Interface \(CLI\)" in the CSM documentation for more information.
 
 1. Verify that the Gitea Version Control Service \(VCS\) is running.
 
@@ -13,7 +13,7 @@ Initialize and configure the Cray command line interface \(CLI\) tool on the sys
     services          gitea-vcs-postgres-0               2/2     Running             0          11d
     ```
 
-2. Retrieve the initial Gitea login credentials for the `crayvcs` username.
+2. Retrieve the initial Gitea login credentials for the `crayvcs` user name.
 
     ```bash
     ncn-m001# kubectl get secret -n services vcs-user-credentials \
@@ -43,7 +43,7 @@ Initialize and configure the Cray command line interface \(CLI\) tool on the sys
 
 6. Make a new directory for the PAM configuration.
 
-    a. Create a `group_vars/all` directory if making changes to all UANs.
+    a. Create a `group_vars/all` directory if changing all UANs.
 
     ```bash
     ncn-w001# mkdir -p group_vars/all

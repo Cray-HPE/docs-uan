@@ -18,7 +18,7 @@ Perform the first three steps of [Prepare for UAN Product Installation](Prepare_
 
    3. Wait for SSH to establish the connection.
 
-2. Open https://127.0.0.1:8443 in web browser on the NCN to access the BMC web GUI.
+2. Open https://127.0.0.1:8443 in a web browser on the NCN to access the BMC web GUI.
 
 3. Log in to the web GUI using default credentials.
 

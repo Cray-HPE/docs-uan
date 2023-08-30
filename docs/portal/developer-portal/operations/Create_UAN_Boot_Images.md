@@ -1,21 +1,21 @@
 
 # Create UAN Boot Images
 
-Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the UAN product.  See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the UAN release is prior to UAN 2.6. For UAN 2.6 and newer, perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) for these cases.
+Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the UAN product. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the UAN release is prior to UAN 2.6. For UAN 2.6 and newer, perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) for these cases.
 
 ## Overview
 
 This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
 
-UAN specific configuration, and other required configurations related to UANs are covered in this topic. Refer to product-specific documentation for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment\) that may be configured on the UANs.
+UAN specific configuration, and other required configurations related to UANs are covered in this topic. See product-specific documentation for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment\) that may be configured on the UANs.
 
-This is the overall workflow for preparing UAN images to boot UANs:
+The overall workflow for preparing UAN images to boot UANs is:
 
 1. Clone the UAN configuration git repository and create a branch based on the branch imported by the UAN installation.
 2. Update the configuration content and push the changes to the newly created branch.
 3. Use Shasta Admin Toolkit (SAT) command `sat bootprep`, to automate the creation of IMS image, CFS configurations, and BOS session templates.
 
-Once the UAN BOS session template is created, the UANs will be ready to be booted by a BOS session.
+After the UAN BOS session template is created, A BOS session will be able to boot the UANs.
 
 Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this procedure with the current UAN product version installed \(See Step 1\) and the hostname of the HPE Cray EX system, respectively.
 
@@ -40,52 +40,14 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
         ssh_url: git@vcs.CRAY_EX_HOSTNAME:cray/uan-config-management.git                      
     ```
 
-2. **Optional** Generate the password hash for the `root` user. Replace PASSWORD with the `root` password you wish to use.  If an upgrade or image rebuild is being performed, the root password may have already been added to vault.
-
-    ```bash
-    ncn-m001# openssl passwd -6 -salt $(< /dev/urandom tr -dc ./A-Za-z0-9 | head -c4) PASSWORD
-    ```
-
-3. **Optional** Obtain the HashiCorp Vault `root` token.
-
-    ```bash
-    ncn-m001# kubectl get secrets -n vault cray-vault-unseal-keys -o jsonpath='{.data.vault-root}' | base64 -d; echo
-    ```
-
-4. **Optional** Write the password hash obtained in Step 2 to the HashiCorp Vault.
-
-    The vault login command will request a token. That token value is the output of the previous step. The vault `read secret/uan` command verifies that the hash was stored correctly. This password hash will be written to the UAN for the `root` user by CFS.
-
-    ```bash
-    ncn-m001# kubectl exec -it -n vault cray-vault-0 -c vault -- sh
-    export VAULT_ADDR=http://cray-vault:8200
-    vault login
-    vault write secret/uan root_password='HASH'
-    vault read secret/uan
-    ```
-
-5. **Optional** Write any uan_ldap sensitive data, such as the `ldap_default_authtok` value, to the HashiCorp Vault.
-
-    The vault login command will request a token. That token value is the output of the Step 3. The vault `read secret/uan_ldap` command verifies that the `uan_ldap` data was stored correctly. Any values stored here will be written to the UAN `/etc/sssd/sssd.conf` file in the `[domain]` section by CFS.
-
-    This example shows storing a value for `ldap_default_authtok`.  If more than one variable needs to be stored, they must be written in space separated `key=value` pairs on the same `vault write secret/uan_ldap` command line.
-
-    ```bash
-    ncn-m001# kubectl exec -it -n vault cray-vault-0 -- sh
-    export VAULT_ADDR=http://cray-vault:8200
-    vault login
-    vault write secret/uan_ldap ldap_default_authtok='TOKEN'
-    vault read secret/uan_ldap
-    ```
-
-6. Obtain the password for the `crayvcs` user from the Kubernetes secret for use in the next command.
+1. Obtain the password for the `crayvcs` user from the Kubernetes secret for use in the next command.
 
     ```bash
     ncn-m001# VCS_USER=$(kubectl get secret -n services vcs-user-credentials --template={{.data.vcs_username}} | base64 --decode)
               VCS_PASS=$(kubectl get secret -n services vcs-user-credentials --template={{.data.vcs_password}} | base64 --decode)
     ```
 
-7. Clone the UAN configuration management repository. Replace CRAY\_EX\_HOSTNAME in the clone url with **api-gw-service-nmn.local** when cloning the repository.
+1. Clone the UAN configuration management repository. Replace CRAY\_EX\_HOSTNAME in the clone url with **api-gw-service-nmn.local** when cloning the repository.
 
     The repository is in the VCS/Gitea service and the location is reported in the cray-product-catalog Kubernetes ConfigMap in the `configuration.clone_url` key. The CRAY\_EX\_HOSTNAME from the `clone_url` is replaced with `api-gw-service-nmn.local` in the command that clones the repository.
 
@@ -97,11 +59,11 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
     Already up to date.
     ```
 
-8. Create a branch using the imported branch from the installation to customize the UAN image.
+1. Create a branch using the imported branch from the installation to customize the UAN image.
 
-    This will be reported in the `cray-product-catalog` Kubernetes ConfigMap in the `configuration.import_branch` key under the UAN section. The format is cray/uan/PRODUCT\_VERSION. In this guide, an `integration-PRODUCT_VERSION` branch is used for examples to comply with IUF defaults, but the name can be any valid git branch name configured to be used by IUF.
+    This branch name will be reported in the `cray-product-catalog` Kubernetes ConfigMap in the `configuration.import_branch` key under the UAN section. The format is cray/uan/PRODUCT\_VERSION. In this guide, an `integration-PRODUCT_VERSION` branch is used for examples to comply with IUF defaults, but the name can be any valid git branch name configured to be used by IUF.
 
-    Modifying the cray/uan/PRODUCT\_VERSION branch that was created by the UAN product installation is not allowed by default.
+    Modifying the cray/uan/PRODUCT\_VERSION branch that the UAN product installation created is not allowed by default.
 
     ```bash
     ncn-m001# git checkout -b integration-PRODUCT_VERSION && git merge cray/uan/PRODUCT_VERSION
@@ -109,13 +71,13 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
     Already up to date.
     ```
 
-9. Apply any site-specific customizations and modifications to the Ansible configuration for the UAN nodes and commit the changes.
+1. Apply any site-specific customizations and modifications to the Ansible configuration for the UAN nodes and commit the changes.
 
     The default Ansible play to configure UAN nodes is `site.yml` in the base of the `uan-config-management` repository. The roles that are executed in this play allow for custom configuration as required for the system.
 
     Consult the individual Ansible role `README.md` files in the uan-config-management repository roles directory to configure individual role variables. Roles prefixed with `uan_` are specific to UAN configuration and include network interfaces, disk, LDAP, software packages, and message of the day roles.
 
-    ***NOTE:*** Admins ***must*** ensure the `uan_can_setup` variable is set to the correct value for the site.  This variable controls how the nodes are configured for user access. When `uan_can_setup` is `yes`, user access is over the `CAN` or `CHN`, based on the BICAN System Default Route setting in SLS.  When `uan_can_setup` is `no`, the Admin must configure the user access interface and default route. See [Configure Interfaces on UANs](Configure_Interfaces_on_UANs.md)
+    ***NOTE:*** Admins ***must*** ensure the `uan_can_setup` variable is set to the correct value for the site. This variable controls how the nodes are configured for user access. When `uan_can_setup` is `yes`, user access is over the `CAN` or `CHN`, based on the BICAN System Default Route setting in SLS. When `uan_can_setup` is `no`, the Admin must configure the user access interface and default route. See [Configure Interfaces on UANs](Configure_Interfaces_on_UANs.md)
 
     **Warning:** Never place sensitive information such as passwords in the git repository.
 
@@ -132,7 +94,7 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
      create mode 100644 group_vars/Application_UAN/vars.yml
     ```
 
-10. Push the changes to the repository using the proper credentials, including the password obtained previously.
+1. Push the changes to the repository using the proper credentials, including the password obtained previously.
 
     ```bash
     ncn-m001# git push --set-upstream origin integration-PRODUCT_VERSION
@@ -157,15 +119,15 @@ ncn-m001# sat showrev --products --filter 'product_name="sat"'
 
 A `sat bootprep` input file will have three sections: `configurations`, `images`, and `session_templates`. These sections create CFS configurations, IMS images, and BOS session templates respectively. Each section may have multiple elements to create more than one CFS, IMS, or BOS artifact. The format is similar to the input files for CFS, IMS, and BOS, but SAT will automate the process with fewer steps. Follow the subsections below to create a UAN bootprep input file.
 
-Refer to [*HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)*](https://www.hpe.com/support/ex-S-8052) for further information on configuring other HPE products, as this procedure documents only the required configuration of the UAN.
+See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)*](https://www.hpe.com/support/ex-S-8052) for further information on configuring other HPE products, as this procedure documents only the required configuration of the UAN.
 
 ## SAT Bootprep Configuration
 
 The SAT bootprep input file should have a configuration section that specifies each layer to be included in the CFS configuration for the UAN images for image customization and node personalization. This section will result in a CFS configuration named `uan-config`. The versions of each layer may be gathered using `sat showrev`. 
 
-Note that the Slingshot Host Software CFS layer is listed first. This is required as the UAN layer will attempt to install DVS and Lustre packages that require SHS be installed first. The correct playbook for Cassini or Mellanox must also be specified. Consult the Slingshot Host Software documentation for more information.
+The Slingshot Host Software CFS layer is listed first. This layer is required as the UAN layer will attempt to install DVS and Lustre packages that require SHS be installed first. The correct playbook for Cassini or Mellanox must also be specified. Consult the Slingshot Host Software documentation for more information.
 
-Beginning with UAN version `2.6.0`, CFS configuration roles which are provided by COS are now defined as two separate COS configuration layers as shown in the example below.  Prior to UAN version `2.6.0`, these roles were included in the UAN configuration layer.  Separating these roles into COS layers allows COS updates to be independent from UAN updates.
+Beginning with UAN version `2.6.0`, CFS configuration roles which are provided by COS are now defined as two separate COS configuration layers as shown in the following example. Prior to UAN version `2.6.0`, these roles were included in the UAN configuration layer. Separating these roles into COS layers allows COS updates to be independent from UAN updates.
 
 ```yaml
 configurations:
@@ -224,13 +186,13 @@ configurations:
 
 ## SAT Bootprep Image
 
-The SAT bootprep input file should have a section that specifies which IMS images to create for UAN nodes. UANs are built using the COS recipe, so the section below specifies which image recipe to use based on what is provided by COS. To determine which COS recipes are available run the following command:
+The SAT bootprep input file must have a section that specifies which IMS images to create for UAN nodes. UANs are built using the COS recipe, so the following section specifies which image recipe to use based on what is provided by COS. To determine which COS recipes are available run the following command:
 
 ```bash
 ncn-m001# sat showrev --products --filter 'product_name="cos"'
 ```
 
-This example will create an IMS image with the name `cray-shasta-uan-sles15sp3.x86_64-2.3.25`. An appropriate name should be used to correctly identify the UAN image being built. Also note that the CFS configuration `uan-config` is being referenced so that CFS image customization will be run using that configuration along with the specified node groups.
+This example will create an IMS image with the name `cray-shasta-uan-sles15sp3.x86_64-2.3.25`. Use an appropriate name to correctly identify the UAN image being built. Also note that the CFS configuration `uan-config` is being referenced so that CFS image customization will be run using that configuration along with the specified node groups.
 
 ```yaml
 images:
@@ -246,7 +208,7 @@ images:
 
 ## SAT Bootprep Session Template
 
-The final section of the SAT bootprep input file creates BOS session templates. This section references the named IMS image that `sat bootprep` generates, as well as a CFS configuration. The boot_sets key "uan" may be changed as needed. If there are more than one boot_sets in the session template, each key will need to be unique.
+The final section of the SAT bootprep input file creates BOS session templates. This section references the named IMS image that `sat bootprep` generates, as well as a CFS configuration. The `boot_sets` key `uan` may be changed as needed. If there are more than one boot_sets in the session template, each key must be unique.
 
 ```yaml
 session_templates:
@@ -269,8 +231,8 @@ Initiate the `sat bootprep` command to generate the configurations and artifacts
 ncn-m001# sat bootprep run uan-bootprep.yaml
 ```
 
-If changes are necessary to complete `sat bootprep` with the provided input file, adjust the CFS layers or input file as needed and rerun the `sat bootprep` command. If any artifacts are going to be overwritten, SAT will prompt for confirmation before taking action. This is useful when making CFS changes as SAT will automatically configure the layers to use the latest git commits if the branches are specified correctly.
+If changes are necessary to complete `sat bootprep` with the provided input file, adjust the CFS layers or input file as needed and rerun the `sat bootprep` command. If any artifacts are going to be overwritten, SAT will prompt for confirmation before overwriting them. This is useful when making CFS changes as SAT will automatically configure the layers to use the latest git commits if the branches are specified correctly.
 
-Once `sat bootprep` completes successfully, save the input file to a known location. This input file will be useful to regenerate artifacts as changes are made or different product layers are added.
+After `sat bootprep` completes successfully, save the input file to a known location. This input file will be useful to regenerate artifacts as changes are made or different product layers are added.
 
 Finally, perform [Boot UANs](Boot_UANs.md) to boot the UANs with the new BOS session template.

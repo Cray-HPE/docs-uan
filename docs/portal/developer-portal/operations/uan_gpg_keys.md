@@ -6,12 +6,12 @@ The `uan_gpg_keys` role installs the CSM GPG signing public key. This role is a 
 ## Requirements
 
 The Kubernetes secret must be available in the namespace and field specified
-by the `uan_gpg_key_*` variables below. The key must be stored as a base64-encoded
+by the following `uan_gpg_key_*` variables. The key must be stored as a base64-encoded
 string.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (located in
+Available variables are in the following list, including default values (defined in
 `defaults/main.yml`):
 
 `uan_gpg_key_k8s_secret`

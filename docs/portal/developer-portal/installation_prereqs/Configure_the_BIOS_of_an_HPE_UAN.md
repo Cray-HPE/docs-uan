@@ -8,7 +8,7 @@ Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iL
 
 1. Force a UAN to reboot into the BIOS.
 
-    In the following command, `UAN_BMC_XNAME` is the xname of the BMC of the UAN to configure. Replace `USER` and `PASSWORD` with the BMC username and password, respectively.
+    In the following command, `UAN_BMC_XNAME` is the xname of the BMC of the UAN to configure. Replace `USER` and `PASSWORD` with the BMC user name and password, respectively.
 
     ```bash
     ncn-m001# ipmitool -U USER -P PASSWORD -H UAN_BMC_XNAME -I lanplus \
@@ -22,7 +22,7 @@ Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iL
     lanplus sol activate
     ```
 
-    Refer to the section "About the ConMan Containerized Service" in the CSM documentation for more information about ConMan.
+    See also the section "About the ConMan Containerized Service" in the CSM documentation for more information about ConMan.
 
 3. Press the **ESC** and **9** keys to access the BIOS System Utilities when the option appears.
 
@@ -122,6 +122,6 @@ Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iL
     ------------------------- 
     ```
 
-8. Refer to this [Setting the Date and Time](https://support.hpe.com/hpesc/public/docDisplay?docId=sd00001068en_us&page=GUID-D7147C7F-2016-0901-0A72-000000000F34.html) in the HPE UEFI documentation to set the correct date and time.
+8. See this [Setting the Date and Time](https://support.hpe.com/hpesc/public/docDisplay?docId=sd00001068en_us&page=GUID-D7147C7F-2016-0901-0A72-000000000F34.html) in the HPE UEFI documentation to set the correct date and time.
 
    If the time is not set correctly, then PXE network booting issues may occur.

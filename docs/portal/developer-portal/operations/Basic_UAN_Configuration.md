@@ -2,11 +2,11 @@
 
 ## UAN configuration overview
 
-Configuration of UAN nodes is performed by the Configuration Framework Service \(CFS\). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network \(NMN\).
+The Configuration Framework Service \(CFS\) performs the configuration of UAN nodes. CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network \(NMN\).
 
-The preferred method of creating CFS configurations is to use the Shasta Admin Toolkit (SAT) `sat bootprep` command.  This command automates the creation of IMS images, CFS configurations, and BOS session templates. See [Create UAN Boot Images](Create_UAN_Boot_Images.md) for more details.
+The preferred method of creating CFS configurations is to use the Shasta Admin Toolkit (SAT) `sat bootprep` command. This command automates the manual process described in [Create UAN Boot Images](Create_UAN_Boot_Images.md). That process includes creating IMS images, CFS configurations, and BOS session templates.
 
-CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site.  Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the example bootprep file below. The parameterized fields are defined in a `product_vars.yml` file.
+CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site. Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the following example bootprep file. The parameterized fields are defined in a `product_vars.yml` file.
 
 **IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
 
@@ -68,12 +68,12 @@ CFS uses configuration layers. Configuration layers allow the sharing of Ansible
 
 ### Slingshot Host Software (playbook: shs_{{default.network_type}}_install.yml)
 
-The first CFS Layer installs the Slingshot Host Software for the Slingshot network type of the system.  The `default.network_type` is:
+The first CFS Layer installs the Slingshot Host Software for the Slingshot network type of the system. The `default.network_type` is:
 
 - `mellanox` for ConnectX-5 NICs used in Slingshot 10
 - `cassini` for Slingshot NICs in Slingshot 11
 
-The name of the playbook must match the name of the HSN NICs (Mellanox or Cassini) in the UAN nodes.  Additionally, the HSN NICs must be of the same type as the NCN and Compute nodes.
+The name of the playbook must match the name of the HSN NICs (Mellanox or Cassini) in the UAN nodes. Additionally, the HSN NICs must be of the same type as the NCN and Compute nodes.
 
 ### COS (playbook: cos-application.yml)
 
@@ -126,7 +126,7 @@ The following Ansible roles are run during UAN post-boot configuration:
 
 ### CMS Layer (playbook: csm_packages.yml)
 
-The third CFS Layer installs the Cray Management System packages. These are normally not modified.
+The third CFS Layer installs the Cray Management System packages. These packages are normally not modified.
 
 ### Optional UAN Layer (playbook: set_nologin.yml)
 
@@ -138,16 +138,16 @@ The Ansible roles involved in the UAN layer of the configuration are listed in t
 
 The UAN-specific roles involved in post-boot UAN node configuration are:
 
-- [`uan_disk_config`](uan_disk_config.md): this role configures the last disk found on the UAN that is smaller than 1TB, by default. That disk will be formatted with a scratch and swap partition mounted at /scratch and /swap, respectively. Each partition is 50% of the disk.
+- [`uan_disk_config`](uan_disk_config.md): this role configures the last disk found on the UAN that is smaller than 1TB, by default. That disk will be formatted with a scratch and swap partition mounted at `/scratch` and `/swap`, respectively. Each partition is 50% of the disk.
 - [`uan_packages`](uan_packages.md): this role installs any RPM packages listed in the uan-config-management repo.
 - [`uan_interfaces`](uan_interfaces.md): this role configures the UAN node networking. By default, this role does not configure a default route or the Customer Access Network \(CAN or CHN\) connection for the HPE Cray EX supercomputer. If CAN or CHN is enabled, the default route will be on the CAN or CHN. Otherwise, a default route must be set up in the customer interfaces definitions. Without the CAN or CHN, there will not be an external connection to the customer site network unless one is defined in the customer interfaces. See [Configure Interfaces on UANs](Configure_Interfaces_on_UANs.md).
 
   ***NOTE:*** If a UAN layer is used in the Compute node CFS configuration, the `uan_interfaces` role will configure the default route on Compute nodes to be on the HSN, if the BICAN System Default Route is set to `CHN`.
-- [`uan_motd`](uan_motd.md): this role Provides a default message of the day that can be customized by the administrator.
-- [`uan_ldap`](uan_ldap.md): this optional role configures the connection to LDAP servers. To disable this role, the administrator must set 'uan_ldap_setup:no' in the 'uan-config-management' VCS repository.
-- [`uan_hardening`](uan_hardening.md): This role configures site/customer-defined network security of UANs, for example, preventing ssh out of the UAN over the NMN to NCN nodes.
+- [`uan_motd`](uan_motd.md): this role Provides a default message of the day that the administrator can customize.
+- [`uan_ldap`](uan_ldap.md): this optional role configures the connection to LDAP servers. To disable this role, the administrator must set `uan_ldap_setup:no` in the `uan-config-management` VCS repository.
+- [`uan_hardening`](uan_hardening.md): This role configures site or customer-defined network security of UANs, for example, preventing SSH access from the UAN over the NMN to NCN nodes.
 
-The UAN roles in `site.yml` are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file.  Configuration of this layer is made in the `uan-config-management` VCS repository.
+The UAN roles in `site.yml` are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file. Configuration of this layer is made in the `uan-config-management` VCS repository.
 
 ### COS (playbook: cos-application-after.yml)
 
@@ -163,4 +163,4 @@ The following Ansible roles are run during UAN post-boot configuration:
 
 ### Optional UAN Layer (playbook: unset_nologin.yml)
 
-This UAN layer deletes the `/etc/nologin` file allowing non-root users to log into the UAN.  If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have access to the node.
+This UAN layer deletes the `/etc/nologin` file allowing non-root users to log into the UAN. If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have access to the node.

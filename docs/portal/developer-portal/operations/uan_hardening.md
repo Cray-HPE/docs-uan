@@ -1,7 +1,7 @@
 # `uan_hardening`
 
-The `uan_hardening` role configures site/customer-defined network security
- of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.
+The `uan_hardening` role configures site or customer-defined network security
+ of UANs, for example preventing SSH access from the UAN over the NMN to NCN nodes.
 
 ## Requirements
 
@@ -9,12 +9,12 @@ None.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are in the following list, including default values (see `defaults/main.yml`):
 
 `disable_ssh_out_nmn_to_management_ncns`
 
-: Boolean variable controlling whether or not firewall rules are applied at the UAN to
-prevent ssh outbound over the NMN to the NCN management nodes.
+: Boolean variable controlling whether firewall rules are applied at the UAN to
+prevent SSH outbound over the NMN to the NCN management nodes.
 
 The default value of `disable_ssh_out_nmn_to_management_ncns` is `yes`.
 
@@ -24,8 +24,8 @@ disable_ssh_out_nmn_to_management_ncns: yes
 
 `disable_ssh_out_uan_to_nmn_lb`
 
-: Boolean variable controlling whether or not firewall rules are applied at the UAN to
-prevent ssh outbound over the NMN to NMN LB IPs.
+: Boolean variable controlling whether firewall rules are applied at the UAN to
+prevent SSH outbound over the NMN to NMN LB IP addresses.
 
 The default value of `disable_ssh_out_uan_to_nmn_lb` is `yes`.
 

@@ -2,7 +2,12 @@
 
 Perform this procedure to boot UANs using BOS so that they are ready for user logins.
 
-Perform [Create UAN Boot Images](../operations/Create_UAN_Boot_Images.md) before performing this procedure.
+## Prerequisites
+
+- IUF is not being used to automate this process
+- [Create UAN Boot Images](../operations/Create_UAN_Boot_Images.md)
+
+## Procedure
 
 1. Create a BOS session to boot the UAN nodes. Replace `uan-sessiontemplate-PRODUCT_VERSION` in the following command with the ID of the session template created by the initial UAN product installation or the UAN product upgrade process.
 

@@ -5,7 +5,7 @@ using the Ansible `zypper_repository` and `zypper` module.
 
 Repositories and packages added to this role will be installed or removed during
 image customization. Installing RPMs during post-boot node configuration can
-cause high system loads on large systems so these tasks runs only during image
+cause high system loads on large systems so these tasks run only during image
 customizations.
 
 This role will only run on SLES-based nodes.
@@ -19,18 +19,18 @@ is false.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see defaults/main.yml):
+Available variables are in the following list, including default values (see defaults/main.yml):
 
 This role uses the `zypper_repository` module. The `name`, `description`, `repo`,
 `disable_gpg_check`, and `priority` fields are supported.
 
-This role uses the `zypper` modules.  The `name` and `disable_gpg_check` fields are supported.
+This role uses the `zypper` modules. The `name` and `disable_gpg_check` fields are supported.
 
 `uan_disable_gpg_check`
 
 : Sets the `disable_gpg_check` field on Zypper repos and
 packages listed in the `uan_sles15_repositories add` and `uan_sles15_packages_add`
-lists.  The `disable_gpg_check` field can be overridden for each repo or package.
+lists. The `disable_gpg_check` field can be overridden for each repo or package.
 
 `uan_sles15_repositories_add`
 
