@@ -9,17 +9,18 @@ This procedure updates the configuration management git repository to match the 
 
 UAN specific configuration, and other required configurations related to UANs are covered in this topic. See product-specific documentation for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment\) that may be configured on the UANs.
 
-The overall workflow for preparing UAN images to boot UANs is:
+The workflow for manually creating images to boot UANs is:
 
-1. Clone the UAN configuration git repository and create a branch based on the branch imported by the UAN installation.
-2. Update the configuration content and push the changes to the newly created branch.
-3. Use Shasta Admin Toolkit (SAT) command `sat bootprep`, to automate the creation of IMS image, CFS configurations, and BOS session templates.
-
-After the UAN BOS session template is created, A BOS session will be able to boot the UANs.
+1. [Prepare CFS Configuration](#prepare-cfs-configuration):
+   - Clone the UAN configuration git repository and create a branch based on the branch imported by the UAN installation.
+   - Update the configuration content and push the changes to the newly created branch.
+1. [Create SAT Bootprep File](#create-sat-bootprep-file): Enter the information that `sat bootprep` will use to automatically create CFS configurations, IMS images, and BOS session templates for UANs.
+1. [Run `sat bootprep`](#run-sat-bootprep) to generate all the artifacts a BOS session requires to boot UANs.
+1. [Boot UANs](Boot_UANs.md) to boot the UANs with the new image and BOS session template.
 
 Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this procedure with the current UAN product version installed \(See Step 1\) and the hostname of the HPE Cray EX system, respectively.
 
-## PREPARE CFS CONFIGURATION
+## Prepare CFS Configuration
 
 1. Obtain the artifact IDs and other information from the `cray-product-catalog` Kubernetes ConfigMap. Record the following information:
    - the `clone_url`
@@ -109,106 +110,140 @@ Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this
 
     The configuration parameters have been stored in a branch in the UAN git repository. The next phase of the process uses `sat bootprep` to handle creating the CFS configurations, IMS images, and BOS session templates for UANs.
 
-## CREATE UAN IMAGES
+## UAN SAT Bootprep Input File Contents
 
-With Shasta Admin Toolkit (SAT) version `2.2.16` and later, it is recommended that administrators create an input file for use with `sat bootprep`. Use the following command to determine which version of SAT is installed:
+With Shasta Admin Toolkit (SAT) version `2.2.16` and later, HPE recommends that administrators create an input file for use with `sat bootprep`.
 
-```bash
-ncn-m001# sat showrev --products --filter 'product_name="sat"'
-```
+A `sat bootprep` input file will have three sections:
 
-A `sat bootprep` input file will have three sections: `configurations`, `images`, and `session_templates`. These sections create CFS configurations, IMS images, and BOS session templates respectively. Each section may have multiple elements to create more than one CFS, IMS, or BOS artifact. The format is similar to the input files for CFS, IMS, and BOS, but SAT will automate the process with fewer steps. Follow the subsections below to create a UAN bootprep input file.
+- `configurations`: specifies each layer to be included in the CFS configuration for the UAN images for image customization and node personalization.
+- `images`: specifies the IMS images to create for UAN nodes.
+- `session_templates`: creates BOS session templates. This section references the named IMS image that `sat bootprep` generates, as well as a CFS configuration.
+
+These sections create CFS configurations, IMS images, and BOS session templates respectively. Each section may have multiple elements to create more than one CFS, IMS, or BOS artifact. The format is similar to the input files for CFS, IMS, and BOS, but SAT will automate the process with fewer steps. Follow the subsections below to create a UAN bootprep input file.
 
 See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)*](https://www.hpe.com/support/ex-S-8052) for further information on configuring other HPE products, as this procedure documents only the required configuration of the UAN.
 
-## SAT Bootprep Configuration
+## Create SAT Bootprep File
 
-The SAT bootprep input file should have a configuration section that specifies each layer to be included in the CFS configuration for the UAN images for image customization and node personalization. This section will result in a CFS configuration named `uan-config`. The versions of each layer may be gathered using `sat showrev`. 
+1. Verify that installed version of SAT is `2.2.16` or later.
 
-The Slingshot Host Software CFS layer is listed first. This layer is required as the UAN layer will attempt to install DVS and Lustre packages that require SHS be installed first. The correct playbook for Cassini or Mellanox must also be specified. Consult the Slingshot Host Software documentation for more information.
+   ```bash
+   ncn-m001# sat showrev --products --filter 'product_name="sat"'
+   ```
 
-Beginning with UAN version `2.6.0`, CFS configuration roles which are provided by COS are now defined as two separate COS configuration layers as shown in the following example. Prior to UAN version `2.6.0`, these roles were included in the UAN configuration layer. Separating these roles into COS layers allows COS updates to be independent from UAN updates.
+1. Obtain the version of each product that will be included in a CFS configuration layer.
 
-```yaml
-configurations:
-- name: uan-config
-  layers:
-  - name: shs-mellanox_install-integration
-    playbook: shs_mellanox_install.yml
-    product:
-      name: slingshot-host-software
-      version: 2.0.0
-      branch: integration
-#  - name: shs-cassini_install-integration
-#    playbook: shs_cassini_install.yml
-#    product:
-#      name: slingshot-host-software
-#      version: 2.0.0
-#      branch: integration
-  - name: cos-application-integration
-    playbook: cos-application.yml
-    product:
-      name: cos
-      version: 2.5
-  - name: csm-packages-integration
-    playbook: csm_packages.yml
-    product:
-      name: csm
-      version: 1.4
-  - name: uan-set-nologin
-    playbook: set_nologin.yml
-    product:
-      name: uan
-      version: 2.6.0
-      branch: integration-PRODUCT_VERSION
-  - name: uan
-    playbook: site.yml
-    product:
-      name: uan
-      version: 2.6.0
-      branch: integration-PRODUCT_VERSION
+   ```bash
+   ncn-m001# sat showrev --products --filter 'product_name="PRODUCT_NAME"'
+   ```
   
-  ... add configuration layers for other products here, if desired ...
+  The example `sat bootprep` input file in this procedure includes the following products:
+    - `slingshot-host-software`
+    - `cos`
+    - `csm`
+    - `uan`
 
-  - name: uan-rebuild-initrd
-    playbook: rebuild-initrd.yml
-    product:
-      name: uan
-      version: 2.6.0
-      branch: integration-PRODUCT_VERSION
-  - name: uan-unset-nologin
-    playbook: unset_nologin.yml
-    product:
-      name: uan
-      version: 2.6.0
-      branch: integration-PRODUCT_VERSION
-```
+  Your site may require additional products in the input file.
 
-## SAT Bootprep Image
+1. Record or save the list of COS image recipes returned in the previous step.
 
-The SAT bootprep input file must have a section that specifies which IMS images to create for UAN nodes. UANs are built using the COS recipe, so the following section specifies which image recipe to use based on what is provided by COS. To determine which COS recipes are available run the following command:
+   You will select one of these recipes as the base for the UAN image in a later step.
 
-```bash
-ncn-m001# sat showrev --products --filter 'product_name="cos"'
-```
+1. Create a `sat bootprep` input file.
 
-This example will create an IMS image with the name `cray-shasta-uan-sles15sp3.x86_64-2.3.25`. Use an appropriate name to correctly identify the UAN image being built. Also note that the CFS configuration `uan-config` is being referenced so that CFS image customization will be run using that configuration along with the specified node groups.
+   ```bash
+   ncn-m001# touch uan-bootprep.yaml
+   ```
 
-```yaml
-images:
-- name: cray-shasta-uan-sles15sp3.x86_64-2.3.25
-  ims:
-    is_recipe: true
-    name: cray-shasta-compute-sles15sp3.x86_64-2.3.25
-  configuration: uan-config
-  configuration_group_names:
-  - Application
-  - Application_UAN
-```
+1. Open the empty `sat bootprep` input file in an editor.
 
-## SAT Bootprep Session Template
+1. Add the CFS configuration content.
 
-The final section of the SAT bootprep input file creates BOS session templates. This section references the named IMS image that `sat bootprep` generates, as well as a CFS configuration. The `boot_sets` key `uan` may be changed as needed. If there are more than one boot_sets in the session template, each key must be unique.
+   The Slingshot Host Software CFS layer must be listed first. This layer is required as the UAN layer will attempt to install DVS and Lustre packages that require SHS be installed first. The correct playbook for Cassini or Mellanox must also be specified. Consult the Slingshot Host Software documentation for more information.
+
+   Beginning with UAN version `2.6.0`, CFS configuration roles which are provided by COS are now defined as two separate COS configuration layers as shown in the following example. Prior to UAN version `2.6.0`, these roles were included in the UAN configuration layer. Separating these roles into COS layers allows COS updates to be independent from UAN updates.
+
+   The following example creates a CFS configuration named `uan-config`:
+
+   Example:
+
+   ```yaml
+   configurations:
+   - name: uan-config
+     layers:
+     - name: shs-mellanox_install-integration
+       playbook: shs_mellanox_install.yml
+       product:
+        name: slingshot-host-software
+         version: 2.0.0
+         branch: integration
+   #  - name: shs-cassini_install-integration
+   #    playbook: shs_cassini_install.yml
+   #    product:
+   #      name: slingshot-host-software
+   #      version: 2.0.0
+   #      branch: integration
+     - name: cos-application-integration
+       playbook: cos-application.yml
+       product:
+         name: cos
+         version: 2.5
+     - name: csm-packages-integration
+       playbook: csm_packages.yml
+       product:
+         name: csm
+         version: 1.4
+     - name: uan-set-nologin
+       playbook: set_nologin.yml
+       product:
+         name: uan
+         version: 2.6.0
+         branch: integration-PRODUCT_VERSION
+     - name: uan
+       playbook: site.yml
+       product:
+         name: uan
+         version: 2.6.0
+         branch: integration-PRODUCT_VERSION
+  
+     ... add configuration layers for other products here, if desired ...
+
+     - name: uan-rebuild-initrd
+       playbook: rebuild-initrd.yml
+       product:
+         name: uan
+         version: 2.6.0
+         branch: integration-PRODUCT_VERSION
+     - name: uan-unset-nologin
+       playbook: unset_nologin.yml
+       product:
+         name: uan
+         version: 2.6.0
+         branch: integration-PRODUCT_VERSION
+   ```
+
+1. Add the content for the UAN image, using an appropriate name to correctly identify the UAN image being built.
+
+   UAN images are built using the COS recipe, so this step specifies which image recipe to use based on what is provided by COS. The `ims` section references the `uan-config` CFS configuration so that CFS image customization will use that configuration along with the specified node groups.
+
+   The following example will create an IMS image with the name `cray-shasta-uan-sles15sp3.x86_64-2.3.25`. 
+
+   ```yaml
+   images:
+   - name: cray-shasta-uan-sles15sp3.x86_64-2.3.25
+     ims:
+       is_recipe: true
+       name: cray-shasta-compute-sles15sp3.x86_64-2.3.25
+     configuration: uan-config
+     configuration_group_names:
+     - Application
+     - Application_UAN
+   ```
+
+1. Add the content for the BOS session templates.
+
+ You may need to change the `boot_sets` key `uan` in the following example. If there are more than one `boot_sets` in the session template, each key must be unique.
 
 ```yaml
 session_templates:
@@ -223,16 +258,22 @@ session_templates:
         - Application_UAN
 ```
 
-## Run SAT Bootprep
+1. Save changes to the `sat bootprep` input YAML file and exit the editor.
 
-Initiate the `sat bootprep` command to generate the configurations and artifacts needed to boot UANs. This command may take some time as it will initiate IMS image creation and CFS image customization.
+## Run `sat bootprep`
 
-```bash
-ncn-m001# sat bootprep run uan-bootprep.yaml
-```
+1. Execute the `sat bootprep` command to generate the configurations and artifacts needed to boot UANs.
 
-If changes are necessary to complete `sat bootprep` with the provided input file, adjust the CFS layers or input file as needed and rerun the `sat bootprep` command. If any artifacts are going to be overwritten, SAT will prompt for confirmation before overwriting them. This is useful when making CFS changes as SAT will automatically configure the layers to use the latest git commits if the branches are specified correctly.
+   This command may take some time as it will initiate IMS image creation and CFS image customization.
 
-After `sat bootprep` completes successfully, save the input file to a known location. This input file will be useful to regenerate artifacts as changes are made or different product layers are added.
+   ```bash
+   ncn-m001# sat bootprep run uan-bootprep.yaml
+   ```
 
-Finally, perform [Boot UANs](Boot_UANs.md) to boot the UANs with the new BOS session template.
+   Modify the CFS layers or input file if necessary to successfully complete `sat bootprep`.
+
+   If any artifacts are going to be overwritten, SAT will prompt for confirmation before overwriting them. This is useful when making CFS changes as SAT will automatically configure the layers to use the latest git commits if the branches are specified correctly.
+
+1. Save the input file to a known location after `sat bootprep` completes successfully.
+
+   You can use this input file to regenerate artifacts as changes are made or different product layers are added.
