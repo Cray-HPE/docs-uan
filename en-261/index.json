@@ -217,13 +217,6 @@
 	"content": "Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.\nThe overall workflow for completing a UAN upgrade involves:\nPerform the UAN Installation\nReview any Notable Changes\nMerge UAN CFS Configuration Data\nCreate UAN images and reboot\n"
 },
 {
-	"uri": "/docs-uan/en-261/operations/uan_packages/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.\nRepositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks runs only during image customizations.\nThis role will only run on SLES-based nodes.\nRequirements Zypper must be installed.\nThe csm.gpg_keys Ansible role must be installed if uan_disable_gpg_check is false.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nThis role uses the zypper_repository module. The name, description, repo, disable_gpg_check, and priority fields are supported.\nThis role uses the zypper modules. The name and disable_gpg_check fields are supported.\nuan_disable_gpg_check Sets the disable_gpg_check field on zypper repos and packages listed in the uan_sles15_repositories add and uan_sles15_packages_add lists. The disable_gpg_check field can be overridden for each repo or package.\nuan_sles15_repositories_add List of repositories to add.\nuan_sles15_packages_add List of RPM packages to add.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - role: uan_packages vars: uan_sles15_packages_add: - name: \u0026#34;foo\u0026#34; disable_gpg_check: yes - name: \u0026#34;bar\u0026#34; uan_sles15_packages_remove: - baz uan_sles15_repositories_add: - name: \u0026#34;uan-2.5.0-sle-15sp4\u0026#34; description: \u0026#34;UAN SUSE Linux Enterprise 15 SP4 Packages\u0026#34; repo: \u0026#34;https://packages.local/repository/uan-2.5.0-sle-15sp4\u0026#34; disable_gpg_check: no priority: 2 This role is included in the UAN site.yml play.\n"
-},
-{
 	"uri": "/docs-uan/en-261/operations/uan_shadow/",
 	"title": "",
 	"tags": [],
@@ -231,18 +224,25 @@
 	"content": "uan_shadow The uan_shadow role configures the root password on UAN nodes.\nRequirements The root password hash has to be installed in HashiCorp Vault at secret/uan root_password.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_vault_url The URL for the HashiCorp Vault\nExample:\nuan_vault_url: \u0026#34;http://cray-vault.vault:8200\u0026#34; uan_vault_role_file The required Kubernetes role file for HashiCorp Vault access.\nExample:\nuan_vault_role_file: /var/run/secrets/kubernetes.io/serviceaccount/namespace uan_vault_jwt_file The path to the required Kubernetes token file for HashiCorp Vault access.\nExample:\nuan_vault_jwt_file: /var/run/secrets/kubernetes.io/serviceaccount/token uan_vault_path The path to use for storing data for UANs in HashiCorp Vault.\nExample:\nuan_vault_path: secret/uan uan_vault_key The key used for storing the root password in HashiCorp Vault.\nExample:\nuan_vault_key: root_password Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_shadow } This role is included in the UAN site.yml play.\n"
 },
 {
-	"uri": "/docs-uan/en-261/operations/uan_ldap/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.\nRequirements NSCD, pam-config, sssd.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_ldap_setup A boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.\nExample:\nuan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers. If this list is empty, no LDAP configuration will be applied to the UAN targets and all role tasks will be skipped.\nExample:\nuan_ldap_config: - domain: \u0026#34;mydomain-ldaps\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldaps://123.123.123.1\u0026#34;, \u0026#34;ldaps://213.312.123.132\u0026#34;] chpass_uri: [\u0026#34;ldaps://123.123.123.1\u0026#34;] - domain: \u0026#34;mydomain-ldap\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldap://123.123.123.1\u0026#34;, \u0026#34;ldap://213.312.123.132\u0026#34;] uan_ad_groups Configures active directory groups on UAN nodes.\nExample:\nuan_ad_groups: - { name: admin_grp, origin: ALL } - { name: dev_users, origin: ALL } uan_pam_modules Configures PAM modules on the UAN nodes in /etc/pam.d.\nExample:\nuan_pam_modules: - name: \u0026#34;common-account\u0026#34; lines: - \u0026#34;account required\\tpam_access.so\u0026#34; Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_ldap } This role is included in the UAN site.yml play.\n"
-},
-{
 	"uri": "/docs-uan/en-261/operations/uan_motd/",
 	"title": "",
 	"tags": [],
 	"description": "",
 	"content": "uan_motd The uan_motd role appends text to the /etc/motd file.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: \u0026#34;MOTD CONTENT\u0026#34; } This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-261/operations/uan_packages/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.\nRepositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks runs only during image customizations.\nThis role will only run on SLES-based nodes.\nRequirements Zypper must be installed.\nThe csm.gpg_keys Ansible role must be installed if uan_disable_gpg_check is false.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nThis role uses the zypper_repository module. The name, description, repo, disable_gpg_check, and priority fields are supported.\nThis role uses the zypper modules. The name and disable_gpg_check fields are supported.\nuan_disable_gpg_check Sets the disable_gpg_check field on zypper repos and packages listed in the uan_sles15_repositories add and uan_sles15_packages_add lists. The disable_gpg_check field can be overridden for each repo or package.\nuan_sles15_repositories_add List of repositories to add.\nuan_sles15_packages_add List of RPM packages to add.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - role: uan_packages vars: uan_sles15_packages_add: - name: \u0026#34;foo\u0026#34; disable_gpg_check: yes - name: \u0026#34;bar\u0026#34; uan_sles15_packages_remove: - baz uan_sles15_repositories_add: - name: \u0026#34;uan-2.5.0-sle-15sp4\u0026#34; description: \u0026#34;UAN SUSE Linux Enterprise 15 SP4 Packages\u0026#34; repo: \u0026#34;https://packages.local/repository/uan-2.5.0-sle-15sp4\u0026#34; disable_gpg_check: no priority: 2 This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-261/operations/uan_ldap/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.\nRequirements NSCD, pam-config, sssd.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_ldap_setup A boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.\nExample:\nuan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers. If this list is empty, no LDAP configuration will be applied to the UAN targets and all role tasks will be skipped.\nExample:\nuan_ldap_config: - domain: \u0026#34;mydomain-ldaps\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldaps://123.123.123.1\u0026#34;, \u0026#34;ldaps://213.312.123.132\u0026#34;] chpass_uri: [\u0026#34;ldaps://123.123.123.1\u0026#34;] - domain: \u0026#34;mydomain-ldap\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldap://123.123.123.1\u0026#34;, \u0026#34;ldap://213.312.123.132\u0026#34;] uan_ad_groups Configures active directory groups on UAN nodes.\nExample:\nuan_ad_groups: - { name: admin_grp, origin: ALL } - { name: dev_users, origin: ALL } uan_pam_modules Configures PAM modules on the UAN nodes in /etc/pam.d.\nExample:\nuan_pam_modules: - name: \u0026#34;common-account\u0026#34; lines: - \u0026#34;account required\\tpam_access.so\u0026#34; Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_ldap } This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-261/operations/uan_interfaces/",
@@ -266,18 +266,18 @@
 	"content": "uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to NMN LB IPs.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
 },
 {
-	"uri": "/docs-uan/en-261/operations/csm_gpg_keys/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "csm.gpg_keys The csm.gpg_keys role fetches the required GPG keys needed for HPE RPM verification.\n"
-},
-{
 	"uri": "/docs-uan/en-261/operations/uan_ca_cert/",
 	"title": "",
 	"tags": [],
 	"description": "",
 	"content": "uan_ca_cert The uan_ca_cert role installs a CA certificate on the system.\n"
+},
+{
+	"uri": "/docs-uan/en-261/operations/csm_gpg_keys/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "csm.gpg_keys The csm.gpg_keys role fetches the required GPG keys needed for HPE RPM verification.\n"
 },
 {
 	"uri": "/docs-uan/en-261/install/install_the_uan_product_stream/",
