@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>User Access Node (UAN)</title>
+    <link>/docs-uan/en-270-rc1/upgrade/</link>
+    <description>Recent content on User Access Node (UAN)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 05 Oct 2023 16:03:51 +0000</lastBuildDate><atom:link href="/docs-uan/en-270-rc1/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/docs-uan/en-270-rc1/upgrade/notable_changes/</link>
+      <pubDate>Thu, 05 Oct 2023 16:03:45 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270-rc1/upgrade/notable_changes/</guid>
+      <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
+When an upgrade is being performed, review the notable changes for all the UAN versions up to the version being installed. If a particular version does not appear in this guide, it may have only had minor changes. For a full account of the changes involved in a release, consult the ChangeLog.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-270-rc1/upgrade/upgrades/</link>
+      <pubDate>Thu, 05 Oct 2023 16:03:46 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270-rc1/upgrade/upgrades/</guid>
+      <description>Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
+The overall workflow for completing a UAN upgrade involves:
+Perform the UAN Installation
+Review any Notable Changes
+Merge UAN CFS Configuration Data
+Create UAN images and reboot</description>
+    </item>
+    
+  </channel>
+</rss>

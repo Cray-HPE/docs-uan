@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/docs-uan/en-261/installation_prereqs/</loc>
-    <lastmod>2023-10-05T03:04:17+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:49+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -16,8 +16,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/installation_prereqs/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/installation_prereqs/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -26,7 +26,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/installation_prereqs/prepare_for_uan_product_installation/</loc>
-    <lastmod>2023-10-05T03:04:03+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:32+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -39,8 +39,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/installation_prereqs/prepare_for_uan_product_installation/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/installation_prereqs/prepare_for_uan_product_installation/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -49,7 +49,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</loc>
-    <lastmod>2023-10-05T03:04:02+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:32+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -62,8 +62,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/installation_prereqs/configure_the_bmc_for_uans_with_ilo/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/installation_prereqs/configure_the_bmc_for_uans_with_ilo/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -72,7 +72,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/installation_prereqs/configure_the_bios_of_an_hpe_uan/</loc>
-    <lastmod>2023-10-05T03:04:02+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:31+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -85,8 +85,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/installation_prereqs/configure_the_bios_of_an_hpe_uan/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/installation_prereqs/configure_the_bios_of_an_hpe_uan/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -95,7 +95,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/installation_prereqs/configure_the_bios_of_a_gigabyte_uan/</loc>
-    <lastmod>2023-10-05T03:04:02+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:31+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2511"
@@ -108,7 +108,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/install/</loc>
-    <lastmod>2023-10-05T03:04:19+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:52+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -121,8 +121,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/install/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/install/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -131,7 +131,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/</loc>
-    <lastmod>2023-10-05T03:04:20+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:54+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -144,8 +144,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -154,7 +154,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/basic_uan_configuration/</loc>
-    <lastmod>2023-10-05T03:04:03+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:32+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -162,8 +162,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/basic_uan_configuration/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/basic_uan_configuration/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -172,7 +172,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/build_a_new_uan_image_using_the_cos_recipe/</loc>
-    <lastmod>2023-10-05T03:04:04+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:33+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -185,8 +185,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/build_a_new_uan_image_using_the_cos_recipe/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/build_a_new_uan_image_using_the_cos_recipe/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -195,7 +195,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/create_uan_boot_images/</loc>
-    <lastmod>2023-10-05T03:04:05+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:35+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -208,8 +208,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/create_uan_boot_images/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/create_uan_boot_images/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -218,7 +218,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/mount_a_new_file_system_on_an_uan/</loc>
-    <lastmod>2023-10-05T03:04:06+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:35+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -231,8 +231,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/mount_a_new_file_system_on_an_uan/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/mount_a_new_file_system_on_an_uan/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -241,7 +241,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/configure_interfaces_on_uans/</loc>
-    <lastmod>2023-10-05T03:04:05+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:34+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -254,8 +254,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/configure_interfaces_on_uans/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/configure_interfaces_on_uans/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -264,7 +264,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/configure_pluggable_authentication_modules_pam_on_uans/</loc>
-    <lastmod>2023-10-05T03:04:05+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:35+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -277,8 +277,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/configure_pluggable_authentication_modules_pam_on_uans/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/configure_pluggable_authentication_modules_pam_on_uans/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -287,7 +287,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/boot_uans/</loc>
-    <lastmod>2023-10-05T03:04:04+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:33+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -300,8 +300,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/boot_uans/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/boot_uans/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -310,7 +310,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/cve-2023-0461/</loc>
-    <lastmod>2023-10-05T03:04:04+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:34+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -318,8 +318,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/cve-2023-0461/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/cve-2023-0461/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -328,7 +328,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/advanced/</loc>
-    <lastmod>2023-10-05T03:04:16+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:48+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -341,8 +341,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/advanced/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/advanced/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -351,7 +351,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/advanced/customizing_uan_images_manually/</loc>
-    <lastmod>2023-10-05T03:03:59+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:27+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-2511"
@@ -364,7 +364,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/advanced/enabling_can_chn/</loc>
-    <lastmod>2023-10-05T03:03:59+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:28+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -377,8 +377,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/advanced/enabling_can_chn/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/advanced/enabling_can_chn/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -387,7 +387,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/advanced/repurposing_compute_as_uan/</loc>
-    <lastmod>2023-10-05T03:04:00+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:29+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -400,8 +400,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/advanced/repurposing_compute_as_uan/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/advanced/repurposing_compute_as_uan/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -410,7 +410,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/advanced/sles_image/</loc>
-    <lastmod>2023-10-05T03:04:01+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:30+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -423,8 +423,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/advanced/sles_image/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/advanced/sles_image/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -433,7 +433,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/advanced/enabling_k3s/</loc>
-    <lastmod>2023-10-05T03:04:00+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:29+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -446,8 +446,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/advanced/enabling_k3s/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/advanced/enabling_k3s/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -456,7 +456,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/upgrade/</loc>
-    <lastmod>2023-10-05T03:04:18+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:51+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -469,8 +469,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/upgrade/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/upgrade/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -479,7 +479,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/upgrade/notable_changes/</loc>
-    <lastmod>2023-10-05T03:04:14+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:46+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -492,8 +492,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/upgrade/notable_changes/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/upgrade/notable_changes/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -502,7 +502,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/troubleshooting/</loc>
-    <lastmod>2023-10-05T03:04:24+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:58+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -515,8 +515,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/troubleshooting/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/troubleshooting/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -525,7 +525,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/troubleshooting/troubleshoot_uan_boot_issues/</loc>
-    <lastmod>2023-10-05T03:04:12+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:44+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -538,8 +538,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/troubleshooting/troubleshoot_uan_boot_issues/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/troubleshooting/troubleshoot_uan_boot_issues/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -548,7 +548,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</loc>
-    <lastmod>2023-10-05T03:04:13+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:44+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -561,8 +561,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -571,7 +571,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/troubleshooting/troubleshoot_uan_disk_configuration_issues/</loc>
-    <lastmod>2023-10-05T03:04:13+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:45+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -584,8 +584,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/troubleshooting/troubleshoot_uan_disk_configuration_issues/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/troubleshooting/troubleshoot_uan_disk_configuration_issues/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -594,7 +594,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/test-plan/test-plan/</loc>
-    <lastmod>2023-10-05T03:04:12+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:43+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -607,8 +607,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/test-plan/test-plan/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/test-plan/test-plan/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -617,7 +617,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/</loc>
-    <lastmod>2023-10-05T03:04:24+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:58+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -631,8 +631,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -641,7 +641,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/test-plan/</loc>
-    <lastmod>2023-10-05T03:04:20+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:53+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -654,8 +654,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/test-plan/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/test-plan/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -664,7 +664,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/upgrade/upgrades/</loc>
-    <lastmod>2023-10-05T03:04:14+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:46+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -672,8 +672,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/upgrade/upgrades/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/upgrade/upgrades/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -681,26 +681,8 @@
                 href="/docs-uan/en-261/upgrade/upgrades/"
                 />
   </url><url>
-    <loc>/docs-uan/en-261/operations/uan_packages/</loc>
-    <lastmod>2023-10-05T03:04:11+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-262"
-                href="/docs-uan/en-262/operations/uan_packages/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_packages/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-261"
-                href="/docs-uan/en-261/operations/uan_packages/"
-                />
-  </url><url>
     <loc>/docs-uan/en-261/operations/uan_shadow/</loc>
-    <lastmod>2023-10-05T03:04:11+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:42+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -708,8 +690,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_shadow/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_shadow/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -718,7 +700,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/uan_motd/</loc>
-    <lastmod>2023-10-05T03:04:10+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:41+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -726,8 +708,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_motd/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_motd/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -735,26 +717,26 @@
                 href="/docs-uan/en-261/operations/uan_motd/"
                 />
   </url><url>
-    <loc>/docs-uan/en-261/operations/uan_interfaces/</loc>
-    <lastmod>2023-10-05T03:04:09+00:00</lastmod>
+    <loc>/docs-uan/en-261/operations/uan_packages/</loc>
+    <lastmod>2023-10-05T16:03:41+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
-                href="/docs-uan/en-262/operations/uan_interfaces/"
+                href="/docs-uan/en-262/operations/uan_packages/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_interfaces/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_packages/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-261"
-                href="/docs-uan/en-261/operations/uan_interfaces/"
+                href="/docs-uan/en-261/operations/uan_packages/"
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/uan_ldap/</loc>
-    <lastmod>2023-10-05T03:04:09+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:40+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -762,8 +744,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_ldap/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_ldap/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -772,7 +754,7 @@
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/uan_hardening/</loc>
-    <lastmod>2023-10-05T03:04:08+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:39+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -780,8 +762,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_hardening/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_hardening/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -789,26 +771,26 @@
                 href="/docs-uan/en-261/operations/uan_hardening/"
                 />
   </url><url>
-    <loc>/docs-uan/en-261/operations/uan_ca_cert/</loc>
-    <lastmod>2023-10-05T03:04:07+00:00</lastmod>
+    <loc>/docs-uan/en-261/operations/uan_interfaces/</loc>
+    <lastmod>2023-10-05T16:03:39+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
-                href="/docs-uan/en-262/operations/uan_ca_cert/"
+                href="/docs-uan/en-262/operations/uan_interfaces/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_ca_cert/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_interfaces/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-261"
-                href="/docs-uan/en-261/operations/uan_ca_cert/"
+                href="/docs-uan/en-261/operations/uan_interfaces/"
                 />
   </url><url>
     <loc>/docs-uan/en-261/operations/uan_disk_config/</loc>
-    <lastmod>2023-10-05T03:04:07+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -816,8 +798,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/operations/uan_disk_config/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_disk_config/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -825,11 +807,29 @@
                 href="/docs-uan/en-261/operations/uan_disk_config/"
                 />
   </url><url>
+    <loc>/docs-uan/en-261/operations/uan_ca_cert/</loc>
+    <lastmod>2023-10-05T16:03:37+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-262"
+                href="/docs-uan/en-262/operations/uan_ca_cert/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/operations/uan_ca_cert/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-261"
+                href="/docs-uan/en-261/operations/uan_ca_cert/"
+                />
+  </url><url>
     <loc>/docs-uan/en-261/operations/csm_gpg_keys/</loc>
-    <lastmod>2023-10-05T03:04:06+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:36+00:00</lastmod>
   </url><url>
     <loc>/docs-uan/en-261/install/install_the_uan_product_stream/</loc>
-    <lastmod>2023-10-05T03:04:01+00:00</lastmod>
+    <lastmod>2023-10-05T16:03:31+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-262"
@@ -842,8 +842,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/install/install_the_uan_product_stream/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/install/install_the_uan_product_stream/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -864,8 +864,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/categories/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -886,8 +886,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-270-alpha1"
-                href="/docs-uan/en-270-alpha1/tags/"
+                hreflang="en-270-rc1"
+                href="/docs-uan/en-270-rc1/tags/"
                 />
     <xhtml:link
                 rel="alternate"
