@@ -1,7 +1,7 @@
 # `uan_interfaces`
 
 The `uan_interfaces` role configures site or customer-defined network interfaces
-and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
+and Customer Access Network (CAN) network interfaces on UAN nodes.
 
 ## Requirements
 

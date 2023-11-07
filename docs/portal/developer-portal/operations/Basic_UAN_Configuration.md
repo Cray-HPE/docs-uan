@@ -8,7 +8,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
 
 CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site. Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the following example bootprep file. The parameterized fields are defined in a `product_vars.yml` file.
 
-**IMPORTANT** Do not remove or reorder the first three layers. The UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
+**IMPORTANT** Do not remove or reorder the first three layers. The HPE Cray Supercomputing UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
 
 ```bash
 - name: "{{default.note}}uan-{{recipe.version}}{{default.suffix}}"

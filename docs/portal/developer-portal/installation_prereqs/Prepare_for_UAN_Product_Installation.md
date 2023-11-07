@@ -1,8 +1,8 @@
 # Prepare for UAN Product Installation
 
-Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
+Perform this procedure to ready the HPE Cray Supercomputing EX system for HPE Cray Supercomputing UAN product installation.
 
-Install and configure the COS product before performing this procedure.
+Install and configure the HPE Cray Supercomputing COS product before performing this procedure.
 
 1. Verify that the management network switches are properly configured.
 
@@ -14,7 +14,7 @@ Install and configure the COS product before performing this procedure.
 
 1. Ensure that the host reservations for the UAN CAN/CHN network have been properly set.
 
-    See the procedure "Add UAN CAN IP Addresses to SLS" in the HPE Cray EX hardware documentation.
+    See the procedure "Add UAN CAN IP Addresses to SLS" in the HPE Cray Supercomputing EX hardware documentation.
 
     1. For systems where UANs are going to host UAIs, identify a block of IP addresses for the services running in K3s. Please see [Configuring a UAN for K3s (Technical Preview)](../advanced/Enabling_K3s.md) for information on reserving a block of IPs on CAN/CHN for K3s MetalLB use.
 

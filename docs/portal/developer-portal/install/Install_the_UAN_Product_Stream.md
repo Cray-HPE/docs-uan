@@ -6,7 +6,7 @@ The Install and Upgrade Framework (IUF) provides commands which install, upgrade
 
 This document **does not** replicate the install, upgrade, or deployment procedures detailed in the [IUF section](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) of the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/en-14/). This document provides details regarding software and configuration content specific to UAN which may be needed when installing, upgrading, or deploying a UAN release. The [IUF section](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) of the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/en-14/) will indicate when sections of this document must be seen for detailed information.
 
-IUF will perform the following tasks for a release of UAN.
+IUF will perform the following tasks for a release of the HPE Cray Supercomputing UAN product software.
 
 - IUF `process-media` stage:
   - Inventory and extract the UAN products in the media directory for use in subsequent stages

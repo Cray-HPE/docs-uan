@@ -8,7 +8,7 @@ Before K3s can be enabled to support UAIs on Application nodes, the Application 
 
 **INFO:** For more information on how CFS uses HSM node groups to create Ansible host groups, see the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm). Follow the links to the `Cray System Management Administration Guide->Configuration Management->Ansible Inventory->Dynamic inventory and host groups` section.
 
-When UAN software is installed or upgraded using IUF, and these HSM node groups do not exist or have no members, one `Application_UAN` node type will be placed in the `k3s_server` group. The remaining nodes will be placed in the `k3s_agent` group. If these groups exist and are not empty, IUF will not change them.
+When HPE Cray Supercomputing UAN software is installed or upgraded using IUF, and these HSM node groups do not exist or have no members, one `Application_UAN` node type will be placed in the `k3s_server` group. The remaining nodes will be placed in the `k3s_agent` group. If these groups exist and are not empty, IUF will not change them.
 
 This document provides procedures to manually change the membership of the `k3s_server` and `k3s_agent` HSM node groups.
 
