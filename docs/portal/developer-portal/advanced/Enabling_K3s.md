@@ -3,7 +3,7 @@
 **WARNING**: This feature is a Technical Preview, as such it requires completion of the [Prerequisites](#prerequisites) section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless Podman containers. Therefore, some of these configuration options may change in future releases.
 
 ## UAI Experience on UANs
-In UAN 2.6, a new playbook has been added to create a single node, K3s cluster. This K3s environment can then run the services necessary to replicate the experience of User Access Instances (UAIs) on one or more UANs.
+In HPE Cray Supercomputing UAN release 2.6, a new playbook has been added to create a single node, K3s cluster. This K3s environment can then run the services necessary to replicate the experience of User Access Instances (UAIs) on one or more UANs.
 
 ### Use of K3s
 K3s will serve as the orchestrator of services necessary to replicate the capabilities of UAIs on UAN hardware. These services include HAProxy, MetalLB, and eventually DNS services like ExternalDNS and PowerDNS. Notably, this does **not** orchestrate instances of `sshd` and `podman` containers through K3s. K3s and the initial set of services mimic how the "Broker UAIs" in CSM to handle the SSH ingress and redirection of users into their interactive environment.

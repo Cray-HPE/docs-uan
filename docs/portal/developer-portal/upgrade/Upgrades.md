@@ -1,6 +1,6 @@
 # Upgrades
 
-Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
+Performing an upgrade of the HPE Cray Supercomputing UAN product from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
 
 The overall workflow for completing a UAN upgrade involves:
 

@@ -5,7 +5,7 @@ Perform this procedure to configure network interfaces on UANs by editing a conf
 
 The `uan_interfaces` Ansible role performs interface configuration. For details on the variables used in this procedure, see [`uan_interfaces`](uan_interfaces.md).
 
-In the command examples of this procedure, `PRODUCT_VERSION` refers to the current installed version of the UAN product. Replace `PRODUCT_VERSION` with the UAN version number string when executing the commands.
+In the command examples of this procedure, `PRODUCT_VERSION` refers to the current installed version of the HPE Cray Supercomputing UAN product. Replace `PRODUCT_VERSION` with the product version number string when executing the commands.
 
 ## Node Management Networking
 
@@ -20,9 +20,9 @@ To enable NMN bonding, certain features in iPXE and the management switches conn
 
 ## User Access Networking
 
-User access may be configured to use either a direct connection to the UANs from the site's user network, or one of two optional user access networks implemented within the HPE Cray EX system. The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\). The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
+User access may be configured to use either a direct connection to the UANs from the site's user network, or one of two optional user access networks implemented within the HPE Cray Supercomputing EX system. The two optional networks are the Customer Access Network \(CAN\) and Customer High Speed Network \(CHN\). The CAN is a VLAN on the Node Management Network \(NMN\), whereas the CHN is over the High Speed Network \(HSN\).
 
-By default, a direct connection to the site's user network is assumed and the Admin must define one or more interfaces and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
+By default, a direct connection to the site's user network is assumed and the administrator must define one or more interfaces and default route using the `customer_uan_interfaces` and `customer_uan_routes` structures. If `uan_can_setup` is a true value, user access will be over CAN or CHN depending on what the system default route is set to in SLS.
 
 * When CAN is set as the system default route in SLS and `uan_nmn_bond` is false, the bonded CAN interfaces are determined automatically. If `uan_nmn_bond` is true, the bonded CAN interfaces must be defined by `uan_can_bond_slaves` \(see [`uan_interfaces`](uan_interfaces.md)\). The default route is set to the bonded CAN interface `can0`.
 

@@ -1,11 +1,11 @@
 
 # Create UAN Boot Images
 
-Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the UAN product. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the UAN release is prior to UAN 2.6. For UAN 2.6 and newer, perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) for these cases.
+Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the HPE Cray Supercomputing UAN product. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the product release is prior to 2.6. For release 2.6 and newer, perform [Build a New UAN Image Using a COS Recipe](Build_a_New_UAN_Image_Using_the_COS_Recipe.md) for these cases.
 
 ## Overview
 
-This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
+This procedure updates the configuration management git repository to match the installed version of the HPE Cray Supercomputing UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
 
 UAN specific configuration, and other required configurations related to UANs are covered in this topic. See product-specific documentation for further information on configuring other HPE products (for example, workload managers and the HPE Cray Programming Environment\) that may be configured on the UANs.
 
@@ -18,7 +18,7 @@ The workflow for manually creating images to boot UANs is:
 1. [Run `sat bootprep`](#run-sat-bootprep) to generate all the artifacts a BOS session requires to boot UANs.
 1. [Boot UANs](Boot_UANs.md) to boot the UANs with the new image and BOS session template.
 
-Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this procedure with the current UAN product version installed \(See Step 1\) and the hostname of the HPE Cray EX system, respectively.
+Replace `PRODUCT_VERSION` and `CRAY_EX_HOSTNAME` in the example commands in this procedure with the current UAN product version installed \(See Step 1\) and the hostname of the HPE Cray Supercomputing EX system, respectively.
 
 ## Prepare CFS Configuration
 

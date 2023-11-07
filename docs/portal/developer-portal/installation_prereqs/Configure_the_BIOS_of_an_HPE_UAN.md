@@ -2,7 +2,7 @@
 
 Perform this procedure to configure the network interface and boot settings required by HPE UANs.
 
-Before the UAN product can be installed on HPE UANs, specific network interface and boot settings must be configured in the BIOS.
+Before the HPE Cray Supercomputing UAN product can be installed on HPE UANs, specific network interface and boot settings must be configured in the BIOS.
 
 Perform [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md) before performing this procedure.
 
