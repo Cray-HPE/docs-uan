@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
 <map id="uan_admin">
-    <title>HPE Cray Supercomputing User Access Node (UAN) Software Administration Guide (S-8033)</title>
+    <title>HPE Cray Supercomputing User Access Node (UAN) Software Administration Guide (S-8033) 2.7.0</title>
     <topicmeta>
         <shortdesc>This publication provides instructions and examples for managing and troubleshooting User Access Nodes (UANs) on an HPE Cray EX supercomputer.</shortdesc>
         <data name="pubsnumber" value="S-8033"></data>
-		<data name="edition" value="UAN Software Release @product_version@"></data>
+		<data name="edition" value="UAN Software Release 2.7.0"></data>
     </topicmeta>
     <topicref href="operations/Basic_UAN_Configuration.md" format="markdown">
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
