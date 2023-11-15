@@ -245,6 +245,13 @@
 	"content": "uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.\nRequirements NSCD, pam-config, sssd.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_ldap_setup A boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.\nExample:\nuan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers. If this list is empty, no LDAP configuration will be applied to the UAN targets and all role tasks will be skipped.\nExample:\nuan_ldap_config: - domain: \u0026#34;mydomain-ldaps\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldaps://123.123.123.1\u0026#34;, \u0026#34;ldaps://213.312.123.132\u0026#34;] chpass_uri: [\u0026#34;ldaps://123.123.123.1\u0026#34;] - domain: \u0026#34;mydomain-ldap\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldap://123.123.123.1\u0026#34;, \u0026#34;ldap://213.312.123.132\u0026#34;] uan_ad_groups Configures active directory groups on UAN nodes.\nExample:\nuan_ad_groups: - { name: admin_grp, origin: ALL } - { name: dev_users, origin: ALL } uan_pam_modules Configures PAM modules on the UAN nodes in /etc/pam.d.\nExample:\nuan_pam_modules: - name: \u0026#34;common-account\u0026#34; lines: - \u0026#34;account required\\tpam_access.so\u0026#34; Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_ldap } This role is included in the UAN site.yml play.\n"
 },
 {
+	"uri": "/docs-uan/en-262/operations/uan_ca_cert/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_ca_cert The uan_ca_cert role installs a CA certificate onto the system.\nRequirements None.\nRole Variables None.\nDependencies None.\nExample Playbook - hosts: Application roles: - role: uan_ca_cert This role is included in the UAN site.yml play.\n"
+},
+{
 	"uri": "/docs-uan/en-262/operations/uan_disk_config/",
 	"title": "",
 	"tags": [],
@@ -257,13 +264,6 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.\nRequirements The Kubernetes secret must be available in the namespace and field specified by the uan_gpg_key_* variables below. The key must be stored as a base64-encoded string.\nRole Variables Available variables are listed below, along with default values (located in defaults/main.yml):\nuan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.\nExample:\nuan_gpg_key_k8s_secret: \u0026#34;hpe-signing-key\u0026#34; uan_gpg_key_k8s_namespace The Kubernetes namespace which contains the secret.\nExample:\nuan_gpg_key_k8s_namespace: \u0026#34;services\u0026#34; uan_gpg_key_k8s_field The field in the Kubernetes secret that holds the GPG public key.\nExample:\nuan_gpg_key_k8s_field: \u0026#34;gpg-pubkey\u0026#34; Dependencies None.\nExample Playbook - hosts: Application roles: - role: uan_gpg_key This role is included in the UAN site.yml play.\n"
-},
-{
-	"uri": "/docs-uan/en-262/operations/uan_ca_cert/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_ca_cert The uan_ca_cert role installs a CA certificate onto the system.\nRequirements None.\nRole Variables None.\nDependencies None.\nExample Playbook - hosts: Application roles: - role: uan_ca_cert This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-262/install/install_the_uan_product_stream/",
