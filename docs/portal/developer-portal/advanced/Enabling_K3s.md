@@ -27,8 +27,6 @@ The following steps must be completed prior to configuring the UAN with K3s.
 
 1. Designate a UAN to operate as the K3s control-plane node. See [Designating Application Nodes for K3s](Designating_Application_Nodes_for_K3s.md).
 
-  **Note**: In a future release, additional UANs will be able to join as extra manager or worker nodes. 
-
 1. Identify a pool of IP addresses for the services running in K3s.
 
   **Note**: The identification of a pool of IP addresses for the services running in K3s is best made at system installation time in order to avoid the possibility of IP collisions. If this is not possible, steps must be taken to ensure IP collisions are avoided.
@@ -178,19 +176,19 @@ The following Ansible roles are provided in the `uan-config-management` reposito
 - **uan-haproxy**: Deploy a list of HAProxy charts to the k3s cluster
 - **uan-metallb**: Deploy the MetalLB chart to the k3s cluster
 - **uan-sshd**: Create and enable instances of `sshd` with systemd
-- **uan-podman**: Update /etc/
+- **uan-podman**: Prepare node for rootless podman
 
 ### Artifactory Assets
 
-UAN uploads artifacts to deploy to the UAN control-plane node in a new nexus repository:
+UAN uploads artifacts to deploy to the UAN control-plane node in the nexus repository:
 
-- uan-2.6.XX-third-party
+- uan-2.7.X-third-party
 
 The following Nexus group repository is created and references the previous UAN Nexus raw repos.
 
-- uan-2.6-third-party
+- uan-2.7-third-party
 
-This repository will contain the installer for K3s, Helm charts for HAProxy and MetalLB, and so on.
+This repository will contain the installer for K3s and Helm charts for HAProxy and MetalLB.
 
 ### Validation Tests 
 
@@ -255,6 +253,7 @@ This example that must be tailored to the wanted configuration. See the [SSHD Co
 For more information on HAProxy configurations, see [HAProxy Configuration](<https://docs.haproxy.org/2.7/configuration.html>)
 
 To enable additional instances of HAProxy representing alternate configurations, add an element to the list `uan_haproxy`.
+
 ### SSHD Configuration
 The role `uan_sshd` runs in the playbook `k3s.yml` to start and configure new instances of SSHD to respond to HAProxy forwarded connections. Each new instance of SSHD is defined in `vars/uan_sshd.yml` as an element in the list `uan_sshd_configs`:
 ```yaml
@@ -334,8 +333,6 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
 
 1. Verify MetalLB has assigned an external IP address to HAProxy:
 
-   Examine the CPS cm-pm pod logs using the following command:
-
    ```bash
    uan01:~ # kubectl get services -A -l app.kubernetes.io/name=haproxy
    NAMESPACE     NAME          TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
@@ -350,6 +347,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
      Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
      Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
    ```
+   
 1. Finally, use SSH to log in through the HAProxy load balancer:
    ```bash
    $ ssh x.x.x.x
