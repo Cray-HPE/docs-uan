@@ -6,6 +6,8 @@
 
 Before K3s can be enabled to support UAIs on Application nodes, the Application nodes must be grouped in HSM as either `k3s_server` or `k3s_agent` nodes. The UAN Ansible K3s playbook uses these groups to determine what role they will have. Nodes grouped as `k3s_server` will become K3s control-plane (master) nodes, while nodes grouped as `k3s_agent` will become K3s agent (worker) nodes.
 
+When assigning roles, carefully consider the number of `k3s_server` nodes such that a quorum is maintained. A minimum of three `k3s_server` nodes are required for a quorum. Consult [K3s High Availability](https://docs.k3s.io/datastore/ha-embedded) documentation for more information.
+
 **INFO:** For more information on how CFS uses HSM node groups to create Ansible host groups, see the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm). Follow the links to the `Cray System Management Administration Guide->Configuration Management->Ansible Inventory->Dynamic inventory and host groups` section.
 
 When HPE Cray Supercomputing UAN software is installed or upgraded using IUF, and these HSM node groups do not exist or have no members, one `Application_UAN` node type will be placed in the `k3s_server` group. The remaining nodes will be placed in the `k3s_agent` group. If these groups exist and are not empty, IUF will not change them.
