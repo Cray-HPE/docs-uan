@@ -18,7 +18,7 @@ As this feature is a "Technical Preview" of supporting SLE HPC Images on Applica
 The following steps outline the process of configuring and booting an Application Node with the SLE HPC Image.
 
   1. Determine the image to use.
-    
+
   1. Customize the image with SAT and generate a BOS Session Template
 
   1. Update BOS Session Template with the necessary parameters.
@@ -34,7 +34,7 @@ Perform the following steps to configure and boot a SLE HPC image on an Applicat
 1. Verify that the UAN release contains a SLES image.
 
 ```bash
-ncn-m001# UAN_RELEASE=2.7.1
+ncn-m001# UAN_RELEASE=@product_version@
 ncn-m001# sat showrev --no-headings --filter "product_version = $UAN_RELEASE" --filter "product_name = uan"
 ```
 
@@ -42,9 +42,9 @@ ncn-m001# sat showrev --no-headings --filter "product_version = $UAN_RELEASE" --
 
 ```bash
 ncn-m001# APP_IMAGE_NAME=cray-application-sles15sp5.x86_64-5.2.42
-    
+
 ncn-m001# APP_IMAGE_ID=$(cray ims images list --format json  | jq --arg APP_IMAGE_NAME "$APP_IMAGE_NAME" -r 'sort_by(.created) | .[] | select(.name == $APP_IMAGE_NAME ) | .id' | head -1)
-    
+
 ncn-m001# cray ims images describe $APP_IMAGE_ID --format json
 {
   "arch": "x86_64",
@@ -59,7 +59,7 @@ ncn-m001# cray ims images describe $APP_IMAGE_ID --format json
 }
 ```
 
-1. Customize the image using SAT Bootprep. These commands will add a root password to the image as one is not included. Support for additional product layers will be added in subsequent releases. Update the fields below for the correct software versions, branch names, and 
+1. Customize the image using SAT Bootprep. These commands will add a root password to the image as one is not included. Support for additional product layers will be added in subsequent releases. Update the fields below for the correct software versions, branch names, and
 
 ```bash
 ncn-m001# cat product_vars.yml
@@ -69,8 +69,8 @@ csm:
   version: 1.5.0
   branch: cray/csm/1.16.22
 uan:
-  version: 2.7.1
-  branch: integration-2.7.1
+  version: @product_version@
+  branch: integration-@product_version@
 
 ncn-m001# cat bootprep.yml
 configurations:
@@ -166,9 +166,9 @@ Some general troubleshooting tips may help in getting started using the SLE HPC 
 ### Unable to log in to the node
 
 1.  The node is not up. Connect to the console and determine why the node has not booted, starting with the troubleshooting tips.
-   
+
 ```bash
-ncn-m001:# ssh app01 
+ncn-m001:# ssh app01
 ssh: connect to host uan01 port 22: No route to host
 ```
 1. Unable to log in to the node with a password. No root password is defined in the image by default, one must be added by CFS or by modifying the squashfs filesystem.

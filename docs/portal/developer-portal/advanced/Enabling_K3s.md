@@ -19,9 +19,9 @@ The overall component flow for replicating containerized environments for End-Us
 1. The user is placed in a Podman container for an interactive session, or their `SSH_ORIGINAL_COMMAND` is run in the container.
 1. When the user disconnects, the Podman process exits, and the container is removed.
 
-There are alternate configurations of Podman that would allow for different workflows. For example, the main pid of the container could be long running, to facilitate easier re-entry to the container on subsequent logins. 
+There are alternate configurations of Podman that would allow for different workflows. For example, the main pid of the container could be long running, to facilitate easier re-entry to the container on subsequent logins.
 
-## Prerequisites 
+## Prerequisites
 
 The following steps must be completed prior to configuring the UAN with K3s.
 
@@ -30,12 +30,12 @@ The following steps must be completed prior to configuring the UAN with K3s.
 1. Identify a pool of IP addresses for the services running in K3s.
 
   **Note**: The identification of a pool of IP addresses for the services running in K3s is best made at system installation time in order to avoid the possibility of IP collisions. If this is not possible, steps must be taken to ensure IP collisions are avoided.
-   
+
   This address pool must be routable from the UAN control-plane. It is suggested to split the `[CAN|CHN] Dynamic MetalLB` subnet into two subnets, `[CAN|CHN] Dynamic MetalLB` and `[CAN|CHN] Dynamic MetalLB K3s`, the latter being used for K3s services. Subnet definitions are initially uploaded to SLS at installation time by CSI. If the `[CAN|CHN] Dynamic MetalLB` subnet is split after initial installation, steps must be taken to ensure that IPs in the newly created `[CAN|CHN] Dynamic MetalLB K3s` subnet are not in use and the `MetalLB Controller` pod in CSM must be restarted. Alternatively, the starting and ending IPs for K3s may be defined directly in `vars/uan_helm.yml`.  These steps are described below.
 
   Here is an example of splitting the existing `[CAN|CHN] Dynamic MetalLB` subnet. By default, the subnet with the `FullName` attribute of `[CAN|CHN] Dynamic MetalLB K3s` will be used for K3s, depending on whether `CAN` or `CHN` is being used for the customer access network.  This default `FullName` may be overridden by setting the `sls_can_metallb_fullname` variable in CFS to the expected name.
-    
-  **Important**: Before splitting `[CAN|CHN] Dynamic MetalLB`, be sure to verify none of the IP Addresses in the new `[CAN|CHN] Dynamic MetalLB K3s` subnet are being used. The `ims` and `user` namespaces are the most likely to contain these IPs. 
+
+  **Important**: Before splitting `[CAN|CHN] Dynamic MetalLB`, be sure to verify none of the IP Addresses in the new `[CAN|CHN] Dynamic MetalLB K3s` subnet are being used. The `ims` and `user` namespaces are the most likely to contain these IPs.
 
   ```bash
   kubectl get services -n ims
@@ -149,7 +149,7 @@ After completing the [Prerequisites](#prerequisites) section, the following are 
 
 - A fully configured UAN
 - An IPAddress start and end range to assign to MetalLB
-- Prepared subuid and subgid files 
+- Prepared subuid and subgid files
 
 ### Configuration Files and Playbook
 
@@ -182,15 +182,15 @@ The following Ansible roles are provided in the `uan-config-management` reposito
 
 UAN uploads artifacts to deploy to the UAN control-plane node in the nexus repository:
 
-- uan-2.7.X-third-party
+- uan-@product_version@-third-party
 
 The following Nexus group repository is created and references the previous UAN Nexus raw repos.
 
-- uan-2.7-third-party
+- uan-@product_version_short@-third-party
 
 This repository will contain the installer for K3s and Helm charts for HAProxy and MetalLB.
 
-### Validation Tests 
+### Validation Tests
 
 To validate the K3s cluster after it is deployed, see the [Validation Checks](#validation-checks) section of this document for details.
 
@@ -198,7 +198,7 @@ To validate the K3s cluster after it is deployed, see the [Validation Checks](#v
 
 Each of the following sections describes how the various components deployed to K3s and the UANs may be configured to enable users to SSH to rootless Podman containers. As there is no one configuration to fit any one use case, read and understand each section to modify the configuration as needed. After each section has been completed, see [Deploy K3s to the UAN](#deploy-k3s-to-the-uan).
 
-### MetalLB 
+### MetalLB
 
 By default, `metallb_ipaddresspool_range_start` and `metallb_ipaddresspool_end` will be defined from the `[CAN|CHN] Dynamic MetalLB K3s` subnet in SLS, if it exists. Alternatively, they may be configured directly in `vars/uan_helm.yml`:
 ```bash
@@ -281,7 +281,7 @@ This default configuration will simply place users into their standard shell. To
 **Note**: In the example above, the image `registry.local/cray/uai:latest` was provided as an example, but this example must be modified to reference an available container image.
 
 ### Deploy K3s to the UAN
-After the VCS repository has been updated with the appropriate values, generate a new image and reboot the UAN. 
+After the VCS repository has been updated with the appropriate values, generate a new image and reboot the UAN.
 
 Alternatively, update the active CFS configuration on a single running UAN to include the `k3s.yml` playbook and uncomment out the following line from k3s.yml:
 ```yaml
@@ -347,7 +347,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
      Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
      Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
    ```
-   
+
 1. Finally, use SSH to log in through the HAProxy load balancer:
    ```bash
    $ ssh x.x.x.x
