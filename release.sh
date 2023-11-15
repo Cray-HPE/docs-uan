@@ -45,6 +45,7 @@ function copy_docs {
     for docfile in `find "${BUILDDIR}/docs/" -name "*.md" -o -name "*.ditamap" -type f`;
     do
         sed -i.bak -e "s/@product_version@/${VERSION}/g" "$docfile"
+        sed -i.bak -e "s/@product_version_short@/${MAJOR}.${MINOR}/g" "$docfile"
         sed -i.bak -e "s/@name@/${NAME}/g" "$docfile"
         sed -i.bak -e "s/@date@/${DATE}/g" "$docfile"
     done

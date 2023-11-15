@@ -1,6 +1,6 @@
 # Configure the BMC for UANs with iLO
 
-Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
+Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue HPE Cray Supercomputing UAN product installation on an HPE Supercomputing Cray EX system.
 
 Perform the first three steps of [Prepare for UAN Product Installation](Prepare_for_UAN_Product_Installation.md) before performing this procedure.
 

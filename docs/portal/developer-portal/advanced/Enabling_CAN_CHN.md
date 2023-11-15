@@ -1,6 +1,6 @@
 # Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN)
 
-The UAN product provides a role, `uan_interfaces` in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstances, configuring the CHN on Compute type nodes.
+The HPE Cray Supercomputing UAN product provides a role, `uan_interfaces` in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstances, configuring the CHN on Compute type nodes.
 
 1. Enable CAN or CHN by setting the following in the UAN CFS repo (the filename may be modified to whatever is appropriate):
 

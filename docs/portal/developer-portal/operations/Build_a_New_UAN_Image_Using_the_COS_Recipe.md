@@ -1,7 +1,7 @@
 
 # Build a New UAN Image Using a COS Recipe
 
-Prior to UAN 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the UAN 2.3 release, UAN does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed by CFS and the `uan_packages` role. In UAN 2.6, this procedure is automated as part of the IUF process of installing and upgrading UAN. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details.
+Prior to HPE Cray Supercomputing UAN release 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the 2.3 release, this product does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed by CFS and the `uan_packages` role. In UAN release 2.6, this procedure is automated as part of the IUF process of installing and upgrading the UAN product. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details.
 
 The following procedures are provided for cases where a new UAN image must be built after initial installation. This document describes two methods of building UAN images:
 
@@ -10,7 +10,7 @@ The following procedures are provided for cases where a new UAN image must be bu
 
 ## Using IUF to Build a New UAN Image (UAN 2.6+)
 
-The procedure for using IUF to build and prepare images is documented in the [Image Preparation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/workflows/image_preparation/) section of the CSM documentation. After IUF runs, the UAN CFS configuration will be created, the UAN image will be configured using that configuration, and the UAN BOS session template will be created using the new configuration and image.
+The procedure for using IUF to build and prepare images is documented in the [Image Preparation](https://cray-hpe.github.io/docs-csm/en-15/operations/iuf/workflows/image_preparation/) section of the CSM documentation. After IUF runs, the UAN CFS configuration will be created, the UAN image will be configured using that configuration, and the UAN BOS session template will be created using the new configuration and image.
 
 The following information is provided for reference.
 

@@ -31,8 +31,8 @@ MAJOR=`./vendor/semver get major ${VERSION}`
 MINOR=`./vendor/semver get minor ${VERSION}`
 PATCH=`./vendor/semver get patch ${VERSION}`
 
-# This is the docID suffix that must be incremented with each public CSM recipe release
-DOCID_SUFFIX=5
+# This is the docID suffix that must be incremented with each "major" public release
+DOCID_SUFFIX=6
 
 # Versions for doc product manifest
 DOC_PRODUCT_MANIFEST_VERSION="^0.1.0" # Keep this field like this until further notice
