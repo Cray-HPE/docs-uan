@@ -224,13 +224,6 @@
 	"content": "uan_shadow The uan_shadow role configures the root password on UAN nodes.\nRequirements The root password hash has to be installed in HashiCorp Vault at secret/uan root_password.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\nuan_vault_url The URL for the HashiCorp Vault\nExample:\nuan_vault_url: \u0026#34;http://cray-vault.vault:8200\u0026#34; uan_vault_role_file The required Kubernetes role file for HashiCorp Vault access.\nExample:\nuan_vault_role_file: /var/run/secrets/kubernetes.io/serviceaccount/namespace uan_vault_jwt_file The path to the required Kubernetes token file for HashiCorp Vault access.\nExample:\nuan_vault_jwt_file: /var/run/secrets/kubernetes.io/serviceaccount/token uan_vault_path The path to use for storing data for UANs in HashiCorp Vault.\nExample:\nuan_vault_path: secret/uan uan_vault_key The key used for storing the root password in HashiCorp Vault.\nExample:\nuan_vault_key: root_password Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_shadow } This role is included in the UAN site.yml play.\n"
 },
 {
-	"uri": "/docs-uan/en-270-rc1/operations/uan_hardening/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_hardening The uan_hardening role configures site or customer-defined network security of UANs, for example preventing SSH access from the UAN over the NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to NMN LB IP addresses.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
-},
-{
 	"uri": "/docs-uan/en-270-rc1/operations/uan_interfaces/",
 	"title": "",
 	"tags": [],
@@ -257,6 +250,13 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.\nRequirements The Kubernetes secret must be available in the namespace and field specified by the following uan_gpg_key_* variables. The key must be stored as a base64-encoded string.\nRole Variables Available variables are in the following list, including default values (defined in defaults/main.yml):\nuan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.\nExample:\nuan_gpg_key_k8s_secret: \u0026#34;hpe-signing-key\u0026#34; uan_gpg_key_k8s_namespace The Kubernetes namespace which contains the secret.\nExample:\nuan_gpg_key_k8s_namespace: \u0026#34;services\u0026#34; uan_gpg_key_k8s_field The field in the Kubernetes secret that holds the GPG public key.\nExample:\nuan_gpg_key_k8s_field: \u0026#34;gpg-pubkey\u0026#34; Dependencies None.\nExample Playbook - hosts: Application roles: - role: uan_gpg_key This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-270-rc1/operations/uan_hardening/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_hardening The uan_hardening role configures site or customer-defined network security of UANs, for example preventing SSH access from the UAN over the NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to NMN LB IP addresses.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-270-rc1/operations/uan_ca_cert/",
