@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 20 Nov 2023 03:04:18 +0000</lastBuildDate><atom:link href="/docs-uan/en-270/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 17:01:39 +0000</lastBuildDate><atom:link href="/docs-uan/en-270/advanced/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-270/advanced/enabling_can_chn/</link>
-      <pubDate>Mon, 20 Nov 2023 03:04:03 +0000</pubDate>
+      <pubDate>Mon, 20 Nov 2023 17:01:27 +0000</pubDate>
       
       <guid>/docs-uan/en-270/advanced/enabling_can_chn/</guid>
       <description>Enabling the Customer Access Network (CAN) or the Customer High Speed Network (CHN) The UAN product provides a role, uan_interfaces in the Configuration Framework Service (CFS). This role is suitable for Application type nodes, and in some circumstances, configuring the CHN on Compute type nodes.
@@ -21,7 +21,7 @@ ncn-m001:~/ $ cat group_vars/Application_UAN/can.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-270/advanced/repurposing_compute_as_uan/</link>
-      <pubDate>Mon, 20 Nov 2023 03:04:04 +0000</pubDate>
+      <pubDate>Mon, 20 Nov 2023 17:01:27 +0000</pubDate>
       
       <guid>/docs-uan/en-270/advanced/repurposing_compute_as_uan/</guid>
       <description>Repurposing a Compute Node as a UAN This section describes how to repurpose a compute node to be used as a User Access Node (UAN). This reconfiguration is typically done when the processor type of the compute node is not yet available in a UAN server.
@@ -32,7 +32,7 @@ Verify that the System Default Route is set to CHN.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-270/advanced/designating_application_nodes_for_k3s/</link>
-      <pubDate>Mon, 20 Nov 2023 03:04:03 +0000</pubDate>
+      <pubDate>Mon, 20 Nov 2023 17:01:26 +0000</pubDate>
       
       <guid>/docs-uan/en-270/advanced/designating_application_nodes_for_k3s/</guid>
       <description>Designating Application Nodes for K3s (Technical Preview) WARNING: This feature is a Technical Preview. Future releases will streamline these manual configuration steps. Therefore, some of these configuration options may change in future releases.
@@ -42,7 +42,7 @@ Overview Before K3s can be enabled to support UAIs on Application nodes, the App
     <item>
       <title></title>
       <link>/docs-uan/en-270/advanced/enabling_k3s/</link>
-      <pubDate>Mon, 20 Nov 2023 03:04:04 +0000</pubDate>
+      <pubDate>Mon, 20 Nov 2023 17:01:27 +0000</pubDate>
       
       <guid>/docs-uan/en-270/advanced/enabling_k3s/</guid>
       <description>Configuring a UAN for K3s (Technical Preview) WARNING: This feature is a Technical Preview, as such it requires completion of the Prerequisites section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless Podman containers. Therefore, some of these configuration options may change in future releases.
@@ -52,7 +52,7 @@ UAI Experience on UANs In UAN 2.6, a new playbook has been added to create a sin
     <item>
       <title></title>
       <link>/docs-uan/en-270/advanced/sles_image/</link>
-      <pubDate>Mon, 20 Nov 2023 03:04:04 +0000</pubDate>
+      <pubDate>Mon, 20 Nov 2023 17:01:28 +0000</pubDate>
       
       <guid>/docs-uan/en-270/advanced/sles_image/</guid>
       <description>Booting an Application Node with a SLE HPC Image (Technical Preview) A SLE HPC image is available for use with Application Node types such as gateways and LNet routers. This image is considered a &amp;ldquo;Technical Preview&amp;rdquo; as the initial support for booting with SLE HPC Images without COS. This Application Node image differs from the standard COS-based image because this image does not include the COS kernel and libraries that Compute Nodes (CNs) have.</description>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
 <map id="uan_admin">
-    <title>HPE Cray User Access Node (UAN) Software Administration Guide (S-8033)</title>
+    <title>HPE Cray Supercomputing User Access Node (UAN) Software Administration Guide (S-8033) @product_version@</title>
     <topicmeta>
         <shortdesc>This publication provides instructions and examples for managing and troubleshooting User Access Nodes (UANs) on an HPE Cray EX supercomputer.</shortdesc>
         <data name="pubsnumber" value="S-8033"></data>
@@ -35,6 +35,7 @@
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
         <topicref href="advanced/Repurposing_Compute_as_UAN.md" format="markdown"/>
         <topicref href="advanced/SLES_Image.md" format="markdown"/>
+        <topicref href="advanced/Designating_Application_Nodes_for_K3s.md" format="markdown"/>
         <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
     </topichead>
     <topicref href="operations/Boot_UANs.md" format="markdown"/>
