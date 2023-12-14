@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 13 Dec 2023 03:04:24 +0000</lastBuildDate><atom:link href="/docs-uan/en-271/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Dec 2023 03:04:24 +0000</lastBuildDate><atom:link href="/docs-uan/en-271/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-271/troubleshooting/troubleshoot_uan_boot_issues/</link>
-      <pubDate>Wed, 13 Dec 2023 03:04:21 +0000</pubDate>
+      <pubDate>Thu, 14 Dec 2023 03:04:21 +0000</pubDate>
       
       <guid>/docs-uan/en-271/troubleshooting/troubleshoot_uan_boot_issues/</guid>
       <description>Troubleshoot UAN Boot Issues The UAN boot process BOS boots UANs. BOS uses session templates to define various parameters such as:
@@ -21,7 +21,7 @@ PXE booting an iPXE binary that will load the initrd of the UAN image that will 
     <item>
       <title></title>
       <link>/docs-uan/en-271/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</link>
-      <pubDate>Wed, 13 Dec 2023 03:04:22 +0000</pubDate>
+      <pubDate>Thu, 14 Dec 2023 03:04:21 +0000</pubDate>
       
       <guid>/docs-uan/en-271/troubleshooting/troubleshoot_uan_cfs_and_network_configuration_issues/</guid>
       <description>Troubleshoot UAN CFS and Network Configuration Issues Examine the UAN CFS pod logs to help troubleshoot CFS and networking issues on UANs.
@@ -34,7 +34,7 @@ ncn# kubectl -n services get pods --sort-by=.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-271/troubleshooting/troubleshoot_uan_disk_configuration_issues/</link>
-      <pubDate>Wed, 13 Dec 2023 03:04:22 +0000</pubDate>
+      <pubDate>Thu, 14 Dec 2023 03:04:21 +0000</pubDate>
       
       <guid>/docs-uan/en-271/troubleshooting/troubleshoot_uan_disk_configuration_issues/</guid>
       <description>Troubleshoot UAN Disk Configuration Issues Perform this procedure to enable uan_disk_config to run successfully by erasing existing disk partitions. UAN disk configuration will fail if the disk on the node is already partitioned. Manually erase any existing partitions to fix the issue.
