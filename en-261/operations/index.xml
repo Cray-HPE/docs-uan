@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 28 Dec 2023 03:04:33 +0000</lastBuildDate><atom:link href="/docs-uan/en-261/operations/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Dec 2023 03:04:13 +0000</lastBuildDate><atom:link href="/docs-uan/en-261/operations/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/basic_uan_configuration/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:21 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:01 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/basic_uan_configuration/</guid>
       <description>Basic UAN Configuration UAN configuration overview Configuration of UAN nodes is performed by the Configuration Framework Service (CFS). CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
@@ -20,7 +20,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:21 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:02 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
       <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the uan_packages role.
@@ -31,7 +31,7 @@ Install the COS, Slingshot, and UAN product streams.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/create_uan_boot_images/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:22 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:03 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images Perform Build a New UAN Image Using a COS Recipe before performing this procedure.
@@ -42,7 +42,7 @@ UAN specific configuration, and other required configurations related to UANs ar
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:23 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:03 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -55,7 +55,7 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.2
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:22 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:02 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/configure_interfaces_on_uans/</guid>
       <description>Configure Interfaces on UANs Perform this procedure to configure network interfaces on UANs by editing a configuration file.
@@ -67,7 +67,7 @@ Node Management Networking By default, the Node Management Network (NMN) is conn
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:22 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:03 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
@@ -79,7 +79,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/boot_uans/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:21 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:01 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -91,7 +91,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/cve-2023-0461/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:22 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:02 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/cve-2023-0461/</guid>
       <description>Mitigation for CVE-2023-0461 Description There is a use-after-free vulnerability in the Linux Kernel which can be exploited to achieve local privilege escalation. To reach the vulnerability kernel configuration flag CONFIG_TLS or CONFIG_XFRM_ESPINTCP has to be configured, but the operation does not require any privilege. There is a use-after-free bug of icsk_ulp_data of a struct inet_connection_sock. When CONFIG_TLS is enabled, user can install a tls context (struct tls_context) on a connected tcp socket.</description>
@@ -99,8 +99,20 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     
     <item>
       <title></title>
+      <link>/docs-uan/en-261/operations/uan_packages/</link>
+      <pubDate>Fri, 29 Dec 2023 03:04:07 +0000</pubDate>
+      
+      <guid>/docs-uan/en-261/operations/uan_packages/</guid>
+      <description>uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.
+Repositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks runs only during image customizations.
+This role will only run on SLES-based nodes.
+Requirements Zypper must be installed.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-261/operations/uan_shadow/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:27 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:07 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/uan_shadow/</guid>
       <description>uan_shadow The uan_shadow role configures the root password on UAN nodes.
@@ -115,59 +127,8 @@ uan_vault_role_file: /var/run/secrets/kubernetes.io/serviceaccount/namespace uan
     
     <item>
       <title></title>
-      <link>/docs-uan/en-261/operations/uan_motd/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:26 +0000</pubDate>
-      
-      <guid>/docs-uan/en-261/operations/uan_motd/</guid>
-      <description>uan_motd The uan_motd role appends text to the /etc/motd file.
-Requirements None.
-Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
-uan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.
-Dependencies None.
-Example Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: &amp;#34;MOTD CONTENT&amp;#34; } This role is included in the UAN site.yml play.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/en-261/operations/uan_packages/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:26 +0000</pubDate>
-      
-      <guid>/docs-uan/en-261/operations/uan_packages/</guid>
-      <description>uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.
-Repositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks runs only during image customizations.
-This role will only run on SLES-based nodes.
-Requirements Zypper must be installed.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/en-261/operations/uan_hardening/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:25 +0000</pubDate>
-      
-      <guid>/docs-uan/en-261/operations/uan_hardening/</guid>
-      <description>uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.
-Requirements None.
-Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
-disable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.
-The default value of disable_ssh_out_nmn_to_management_ncns is yes.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/en-261/operations/uan_interfaces/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:25 +0000</pubDate>
-      
-      <guid>/docs-uan/en-261/operations/uan_interfaces/</guid>
-      <description>uan_interfaces The uan_interfaces role configures site/customer-defined network interfaces and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
-Requirements None.
-Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
-uan_nmn_bond A boolean variable controlling the configuration of the Node Management Network (NMN). When true, the NMN network connection will be configured as a bonded pair of interfaces defined by the members of the uan_nmn_bond_slaves variable. The bonded NMN interface is named nmnb0.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-261/operations/uan_ldap/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:25 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:06 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/uan_ldap/</guid>
       <description>uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.
@@ -180,8 +141,47 @@ uan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers.</descri
     
     <item>
       <title></title>
+      <link>/docs-uan/en-261/operations/uan_motd/</link>
+      <pubDate>Fri, 29 Dec 2023 03:04:06 +0000</pubDate>
+      
+      <guid>/docs-uan/en-261/operations/uan_motd/</guid>
+      <description>uan_motd The uan_motd role appends text to the /etc/motd file.
+Requirements None.
+Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
+uan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.
+Dependencies None.
+Example Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: &amp;#34;MOTD CONTENT&amp;#34; } This role is included in the UAN site.yml play.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-261/operations/uan_hardening/</link>
+      <pubDate>Fri, 29 Dec 2023 03:04:05 +0000</pubDate>
+      
+      <guid>/docs-uan/en-261/operations/uan_hardening/</guid>
+      <description>uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.
+Requirements None.
+Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
+disable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.
+The default value of disable_ssh_out_nmn_to_management_ncns is yes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-261/operations/uan_interfaces/</link>
+      <pubDate>Fri, 29 Dec 2023 03:04:05 +0000</pubDate>
+      
+      <guid>/docs-uan/en-261/operations/uan_interfaces/</guid>
+      <description>uan_interfaces The uan_interfaces role configures site/customer-defined network interfaces and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
+Requirements None.
+Role Variables Available variables are listed below, along with default values (see defaults/main.yml):
+uan_nmn_bond A boolean variable controlling the configuration of the Node Management Network (NMN). When true, the NMN network connection will be configured as a bonded pair of interfaces defined by the members of the uan_nmn_bond_slaves variable. The bonded NMN interface is named nmnb0.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-261/operations/uan_ca_cert/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:24 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:04 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/uan_ca_cert/</guid>
       <description>uan_ca_cert The uan_ca_cert role installs a CA certificate on the system.</description>
@@ -190,7 +190,7 @@ uan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers.</descri
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/uan_disk_config/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:24 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:04 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/uan_disk_config/</guid>
       <description>uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
@@ -202,7 +202,7 @@ The device that is found will be unmounted if mounted and a swap partition will 
     <item>
       <title></title>
       <link>/docs-uan/en-261/operations/csm_gpg_keys/</link>
-      <pubDate>Thu, 28 Dec 2023 03:04:23 +0000</pubDate>
+      <pubDate>Fri, 29 Dec 2023 03:04:03 +0000</pubDate>
       
       <guid>/docs-uan/en-261/operations/csm_gpg_keys/</guid>
       <description>csm.gpg_keys The csm.gpg_keys role fetches the required GPG keys needed for HPE RPM verification.</description>
