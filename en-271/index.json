@@ -224,13 +224,6 @@
 	"content": "uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.\nRepositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks run only during image customizations.\nThis role will only run on SLES-based nodes.\nRequirements Zypper must be installed.\nThe csm.gpg_keys Ansible role must be installed if uan_disable_gpg_check is false.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\nThis role uses the zypper_repository module. The name, description, repo, disable_gpg_check, and priority fields are supported.\nThis role uses the zypper modules. The name and disable_gpg_check fields are supported.\nuan_disable_gpg_check Sets the disable_gpg_check field on Zypper repos and packages listed in the uan_sles15_repositories add and uan_sles15_packages_add lists. The disable_gpg_check field can be overridden for each repo or package.\nuan_sles15_repositories_add List of repositories to add.\nuan_sles15_packages_add List of RPM packages to add.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - role: uan_packages vars: uan_sles15_packages_add: - name: \u0026#34;foo\u0026#34; disable_gpg_check: yes - name: \u0026#34;bar\u0026#34; uan_sles15_packages_remove: - baz uan_sles15_repositories_add: - name: \u0026#34;uan-2.5.0-sle-15sp4\u0026#34; description: \u0026#34;UAN SUSE Linux Enterprise 15 SP4 Packages\u0026#34; repo: \u0026#34;https://packages.local/repository/uan-2.5.0-sle-15sp4\u0026#34; disable_gpg_check: no priority: 2 This role is included in the UAN site.yml play.\n"
 },
 {
-	"uri": "/docs-uan/en-271/operations/uan_hardening/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_hardening The uan_hardening role configures site or customer-defined network security of UANs, for example preventing SSH access from the UAN over the NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to NMN LB IP addresses.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
-},
-{
 	"uri": "/docs-uan/en-271/operations/uan_interfaces/",
 	"title": "",
 	"tags": [],
@@ -257,6 +250,13 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.\nRequirements The Kubernetes secret must be available in the namespace and field specified by the following uan_gpg_key_* variables. The key must be stored as a base64-encoded string.\nRole Variables Available variables are in the following list, including default values (defined in defaults/main.yml):\nuan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.\nExample:\nuan_gpg_key_k8s_secret: \u0026#34;hpe-signing-key\u0026#34; uan_gpg_key_k8s_namespace The Kubernetes namespace which contains the secret.\nExample:\nuan_gpg_key_k8s_namespace: \u0026#34;services\u0026#34; uan_gpg_key_k8s_field The field in the Kubernetes secret that holds the GPG public key.\nExample:\nuan_gpg_key_k8s_field: \u0026#34;gpg-pubkey\u0026#34; Dependencies None.\nExample Playbook - hosts: Application roles: - role: uan_gpg_key This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-271/operations/uan_hardening/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_hardening The uan_hardening role configures site or customer-defined network security of UANs, for example preventing SSH access from the UAN over the NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether firewall rules are applied at the UAN to prevent SSH outbound over the NMN to NMN LB IP addresses.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-271/operations/uan_ca_cert/",
