@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 03 Jan 2024 03:04:39 +0000</lastBuildDate><atom:link href="/docs-uan/en-270/operations/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jan 2024 03:04:28 +0000</lastBuildDate><atom:link href="/docs-uan/en-270/operations/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/basic_uan_configuration/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:27 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:16 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/basic_uan_configuration/</guid>
       <description>Basic UAN Configuration UAN configuration overview The Configuration Framework Service (CFS) performs the configuration of UAN nodes. CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network (NMN).
@@ -20,7 +20,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:28 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:16 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
       <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the UAN 2.3 release, UAN does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed by CFS and the uan_packages role. In UAN 2.6, this procedure is automated as part of the IUF process of installing and upgrading UAN.</description>
@@ -29,7 +29,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/create_uan_boot_images/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:29 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:17 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images Beginning with UAN 2.6, the procedures described here are automatically performed by IUF during installation and upgrade of the UAN product. See Install or Upgrade UAN for details. The procedures shown here are for cases when a new image is needed after the UAN product is installed or upgraded and the UAN release is prior to UAN 2.6. For UAN 2.6 and newer, perform Build a New UAN Image Using a COS Recipe for these cases.</description>
@@ -38,7 +38,7 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:29 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:17 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -51,7 +51,7 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.2
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:28 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:17 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/configure_interfaces_on_uans/</guid>
       <description>Configure Interfaces on UANs Perform this procedure to configure network interfaces on UANs by editing a configuration file.
@@ -63,7 +63,7 @@ Node Management Networking By default, the Node Management Network (NMN) is conn
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:28 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:17 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. PAM enables dynamic authentication support for system services.
@@ -75,7 +75,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/boot_uans/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:27 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:16 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -86,7 +86,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/en-270/operations/cve-2023-0461/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:28 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:17 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/cve-2023-0461/</guid>
       <description>Mitigation for CVE-2023-0461 Description There is a use-after-free vulnerability in the Linux Kernel which can be exploited to achieve local privilege escalation. To reach the vulnerability kernel configuration flag CONFIG_TLS or CONFIG_XFRM_ESPINTCP has to be configured, but the operation does not require any privilege. There is a use-after-free bug of icsk_ulp_data of a struct inet_connection_sock. When CONFIG_TLS is enabled, a user can install a TLS context (struct tls_context) on a connected TCP socket.</description>
@@ -94,20 +94,8 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     
     <item>
       <title></title>
-      <link>/docs-uan/en-270/operations/uan_packages/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:33 +0000</pubDate>
-      
-      <guid>/docs-uan/en-270/operations/uan_packages/</guid>
-      <description>uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.
-Repositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks run only during image customizations.
-This role will only run on SLES-based nodes.
-Requirements Zypper must be installed.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-270/operations/uan_shadow/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:33 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:22 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/uan_shadow/</guid>
       <description>uan_shadow The uan_shadow role configures the root password on UAN nodes.
@@ -122,22 +110,8 @@ uan_vault_role_file: /var/run/secrets/kubernetes.io/serviceaccount/namespace uan
     
     <item>
       <title></title>
-      <link>/docs-uan/en-270/operations/uan_ldap/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:32 +0000</pubDate>
-      
-      <guid>/docs-uan/en-270/operations/uan_ldap/</guid>
-      <description>uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.
-Requirements NSCD, pam-config, sssd.
-Role Variables Available variables are in the following list, including default values (see defaults/main.yml):
-uan_ldap_setup A Boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.
-Example:
-uan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-270/operations/uan_motd/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:32 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:21 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/uan_motd/</guid>
       <description>uan_motd The uan_motd role appends text to the /etc/motd file.
@@ -150,8 +124,58 @@ Example Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_co
     
     <item>
       <title></title>
+      <link>/docs-uan/en-270/operations/uan_packages/</link>
+      <pubDate>Thu, 04 Jan 2024 03:04:21 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270/operations/uan_packages/</guid>
+      <description>uan_packages The uan_packages role adds or removes additional repositories and RPMs on UANs using the Ansible zypper_repository and zypper module.
+Repositories and packages added to this role will be installed or removed during image customization. Installing RPMs during post-boot node configuration can cause high system loads on large systems so these tasks run only during image customizations.
+This role will only run on SLES-based nodes.
+Requirements Zypper must be installed.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-270/operations/uan_interfaces/</link>
+      <pubDate>Thu, 04 Jan 2024 03:04:20 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270/operations/uan_interfaces/</guid>
+      <description>uan_interfaces The uan_interfaces role configures site or customer-defined network interfaces and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
+Requirements None.
+Role Variables Available variables are in the following list, including default values (see defaults/main.yml):
+uan_nmn_bond A Boolean variable controlling the configuration of the Node Management Network (NMN). When true, the NMN network connection will be configured as a bonded pair of interfaces defined by the members of the uan_nmn_bond_slaves variable.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-270/operations/uan_ldap/</link>
+      <pubDate>Thu, 04 Jan 2024 03:04:20 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270/operations/uan_ldap/</guid>
+      <description>uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.
+Requirements NSCD, pam-config, sssd.
+Role Variables Available variables are in the following list, including default values (see defaults/main.yml):
+uan_ldap_setup A Boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.
+Example:
+uan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-270/operations/uan_gpg_keys/</link>
+      <pubDate>Thu, 04 Jan 2024 03:04:19 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270/operations/uan_gpg_keys/</guid>
+      <description>uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.
+Requirements The Kubernetes secret must be available in the namespace and field specified by the following uan_gpg_key_* variables. The key must be stored as a base64-encoded string.
+Role Variables Available variables are in the following list, including default values (defined in defaults/main.yml):
+uan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/docs-uan/en-270/operations/uan_hardening/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:31 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:19 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/uan_hardening/</guid>
       <description>uan_hardening The uan_hardening role configures site or customer-defined network security of UANs, for example preventing SSH access from the UAN over the NMN to NCN nodes.
@@ -163,44 +187,8 @@ The default value of disable_ssh_out_nmn_to_management_ncns is yes.</description
     
     <item>
       <title></title>
-      <link>/docs-uan/en-270/operations/uan_interfaces/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:31 +0000</pubDate>
-      
-      <guid>/docs-uan/en-270/operations/uan_interfaces/</guid>
-      <description>uan_interfaces The uan_interfaces role configures site or customer-defined network interfaces and Shasta Customer Access Network (CAN) network interfaces on UAN nodes.
-Requirements None.
-Role Variables Available variables are in the following list, including default values (see defaults/main.yml):
-uan_nmn_bond A Boolean variable controlling the configuration of the Node Management Network (NMN). When true, the NMN network connection will be configured as a bonded pair of interfaces defined by the members of the uan_nmn_bond_slaves variable.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/en-270/operations/uan_disk_config/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:30 +0000</pubDate>
-      
-      <guid>/docs-uan/en-270/operations/uan_disk_config/</guid>
-      <description>uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
-Requirements There must be disk devices found on the UAN node by the device_filter module or this role will exit with failure. This condition can be ignored by setting uan_require_disk to false. See the following list for variable definitions.
-See the library/device_filter.py file for more information on this module.
-The device that is found will be unmounted if mounted and a swap partition will be created on the first half of the disk.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs-uan/en-270/operations/uan_gpg_keys/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:30 +0000</pubDate>
-      
-      <guid>/docs-uan/en-270/operations/uan_gpg_keys/</guid>
-      <description>uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.
-Requirements The Kubernetes secret must be available in the namespace and field specified by the following uan_gpg_key_* variables. The key must be stored as a base64-encoded string.
-Role Variables Available variables are in the following list, including default values (defined in defaults/main.yml):
-uan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/docs-uan/en-270/operations/uan_ca_cert/</link>
-      <pubDate>Wed, 03 Jan 2024 03:04:29 +0000</pubDate>
+      <pubDate>Thu, 04 Jan 2024 03:04:18 +0000</pubDate>
       
       <guid>/docs-uan/en-270/operations/uan_ca_cert/</guid>
       <description>uan_ca_cert The uan_ca_cert role installs a CA certificate onto the system.
@@ -208,6 +196,18 @@ Requirements None.
 Role Variables None.
 Dependencies None.
 Example Playbook - hosts: Application roles: - role: uan_ca_cert This role is included in the UAN site.yml play.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs-uan/en-270/operations/uan_disk_config/</link>
+      <pubDate>Thu, 04 Jan 2024 03:04:18 +0000</pubDate>
+      
+      <guid>/docs-uan/en-270/operations/uan_disk_config/</guid>
+      <description>uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
+Requirements There must be disk devices found on the UAN node by the device_filter module or this role will exit with failure. This condition can be ignored by setting uan_require_disk to false. See the following list for variable definitions.
+See the library/device_filter.py file for more information on this module.
+The device that is found will be unmounted if mounted and a swap partition will be created on the first half of the disk.</description>
     </item>
     
   </channel>
