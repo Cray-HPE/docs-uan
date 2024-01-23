@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 22 Jan 2024 03:04:20 +0000</lastBuildDate><atom:link href="/docs-uan/en-262/upgrade/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Jan 2024 03:04:25 +0000</lastBuildDate><atom:link href="/docs-uan/en-262/upgrade/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-262/upgrade/notable_changes/</link>
-      <pubDate>Mon, 22 Jan 2024 03:04:17 +0000</pubDate>
+      <pubDate>Tue, 23 Jan 2024 03:04:22 +0000</pubDate>
       
       <guid>/docs-uan/en-262/upgrade/notable_changes/</guid>
       <description>Notable Changes The following guide describes changes included in a particular UAN version that may be of note during an install or upgrade.
@@ -20,7 +20,7 @@ When an upgrade is being performed, please review the notable changes for all of
     <item>
       <title></title>
       <link>/docs-uan/en-262/upgrade/upgrades/</link>
-      <pubDate>Mon, 22 Jan 2024 03:04:18 +0000</pubDate>
+      <pubDate>Tue, 23 Jan 2024 03:04:22 +0000</pubDate>
       
       <guid>/docs-uan/en-262/upgrade/upgrades/</guid>
       <description>Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.
