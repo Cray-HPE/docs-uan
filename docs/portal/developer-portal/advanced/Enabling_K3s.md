@@ -315,7 +315,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
 1. Verify HAProxy and MetalLB are installed with `helm`
 
    ```bash
-   uan01:~ # export KUBECONFIG=~/.kube/k3s.yml
+   uan01:~ # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
    uan01:~ # helm ls -A
    NAME       	NAMESPACE     	REVISION	UPDATED                                	STATUS  	CHART         	APP VERSION
    haproxy-uai	haproxy-uai   	1       	2023-03-01 10:55:10.916137137 -0600 CST	deployed	haproxy-1.17.3	2.6.6
