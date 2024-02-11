@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 10 Feb 2024 03:05:24 +0000</lastBuildDate><atom:link href="/docs-uan/en-270/installation_prereqs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Feb 2024 03:04:21 +0000</lastBuildDate><atom:link href="/docs-uan/en-270/installation_prereqs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-270/installation_prereqs/prepare_for_uan_product_installation/</link>
-      <pubDate>Sat, 10 Feb 2024 03:05:13 +0000</pubDate>
+      <pubDate>Sun, 11 Feb 2024 03:04:10 +0000</pubDate>
       
       <guid>/docs-uan/en-270/installation_prereqs/prepare_for_uan_product_installation/</guid>
       <description>Prepare for UAN Product Installation Perform this procedure to ready the HPE Cray EX supercomputer for UAN product installation.
@@ -24,7 +24,7 @@ See the procedure &amp;ldquo;Update the Management Network Firmware&amp;rdquo; i
     <item>
       <title></title>
       <link>/docs-uan/en-270/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</link>
-      <pubDate>Sat, 10 Feb 2024 03:05:13 +0000</pubDate>
+      <pubDate>Sun, 11 Feb 2024 03:04:10 +0000</pubDate>
       
       <guid>/docs-uan/en-270/installation_prereqs/configure_the_bmc_for_uans_with_ilo/</guid>
       <description>Configure the BMC for UANs with iLO Perform this procedure to enable the IPMI/DCMI settings on an HPE UAN that are necessary to continue UAN product installation on an HPE Cray EX supercomputer.
@@ -37,7 +37,7 @@ Create an SSH tunnel to the UAN BMC.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-270/installation_prereqs/configure_the_bios_of_an_hpe_uan/</link>
-      <pubDate>Sat, 10 Feb 2024 03:05:13 +0000</pubDate>
+      <pubDate>Sun, 11 Feb 2024 03:04:10 +0000</pubDate>
       
       <guid>/docs-uan/en-270/installation_prereqs/configure_the_bios_of_an_hpe_uan/</guid>
       <description>Configure the BIOS of an HPE UAN Perform this procedure to configure the network interface and boot settings required by HPE UANs.
