@@ -114,7 +114,7 @@ session_templates:
   bos_parameters:
     boot_sets:
       uan:
-        kernel_parameters: console=ttyS0,115200 bad_page=panic crashkernel=512M hugepagelist=2m-2g intel_iommu=off intel_pstate=disable iommu.passthrough=on modprobe.blacklist=amdgpu numa_interleave_omit=headless oops=panic pageblock_order=14 rd.neednet=1 rd.retry=10 rd.shell split_lock_detect=off systemd.unified_cgroup_hierarchy=1 ip=:::::eth0:dhcp:10.92.100.225:169.254.169.254 quiet spire_join_token=${SPIRE_JOIN_TOKEN} root=live:s3://boot-images/REPLACE_ME/rootfs psi=1
+        kernel_parameters: console=ttyS0,115200 bad_page=panic crashkernel=512M hugepagelist=2m-2g intel_iommu=off intel_pstate=disable iommu.passthrough=on modprobe.blacklist=amdgpu numa_interleave_omit=headless oops=panic pageblock_order=14 rd.neednet=1 rd.retry=10 rd.shell split_lock_detect=off systemd.unified_cgroup_hierarchy=1 ip=dhcp quiet spire_join_token=${SPIRE_JOIN_TOKEN} root=live:s3://boot-images/REPLACE_ME/rootfs psi=1
         node_roles_groups:
         - Application
         rootfs_provider_passthrough: ""
