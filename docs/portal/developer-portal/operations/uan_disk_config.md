@@ -41,37 +41,85 @@ Input to the `device_filter` module.
   uan_device_name_filter: "^sd[a-f]$"
   ```
 
-`uan_device_host_filter`
+`uan_device_name_exclude_filter`
 
-: Regular expression of host for this role to filter.
+: Regular expression of disk device name to exclude for this role to filter.
 Input to the `device_filter` module.
 
   Example:
 
   ```yaml
-  uan_device_host_filter: ""
+  uan_device_name_exclude_filter: ""
+  ```
+
+`uan_device_host_filter`
+
+: List of hosts for this role to filter.
+Input to the `device_filter` module.
+
+  Example:
+
+  ```yaml
+  uan_device_host_filter: []
+  ```
+
+`uan_device_host_exclude_filter`
+
+: List of hosts for this role to exclude.
+Input to the `device_filter` module.
+
+  Example:
+
+  ```yaml
+  uan_device_host_exclude_filter: []
   ```
 
 `uan_device_model_filter`
 
-: Regular expression of the device model for this role to filter.
+: List of the device models for this role to filter.
 Input to the `device_filter` module.
 
   Example:
 
   ```yaml
-  uan_device_model_filter: ""
+  uan_device_model_filter: []
+  ```
+
+`uan_device_model_exclude_filter`
+
+: List of the device models for this role to exclude.
+Input to the `device_filter` module.
+
+  Example:
+
+  ```yaml
+  uan_device_model_exclude_filter: []
   ```
 
 `uan_device_vendor_filter`
 
-: Regular expression of the disk vendor for this role to filter.
+: List of the disk vendors for this role to filter.
 Input to the `device_filter` module.
 
   Example:
 
   ```yaml
-  uan_device_vendor_filter: ""
+  uan_device_vendor_filter: []
+  ```
+
+`uan_device_vendor_exclude_filter`
+
+: List of the disk vendors for this role to exclude.
+Default is `"LIO-ORG"` and  must be excluded
+if Scalable Boot Projection Service, SBPS, is used for
+the image projection service.
+Input to the `device_filter` module.
+
+  Example:
+
+  ```yaml
+  uan_device_vendor_exclude_filter:
+    - "LIO-ORG"
   ```
 
 `uan_device_size_filter`
