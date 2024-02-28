@@ -25,6 +25,8 @@ There are alternate configurations of Podman that would allow for different work
 
 The following steps must be completed prior to configuring the UAN with K3s.
 
+1. Complete the `process-media` and `pre-install-check` IUF phases if you are performing this procedure during initial installation or upgrade.
+
 1. Designate a UAN to operate as the K3s control-plane node. See [Designating Application Nodes for K3s](Designating_Application_Nodes_for_K3s.md).
 
 1. Identify a pool of IP addresses for the services running in K3s.
