@@ -19,6 +19,10 @@
         <topicref href="operations/Configure_Interfaces_on_UANs.md" format="markdown"/>
         <topicref href="advanced/Enabling_CAN_CHN.md" format="markdown"/>
     </topicref>
+    <topichead navtitle="Advanced UAN Configuration">
+        <topicref href="advanced/Designating_Application_Nodes_for_K3s.md" format="markdown"/>
+        <topicref href="advanced/Enabling_K3s.md" format="markdown"/>
+    </topichead>
     <topichead>
         <topicmeta>
             <navtitle>UAN Ansible Roles</navtitle>
