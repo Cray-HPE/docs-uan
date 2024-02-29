@@ -18,8 +18,8 @@ When an upgrade is being performed, review the notable changes for **all** the U
 
 ## UAN 2.4.0
 
-* UAN 2.4.0 adds support for a Bifurcated Customer Access Network \(BiCAN\) and the ability to specify a default route other than the CAN or CHN when they are selected.  
-  * Application nodes may now choose to implement user access over either the existing Customer Access Network \(CAN\), the new Customer High Speed Network \(CHN\), or a direct connection to the customer user network.  By default, a direct connection is selected as it was in previous releases.  
+* UAN 2.4.0 adds support for a Bifurcated Customer Access Network \(BiCAN\) and the ability to specify a default route other than the CAN or CHN when they are selected.
+  * Application nodes may now choose to implement user access over either the existing Customer Access Network \(CAN\), the new Customer High Speed Network \(CHN\), or a direct connection to the customer user network.  By default, a direct connection is selected as it was in previous releases.
     * `uan_can_setup`, when set to `yes`, selects the customer access network implementation based on the setting of the BICAN System Default Route in SLS.
     * Application nodes may now set a default route other than the CAN or CHN default route when `uan_can_setup: yes`.
     * `uan_customer_default_route: true` will allow a customer-defined default route to be set using the `customer_uan_routes` structure when `uan_can_setup` is set to `yes`.
@@ -55,3 +55,9 @@ When an upgrade is being performed, review the notable changes for **all** the U
 * UAN CFS has been restructured to work for COS and Standard SLES images
 * uan_packages variables are now `vars/uan_packages.yml` and `vars/uan_repos.yml` and have been renamed. Admins must migrate to the new settings.
 * The NMN connection now supports bonding (optional).  The default is a non-bonded single interface.
+
+## UAN 2.7.1
+
+* K3s may be optionally deployed to UANs using the playbook k3s.yaml
+* A new Nexus raw repo provides 3rd party packages to deploy k3s and related services
+* UAN rpms have been removed and replaced with ansible roles

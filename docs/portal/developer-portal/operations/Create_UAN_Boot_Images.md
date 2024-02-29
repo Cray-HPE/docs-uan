@@ -198,13 +198,13 @@ See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for 
        playbook: set_nologin.yml
        product:
          name: uan
-         version: 2.6.0
+         version: 2.7.0
          branch: integration-PRODUCT_VERSION
      - name: uan
        playbook: site.yml
        product:
          name: uan
-         version: 2.6.0
+         version: 2.7.0
          branch: integration-PRODUCT_VERSION
   
      ... add configuration layers for other products here, if desired ...
@@ -213,13 +213,13 @@ See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for 
        playbook: rebuild-initrd.yml
        product:
          name: uan
-         version: 2.6.0
+         version: 2.7.0
          branch: integration-PRODUCT_VERSION
      - name: uan-unset-nologin
        playbook: unset_nologin.yml
        product:
          name: uan
-         version: 2.6.0
+         version: 2.7.0
          branch: integration-PRODUCT_VERSION
    ```
 

@@ -31,7 +31,7 @@ Before using IUF to build a new UAN image from a COS recipe, be sure that the in
     working_branch: "{{ working_branch }}" # COS CFS branch to use (typically matches compute nodes)
 
   uan:
-    version: 2.6.0 # Provides the UAN CFS configuration
+    version: 2.7.0 # Provides the UAN CFS configuration
     working_branch: "{{ working_branch }}" # Provides the UAN CFS branch to use
   ```
 
