@@ -61,7 +61,7 @@ This section describes any UAN details that an administrator must be aware of be
 
 **Action**: Before executing this stage, any site-local UAN configuration changes must be made so that the following stages execute using the wanted UAN configuration values. See the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section of this documentation for UAN configuration content details. The [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh installation scenarios.
 
-The procedures in this guide assume that the HPE Cray Supercomputing EX system has dedicated UANs. If the HPE Cray Supercomputing EX system does not have dedicated UANs, skip the steps for installing and configuring them. 
+The procedures in this guide assume that the HPE Cray Supercomputing EX system has dedicated UANs. If the HPE Cray Supercomputing EX system does not have dedicated UANs, skip the steps for installing and configuring them.
 
 ## UAN Content Installed
 
@@ -143,18 +143,14 @@ The UAN product provides an Application Node image. This image is based on SUSE 
 
 Customers must finish the installation or upgrade of the UAN product before booting an Application Node with SLE HPC 15 provided by that UAN product release. See [Booting an Application Node with a SLES Image (Technical Preview)](../advanced/SLES_Image.md) for more information about this image and instructions on deploying it to Application Nodes.
 
-### RPMs
+### Third-Party Packages
 
-UAN provides RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of the installation process.
+UAN provides some third-party packages used on UAN nodes. The third-party packages are uploaded to Nexus as part of the installation process.
 
 The following Nexus raw repositories are created:
 
-- uan-2.7.XX-sle-15sp4
-- uan-2.7.XX-sle-15sp3
+- uan-@product_version@-third-party
 
 The following Nexus group repositories are created and reference the preceding Nexus raw repos.
 
-- uan-2.7-sle-15sp4
-- uan-2.7-sle-15sp3
-
-The uan-2.7-sle-15sp4 and uan-2.7-sle-15sp3 Nexus group repositories are used when building UAN node images and are accessible on UAN nodes after boot.
+- uan-@product_version_short@-third-party
