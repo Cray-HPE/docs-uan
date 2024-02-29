@@ -77,7 +77,7 @@ The name of the playbook must match the name of the HSN NICs (Mellanox or Cassin
 
 ### COS (playbook: cos-application.yml)
 
-The second CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `cos-config-management` `group_vars` or `host_vars` subdirectories of that repository.
+The second CFS Layer runs the following roles from the `uss-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `uss-config-management` `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
@@ -151,7 +151,7 @@ The UAN roles in `site.yml` are required and must not be removed, with exception
 
 ### COS (playbook: cos-application-after.yml)
 
-This CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
+This CFS Layer runs the following roles from the `uss-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
