@@ -61,6 +61,8 @@ This section describes any UAN details that an administrator must be aware of be
 
 **Action**: Before executing this stage, any site-local UAN configuration changes must be made so that the following stages execute using the wanted UAN configuration values. See the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section of this documentation for UAN configuration content details. The [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh installation scenarios.
 
+The procedures in this guide assume that the HPE Cray Supercomputing EX system has dedicated UANs. If the HPE Cray Supercomputing EX system does not have dedicated UANs, skip the steps for installing and configuring them. 
+
 ## UAN Content Installed
 
 The following subsections describe most of the UAN content installed and configured on the system by IUF. The new version of UAN \(2.6.XX\) and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
