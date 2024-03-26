@@ -53,6 +53,10 @@ This section describes any UAN details that an administrator must be aware of be
 
 **Action**: Before executing this stage, the administrator must ensure that the UAN product tar file is in a media directory under `/etc/cray/upgrade/csm/`. When more than one product is being installed, place all the product tar files in the same directory.
 
+### deliver-product
+
+**Action**: Before executing this stage, the administrator must perform the prerequisites found in [Configuring a UAN for K3s](https://cray-hpe.github.io/docs-uan/en-273/advanced/enabling_k3s) when UAIs on UANs is enabled.
+
 ### update-vcs-config
 
 **Action**: Before executing this stage, the administrator must ensure the IUF site variables file (see `iuf -sv SITE_VARS`) is updated to reflect site preferences, including the wanted VCS branching configuration. The `update-vcs-config` stage will use the branching configuration when modifying UAN branches in VCS.
@@ -61,7 +65,7 @@ This section describes any UAN details that an administrator must be aware of be
 
 **Action**: Before executing this stage, any site-local UAN configuration changes must be made so that the following stages execute using the wanted UAN configuration values. See the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section of this documentation for UAN configuration content details. The [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh installation scenarios.
 
-The procedures in this guide assume that the HPE Cray Supercomputing EX system has dedicated UANs. If the HPE Cray Supercomputing EX system does not have dedicated UANs, skip the steps for installing and configuring them. 
+The procedures in this guide assume that the HPE Cray Supercomputing EX system has dedicated UANs. If the HPE Cray Supercomputing EX system does not have dedicated UANs, skip the steps for installing and configuring them.
 
 ## UAN Content Installed
 
