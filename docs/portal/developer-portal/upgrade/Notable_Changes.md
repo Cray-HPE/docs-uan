@@ -61,3 +61,7 @@ When an upgrade is being performed, review the notable changes for **all** the U
 * K3s may be optionally deployed to UANs using the playbook k3s.yaml
 * A new Nexus raw repo provides 3rd party packages to deploy k3s and related services
 * UAN rpms have been removed and replaced with ansible roles
+
+## UAN 2.7.3
+
+* Update to the `Install or Upgrade UAN` documentation to reference the prerequisites needed when UAIs on UANs are to be enabled.
