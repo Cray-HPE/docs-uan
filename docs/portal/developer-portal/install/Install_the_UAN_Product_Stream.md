@@ -55,7 +55,7 @@ This section describes any UAN details that an administrator must be aware of be
 
 ### deliver-product
 
-**Action**: Before executing this stage, the administrator must perform the prerequisites found in [Configuring a UAN for K3s](https://cray-hpe.github.io/docs-uan/en-273/advanced/enabling_k3s) when UAIs on UANs is enabled.
+**Action**: Before executing this stage, the administrator must perform the prerequisites found in [Configuring a UAN for K3s](../advanced/Enabling_K3s.md) when UAIs on UANs is enabled.
 
 ### update-vcs-config
 
