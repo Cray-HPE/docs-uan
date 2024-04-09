@@ -49,12 +49,14 @@ CFS uses configuration layers. Configuration layers allow the sharing of Ansible
 
 # cos-application-last is required to be the last or second to last layer
 # when uan-set-nologin and uan-unset-nologin layers are active.
-  - name: cos-application-last-{{cos.working_branch}}
+  - name: cos-application-last-{{uss.working_branch}}
     playbook: cos-application-after.yml
     product:
-      name: cos
-      version: "{{cos.version}}"
-      branch: "{{cos.working_branch}}"
+      name: uss
+      version: "{{uss.version}}"
+      branch: "{{uss.working_branch}}"
+    special_parameters:
+      ims_require_dkms: true
 # Optional layer to allow non-root logins after configuration
 #  - name: uan-unset-nologin-{{uan.working_branch}}
 #    playbook: unset_nologin.yml
@@ -149,9 +151,9 @@ The UAN-specific roles involved in post-boot UAN node configuration are:
 
 The UAN roles in `site.yml` are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file. Configuration of this layer is made in the `uan-config-management` VCS repository.
 
-### COS (playbook: cos-application-after.yml)
+### Final COS Layer (cos-application-last) 
 
-This CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
+This CFS Layer uses the playbook `cos-application-after.yml` and runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
