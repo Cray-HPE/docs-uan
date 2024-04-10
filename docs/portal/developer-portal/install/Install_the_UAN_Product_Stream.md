@@ -63,12 +63,12 @@ This section describes any UAN details that an administrator must be aware of be
 
 ## UAN Content Installed
 
-The following subsections describe most of the UAN content installed and configured on the system by IUF. The new version of UAN \(2.6.XX\) and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
+The following subsections describe most of the UAN content installed and configured on the system by IUF. The new version of UAN \(2.7.XX\) and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
 
 
 ### Configuration
 
-UAN provides configuration content in the form of Ansible roles and plays. This content is uploaded to a VCS repository in a branch with a specific UAN version number. That release number, such as \(2.6.XX\) distinguishes it from any previously released UAN configuration content. This content is described in detail in the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section.
+UAN provides configuration content in the form of Ansible roles and plays. This content is uploaded to a VCS repository in a branch with a specific UAN version number. That release number, such as \(2.7.XX\) distinguishes it from any previously released UAN configuration content. This content is described in detail in the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section.
 
 For application nodes based on COS, the COS compute image is used as the base application node image and two COS CFS layers are required. The first COS CFS layer runs the `cos-application.yml` Ansible playbook and ensures that the COS content is applied as part of the image customization and node personalization processes. This COS CFS layer must precede the UAN CFS layer in the UAN CFS configuration. A second COS CFS layer running the Ansible playbook, `cos-application-after.yml`, runs after the UAN CFS layer of the UAN CFS configuration. This second COS CFS layer ensures that the application node initrd is rebuilt and that any customer-defined filesystems are configured.
 
@@ -147,12 +147,12 @@ UAN provides RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of t
 
 The following Nexus raw repositories are created:
 
-- uan-2.6.XX-sle-15sp4
-- uan-2.6.XX-sle-15sp3
+- uan-2.7.XX-sle-15sp4
+- uan-2.7.XX-sle-15sp3
 
 The following Nexus group repositories are created and reference the preceding Nexus raw repos.
 
-- uan-2.6-sle-15sp4
-- uan-2.6-sle-15sp3
+- uan-2.7-sle-15sp4
+- uan-2.7-sle-15sp3
 
-The uan-2.6-sle-15sp4 and uan-2.6-sle-15sp3 Nexus group repositories are used when building UAN node images and are accessible on UAN nodes after boot.
+The uan-2.7-sle-15sp4 and uan-2.7-sle-15sp3 Nexus group repositories are used when building UAN node images and are accessible on UAN nodes after boot.

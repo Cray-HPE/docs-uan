@@ -3,7 +3,7 @@
 **WARNING**: This feature is a Technical Preview, as such it requires completion of the [Prerequisites](#prerequisites) section. Future releases will streamline these manual configuration steps and enhance the experience of using the rootless Podman containers. Therefore, some of these configuration options may change in future releases.
 
 ## UAI Experience on UANs
-In HPE Cray Supercomputing UAN release 2.6, a new playbook has been added to create a single node, K3s cluster. This K3s environment can then run the services necessary to replicate the experience of User Access Instances (UAIs) on one or more UANs.
+Beginning in HPE Cray Supercomputing UAN release 2.6, a new playbook has been added to create a single node, K3s cluster. This K3s environment can then run the services necessary to replicate the experience of User Access Instances (UAIs) on one or more UANs.
 
 ### Use of K3s
 K3s will serve as the orchestrator of services necessary to replicate the capabilities of UAIs on UAN hardware. These services include HAProxy, MetalLB, and eventually DNS services like ExternalDNS and PowerDNS. Notably, this does **not** orchestrate instances of `sshd` and `podman` containers through K3s. K3s and the initial set of services mimic how the "Broker UAIs" in CSM to handle the SSH ingress and redirection of users into their interactive environment.
@@ -118,7 +118,7 @@ The following steps must be completed prior to configuring the UAN with K3s.
      "artifacts": [
        {
          "Key": "subuid",
-         "LastModified": "2023-02-21T23:41:43.948000+00:00",
+         "LastModified": "2024-02-21T23:41:43.948000+00:00",
          "ETag": "\"c543aebb9b40bcf48879885734447090\"",
          "Size": 145686,
          "StorageClass": "STANDARD",
@@ -129,7 +129,7 @@ The following steps must be completed prior to configuring the UAN with K3s.
        },
        {
          "Key": "subgid",
-         "LastModified": "2023-02-21T23:41:43.948000+00:00",
+         "LastModified": "2024-02-21T23:41:43.948000+00:00",
          "ETag": "\"73032ede132e44d2c1bc567246901737\"",
          "Size": 145686,
          "StorageClass": "STANDARD",
@@ -318,8 +318,8 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
    uan01:~ # export KUBECONFIG=~/.kube/k3s.yml
    uan01:~ # helm ls -A
    NAME       	NAMESPACE     	REVISION	UPDATED                                	STATUS  	CHART         	APP VERSION
-   haproxy-uai	haproxy-uai   	1       	2023-03-01 10:55:10.916137137 -0600 CST	deployed	haproxy-1.17.3	2.6.6
-   metallb    	metallb-system	1       	2023-03-01 10:40:15.548380973 -0600 CST	deployed	metallb-0.13.7	v0.13.7
+   haproxy-uai	haproxy-uai   	1       	2024-03-01 10:55:10.916137137 -0600 CST	deployed	haproxy-1.17.3	2.7.1
+   metallb    	metallb-system	1       	2024-03-01 10:40:15.548380973 -0600 CST	deployed	metallb-0.13.7	v0.13.7
    ```
 
 1. Check pod status of HAProxy and MetalLB
@@ -345,7 +345,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
    uan01:~ # systemctl status sshd_uai
    ● sshd_uai.service - OpenSSH Daemon Generated for uai
      Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
-     Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
+     Active: active (running) since Wed 2024-03-01 12:43:31 CST; 2h 4min ago
    ```
 
 1. Finally, use SSH to log in through the HAProxy load balancer:
