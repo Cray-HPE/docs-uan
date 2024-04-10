@@ -55,3 +55,13 @@ When an upgrade is being performed, review the notable changes for **all** the U
 * UAN CFS has been restructured to work for COS and Standard SLES images
 * uan_packages variables are now `vars/uan_packages.yml` and `vars/uan_repos.yml` and have been renamed. Admins must migrate to the new settings.
 * The NMN connection now supports bonding (optional).  The default is a non-bonded single interface.
+
+## UAN 2.7.1
+
+* K3s may be optionally deployed to UANs using the playbook k3s.yaml
+* A new Nexus raw repo provides 3rd party packages to deploy k3s and related services
+* UAN rpms have been removed and replaced with ansible roles
+
+## UAN 2.7.3
+
+* Update to the `Install or Upgrade UAN` documentation to reference the prerequisites needed when UAIs on UANs are to be enabled.
