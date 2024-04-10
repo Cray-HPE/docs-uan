@@ -69,7 +69,7 @@ The procedures in this guide assume that the HPE Cray Supercomputing EX system h
 
 ## UAN Content Installed
 
-The following subsections describe most of the UAN content installed and configured on the system by IUF. The new version of UAN \(2.6.XX\) and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
+The following subsections describe most of the UAN content installed and configured on the system by IUF. Beginning with UAN \(2.6.XX\), UAN and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
 
 
 ### Configuration
@@ -149,16 +149,15 @@ Customers must finish the installation or upgrade of the UAN product before boot
 
 ### RPMs
 
-UAN provides RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of the installation process.
+UAN provides third-party RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of the installation process.
 
 The following Nexus raw repositories are created:
 
-- uan-2.6.XX-sle-15sp4
-- uan-2.6.XX-sle-15sp3
+- uan-2.7-third-party
+- uan-2.7.XX-third-party
 
-The following Nexus group repositories are created and reference the preceding Nexus raw repos.
+The following Nexus group repository is created and reference the preceding Nexus raw repos.
 
-- uan-2.6-sle-15sp4
-- uan-2.6-sle-15sp3
+- uan-2.7.XX-third-party
 
-The uan-2.6-sle-15sp4 and uan-2.6-sle-15sp3 Nexus group repositories are used when building UAN node images and are accessible on UAN nodes after boot.
+The uan-2.7.XX-third-party Nexus group repository is used when building UAN node images and is accessible on UAN nodes after boot.
