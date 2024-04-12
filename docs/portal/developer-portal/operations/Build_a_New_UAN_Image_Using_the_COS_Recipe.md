@@ -1,7 +1,7 @@
 
 # Build a New UAN Image Using a COS Recipe
 
-Prior to HPE Cray Supercomputing UAN release 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the 2.3 release, this product does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed by CFS and the `uan_packages` role. In UAN release 2.6, this procedure is automated as part of the IUF process of installing and upgrading the UAN product. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details.
+Prior to HPE Cray Supercomputing UAN release 2.3, a similar copy of the COS image recipe was imported with the UAN install. Beginning with the 2.3 release, this product does not install an image recipe. A COS image recipe must be used. Additional UAN packages will be installed by CFS and the `uan_packages` role. Beginning in UAN release 2.6, this procedure is automated as part of the IUF process of installing and upgrading the UAN product. See [Install or Upgrade UAN](../install/Install_the_UAN_Product_Stream.md) for details.
 
 The following procedures are provided for cases where a new UAN image must be built after initial installation. This document describes two methods of building UAN images:
 
@@ -31,7 +31,7 @@ Before using IUF to build a new UAN image from a COS recipe, be sure that the in
     working_branch: "{{ working_branch }}" # COS CFS branch to use (typically matches compute nodes)
 
   uan:
-    version: 2.6.0 # Provides the UAN CFS configuration
+    version: 2.7.3 # Provides the UAN CFS configuration
     working_branch: "{{ working_branch }}" # Provides the UAN CFS branch to use
   ```
 

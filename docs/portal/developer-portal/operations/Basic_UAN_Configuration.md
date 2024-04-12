@@ -8,12 +8,13 @@ The preferred method of creating CFS configurations is to use the Shasta Admin T
 
 CFS uses configuration layers. Configuration layers allow the sharing of Ansible roles provided by other products, and by the site. Non-root user access may be blocked during node configuration by enabling the `uan-set-nologin` and `uan-unset-nologin` configuration layers shown in the following example bootprep file. The parameterized fields are defined in a `product_vars.yml` file.
 
-**IMPORTANT** Do not remove or reorder the first three layers. The HPE Cray Supercomputing UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
+**IMPORTANT:** Do not remove or reorder the first three required layers. The HPE Cray Supercomputing UAN product requires these layers and this specific order. Also, keep the required `cos-application-last` layer as the last or second to last layer in the configuration if `uan-set-nologin` and `uan-unset-nologin` are active.
+
+**IMPORTANT:** IUF uses the `$ADMIN_DIR/bootprep/compute-and-uan-bootprep.yaml` file to create the IMS images, CFS configuraiton, and BOS session template for UANs. Therefore, any changes to this file must be made prior to running the IUF `prepare_images` stage.
 
 ```bash
 - name: "{{default.note}}uan-{{recipe.version}}{{default.suffix}}"
   layers:
-  # The first three layers are required and must not be reordered.
   - name: shs-{{default.network_type}}_install-{{slingshot_host_software.working_branch}}
     playbook: shs_{{default.network_type}}_install.yml
     product:
@@ -26,18 +27,18 @@ CFS uses configuration layers. Configuration layers allow the sharing of Ansible
       name: cos
       version: "{{cos.version}}"
       branch: "{{cos.working_branch}}"
-  - name: csm-packages-{{csm.version}}
-    playbook: csm_packages.yml
-    product:
-      name: csm
-      version: "{{csm.version}}"
-# Optional layer to prevent non-root logins during configuration
+### Optional layer to prevent non-root logins during configuration
 #  - name: uan-set-nologin-{{uan.working_branch}}
 #    playbook: set_nologin.yml
 #    product:
 #      name: uan
 #      version: "{{uan.version}}"
 #      branch: "{{uan.working_branch}}"
+  - name: csm-packages-{{csm.version}}
+    playbook: csm_packages.yml
+    product:
+      name: csm
+      version: "{{csm.version}}"
   - name: uan-{{uan.working_branch}}
     playbook: site.yml
     product:
@@ -79,7 +80,7 @@ The name of the playbook must match the name of the HSN NICs (Mellanox or Cassin
 
 ### COS (playbook: cos-application.yml)
 
-The second CFS Layer runs the following roles from the `cos-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `cos-config-management` `group_vars` or `host_vars` subdirectories of that repository.
+The second CFS Layer runs the following roles from the `uss-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `uss-config-management` `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
@@ -126,13 +127,27 @@ The following Ansible roles are run during UAN post-boot configuration:
 
   - `cray_gpu_deploy`
 
-### CMS Layer (playbook: csm_packages.yml)
-
-The third CFS Layer installs the Cray Management System packages. These packages are normally not modified.
-
 ### Optional UAN Layer (playbook: set_nologin.yml)
 
 This optional layer is recommended when the nodes will host non-root users. The layer touches the `/etc/nologin` file preventing non-root users from logging into the node while it is being configured. Be sure to include the optional UAN layer which calls the `unset_nologin.yml` playbook as indicated in this document if non-root users are to be allowed to login after the node is configured.
+
+The following example places this layer just before the `csm_packages` layer, for context.
+
+```bash
+### Optional layer to prevent non-root logins during configuration
+  - name: uan-set-nologin-{{uan.working_branch}}
+    playbook: set_nologin.yml
+    product:
+      name: uan
+      version: "{{uan.version}}"
+      branch: "{{uan.working_branch}}"
+  - name: csm-packages-{{csm.version}}
+    playbook: csm_packages.yml
+```
+
+### CMS Layer (playbook: csm_packages.yml)
+
+The third CFS Layer installs the Cray Management System packages. These packages are normally not modified.
 
 ### UAN Layer (playbook: site.yml)
 
@@ -166,3 +181,15 @@ The following Ansible roles are run during UAN post-boot configuration:
 ### Optional UAN Layer (playbook: unset_nologin.yml)
 
 This UAN layer deletes the `/etc/nologin` file allowing non-root users to log into the UAN. If the optional UAN layer that runs `set_nologin.yml` was used, this layer must be used or only the root user will have access to the node.
+
+This layer should be the final layer in the `compute-and-uan-bootprep.yaml` file.
+
+```bash
+### Optional layer to allow non-root logins after configuration
+#  - name: uan-unset-nologin-{{uan.working_branch}}
+#    playbook: unset_nologin.yml
+#    product:
+#      name: uan
+#      version: "{{uan.version}}"
+#      branch: "{{uan.working_branch}}"
+```

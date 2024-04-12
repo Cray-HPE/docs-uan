@@ -53,6 +53,10 @@ This section describes any UAN details that an administrator must be aware of be
 
 **Action**: Before executing this stage, the administrator must ensure that the UAN product tar file is in a media directory under `/etc/cray/upgrade/csm/`. When more than one product is being installed, place all the product tar files in the same directory.
 
+### deliver-product
+
+**Action**: Before executing this stage, the administrator must perform the prerequisites found in [Configuring a UAN for K3s](../advanced/Enabling_K3s.md) when UAIs on UANs is enabled.
+
 ### update-vcs-config
 
 **Action**: Before executing this stage, the administrator must ensure the IUF site variables file (see `iuf -sv SITE_VARS`) is updated to reflect site preferences, including the wanted VCS branching configuration. The `update-vcs-config` stage will use the branching configuration when modifying UAN branches in VCS.
@@ -61,9 +65,11 @@ This section describes any UAN details that an administrator must be aware of be
 
 **Action**: Before executing this stage, any site-local UAN configuration changes must be made so that the following stages execute using the wanted UAN configuration values. See the [Basic UAN Configuration](../operations/Basic_UAN_Configuration.md) section of this documentation for UAN configuration content details. The [Prepare for UAN Product Installation](../installation_prereqs/Prepare_for_UAN_Product_Installation.md) section is required for fresh installation scenarios.
 
+The procedures in this guide assume that the HPE Cray Supercomputing EX system has dedicated UANs. If the HPE Cray Supercomputing EX system does not have dedicated UANs, skip the steps for installing and configuring them.
+
 ## UAN Content Installed
 
-The following subsections describe most of the UAN content installed and configured on the system by IUF. The new version of UAN \(2.6.XX\) and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
+The following subsections describe most of the UAN content installed and configured on the system by IUF. Beginning with UAN \(2.6.XX\), UAN and its artifacts will be displayed in the CSM product catalog alongside any previously released version of UAN and its artifacts.
 
 
 ### Configuration
@@ -143,16 +149,15 @@ Customers must finish the installation or upgrade of the UAN product before boot
 
 ### RPMs
 
-UAN provides RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of the installation process.
+UAN provides third-party RPMs used on UAN nodes. The RPMs are uploaded to Nexus as part of the installation process.
 
 The following Nexus raw repositories are created:
 
-- uan-2.6.XX-sle-15sp4
-- uan-2.6.XX-sle-15sp3
+- uan-2.7-third-party
+- uan-2.7.XX-third-party
 
-The following Nexus group repositories are created and reference the preceding Nexus raw repos.
+The following Nexus group repository is created and reference the preceding Nexus raw repos.
 
-- uan-2.6-sle-15sp4
-- uan-2.6-sle-15sp3
+- uan-2.7.XX-third-party
 
-The uan-2.6-sle-15sp4 and uan-2.6-sle-15sp3 Nexus group repositories are used when building UAN node images and are accessible on UAN nodes after boot.
+The uan-2.7.XX-third-party Nexus group repository is used when building UAN node images and is accessible on UAN nodes after boot.
