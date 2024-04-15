@@ -120,7 +120,7 @@ The following steps must be completed prior to configuring the UAN with K3s.
      "artifacts": [
        {
          "Key": "subuid",
-         "LastModified": "2023-02-21T23:41:43.948000+00:00",
+         "LastModified": "2024-02-21T23:41:43.948000+00:00",
          "ETag": "\"c543aebb9b40bcf48879885734447090\"",
          "Size": 145686,
          "StorageClass": "STANDARD",
@@ -131,7 +131,7 @@ The following steps must be completed prior to configuring the UAN with K3s.
        },
        {
          "Key": "subgid",
-         "LastModified": "2023-02-21T23:41:43.948000+00:00",
+         "LastModified": "2024-02-21T23:41:43.948000+00:00",
          "ETag": "\"73032ede132e44d2c1bc567246901737\"",
          "Size": 145686,
          "StorageClass": "STANDARD",
@@ -320,7 +320,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
    uan01:~ # export KUBECONFIG=~/.kube/k3s.yml
    uan01:~ # helm ls -A
    NAME       	NAMESPACE     	REVISION	UPDATED                                	STATUS  	CHART         	APP VERSION
-   haproxy-uai	haproxy-uai   	1       	2024-03-01 10:55:10.916137137 -0600 CST	deployed	haproxy-1.17.3	2.7.3
+   haproxy-uai	haproxy-uai   	1       	2024-03-01 10:55:10.916137137 -0600 CST	deployed	haproxy-1.17.3	2.7.1
    metallb    	metallb-system	1       	2024-03-01 10:40:15.548380973 -0600 CST	deployed	metallb-0.13.7	v0.13.7
    ```
 
@@ -347,7 +347,7 @@ To verify the `k3s.yml` playbook succeeded, perform the following verification c
    uan01:~ # systemctl status sshd_uai
    ● sshd_uai.service - OpenSSH Daemon Generated for uai
      Loaded: loaded (/usr/lib/systemd/system/sshd_uai.service; disabled; vendor preset: disabled)
-     Active: active (running) since Wed 2023-03-01 12:43:31 CST; 2h 4min ago
+     Active: active (running) since Wed 2024-03-01 12:43:31 CST; 2h 4min ago
    ```
 
 1. Finally, use SSH to log in through the HAProxy load balancer:
