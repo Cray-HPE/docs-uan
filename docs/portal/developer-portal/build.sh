@@ -68,7 +68,7 @@ echo "Building UAN Install Guide";
 dita -i tmp/uan_install_guide.ditamap -o build/install -f HPEscHtml5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
-dita -i uan_install_guide.ditamap -o build/PDF/install -f pdf
+dita -i uan_install_guide.ditamap --args.fo.userconfig=$THIS_DIR/fop.xconf -o build/PDF/install -f pdf
 # This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
 dita -i uan_install_guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
@@ -77,7 +77,7 @@ echo "Building UAN Admin Guide"
 dita -i tmp/uan_admin_guide.ditamap -o build/admin -f HPEscHtml5 && cp admin_publication.json build/admin/publication.json && cd build/admin/ && zip -r crs8033_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
-dita -i uan_admin_guide.ditamap -o build/PDF/admin -f pdf; 
+dita -i uan_admin_guide.ditamap --args.fo.userconfig=$THIS_DIR/fop.xconf -o build/PDF/admin -f pdf; 
 # This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
 dita -i uan_admin_guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
