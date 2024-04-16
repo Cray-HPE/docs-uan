@@ -156,7 +156,7 @@ The following Nexus raw repositories are created:
 - uan-2.7.XX-sle-15sp4
 - uan-2.7.XX-sle-15sp3
 
-The following Nexus group repository is created and reference the preceding Nexus raw repos.
+The following Nexus group repositories are created and reference the preceding Nexus raw repos.
 
 - uan-2.7-sle-15sp4
 - uan-2.7-sle-15sp3
