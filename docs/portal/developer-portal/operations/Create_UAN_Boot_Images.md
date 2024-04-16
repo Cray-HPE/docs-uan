@@ -247,7 +247,7 @@ See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for 
 ```yaml
 session_templates:
 - name: uan-2.7.1
-  image: cray-shasta-uan-sles15sp5.x86_64-2.7.3
+  image: cray-shasta-uan-sles15sp5.x86_64-2.7.1
   configuration: uan-config
   bos_parameters:
     boot_sets:
