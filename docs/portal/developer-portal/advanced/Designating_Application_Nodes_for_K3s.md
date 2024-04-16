@@ -2,6 +2,10 @@
 
 **WARNING**: This feature is a Technical Preview. Future releases will streamline these manual configuration steps. Therefore, some of these configuration options may change in future releases.
 
+## Prerequisites
+
+- The node or nodes that will run K3s must have a local disk because Podman requires it.
+
 ## Overview
 
 Before K3s can be enabled to support UAIs on Application nodes, the Application nodes must be grouped in HSM as either `k3s_server` or `k3s_agent` nodes. The UAN Ansible K3s playbook uses these groups to determine what role they will have. Nodes grouped as `k3s_server` will become K3s control-plane (master) nodes, while nodes grouped as `k3s_agent` will become K3s agent (worker) nodes.

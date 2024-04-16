@@ -204,7 +204,6 @@ See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for 
        playbook: site.yml
        product:
          name: uan
-         version: 2.7.1
          branch: integration-PRODUCT_VERSION
   
      ... add configuration layers for other products here, if desired ...
@@ -247,8 +246,8 @@ See also [*HPE Cray EX System Software Stack Installation and Upgrade Guide for 
 
 ```yaml
 session_templates:
-- name: uan-2.4.0
-  image: cray-shasta-uan-sles15sp3.x86_64-2.3.25
+- name: uan-2.7.1
+  image: cray-shasta-uan-sles15sp5.x86_64-2.7.1
   configuration: uan-config
   bos_parameters:
     boot_sets:

@@ -4,6 +4,8 @@ Perform this procedure to ready the HPE Cray Supercomputing EX system for HPE Cr
 
 Install and configure the HPE Cray Supercomputing COS product before performing this procedure.
 
+If the HPE Cray Supercomputing EX system contains Compute Nodes (CNs) that will be repurposed as UANs, those CNs must be configured as CNs first. The _HPE Cray Supercomputing User Access Node (UAN) Administrator Guide (S-8033)_ provides instructions for reconfiguring a CN as UAN after product installation.
+
 1. Verify that the management network switches are properly configured.
 
    See the [switch configuration procedures](https://cray-hpe.github.io/docs-csm/en-14/install/csm-install/readme/#5-configure-management-network-switches) in the HPE Cray System Management Documentation.
@@ -16,9 +18,9 @@ Install and configure the HPE Cray Supercomputing COS product before performing 
 
     See the procedure "Add UAN CAN IP Addresses to SLS" in the HPE Cray Supercomputing EX hardware documentation.
 
-    1. For systems where UANs are going to host UAIs, identify a block of IP addresses for the services running in K3s. Please see [Configuring a UAN for K3s (Technical Preview)](../advanced/Enabling_K3s.md) for information on reserving a block of IPs on CAN/CHN for K3s MetalLB use.
+    1. For systems where UANs are going to host UAIs, identify a block of IP addresses for the services running in K3s. Please see [Configuring a UAN for K3s (Technical Preview)](../advanced/Enabling_K3s.md) for information on reserving a block of IP addresses on CAN/CHN for K3s MetalLB use.
 
-       **Note**: The identification of IP addresses for the services running in K3s should be made at system installation time in order to avoid the possibility of IP collisions with CSM services.
+       **Note**: The identification of IP addresses for the services running in K3s should be made at system installation time to avoid the possibility of IP collisions with CSM services.
    
 1. [Configure the BMC for UANs with iLO](Configure_the_BMC_for_UANs_with_iLO.md)
 
