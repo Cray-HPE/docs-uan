@@ -164,9 +164,9 @@ The UAN-specific roles involved in post-boot UAN node configuration are:
 
 The UAN roles in `site.yml` are required and must not be removed, with exception of `uan_ldap` if the site is using some other method of user authentication. The `uan_ldap` may also be skipped by setting the value of `uan_ldap_setup` to `no` in a `group_vars` or `host_vars` configuration file. Configuration of this layer is made in the `uan-config-management` VCS repository.
 
-### COS (playbook: cos-application-after.yml)
+### Final COS Layer (cos-application-last)
 
-This CFS Layer runs the following roles from the `uss-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
+This CFS Layer uses the playbook `cos-application-after.yml` and runs the following roles from the `uss-config-management` VCS repository. Any configuration changes needed for these roles must be made in the `group_vars` or `host_vars` subdirectories of that repository.
 
 The following Ansible roles are run during UAN image configuration:
 
