@@ -1,5 +1,7 @@
 # Install or Upgrade UAN
 
+**@product_version@ is the last release of UAN as a separate product. After this release, the UAN product code and documentation will be provided as part of the User Services Software (USS) Product, beginning with USS release 1.1.0** 
+
 ## Install and Upgrade Framework
 
 The Install and Upgrade Framework (IUF) provides commands which install, upgrade, and deploy products on systems managed by CSM. IUF capabilities are described in detail in the [IUF section](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) of the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/en-14/). The initial install and upgrade workflows described in the [HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)](https://www.hpe.com/support/ex-S-8052) detail when and how to use IUF with a new release of UAN or any other HPE Cray EX product.
