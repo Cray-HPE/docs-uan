@@ -1,5 +1,7 @@
 # Basic UAN Configuration
 
+**@product_version@ is the last release of UAN as a separate product. After this release, the UAN product code and documentation will be provided as part of the User Services Software (USS) Product, beginning with USS release 1.1.0**
+
 ## UAN configuration overview
 
 The Configuration Framework Service \(CFS\) performs the configuration of UAN nodes. CFS can apply configuration to both images and nodes. When the configuration is applied to nodes, the nodes must be booted and accessible through SSH over the Node Management Network \(NMN\).
