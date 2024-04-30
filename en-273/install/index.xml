@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 29 Apr 2024 03:04:09 +0000</lastBuildDate><atom:link href="/docs-uan/en-273/install/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Apr 2024 03:04:13 +0000</lastBuildDate><atom:link href="/docs-uan/en-273/install/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-273/install/install_the_uan_product_stream/</link>
-      <pubDate>Mon, 29 Apr 2024 03:04:01 +0000</pubDate>
+      <pubDate>Tue, 30 Apr 2024 03:04:04 +0000</pubDate>
       
       <guid>/docs-uan/en-273/install/install_the_uan_product_stream/</guid>
       <description>Install or Upgrade UAN Install and Upgrade Framework The Install and Upgrade Framework (IUF) provides commands which install, upgrade, and deploy products on systems managed by CSM. IUF capabilities are described in detail in the IUF section of the Cray System Management Documentation. The initial install and upgrade workflows described in the HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052) detail when and how to use IUF with a new release of UAN or any other HPE Cray EX product.</description>
