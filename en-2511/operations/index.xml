@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 02 May 2024 03:04:20 +0000</lastBuildDate><atom:link href="/docs-uan/en-2511/operations/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 May 2024 03:05:00 +0000</lastBuildDate><atom:link href="/docs-uan/en-2511/operations/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/about_uan_configuration/</link>
-      <pubDate>Thu, 02 May 2024 03:04:15 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:55 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/about_uan_configuration/</guid>
       <description>About UAN Configuration This section describes the Ansible playbooks and roles that configure UANs.
@@ -21,7 +21,7 @@ The Ansible roles involved in UAN configuration are listed in the site.</descrip
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/build_a_new_uan_image_using_the_cos_recipe/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:55 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/build_a_new_uan_image_using_the_cos_recipe/</guid>
       <description>Build a New UAN Image Using a COS Recipe Prior to UAN 2.3, a similar copy of the COS recipe was imported with the UAN install. In the UAN 2.3 release, UAN does not install a recipe, and a COS recipe must be used. Additional uan packages will now be installed via CFS and the uan_packages role.
@@ -32,7 +32,7 @@ Install the COS, Slingshot, and UAN product streams.</description>
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/create_uan_boot_images/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:56 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/create_uan_boot_images/</guid>
       <description>Create UAN Boot Images This procedure updates the configuration management git repository to match the installed version of the UAN product. That updated configuration is then used to create UAN boot images and a BOS session template.
@@ -42,7 +42,7 @@ UAN specific configuration, and other required configurations related to UANs ar
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/mount_a_new_file_system_on_an_uan/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:56 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/mount_a_new_file_system_on_an_uan/</guid>
       <description>Mount a New File System on a UAN Perform this procedure to create a mount point for a new file system on a UAN.
@@ -55,7 +55,7 @@ ncn-w001# vi group_vars/Application/filesystems.yml --- filesystems: - src: 10.2
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/configure_interfaces_on_uans/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:55 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/configure_interfaces_on_uans/</guid>
       <description>Configure Interfaces on UANs Perform this procedure to set network interfaces on UANs by editing a configuration file.
@@ -66,7 +66,7 @@ In the command examples in this procedure, PRODUCT_VERSION refers to the current
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/configure_pluggable_authentication_modules_pam_on_uans/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:55 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/configure_pluggable_authentication_modules_pam_on_uans/</guid>
       <description>Configure Pluggable Authentication Modules (PAM) on UANs Perform this procedure to configure PAM on UANs. This enables dynamic authentication support for system services.
@@ -78,7 +78,7 @@ ncn-m001# kubectl get pods --all-namespaces | grep vcs services gitea-vcs-f57c54
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/uan_ansible_roles/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:56 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/uan_ansible_roles/</guid>
       <description>UAN Ansible Roles uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.
@@ -90,7 +90,7 @@ The device that is found will be unmounted if mounted and a swap partition will 
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/boot_uans/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:55 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/boot_uans/</guid>
       <description>Boot UANs Perform this procedure to boot UANs using BOS so that they are ready for user logins.
@@ -102,7 +102,7 @@ ncn-m001# cray bos session create --template-uuid uan-sessiontemplate-PRODUCT_VE
     <item>
       <title></title>
       <link>/docs-uan/en-2511/operations/cve_2023_0461/</link>
-      <pubDate>Thu, 02 May 2024 03:04:16 +0000</pubDate>
+      <pubDate>Fri, 03 May 2024 03:04:55 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/operations/cve_2023_0461/</guid>
       <description>Mitigation for CVE-2023-0461 Description There is a use-after-free vulnerability in the Linux Kernel which can be exploited to achieve local privilege escalation. To reach the vulnerability, kernel configuration flag CONFIG_TLS or CONFIG_XFRM_ESPINTCP has to be configured, but the operation does not require any privilege. There is a use-after-free bug of icsk_ulp_data of a struct inet_connection_sock. When CONFIG_TLS is enabled, users can install a tls context (struct tls_context) on a connected tcp socket.</description>
