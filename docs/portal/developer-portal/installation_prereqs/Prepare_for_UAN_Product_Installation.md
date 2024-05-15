@@ -34,38 +34,17 @@ If the HPE Cray Supercomputing EX system contains Compute Nodes (CNs) that will 
    ncn-m001# sat firmware -x BMC_XNAME
    ```
 
-1. Repeat the previous six Steps for all UANs.
-
-1. Unpackage the file.
-
-    ```bash
-    ncn-m001# tar zxf uan-PRODUCT_VERSION.tar.gz
-    ```
-
-1. Navigate into the `uan-PRODUCT_VERSION/` directory.
-
-    ```bash
-    ncn-m001# cd uan-PRODUCT_VERSION/
-    ```
-
-1. Run the pre-install goss tests to determine if the system is ready for the UAN product installation.
-
-    This step requires that goss is installed on the node running the tests.
-
-    ```bash
-    ncn# ./validate-pre-install.sh
-    ...............
-    
-    Total Duration: 1.304s
-    Count: 15, Failed: 0, Skipped: 0
-    ```
+1. Repeat the previous three Steps for all UANs.
 
 1. Ensure that the `cray-console-node` pods are connected to UANs so that they are monitored and their consoles are logged.
 
     1. Obtain a list of the xnames for all UANs (remove the `--subrole` argument to list all Application nodes).
 
        ```bash
-       ncn# cray hsm state components list --role Application --subrole UAN --format json | jq -r .Components[].ID | sort
+       ncn# cray hsm state components list \
+       --role Application --subrole UAN \
+       --format json \
+       | jq -r .Components[].ID | sort
        x3000c0s19b0n0
        x3000c0s24b0n0
        x3000c0s31b0n0
@@ -74,13 +53,18 @@ If the HPE Cray Supercomputing EX system contains Compute Nodes (CNs) that will 
     1. Obtain a list of the console pods.
 
        ```bash
-       ncn# PODS=$(kubectl get pods -n services -l app.kubernetes.io/name=cray-console-node --template '{{range .items}}{{.metadata.name}} {{end}}')
+       ncn# PODS=$(kubectl get pods -n services \
+       -l app.kubernetes.io/name=cray-console-node \
+       --template '{{range .items}}{{.metadata.name}} {{end}}')
        ```
 
     1. Use `conman -q` to scan the list of connections conman is monitoring (only UAN xnames are shown for brevity).
 
        ```bash
-       ncn# for pod in $PODS; do kubectl exec -n services -c cray-console-node $pod -- conman -q; done
+       ncn# for pod in $PODS; do \
+       kubectl exec -n services \
+       -c cray-console-node $pod \
+       -- conman -q; done
        x3000c0s19b0n0
        x3000c0s24b0n0
        x3000c0s31b0n0
