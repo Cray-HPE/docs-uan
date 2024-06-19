@@ -203,6 +203,13 @@
 	"content": "Upgrades Performing an upgrade of UAN from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.\nThe overall workflow for completing a UAN upgrade involves:\nPerform the UAN Installation\nReview any Notable Changes\nMerge UAN CFS Configuration Data\nCreate UAN images and reboot\n"
 },
 {
+	"uri": "/docs-uan/en-262/operations/uan_motd/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_motd The uan_motd role appends text to the /etc/motd file.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: \u0026#34;MOTD CONTENT\u0026#34; } This role is included in the UAN site.yml play.\n"
+},
+{
 	"uri": "/docs-uan/en-262/operations/uan_packages/",
 	"title": "",
 	"tags": [],
@@ -215,6 +222,20 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_shadow The uan_shadow role configures the root password on UAN nodes.\nRequirements The root password hash has to be installed in HashiCorp Vault at secret/uan root_password.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_vault_url The URL for the HashiCorp Vault\nExample:\nuan_vault_url: \u0026#34;http://cray-vault.vault:8200\u0026#34; uan_vault_role_file The required Kubernetes role file for HashiCorp Vault access.\nExample:\nuan_vault_role_file: /var/run/secrets/kubernetes.io/serviceaccount/namespace uan_vault_jwt_file The path to the required Kubernetes token file for HashiCorp Vault access.\nExample:\nuan_vault_jwt_file: /var/run/secrets/kubernetes.io/serviceaccount/token uan_vault_path The path to use for storing data for UANs in HashiCorp Vault.\nExample:\nuan_vault_path: secret/uan uan_vault_key The key used for storing the root password in HashiCorp Vault.\nExample:\nuan_vault_key: root_password Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_shadow } This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-262/operations/uan_gpg_keys/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.\nRequirements The Kubernetes secret must be available in the namespace and field specified by the uan_gpg_key_* variables below. The key must be stored as a base64-encoded string.\nRole Variables Available variables are listed below, along with default values (located in defaults/main.yml):\nuan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.\nExample:\nuan_gpg_key_k8s_secret: \u0026#34;hpe-signing-key\u0026#34; uan_gpg_key_k8s_namespace The Kubernetes namespace which contains the secret.\nExample:\nuan_gpg_key_k8s_namespace: \u0026#34;services\u0026#34; uan_gpg_key_k8s_field The field in the Kubernetes secret that holds the GPG public key.\nExample:\nuan_gpg_key_k8s_field: \u0026#34;gpg-pubkey\u0026#34; Dependencies None.\nExample Playbook - hosts: Application roles: - role: uan_gpg_key This role is included in the UAN site.yml play.\n"
+},
+{
+	"uri": "/docs-uan/en-262/operations/uan_hardening/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to NMN LB IPs.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-262/operations/uan_interfaces/",
@@ -231,13 +252,6 @@
 	"content": "uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.\nRequirements NSCD, pam-config, sssd.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_ldap_setup A boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.\nExample:\nuan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers. If this list is empty, no LDAP configuration will be applied to the UAN targets and all role tasks will be skipped.\nExample:\nuan_ldap_config: - domain: \u0026#34;mydomain-ldaps\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldaps://123.123.123.1\u0026#34;, \u0026#34;ldaps://213.312.123.132\u0026#34;] chpass_uri: [\u0026#34;ldaps://123.123.123.1\u0026#34;] - domain: \u0026#34;mydomain-ldap\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldap://123.123.123.1\u0026#34;, \u0026#34;ldap://213.312.123.132\u0026#34;] uan_ad_groups Configures active directory groups on UAN nodes.\nExample:\nuan_ad_groups: - { name: admin_grp, origin: ALL } - { name: dev_users, origin: ALL } uan_pam_modules Configures PAM modules on the UAN nodes in /etc/pam.d.\nExample:\nuan_pam_modules: - name: \u0026#34;common-account\u0026#34; lines: - \u0026#34;account required\\tpam_access.so\u0026#34; Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_ldap } This role is included in the UAN site.yml play.\n"
 },
 {
-	"uri": "/docs-uan/en-262/operations/uan_motd/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_motd The uan_motd role appends text to the /etc/motd file.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: \u0026#34;MOTD CONTENT\u0026#34; } This role is included in the UAN site.yml play.\n"
-},
-{
 	"uri": "/docs-uan/en-262/operations/uan_ca_cert/",
 	"title": "",
 	"tags": [],
@@ -250,20 +264,6 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_disk_config The uan_disk_config role configures swap and scratch disk partitions on UAN nodes.\nRequirements There must be disk devices found on the UAN node by the device_filter module or this role will exit with failure. This condition can be ignored by setting uan_require_disk to false. See variable definitions below.\nSee the library/device_filter.py file for more information on this module.\nThe device that is found will be unmounted if mounted and a swap partition will be created on the first half of the disk, and a scratch partition on the second half. ext4 filesystems are created on each partition.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\nuan_require_disk Boolean to determine if this role continues to setup disk if no disks were found by the device filter. Set to true to exit with error when no disks are found.\nExample:\nuan_require_disk: false uan_device_name_filter Regular expression of disk device name for this role to filter. Input to the device_filter module.\nExample:\nuan_device_name_filter: \u0026#34;^sd[a-f]$\u0026#34; uan_device_host_filter Regular expression of host for this role to filter. Input to the device_filter module.\nExample:\nuan_device_host_filter: \u0026#34; uan_device_model_filter Regular expression of device model for this role to filter. Input to the device_filter module.\nExample:\nuan_device_model_filter: \u0026#34; uan_device_vendor_filter Regular expression of disk vendor for this role to filter. Input to the device_filter module.\nExample:\nuan_device_vendor_filter: \u0026#34; uan_device_size_filter Regular expression of disk size for this role to filter. Input to the device_filter module.\nExample:\nuan_device_size_filter: \u0026#34;\u0026lt;1TB\u0026#34; uan_swap Filesystem location to mount the swap partition.\nExample:\nuan_swap: \u0026#34;/swap\u0026#34; uan_scratch Filesystem location to mount the scratch partition.\nExample:\nuan_scratch: \u0026#34;/scratch\u0026#34; swap_file Name of the swapfile to create. Full path is \u0026lt;uan_swap\u0026gt;/\u0026lt;swapfile\u0026gt;.\nExample:\nswap_file: \u0026#34;swapfile\u0026#34; swap_dd_command dd command to create the swapfile.\nExample:\nswap_dd_command: \u0026#34;/usr/bin/dd if=/dev/zero of={{ uan_swap }}/{{ swap_file }} bs=1GB count=10\u0026#34; swap_swappiness Value to set the swapiness in sysctl.\nExample:\nswap_swappiness: \u0026#34;10\u0026#34; Dependencies library/device_filter.py is required to find eligible disk devices.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_disk_config } This role is included in the UAN site.yml play.\n"
-},
-{
-	"uri": "/docs-uan/en-262/operations/uan_gpg_keys/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_gpg_keys The uan_gpg_keys role installs the CSM GPG signing public key. This role is a dependency of the uan_packages role.\nRequirements The Kubernetes secret must be available in the namespace and field specified by the uan_gpg_key_* variables below. The key must be stored as a base64-encoded string.\nRole Variables Available variables are listed below, along with default values (located in defaults/main.yml):\nuan_gpg_key_k8s_secret The Kubernetes secret which contains the GPG public key.\nExample:\nuan_gpg_key_k8s_secret: \u0026#34;hpe-signing-key\u0026#34; uan_gpg_key_k8s_namespace The Kubernetes namespace which contains the secret.\nExample:\nuan_gpg_key_k8s_namespace: \u0026#34;services\u0026#34; uan_gpg_key_k8s_field The field in the Kubernetes secret that holds the GPG public key.\nExample:\nuan_gpg_key_k8s_field: \u0026#34;gpg-pubkey\u0026#34; Dependencies None.\nExample Playbook - hosts: Application roles: - role: uan_gpg_key This role is included in the UAN site.yml play.\n"
-},
-{
-	"uri": "/docs-uan/en-262/operations/uan_hardening/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_hardening The uan_hardening role configures site/customer-defined network security of UANs, for example preventing ssh out of UAN over NMN to NCN nodes.\nRequirements None.\nRole Variables Available variables are listed below, along with default values (see defaults/main.yml):\ndisable_ssh_out_nmn_to_management_ncns Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to the NCN management nodes.\nThe default value of disable_ssh_out_nmn_to_management_ncns is yes.\ndisable_ssh_out_nmn_to_management_ncns: yes disable_ssh_out_uan_to_nmn_lb Boolean variable controlling whether or not firewall rules are applied at the UAN to prevent ssh outbound over the NMN to NMN LB IPs.\nThe default value of disable_ssh_out_uan_to_nmn_lb is yes.\ndisable_ssh_out_uan_to_nmn_lb: yes Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_hardening} This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-262/install/install_the_uan_product_stream/",
