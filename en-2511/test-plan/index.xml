@@ -6,11 +6,11 @@
     <description>Recent content on User Access Node (UAN)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 22 Jun 2024 03:17:15 +0000</lastBuildDate><atom:link href="/docs-uan/en-2511/test-plan/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jun 2024 03:15:28 +0000</lastBuildDate><atom:link href="/docs-uan/en-2511/test-plan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>/docs-uan/en-2511/test-plan/test-plan/</link>
-      <pubDate>Sat, 22 Jun 2024 03:17:11 +0000</pubDate>
+      <pubDate>Sun, 23 Jun 2024 03:15:24 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/test-plan/test-plan/</guid>
       <description>Test Plan for User Access Node (UAN) and Repurposed Compute Node as UAN The following is the test plan for the User Access Node (UAN) or a Compute Node that has been repurposed to function as a UAN. The tests are grouped in three categories:
@@ -20,7 +20,7 @@ Unit tests Integration tests Functional tests Unit Tests When possible, unit tes
     <item>
       <title></title>
       <link>/docs-uan/en-2511/test-plan/k3s_test_plan/</link>
-      <pubDate>Sat, 22 Jun 2024 03:17:11 +0000</pubDate>
+      <pubDate>Sun, 23 Jun 2024 03:15:24 +0000</pubDate>
       
       <guid>/docs-uan/en-2511/test-plan/k3s_test_plan/</guid>
       <description>Test Plan for UAIs on UANs (K3s Verification) Overview Perform this procedure to verify that K3s on UANs can launch the services necessary to replicate UAIs as Podman containers.

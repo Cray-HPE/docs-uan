@@ -203,6 +203,13 @@
 	"content": "Upgrades Performing an upgrade of the HPE Cray Supercomputing UAN product from one version to the next follows the same general process as a fresh install. Some considerations may need to be made when merging the existing CFS configuration with the latest CFS configuration provided by the release.\nThe overall workflow for completing a UAN upgrade involves:\nPerform the UAN Installation\nReview any Notable Changes\nMerge UAN CFS Configuration Data\nCreate UAN images and reboot\n"
 },
 {
+	"uri": "/docs-uan/en-273/operations/uan_motd/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "uan_motd The uan_motd role appends text to the /etc/motd file.\nRequirements None.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\nuan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: \u0026#34;MOTD CONTENT\u0026#34; } This role is included in the UAN site.yml play.\n"
+},
+{
 	"uri": "/docs-uan/en-273/operations/uan_packages/",
 	"title": "",
 	"tags": [],
@@ -236,13 +243,6 @@
 	"tags": [],
 	"description": "",
 	"content": "uan_ldap The uan_ldap role configures LDAP and AD groups on UAN nodes.\nRequirements NSCD, pam-config, sssd.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\nuan_ldap_setup A Boolean variable to selectively skip the setup of LDAP on nodes it would otherwise be configured due to uan_ldap_config being defined. The default setting is to setup LDAP when uan_ldap_config is not empty.\nExample:\nuan_ldap_setup: yes uan_ldap_config Configures LDAP domains and servers. If this list is empty, no LDAP configuration will be applied to the UAN targets, and all role tasks will be skipped.\nExample:\nuan_ldap_config: - domain: \u0026#34;mydomain-ldaps\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldaps://123.123.123.1\u0026#34;, \u0026#34;ldaps://213.312.123.132\u0026#34;] chpass_uri: [\u0026#34;ldaps://123.123.123.1\u0026#34;] - domain: \u0026#34;mydomain-ldap\u0026#34; search_base: \u0026#34;dc=...,dc=...\u0026#34; servers: [\u0026#34;ldap://123.123.123.1\u0026#34;, \u0026#34;ldap://213.312.123.132\u0026#34;] uan_ad_groups Configures active directory groups on UAN nodes.\nExample:\nuan_ad_groups: - { name: admin_grp, origin: ALL } - { name: dev_users, origin: ALL } uan_pam_modules Configures PAM modules on the UAN nodes in /etc/pam.d.\nExample:\nuan_pam_modules: - name: \u0026#34;common-account\u0026#34; lines: - \u0026#34;account required\\tpam_access.so\u0026#34; Dependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_ldap } This role is included in the UAN site.yml play.\n"
-},
-{
-	"uri": "/docs-uan/en-273/operations/uan_motd/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "uan_motd The uan_motd role appends text to the /etc/motd file.\nRequirements None.\nRole Variables Available variables are in the following list, including default values (see defaults/main.yml):\nuan_motd_content: [] uan_motd_content Contains text to be added to the end of the /etc/motd file.\nDependencies None.\nExample Playbook - hosts: Application_UAN roles: - { role: uan_motd, uan_motd_content: \u0026#34;MOTD CONTENT\u0026#34; } This role is included in the UAN site.yml play.\n"
 },
 {
 	"uri": "/docs-uan/en-273/operations/uan_ca_cert/",
